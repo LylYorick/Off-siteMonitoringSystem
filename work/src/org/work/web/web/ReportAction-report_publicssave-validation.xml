@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.dtd">
+<validators>	
+	
+	<!-- 被协助部门 -->
+	<field name="publics.xp1">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>
+	</field>
+	
+	<!-- 协助时间 -->
+	<field name="publics.xp2">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>
+	</field>
+	<field name="publics.xp3">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>
+	</field>
+	<field name="publics.xp4">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>
+	</field>
+</validators>

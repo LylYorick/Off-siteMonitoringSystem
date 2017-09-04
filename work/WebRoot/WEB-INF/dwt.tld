@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<taglib xmlns= "http://java.sun.com/xml/ns/j2ee"
+		xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation= "http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+		version="2.0"> 
+
+	<tlib-version>1.0</tlib-version>
+
+	<tag>
+		<name>js</name>
+		<tag-class>org.work.web.web.tags.Js</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<name>src</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>css</name>
+		<tag-class>org.work.web.web.tags.Css</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<name>href</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<name>paginate</name>
+		<tag-class>org.work.web.web.tags.Paginate</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<name>formIndex</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		
+		<attribute>
+			<name>showSummary</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>			
+		</attribute>
+		
+		<attribute>
+			<name>tidy</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>			
+		</attribute>
+		
+		<attribute>
+			<name>navigateStyle</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>			
+		</attribute>
+	</tag>
+</taglib>

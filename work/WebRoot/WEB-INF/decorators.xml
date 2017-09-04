@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<decorators defaultdir="/WEB-INF/decorators">
+    <!-- 如下url将不被sitemesh渲染 -->
+    <excludes>
+        <pattern>/images/*</pattern>
+        <pattern>/common/*</pattern>
+        <pattern>/login.jsp</pattern>
+        <pattern>/templete</pattern>
+    </excludes>   
+    <!-- 所有url将被main.jsp渲染 -->
+    <decorator name="main" page="main.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+     <decorator name="layout" page="layout.jsp"></decorator>
+</decorators>

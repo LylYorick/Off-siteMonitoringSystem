@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.dtd">
+<validators>
+    <!-- 投保人名称/姓名 -->
+	<field name="cname">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>					
+	</field>	
+	
+	<!-- 投保人类型 -->
+	<field name="ctype">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 投保人身份证件类型 -->
+	<field name="cctype">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 投保人身份证件号码 -->
+	<field name="ccid">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 客户职业和客户行业 -->
+	<field name="professional">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 对公客户法定代表人姓名 -->
+	<field name="clegal">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 对公客户法定代表人身份证件类型 -->
+	<field name="clegaltype">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 对公客户法定代表人身份证件号码 -->
+	<field name="clegalid">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 被保险人总数 -->
+	<field name="cpnum">
+		<field-validator type="required">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 被保险人名称 -->
+	<field name="ciname">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 被保险人身份证件类型 -->
+	<field name="citype">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 被保险人身份证件号码 -->
+	<field name="ciid">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 投保人与被保险人的关系 -->
+	<field name="crelation">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 受益人总数 -->
+	<field name="ctotal">
+		<field-validator type="required">
+			<message key="FieldRequired"/>
+		</field-validator>		
+		<field-validator type="CurrencyAndAmount">
+			<message key="CurrencyAndAmount"/>
+		</field-validator>
+	</field>
+	
+	<!-- 受益人名称 -->
+	<field name="csname">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 受益人身份证件类型 -->
+	<field name="cstype">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 受益人身份证件号码 -->
+	<field name="csid">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 可疑交易特征 -->
+	<field name="cfeature">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 保险合同总份数 -->
+	<field name="cmnum">
+		<field-validator type="required">
+			<message key="FieldRequired"/>
+		</field-validator>	
+		<field-validator type="CurrencyAndAmount">
+			<message key="CurrencyAndAmount"/>
+		</field-validator>	
+	</field>
+	
+	<!-- 外币累计交易金额 -->
+	<field name="cfamt">
+		<field-validator type="required">
+			<message key="FieldRequired"/>
+		</field-validator>	
+		<field-validator type="CurrencyAndAmount">
+			<message key="CurrencyAndAmount"/>
+		</field-validator>	
+	</field>	
+	
+	<!-- 保险种类 -->
+	<field name="cmtype">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 保险合同号 -->
+	<field name="cmcid">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 保险名称 -->
+	<field name="cmname">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 保险期间 -->
+	<field name="cmperiod">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 保险标的 -->
+	<field name="cmsubject">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 保险金额 -->
+	<field name="cmamt">
+		<field-validator type="required">
+			<message key="FieldRequired"/>
+		</field-validator>	
+		<field-validator type="CurrencyAndAmount">
+			<message key="CurrencyAndAmount"/>
+		</field-validator>	
+	</field>
+	
+	<!-- 保险费 -->
+	<field name="cmpay">
+		<field-validator type="required">
+			<message key="FieldRequired"/>
+		</field-validator>	
+		<field-validator type="CurrencyAndAmount">
+			<message key="CurrencyAndAmount"/>
+		</field-validator>	
+	</field>
+	
+	<!-- 缴费方式 -->
+	<field name="cmmethod">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 可疑行为描述 -->
+	<field name="cdes">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 采取措施 -->
+	<field name="cmethod">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 其他需要说明的情况 -->
+	<field name="cother">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 数据文件 -->
+	<field name="suspiciousdataFile">
+		<field-validator type="required">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 补充文件 -->
+	<field name="suspiciousFile">
+		<field-validator type="required">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>	
+</validators>

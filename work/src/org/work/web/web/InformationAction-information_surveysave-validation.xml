@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.dtd">
+<validators>
+	<!-- 金融机构名称 -->
+	
+	<!-- 日期 -->
+	<field name="date">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 审批表编号 -->
+	<field name="approvalid">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 函号 -->
+	<field name="letterid">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+		
+	<!-- 发函时间 -->
+	<field name="lettertime">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 要求反馈时间 -->
+	<field name="feedbacktime">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 各金融机构实际反馈时间 -->
+	<field name="realtime">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+
+</validators>

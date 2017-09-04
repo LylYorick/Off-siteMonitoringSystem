@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.dtd">
+<validators>
+     <!-- 资金/结算账户开户行名称 -->
+	<field name="bname">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 证券/基金/期货账号 -->
+	<field name="stockaccount">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	 <!-- 资金账号 -->
+	<field name="moneyaccount">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>		
+    
+    <!-- 结算账号 -->
+	<field name="payaccount">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>	
+	
+	<!-- 交易日期 -->
+	<field name="trandate">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 交易种类 -->
+	<field name="tranmethod">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 交易品种代码 -->
+	<field name="ttype">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 业务标示号 -->
+	<field name="tid">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>	
+	
+	<!-- 币种 -->
+	<field name="currency">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 交易额（按原币计） -->
+	<field name="lamt">
+		<field-validator type="required">
+			<message key="FieldRequired"/>
+		</field-validator>	
+		<field-validator type="CurrencyAndAmount">
+			<message key="CurrencyAndAmount"/>
+		</field-validator>	
+	</field>
+	
+	<!-- 交易额（折合美元） -->
+	<field name="fmat">
+		<field-validator type="required">
+			<message key="FieldRequired"/>
+		</field-validator>	
+		<field-validator type="CurrencyAndAmount">
+			<message key="CurrencyAndAmount"/>
+		</field-validator>	
+	</field>
+	
+	<!-- 资金进出方向 -->
+	<field name="rorp">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 经办人/交易指示人姓名或名称 -->
+	<field name="agname">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 经办人/交易指示人身份证号码 -->
+	<field name="agid">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 备注 -->
+	<field name="remark">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+</validators>

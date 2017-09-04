@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	<bean id="manageService" class="org.work.web.service.manage.impl.ManageServiceImpl">
+		<property name="userDao" ref="userDao"></property>
+		<property name="roleDao" ref="roleDao"></property>
+		<property name="privilegeDao" ref="privilegeDao"></property>
+	</bean>
+	<bean id="financialService" class="org.work.web.service.financial.impl.FinancialServiceImpl">
+		<property name="informationDao" ref="informationDao"></property>
+		<property name="informationHisDao" ref="informationHisDao"></property>
+		<property name="informationTaiDao" ref="informationTaiDao"></property>
+		<property name="catalogDao" ref="catalogDao"></property>
+	</bean>
+	<!-- 资料上报模块 -->
+	<bean id="documentService" class="org.work.web.service.document.impl.DocumentServiceImpl">
+		<property name="uploadDao" ref="uploadDao"></property>
+	</bean>
+	
+	<!-- 重点可疑交易 -->
+	<bean id="suspiciousService" class="org.work.web.service.suspicious.imp.SuspiciousServiceImpl">
+		<property name="bankbaseDao" ref="bankbaseDao"></property>
+		<property name="bankbaseDetailDao" ref="bankbaseDetailDao"></property>
+	</bean>
+	
+	<bean id="suspiciousstockService" class="org.work.web.service.suspiciousstock.imp.SuspiciousStockServiceImpl">
+		<property name="stockbaseDao" ref="stockbaseDao"></property>
+		<property name="stockbaseDetailDao" ref="stockbaseDetailDao"></property>
+	</bean>
+	
+	<bean id="suspiciousinsuranceService" class="org.work.web.service.suspiciousinsurance.imp.SuspiciousInsuranceServiceImpl">
+		<property name="insurancebaseDao" ref="insurancebaseDao"></property>
+		<property name="insurancebaseDetailDao" ref="insurancebaseDetailDao"></property>
+	</bean>
+	
+	<!-- 反洗钱信息调查 -->
+	<!-- 调查档案 -->
+	<bean id="informationService" class="org.work.web.service.information.impl.InformationServiceImpl">
+		<property name="informationSurDao" ref="informationSurDao"></property>
+	</bean>
+	<!-- 协查名单 -->
+	<bean id="investigationService" class="org.work.web.service.investigation.impl.InvestigationServiceImpl">
+		<property name="investigationDao" ref="investigationDao"></property>
+	</bean>
+	
+	<!-- 线索来源主动调查 -->
+	<bean id="activeculeService" class="org.work.web.service.activecule.impl.ActiveculeServiceImpl">
+		<property name="activeculeDao" ref="activeculeDao"></property>
+	</bean>
+	
+	<!-- 线索来源（举报或者专报） -->
+	<bean id="reportCuleService" class="org.work.web.service.reportcule.impl.ReportCuleServiceImpl">
+		<property name="reportculeDao" ref="reportculeDao"></property>
+	</bean>
+	
+	<!-- 线索来源（司法机关） -->
+	<bean id="judicialculeService" class="org.work.web.service.judicialcule.impl.JudicialculeServiceImpl">
+		<property name="judicialculeDao" ref="judicialculeDao"></property>
+	</bean>
+	
+	<!-- 线索来源（总行或者兄弟行） -->
+	<bean id="headculeService" class="org.work.web.service.headcule.impl.HeadculeServiceImpl">
+		<property name="headculeDao" ref="headculeDao"></property>
+	</bean>
+	
+	<!-- 线索移交 -->
+	<bean id="transferculeService" class="org.work.web.service.transfercule.impl.TransferculeServiceImpl">
+		<property name="transferculeDao" ref="transferculeDao"></property>
+	</bean>
+	
+	<!-- 报表上报模块 -->
+	<bean id="reportService" class="org.work.web.service.report.impl.ReportServiceImpl">
+		<property name="reportDao" ref="reportDao"></property>
+		<property name="reportTypeDao" ref="reportTypeDao"></property>
+		<property name="innerControlDao" ref="innerControlDao"></property>
+		<property name="identitySbDao" ref="identitySbDao"></property>
+		<property name="identityRsbDao" ref="identityRsbDao"></property>
+		<property name="identityKyDao" ref="identityKyDao"></property>
+		<property name="susreportDao" ref="susreportDao"></property>
+		<property name="susreportFlagDao" ref="susReportFlagDao"></property>
+		<property name="publicsDao" ref="publicsDao"></property>
+		<property name="blowflagDao" ref="blowflagDao"></property>
+		<property name="activeDao" ref="activeDao"></property>
+		<property name="trainDao" ref="trainDao"></property>
+		<property name="innerAuditDao" ref="innerAuditDao"></property>
+		<property name="innerAuditFlagDao" ref="innerAuditFlagDao"></property>
+		<property name="organdPostDao" ref="organdpostDao"></property>
+	</bean>
+		
+	<!-- 监管评分模块 -->
+	<bean id="assessService" class="org.work.web.service.assess.impl.AssessServiceImpl">
+		<property name="assessDao" ref="assessDao"></property>
+		<property name="assessIndexDao" ref="assessIndexDao"></property>
+	</bean>
+	<!-- 日志模块 -->
+	<bean id="userLogService" class="org.work.web.service.userlog.impl.UserLogService">
+		<property name="logInfoDao" ref="logInfoDao"></property>
+		<property name="paraDao" ref="paraDao"></property>
+	</bean>
+	<!-- 统计模块 -->
+	<bean id="caculService" class="org.work.web.service.cacul.impl.CaculServiceImpl">
+		<property name="extendDao" ref="extendDao"></property>
+	</bean>
+		
+</beans>

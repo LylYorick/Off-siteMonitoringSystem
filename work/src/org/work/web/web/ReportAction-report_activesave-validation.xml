@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.dtd">
+<validators>
+	<!-- 活动时间 -->
+	<field name="active.actdate">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>
+	</field>
+	<!-- 宣传内容 -->
+	<field name="active.actcnt">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>
+	</field>
+	<!-- 参加人数 -->
+	<field name="active.actnum">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>
+	</field>
+	<!-- 宣传方式 -->
+	<field name="active.actmtd">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>
+	</field>
+	<!-- 发放材料份数 -->
+	<field name="active.actdatanum">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>
+	</field>
+</validators>

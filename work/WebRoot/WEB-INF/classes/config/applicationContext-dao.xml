@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	<bean name="baseDao" abstract="true">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="userDao" class="org.work.web.dao.manage.impl.UserDaoImpl" parent="baseDao"></bean>
+	<bean id="roleDao" class="org.work.web.dao.manage.impl.RoleDaoImpl" parent="baseDao"></bean>
+	<bean id="privilegeDao" class="org.work.web.dao.manage.impl.PrivilegeDaoImpl" parent="baseDao"></bean>
+	
+	<bean name="informationDao" class="org.work.web.dao.information.impl.InformationDaoImpl" parent="baseDao"></bean>
+	<bean name="informationHisDao" class="org.work.web.dao.information.impl.InformationHisDaoImpl" parent="baseDao"></bean>
+	<bean name="catalogDao" class="org.work.web.dao.manage.impl.CatalogDaoImpl" parent="baseDao"></bean>
+	<bean name="informationTaiDao" class="org.work.web.dao.information.impl.InformationTaiDaoImpl" parent="baseDao"></bean>
+	
+	<!-- 资料上报模块 -->
+	<bean name="uploadDao" class="org.work.web.dao.upload.impl.UploadDaoImpl" parent="baseDao"></bean>
+	
+	<!-- 重点可疑交易 -->
+	<bean name="bankbaseDao" class="org.work.web.dao.suspicious.imp.BankbaseDaoImpl" parent="baseDao"></bean>
+	<bean name="bankbaseDetailDao" class="org.work.web.dao.suspicious.imp.BankbaseDetailDaoImpl" parent="baseDao"></bean>
+	<bean name="stockbaseDao" class="org.work.web.dao.suspiciousstock.imp.StockbaseDaoImpl" parent="baseDao"></bean>
+	<bean name="stockbaseDetailDao" class="org.work.web.dao.suspiciousstock.imp.StockbaseDetailDaoImpl" parent="baseDao"></bean>
+	<bean name="insurancebaseDao" class="org.work.web.dao.suspiciousinsurance.imp.InsurancebaseDaoImpl" parent="baseDao"></bean>
+	<bean name="insurancebaseDetailDao" class="org.work.web.dao.suspiciousinsurance.imp.InsurancebaseDetailDaoImpl" parent="baseDao"></bean>
+	<!-- 反洗钱调查信息模块 -->
+	<!-- 调查档案 -->
+	<bean name="informationSurDao" class="org.work.web.dao.information.impl.InformationSurDaoImpl" parent="baseDao"></bean>
+	<!-- 协查名单 -->
+	<bean name="investigationDao" class="org.work.web.dao.Investigation.impl.InvestigationDaoImpl" parent="baseDao"></bean>
+	<!-- 线索来源(主动调查) -->
+	<bean name="activeculeDao" class="org.work.web.dao.activecule.impl.ActiveculeDaoImpl" parent="baseDao"></bean>
+	<!-- 线索来源（举报或者专报） -->
+	<bean name="reportculeDao" class="org.work.web.dao.reportcule.impl.ReportculeDaoImpl" parent="baseDao"></bean>
+	<!-- 线索来源（司法机关） -->
+	<bean name="judicialculeDao" class="org.work.web.dao.judicialcule.impl.JudicialculeDaoImpl" parent="baseDao"></bean>
+	<!-- 线索来源（总行或者兄弟行） -->
+	<bean name="headculeDao" class="org.work.web.dao.headcule.impl.HeadculeDaoImpl" parent="baseDao"></bean>
+	<!-- 线索移交 -->
+	<bean name="transferculeDao" class="org.work.web.dao.transfercule.impl.TransferculeDaoImpl" parent="baseDao"></bean>
+	
+	<!-- 报表上报模块 -->
+	<bean name="reportDao" class="org.work.web.dao.report.impl.ReportDaoImpl" parent="baseDao"></bean>
+	<bean name="reportTypeDao" class="org.work.web.dao.report.impl.ReportTypeDaoImpl" parent="baseDao"></bean>
+	<bean name="innerControlDao" class="org.work.web.dao.report.impl.InnerControlDaoImpl" parent="baseDao"></bean>
+	<bean name="identitySbDao" class="org.work.web.dao.report.impl.IdentitySbDaoImpl" parent="baseDao"></bean>
+	<bean name="identityRsbDao" class="org.work.web.dao.report.impl.IdentityRsbDaoImpl" parent="baseDao"></bean>
+	<bean name="identityKyDao" class="org.work.web.dao.report.impl.IdentityKyDaoImpl" parent="baseDao"></bean>
+	<bean name="susreportDao" class="org.work.web.dao.report.impl.SusReportDaoImpl" parent="baseDao"></bean>
+	<bean name="susReportFlagDao" class="org.work.web.dao.report.impl.SusReportFlagDaoImpl" parent="baseDao"></bean>
+	<bean name="publicsDao" class="org.work.web.dao.report.impl.PublicsDaoImpl" parent="baseDao"></bean>
+	<bean name="blowflagDao" class="org.work.web.dao.report.impl.BlowflagDaoImpl" parent="baseDao"></bean>
+	<bean name="activeDao" class="org.work.web.dao.report.impl.ActiveDaoImpl" parent="baseDao"></bean>
+	<bean name="trainDao" class="org.work.web.dao.report.impl.TrainDaoImpl" parent="baseDao"></bean>
+	<bean name="innerAuditDao" class="org.work.web.dao.report.impl.InnerAuditDaoImpl" parent="baseDao"></bean>
+	<bean name="innerAuditFlagDao" class="org.work.web.dao.report.impl.InnerAuditFlagDaoImpl" parent="baseDao"></bean>
+	<bean name="organdpostDao" class="org.work.web.dao.report.impl.OrgandPostDaoImpl" parent="baseDao"></bean>
+	
+	<!-- 监管评分模块 -->
+	<bean name="assessDao" class="org.work.web.dao.assess.impl.AssessDaoImpl" parent="baseDao"></bean>
+	<bean name="assessIndexDao" class="org.work.web.dao.assessindex.impl.AssessIndexDaoImpl" parent="baseDao"></bean>
+
+	<!-- 日志模块 -->
+	<bean name="logInfoDao" class="org.work.web.dao.manage.impl.LogInfoDaoImpl" parent="baseDao"></bean>
+	<!-- 参数模块 -->
+	<bean name="paraDao" class="org.work.web.dao.para.impl.ParaDaoImpl" parent="baseDao"></bean>
+	<!-- 扩展模块 -->
+	<bean name="extendDao" class="org.work.web.dao.extend.impl.ExtendDaoImpl" parent="baseDao"></bean>
+</beans>

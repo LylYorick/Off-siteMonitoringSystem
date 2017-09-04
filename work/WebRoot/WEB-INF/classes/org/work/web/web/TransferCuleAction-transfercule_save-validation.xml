@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.dtd">
+<validators>
+	<!-- 线索移交 -->
+	
+	<!-- 移送文号 -->
+	<field name="transfersymbol">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 案件来源 -->
+	<field name="sourcecase">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 移送金额 -->
+	<!-- 
+	<field name="transferamout">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field> -->
+
+	<!-- 移送时间 -->
+	<field name="transferdate">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 经手人 -->
+	<field name="handledby">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 接受单位 -->
+	<field name="receivingunit">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 接受单位经手人 -->
+	<field name="handledperson">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 是否立案 -->
+	<field name="isplacedonfile">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 处理结果 -->
+	<field name="dealresult">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 备注 -->
+	<field name="notes">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+</validators>

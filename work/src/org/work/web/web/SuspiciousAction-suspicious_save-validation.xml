@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.dtd">
+<validators>
+    <!-- 客户名称/姓名 -->
+	<field name="cname">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>					
+	</field>
+	
+	<!-- 客户号 -->
+	<field name="cid">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+</validators>

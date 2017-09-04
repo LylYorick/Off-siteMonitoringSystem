@@ -1,0 +1,808 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- START SNIPPET: xworkSample -->
+<struts>
+	<!-- struts配置文件导入 -->
+	<include file="struts-default.xml"></include>
+	<include file="struts-plugin.xml"></include>
+	<!--##########################################################################################-->
+	<!-- 全局package配置 -->
+	<package name="work" extends="struts-default">
+		<default-interceptor-ref name="defaultStack"></default-interceptor-ref>
+		<!-- 全局跳转 -->
+		<global-results>
+			<result name="OK" type="redirect">
+				/_common/SUCCESS.jsp
+			</result>
+			<result name="ERROR">/common/ERROR.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="ERROR"
+				exception="org.work.web.exception.ServiceException">
+			</exception-mapping>
+			<exception-mapping result="ERROR"
+				exception="java.lang.Exception">
+			</exception-mapping>
+			<exception-mapping result="ERROR"
+				exception="java.lang.RuntimeException">
+			</exception-mapping>
+		</global-exception-mappings>
+	</package>
+	<package name="json" extends="struts-default,json-default">
+		<default-interceptor-ref name="defaultStack"></default-interceptor-ref>
+		<!-- 全局跳转 -->
+		<global-results>
+			<result name="OK" type="dispatcher">
+				/_common/SUCCESS.jsp
+			</result>
+			<result name="ERROR">/common/ERROR.jsp</result>
+			<result name="invalid.token">/_common/resubmit.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="ERROR"
+				exception="org.work.web.exception.ServiceException">
+			</exception-mapping>
+			<exception-mapping result="ERROR"
+				exception="java.lang.Exception">
+			</exception-mapping>
+			<exception-mapping result="ERROR"
+				exception="java.lang.RuntimeException">
+			</exception-mapping>
+		</global-exception-mappings>
+	</package>
+	<!-- 全局package配置结束 -->
+	<!--##########################################################################################-->
+	<package name="jsonlist" extends="json" namespace="/jsonlist">
+		<action name="*_*" class="{1}Action" method="{2}">
+			<result>/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="JSON" type="json"></result>
+		</action>
+	</package>
+	<!-- 动态方法调用 -->
+	<package name="dynamic" extends="work" namespace="/dynamic">
+		<action name="test" class="testAction">
+			<result name="success">
+				/WEB-INF/pages/test/entryadd.jsp
+			</result>
+		</action>
+	</package>
+	<!-- start working -->
+	<!-- 系统管理-->
+	<package name="system" extends="struts-default"
+		namespace="/system">
+		<!-- 用户登录 -->
+		<action name="login" class="systemAction" method="login">
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/index.jsp</result>
+			<result name="input" type="redirect">/login.jsp</result>
+		</action>
+		<!-- 用户登出 -->
+		<action name="logout" class="systemAction" method="logout">
+			<interceptor-ref name="defaultStack" />
+			<result name="success" type="redirect">/login.jsp</result>
+		</action>
+	</package>
+	<!-- 金融机构管理 -->
+	<package name="financial" extends="json" namespace="/financial">
+		<action name="financial_save" class="financialAction"
+			method="save">
+			<result name="input" type="chain">
+				<param name="actionName">financial_add</param>
+			</result>
+		</action>
+		<!-- 金融机构基本信息保存 -->
+		<action name="financial_basesave" class="financialAction"
+			method="basesave">
+			<result name="input" type="chain">
+				<param name="actionName">financial_baseadd</param>
+			</result>
+		</action>
+		<action name="financial_download" class="financialAction"
+			method="download">
+			<result name="success" type="stream">
+				<!-- 下载文件类型定义 -->
+				<param name="contentType">text/plain</param>
+				<!-- 下载文件处理方法 -->
+				<param name="contentDisposition">
+					attachment;filename="${downloadChineseFileName}"
+				</param>
+				<!-- 下载文件输出流定义 -->
+				<param name="inputName">downloadXls</param>
+			</result>
+			<interceptor-ref name="basicStack" />
+		</action>
+		<action name="*_*" class="{1}Action" method="{2}">
+			<interceptor-ref name="chainStack" />
+			<interceptor-ref name="modelDriven" />
+			<result>/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="input">/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="JSON" type="json"></result>
+		</action>
+	</package>
+	<!-- 资料报备管理 -->
+	<package name="document" extends="json" namespace="/document">
+		<action name="document_save" class="documentAction" method="save">
+			<result name="input" type="chain">
+				<param name="actionName">document_add</param>
+			</result>
+		</action>
+		<action name="document_download" class="documentAction"
+			method="download">
+			<result name="success" type="stream">
+				<!-- 下载文件类型定义 -->
+				<param name="contentType">
+					application/zip;charset=ISO8859-1
+				</param>
+				<!-- 下载文件处理方法 -->
+				<param name="contentDisposition">
+					attachment;filename="${downloadFileName}"
+				</param>
+				<!-- 下载文件输出流定义 -->
+				<param name="inputName">downloadFile</param>
+			</result>
+			<interceptor-ref name="basicStack" />
+		</action>
+		<action name="document_downloadxls" class="documentAction"
+			method="downloadxls">
+			<result name="success" type="stream">
+				<!-- 下载文件类型定义 -->
+				<param name="contentType">text/plain</param>
+				<!-- 下载文件处理方法 -->
+				<param name="contentDisposition">
+					attachment;filename="${downloadChineseFileName}"
+				</param>
+				<!-- 下载文件输出流定义 -->
+				<param name="inputName">downloadXls</param>
+			</result>
+			<interceptor-ref name="basicStack" />
+		</action>
+		<action name="*_*" class="{1}Action" method="{2}">
+			<interceptor-ref name="chainStack" />
+			<interceptor-ref name="modelDriven" />
+			<result>/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="input">/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="JSON" type="json"></result>
+		</action>
+	</package>
+	<!-- 银行业重点可疑交易管理 -->
+	<package name="suspicious" extends="json" namespace="/suspicious">
+		<action name="suspicious_save" class="suspiciousAction"
+			method="save">
+			<result name="input" type="chain">
+				<param name="actionName">suspicious_add</param>
+			</result>
+		</action>
+		<action name="suspicious_bankdetailsave"
+			class="suspiciousAction" method="bankdetailsave">
+			<result name="input" type="chain">
+				<param name="actionName">
+					suspicious_bankdetailadd
+				</param>
+			</result>
+		</action>
+		<action name="suspicious_downloadbank" class="suspiciousAction"
+			method="downloadbank">
+			<result name="success" type="stream">
+				<!-- 下载文件类型定义 -->
+				<param name="contentType">text/plain</param>
+				<!-- 下载文件处理方法 -->
+				<param name="contentDisposition">
+					attachment;filename="${downloadChineseFileName}"
+				</param>
+				<!-- 下载文件输出流定义 -->
+				<param name="inputName">downloadXlsBank</param>
+			</result>
+			<interceptor-ref name="basicStack" />
+		</action>
+		<action name="suspicious_download" class="suspiciousAction"
+			method="download">
+			<result name="success" type="stream">
+				<!-- 下载文件类型定义 -->
+				<param name="contentType">text/plain</param>
+				<!-- 下载文件处理方法 -->
+				<param name="contentDisposition">
+					attachment;filename="${downloadFileName}"
+				</param>
+				<!-- 下载文件输出流定义 -->
+				<param name="inputName">downloadFile</param>
+			</result>
+			<interceptor-ref name="basicStack" />
+		</action>
+		<action name="*_*" class="{1}Action" method="{2}">
+			<interceptor-ref name="chainStack" />
+			<result>/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="input">/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="JSON" type="json"></result>
+		</action>
+	</package>
+	<!-- 银行业重点可疑交易明细管理 -->
+	<package name="suspiciousbankdetail" extends="json"
+		namespace="/suspiciousbankdetail">
+		<action name="suspiciousbankdetail_save"
+			class="suspiciousbankdetailAction" method="save">
+			<result name="input" type="chain">
+				<param name="actionName">
+					suspiciousbankdetail_add
+				</param>
+			</result>
+		</action>
+		<action name="suspiciousbankdetail_update"
+			class="suspiciousbankdetailAction" method="update">
+			<result name="input" type="chain">
+				<param name="actionName">
+					suspiciousbankdetail_modify
+				</param>
+			</result>
+		</action>
+		<action name="*_*" class="{1}Action" method="{2}">
+			<interceptor-ref name="chainStack" />
+			<result>/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="input">/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="JSON" type="json"></result>
+		</action>
+	</package>
+	<!-- 证券业重点可疑交易管理 -->
+	<package name="suspiciousstock" extends="json"
+		namespace="/suspiciousstock">
+		<action name="suspiciousstock_save"
+			class="suspiciousstockAction" method="save">
+			<result name="input" type="chain">
+				<param name="actionName">suspiciousstock_add</param>
+			</result>
+		</action>
+		<action name="suspiciousstock_stockdetailsave"
+			class="suspiciousstockAction" method="stockdetailsave">
+			<result name="input" type="chain">
+				<param name="actionName">
+					suspiciousstock_stockdetailadd
+				</param>
+			</result>
+		</action>
+		<action name="suspiciousstock_downloadstock"
+			class="suspiciousstockAction" method="downloadstock">
+			<result name="success" type="stream">
+				<!-- 下载文件类型定义 -->
+				<param name="contentType">text/plain</param>
+				<!-- 下载文件处理方法 -->
+				<param name="contentDisposition">
+					attachment;filename="${downloadChineseFileName}"
+				</param>
+				<!-- 下载文件输出流定义 -->
+				<param name="inputName">downloadXlsStock</param>
+			</result>
+			<interceptor-ref name="basicStack" />
+		</action>
+		<action name="suspiciousstock_download"
+			class="suspiciousstockAction" method="download">
+			<result name="success" type="stream">
+				<!-- 下载文件类型定义 -->
+				<param name="contentType">text/plain</param>
+				<!-- 下载文件处理方法 -->
+				<param name="contentDisposition">
+					attachment;filename="${downloadFileName}"
+				</param>
+				<!-- 下载文件输出流定义 -->
+				<param name="inputName">downloadFile</param>
+			</result>
+			<interceptor-ref name="basicStack" />
+		</action>
+		<action name="*_*" class="{1}Action" method="{2}">
+			<interceptor-ref name="chainStack" />
+			<interceptor-ref name="modelDriven" />
+			<result>/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="input">/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="JSON" type="json"></result>
+		</action>
+	</package>
+	<!-- 证券业重点可疑交易明细管理 -->
+	<package name="suspiciousstockdetail" extends="json"
+		namespace="/suspiciousstockdetail">
+		<action name="suspiciousstockdetail_save"
+			class="suspiciousstockdetailAction" method="save">
+			<result name="input" type="chain">
+				<param name="actionName">
+					suspiciousstockdetail_add
+				</param>
+			</result>
+		</action>
+		<action name="suspiciousstockdetail_update"
+			class="suspiciousstockdetailAction" method="update">
+			<result name="input" type="chain">
+				<param name="actionName">
+					suspiciousstockdetail_modify
+				</param>
+			</result>
+		</action>
+		<action name="*_*" class="{1}Action" method="{2}">
+			<interceptor-ref name="chainStack" />
+			<interceptor-ref name="modelDriven" />
+			<result>/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="input">/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="JSON" type="json"></result>
+		</action>
+	</package>
+	<!-- 保险业重点可疑交易管理 -->
+	<package name="suspiciousinsurance" extends="json"
+		namespace="/suspiciousinsurance">
+		<action name="suspiciousinsurance_save"
+			class="suspiciousinsuranceAction" method="save">
+			<result name="input" type="chain">
+				<param name="actionName">suspiciousinsurance_add</param>
+			</result>
+		</action>
+		<action name="suspiciousinsurance_insurancedetailsave"
+			class="suspiciousinsuranceAction" method="insurancedetailsave">
+			<result name="input" type="chain">
+				<param name="actionName">
+					suspiciousinsurance_insurancedetailadd
+				</param>
+			</result>
+		</action>
+		<action name="suspiciousinsurance_downloadinsurance"
+			class="suspiciousinsuranceAction" method="downloadinsurance">
+			<result name="success" type="stream">
+				<!-- 下载文件类型定义 -->
+				<param name="contentType">text/plain</param>
+				<!-- 下载文件处理方法 -->
+				<param name="contentDisposition">
+					attachment;filename="${downloadChineseFileName}"
+				</param>
+				<!-- 下载文件输出流定义 -->
+				<param name="inputName">downloadXlsInsurance</param>
+			</result>
+			<interceptor-ref name="basicStack" />
+		</action>
+		<action name="suspiciousinsurance_download"
+			class="suspiciousinsuranceAction" method="download">
+			<result name="success" type="stream">
+				<!-- 下载文件类型定义 -->
+				<param name="contentType">text/plain</param>
+				<!-- 下载文件处理方法 -->
+				<param name="contentDisposition">
+					attachment;filename="${downloadFileName}"
+				</param>
+				<!-- 下载文件输出流定义 -->
+				<param name="inputName">downloadFile</param>
+			</result>
+			<interceptor-ref name="basicStack" />
+		</action>
+		<action name="*_*" class="{1}Action" method="{2}">
+			<interceptor-ref name="chainStack" />
+			<interceptor-ref name="modelDriven" />
+			<result>/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="input">/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="JSON" type="json"></result>
+		</action>
+	</package>
+	<!-- 保险业重点可疑交易明细管理 -->
+	<package name="suspiciousinsurancedetail" extends="json"
+		namespace="/suspiciousinsurancedetail">
+		<action name="suspiciousinsurancedetail_save"
+			class="suspiciousinsurancedetailAction" method="save">
+			<result name="input" type="chain">
+				<param name="actionName">
+					suspiciousinsurancedetail_add
+				</param>
+			</result>
+		</action>
+		<action name="suspiciousinsurancedetail_update"
+			class="suspiciousinsurancedetailAction" method="update">
+			<result name="input" type="chain">
+				<param name="actionName">
+					suspiciousinsurancedetail_modify
+				</param>
+			</result>
+		</action>
+		<action name="*_*" class="{1}Action" method="{2}">
+			<interceptor-ref name="chainStack" />
+			<interceptor-ref name="modelDriven" />
+			<result>/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="input">/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="JSON" type="json"></result>
+		</action>
+	</package>
+	<!-- 报表上报管理 -->
+	<package name="report" extends="json" namespace="/report">
+		<action name="report_innercontrolsave" class="reportAction" method="innercontrolsave">
+			<result name="input" type="chain">
+				<param name="actionName">report_innercontrol</param>
+			</result>
+		</action>
+		<action name="report_publicssave" class="reportAction" method="publicssave">
+			<result name="input" type="chain">
+				<param name="actionName">report_publics</param>
+			</result>
+		</action>
+		<action name="report_organizationsave" class="reportAction"
+			method="organizationsave">
+			<result name="input" type="chain">
+				<param name="actionName">report_organization</param>
+			</result>
+		</action>
+		<action name="report_activesave" class="reportAction"
+			method="activesave">
+			<result name="input" type="chain">
+				<param name="actionName">report_active</param>
+			</result>
+		</action>
+		<action name="report_trainsave" class="reportAction"
+			method="trainsave">
+			<interceptor-ref name="token"/>
+			<interceptor-ref name="defaultStack" />
+			<result name="input" type="chain">
+				<param name="actionName">report_train</param>
+			</result>
+		</action>
+		<action name="report_innerauditsave" class="reportAction"
+			method="innerauditsave">
+			<result name="input" type="chain">
+				<param name="actionName">report_inneraudit</param>
+			</result>
+		</action>
+		<action name="report_identitysbsave" class="reportAction"
+			method="identitysbsave">
+			<result name="input" type="chain">
+				<param name="actionName">report_fill</param>
+			</result>
+		</action>
+		<action name="report_identityrsbsave" class="reportAction"
+			method="identityrsbsave">
+			<result name="input" type="chain">
+				<param name="actionName">report_fill</param>
+			</result>
+		</action>
+		<action name="report_identitykysave" class="reportAction"
+			method="identitykysave">
+			<result name="input" type="chain">
+				<param name="actionName">report_fill</param>
+			</result>
+		</action>
+		<action name="report_blowflagsave" class="reportAction"
+			method="blowflagsave">
+			<result name="input" type="chain">
+				<param name="actionName">report_fill</param>
+			</result>
+		</action>
+		<!-- 报文下载：季报 年报 -->
+		<action name="report_exportxml" class="reportAction" method="exportxml">
+			<result name="success" type="stream">
+				<!-- 下载文件类型定义 -->
+				<param name="contentType">text/XML</param>
+				<!-- 下载文件处理方法 -->
+				<param name="contentDisposition">
+					attachment;filename="${downloadChineseFileName}"
+				</param>
+				<!-- 下载文件输出流定义 -->
+				<param name="inputName">xmlFile</param>
+			</result>
+			<interceptor-ref name="basicStack" />
+		</action>
+		<action name="report_innercontrolImportsave" class="reportAction" method="innercontrolImportsave">
+			<result name="input" type="chain">
+				<param name="actionName">report_innercontrolimport</param>
+			</result>
+		</action>
+		<action name="report_organdpostImportsave" class="reportAction" method="organdpostImportsave">
+			<result name="input" type="chain">
+				<param name="actionName">report_organdpostimport</param>
+			</result>
+		</action>
+		<action name="report_trainImportsave" class="reportAction" method="trainImportsave">
+			<result name="input" type="chain">
+				<param name="actionName">report_trainimport</param>
+			</result>
+		</action>
+		<action name="report_activeImportsave" class="reportAction" method="activeImportsave">
+			<result name="input" type="chain">
+				<param name="actionName">report_activeimport</param>
+			</result>
+		</action>
+		<action name="report_innerauditImportsave" class="reportAction" method="innerauditImportsave">
+			<result name="input" type="chain">
+				<param name="actionName">report_innerauditimport</param>
+			</result>
+		</action>
+		<action name="report_publicsImportsave" class="reportAction" method="publicsImportsave">
+			<result name="input" type="chain">
+				<param name="actionName">report_publicsimport</param>
+			</result>
+		</action>
+		<action name="report_identitysbImportsave" class="reportAction" method="identitysbImportsave">
+			<result name="input" type="chain">
+				<param name="actionName">report_identitysbImport</param>
+			</result>
+		</action>
+		<action name="report_identityrsbImportsave" class="reportAction" method="identityrsbImportsave">
+			<result name="input" type="chain">
+				<param name="actionName">report_identityrsbImport</param>
+			</result>
+		</action>
+		<action name="*_*" class="{1}Action" method="{2}">
+			<interceptor-ref name="chainStack" />
+			<!-- 金融机构反洗钱内控制度建设情况统计表 -->
+			<result name="innercontrol">
+				/WEB-INF/pages/{1}/innercontrolentry.jsp
+			</result>
+			<!-- 金融机构反洗钱机构和岗位设立情况统计表 -->
+			<result name="organization">
+				/WEB-INF/pages/{1}/organizationentry.jsp
+			</result>
+			<!-- 金融机构反洗钱宣传活动情况 -->
+			<result name="active">
+				/WEB-INF/pages/{1}/activeentry.jsp
+			</result>
+			<!-- 金融机构反洗钱培训活动情况 -->
+			<result name="train">
+				/WEB-INF/pages/{1}/trainentry.jsp
+			</result>
+			<!-- 金融机构反洗钱工作内部审计情况 -->
+			<result name="inneraudit">
+				/WEB-INF/pages/{1}/innerauditentry.jsp
+			</result>
+			<!-- 金融机构客户身份识别情况（识别客户） -->
+			<result name="identitysb">
+				/WEB-INF/pages/{1}/identitysbentry.jsp
+			</result>
+			<!-- 金融机构客户身份识别情况(重新识别客户) -->
+			<result name="identityrsb">
+				/WEB-INF/pages/{1}/identityrsbentry.jsp
+			</result>
+			<!-- 金融机构可疑交易报告情况统计表 -->
+			<result name="susreport">
+				/WEB-INF/pages/{1}/susreportentry.jsp
+			</result>
+			<!-- 金融机构协助公安机关、其他机关打击洗钱活动情况 -->
+			<result name="publics">
+				/WEB-INF/pages/{1}/publicsentry.jsp
+			</result>
+			<!-- 金融机构客户身份识别情况(涉及可疑交易识别情况) -->
+			<result name="identityky">
+				/WEB-INF/pages/{1}/identitykyentry.jsp
+			</result>
+			<result>/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="input">/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="JSON" type="json"></result>
+		</action>
+	</package>
+
+	<!-- 调查信息管理 -->
+	<package name="information" extends="json"
+		namespace="/information">
+		<!-- 调查档案录入 -->
+		<action name="information_surveysave" class="informationAction"
+			method="surveysave">
+			<result name="input" type="chain">
+				<param name="actionName">information_surveyadd</param>
+			</result>
+		</action>
+		<action name="information_surveyupdate"
+			class="informationAction" method="surveyupdate">
+			<result name="input" type="chain">
+				<param name="actionName">
+					information_surveymodify
+				</param>
+			</result>
+		</action>
+		<action name="*_*" class="{1}Action" method="{2}">
+			<interceptor-ref name="chainStack" />
+			<result>/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="input">/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="JSON" type="json"></result>
+		</action>
+	</package>
+
+	<!-- 协查录入 -->
+	<package name="investigation" extends="json"
+		namespace="/investigation">
+		<action name="investigation_save" class="investigationAction"
+			method="save">
+			<result name="input" type="chain">
+				<param name="actionName">investigation_add</param>
+			</result>
+		</action>
+		<action name="investigation_update" class="investigationAction"
+			method="update">
+			<result name="input" type="chain">
+				<param name="actionName">investigation_modify</param>
+			</result>
+		</action>
+		<action name="*_*" class="{1}Action" method="{2}">
+			<interceptor-ref name="chainStack" />
+			<interceptor-ref name="modelDriven" />
+			<result>/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="input">/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="JSON" type="json"></result>
+		</action>
+	</package>
+
+	<!-- 线索来主动调查报录入 -->
+	<package name="activecule" extends="json" namespace="/activecule">
+		<action name="activecule_save" class="activeculeAction"
+			method="save">
+			<result name="input" type="chain">
+				<param name="actionName">activecule_add</param>
+			</result>
+		</action>
+		<action name="activecule_update" class="activeculeAction"
+			method="update">
+			<result name="input" type="chain">
+				<param name="actionName">activecule_modify</param>
+			</result>
+		</action>
+		<action name="*_*" class="{1}Action" method="{2}">
+			<interceptor-ref name="chainStack" />
+			<interceptor-ref name="modelDriven" />
+			<result>/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="input">/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="JSON" type="json"></result>
+		</action>
+	</package>
+
+	<!-- 线索来自举报录入 -->
+	<package name="reportcule" extends="json" namespace="/reportcule">
+		<action name="reportcule_save" class="reportculeAction"
+			method="save">
+			<result name="input" type="chain">
+				<param name="actionName">reportcule_add</param>
+			</result>
+		</action>
+		<action name="reportcule_update" class="reportculeAction"
+			method="update">
+			<result name="input" type="chain">
+				<param name="actionName">reportcule_modify</param>
+			</result>
+		</action>
+		<action name="*_*" class="{1}Action" method="{2}">
+			<interceptor-ref name="chainStack" />
+			<interceptor-ref name="modelDriven" />
+			<result>/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="input">/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="JSON" type="json"></result>
+		</action>
+		</package>
+		
+		<!-- 线索来自司法机关录入 -->
+		<package name="judicialcule" extends="json" namespace="/judicialcule">
+		<action name="judicialcule_save" class="judicialculeAction" method="save">
+			<result name="input" type="chain">
+				<param name="actionName">judicialcule_add</param>
+			</result>
+		</action>
+		<action name="judicialcule_update" class="judicialculeAction" method="update">
+			<result name="input" type="chain">
+				<param name="actionName">judicialcule_modify</param>
+			</result>
+		</action>
+		<action name="*_*" class="{1}Action" method="{2}">
+			<interceptor-ref name="chainStack" />
+			<interceptor-ref name="modelDriven" />
+			<result>/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="input">/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="JSON" type="json"></result>
+		</action>
+	</package>
+
+	<!-- 线索来自总行录入 -->
+	<package name="headcule" extends="json" namespace="/headcule">
+		<action name="headcule_save" class="headculeAction" method="save">
+			<result name="input" type="chain">
+				<param name="actionName">headcule_add</param>
+			</result>
+		</action>
+		<action name="headcule_update" class="headculeAction" method="update">
+			<result name="input" type="chain">
+				<param name="actionName">headcule_modify</param>
+			</result>
+		</action>
+		<action name="*_*" class="{1}Action" method="{2}">
+			<interceptor-ref name="chainStack" />
+			<interceptor-ref name="modelDriven" />
+			<result>/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="input">/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="JSON" type="json"></result>
+		</action>
+	</package>
+
+	<!-- 线索移交录入 -->
+	<package name="transfercule" extends="json" namespace="/transfercule">
+		<action name="transfercule_save" class="transferculeAction" method="save">
+			<result name="input" type="chain">
+				<param name="actionName">transfercule_add</param>
+			</result>
+		</action>
+		<action name="transfercule_update" class="transferculeAction" method="update">
+			<result name="input" type="chain">
+				<param name="actionName">transfercule_modify</param>
+			</result>
+		</action>
+		<action name="*_*" class="{1}Action" method="{2}">
+			<interceptor-ref name="chainStack" />
+			<interceptor-ref name="modelDriven" />
+			<result>/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="input">/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="JSON" type="json"></result>
+		</action>
+	</package>
+
+	<!-- 监管评分管理 -->
+	<package name="assess" extends="json" namespace="/assess">
+		<!-- 指标项新增 -->
+		<action name="assess_indexsave" class="assessAction"
+			method="indexsave">
+			<result name="input" type="chain">
+				<param name="actionName">assess_indexadd</param>
+			</result>
+		</action>
+		<!-- 指标项修改 -->
+		<action name="assess_indexupdate" class="assessAction"
+			method="indexsave">
+			<result name="input" type="chain">
+				<param name="actionName">assess_indexmodify</param>
+			</result>
+		</action>
+		<!-- added by liuxz at 2017-03-03 -->
+		<action name="assess_view2" class="assessAction" method="view">
+			<interceptor-ref name="chainStack" />
+			<interceptor-ref name="modelDriven" />
+			<result>/WEB-INF/pages/assess/view2.jsp</result>
+			<result name="JSON" type="json"></result>
+		</action>
+		<action name="*_*" class="{1}Action" method="{2}">
+			<interceptor-ref name="chainStack" />
+			<interceptor-ref name="modelDriven" />
+			<result>/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="JSON" type="json"></result>
+		</action>
+	</package>
+	<!-- 用户管理 -->
+	<package name="user" extends="json" namespace="/user">
+		<action name="user_save" class="userAction" method="save">
+			<result name="input" type="chain">
+				<param name="actionName">user_add</param>
+			</result>
+		</action>
+		<action name="user_update" class="userAction" method="update">
+			<result name="input" type="chain">
+				<param name="actionName">user_modify</param>
+			</result>
+		</action>
+		<action name="user_pwdupdate" class="userAction"
+			method="pwdupdate">
+			<result name="input" type="chain">
+				<param name="actionName">user_changepwd</param>
+			</result>
+		</action>
+		<action name="*_*" class="{1}Action" method="{2}">
+			<interceptor-ref name="chainStack" />
+			<interceptor-ref name="modelDriven" />
+			<result>/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="input">/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="JSON" type="json"></result>
+		</action>
+	</package>
+	<!-- 角色管理 -->
+	<package name="role" extends="json" namespace="/role">
+		<action name="role_save" class="roleAction" method="save">
+			<result name="input" type="chain">
+				<param name="actionName">role_add</param>
+			</result>
+		</action>
+		<action name="role_update" class="roleAction" method="update">
+			<result name="input" type="chain">
+				<param name="actionName">role_modify</param>
+			</result>
+		</action>
+		<action name="*_*" class="{1}Action" method="{2}">
+			<interceptor-ref name="chainStack" />
+			<interceptor-ref name="modelDriven" />
+			<result>/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="input">/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="JSON" type="json"></result>
+		</action>
+	</package>
+</struts>
+

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.dtd">
+<validators>	
+	
+	<!-- 办公地址 -->
+	<field name="baddr">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>	
+		<field-validator type="Max120Text">
+			<message key="Max120Text"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 深圳分支机构数量 -->
+	<field name="bbrchnum">
+		<field-validator type="required">
+			<message key="FieldRequired"/>
+		</field-validator>
+		<field-validator type="CurrencyAndAmount">
+			<message key="CurrencyAndAmount"/>
+		</field-validator>
+	</field>	
+	
+	
+	<!-- 反洗钱工作联系人 -->
+	<field name="bwork">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>
+		<field-validator type="Max20Text">
+			<message key="Max20Text"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 反洗钱工作联人办公电话 -->
+	<field name="bworktel">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>
+	</field>
+	
+	<!-- 反洗钱工作人手机号码 -->
+	<field name="bworkphe">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>
+	</field>	
+	
+	<!-- 员工人数 -->
+	<field name="bworknum">
+		<field-validator type="required">
+			<message key="FieldRequired"/>
+		</field-validator>		
+		<field-validator type="CurrencyAndAmount">
+			<message key="CurrencyAndAmount"/>
+		</field-validator>
+	</field>
+	
+	<!-- 上年度总资产 -->
+	<field name="blastamt">
+		<field-validator type="required">
+			<message key="FieldRequired"/>
+		</field-validator>		
+		<field-validator type="CurrencyAndAmount">
+			<message key="CurrencyAndAmount"/>
+		</field-validator>
+	</field>
+	
+</validators>

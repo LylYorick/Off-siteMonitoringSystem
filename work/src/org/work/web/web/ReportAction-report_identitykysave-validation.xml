@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.dtd">
+<validators>
+	<!-- 新建业务可疑数 -->
+	<field name="identityky.pp1">
+		<field-validator type="required">
+			<message key="FieldRequired"/>
+		</field-validator>
+	</field>
+	<!-- 限额以上一次性服务可疑数 -->
+	<field name="identityky.pp2">
+		<field-validator type="required">
+			<message key="FieldRequired"/>
+		</field-validator>
+	</field>
+	<!-- 客户身份可疑数 -->
+	<field name="identityky.pp3">
+		<field-validator type="required">
+			<message key="FieldRequired"/>
+		</field-validator>
+	</field>
+	<!-- 客户交易行为可疑数 -->
+	<field name="identityky.pp4">
+		<field-validator type="required">
+			<message key="FieldRequired"/>
+		</field-validator>
+	</field>
+
+</validators>

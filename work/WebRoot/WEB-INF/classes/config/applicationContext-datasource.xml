@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	<!-- data source-->
+	<bean name="c3p0edncode" class="org.work.web.util.C3p0encode">
+		<property name="properties">
+			<props>
+				<prop key="user">${jdbc.username}</prop>
+				<prop key="password">${jdbc.password}</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="maindataSource"
+		class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${jdbc.driverClassName}" />
+		<property name="jdbcUrl" value="${jdbc.url}" />
+		<property name="initialPoolSize"
+			value="${jdbc.connectionPool.initialPoolSize}" />
+		<property name="maxPoolSize"
+			value="${jdbc.connectionPool.maxPoolSize}" />
+		<property name="minPoolSize"
+			value="${jdbc.connectionPool.minPoolSize}" />
+		<property name="properties" ref="c3p0edncode" />
+	</bean>
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy">
+		<property name="targetDataSource">
+			<ref local="maindataSource" />
+		</property>
+	</bean>
+
+	<bean id="db2LobHandler"
+		class="org.springframework.jdbc.support.lob.DefaultLobHandler"
+		lazy-init="true">
+	</bean>
+
+	<!-- session factory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="lobHandler">
+			<ref bean="db2LobHandler" />
+		</property>
+		<property name="mappingDirectoryLocations">
+			<list>
+				<value>classpath:org/work/web/po/maps</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.connection.provider_class">
+					com.mchange.v2.c3p0.ComboPooledDataSource
+				</prop>
+				<prop key="hibernate.dialect">
+					${hibernate.dialect}
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.generate_statistics">true</prop>
+				<prop key="hibernate.jdbc.fetch_size">20</prop>
+				<prop key="hibernate.connection.release_mode">
+					auto
+				</prop>
+				<prop key="hibernate.autoReconnect">true</prop>
+				<prop key="hibernate.cglib.use_reflection_optimizer">
+					true
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- transaction -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+</beans>

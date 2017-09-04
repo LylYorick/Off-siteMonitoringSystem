@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.dtd">
+<validators>
+	<!-- 反洗钱机构 -->
+	<field name="organdpost.orgname">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>
+	</field>
+	<!-- 单位负责人姓名 -->
+	<field name="organdpost.leadname">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>
+	</field>
+	<!-- 职务 -->
+	<field name="organdpost.leadpos">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>
+	</field>
+	<!-- 联系电话 -->
+	<field name="organdpost.leadtel">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>
+	</field>
+	<!-- 姓名 -->
+	<field name="organdpost.deptlead">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>
+	</field>
+	<!-- 联系电话 -->
+	<field name="organdpost.deptleadtel">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>
+	</field>
+	<!-- 专职（人数） -->
+	<field name="organdpost.ftnum">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>
+	</field>
+	<!-- 兼职（人数） -->
+	<field name="organdpost.ptnum">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>
+	</field>
+</validators>

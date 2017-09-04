@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.dtd">
+<validators>
+    <!-- 客户名称/姓名 -->
+	<field name="cname">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>					
+	</field>
+	
+	<!-- 客户号 -->
+	<field name="cid">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 客户类型 -->
+	<field name="ctype">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 对私客户职业和对公客户行业 -->
+	<field name="professional">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 客户身份证件/证明文件类型 -->
+	<field name="cctype">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 客户身份证件/证明文件号码 -->
+	<field name="ccid">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 对公客户法定代表人姓名 -->
+	<field name="clegal">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 对公客户法定代表人身份证件类型 -->
+	<field name="clegaltype">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 对公客户法定代表人身份证件号码 -->
+	<field name="clegalid">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 交易期间 -->
+	<field name="cperiod">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 本币累计交易笔数 -->
+	<field name="clnum">
+		<field-validator type="required">
+			<message key="FieldRequired"/>
+		</field-validator>		
+		<field-validator type="CurrencyAndAmount">
+			<message key="CurrencyAndAmount"/>
+		</field-validator>
+	</field>
+	
+	<!-- 本币累计交易金额 -->
+	<field name="clamt">
+		<field-validator type="required">
+			<message key="FieldRequired"/>
+		</field-validator>	
+		<field-validator type="CurrencyAndAmount">
+			<message key="CurrencyAndAmount"/>
+		</field-validator>	
+	</field>
+	
+	<!-- 外币累计交易笔数 -->
+	<field name="cfnum">
+		<field-validator type="required">
+			<message key="FieldRequired"/>
+		</field-validator>	
+		<field-validator type="CurrencyAndAmount">
+			<message key="CurrencyAndAmount"/>
+		</field-validator>	
+	</field>
+	
+	<!-- 外币累计交易金额 -->
+	<field name="cfamt">
+		<field-validator type="required">
+			<message key="FieldRequired"/>
+		</field-validator>	
+		<field-validator type="CurrencyAndAmount">
+			<message key="CurrencyAndAmount"/>
+		</field-validator>	
+	</field>
+	
+	<!-- 可疑交易特征 -->
+	<field name="cfeature">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 可疑行为描述 -->
+	<field name="cdes">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 采取措施 -->
+	<field name="cmethod">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 其他需要说明的情况 -->
+	<field name="cother">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 数据文件 -->
+	<field name="suspiciousdataFile">
+		<field-validator type="required">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 补充文件 -->
+	<field name="suspiciousFile">
+		<field-validator type="required">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>	
+</validators>

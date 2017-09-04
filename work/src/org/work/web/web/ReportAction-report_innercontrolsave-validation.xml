@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.dtd">
+<validators>
+	<!-- 机构名 -->
+	<field name="innercontrol.iname">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>
+	</field>
+	<!-- 主要内容 -->
+	<field name="innercontrol.icontent">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>
+	</field>
+	<!-- 制定部门 -->
+	<field name="innercontrol.idept">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>
+	</field>
+	<!-- 制定时间 -->
+	<field name="innercontrol.itime">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>
+	</field>
+	<!-- 相关文号 -->
+	<field name="innercontrol.filenb">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>
+	</field>
+</validators>

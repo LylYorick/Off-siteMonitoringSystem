@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	<bean id="baseAction" class="org.work.web.web.JsonBaseAction" scope="prototype">
+		<property name="userLogService" ref="userLogService"></property>
+	</bean>
+	<bean id="testAction" class="org.work.web.web.TestAction" scope="prototype">
+		<property name="manageService" ref="manageService"></property>
+	</bean>
+	<!-- 系统登录/退出 -->
+	<bean id="systemAction" class="org.work.web.web.SystemAction" scope="prototype">
+		<property name="financialService" ref="financialService"></property>
+		<property name="manageService" ref="manageService"></property>
+		<property name="userLogService" ref="userLogService"></property>
+		<property name="reportService" ref="reportService"></property>
+	</bean>
+	
+	<bean id="financialAction" class="org.work.web.web.FinancialAction" scope="prototype" parent="baseAction">
+		<property name="financialService" ref="financialService"></property>
+	</bean>
+	
+	<bean id="documentAction" class="org.work.web.web.DocumentAction" scope="prototype" parent="baseAction">
+		<property name="documentService" ref="documentService"></property>
+		<property name="financialService" ref="financialService"></property>
+	</bean>
+	
+	<bean id="suspiciousAction" class="org.work.web.web.SuspiciousAction" scope="prototype" parent="baseAction">
+		<property name="financialService" ref="financialService"></property>
+	    <property name="suspiciousService" ref="suspiciousService"></property>
+	</bean>
+	
+	<bean id="suspiciousbankdetailAction" class="org.work.web.web.SuspiciousBankDetailAction" scope="prototype" parent="baseAction">
+	    <property name="suspiciousService" ref="suspiciousService"></property>
+	</bean>
+	
+	<bean id="suspiciousstockAction" class="org.work.web.web.SuspiciousStockAction" scope="prototype" parent="baseAction">
+		<property name="financialService" ref="financialService"></property>
+	    <property name="suspiciousstockService" ref="suspiciousstockService"></property>
+	</bean>
+	
+	<bean id="suspiciousstockdetailAction" class="org.work.web.web.SuspiciousStockDetailAction" scope="prototype" parent="baseAction">
+	    <property name="suspiciousstockService" ref="suspiciousstockService"></property>
+	</bean>
+	
+	<bean id="suspiciousinsuranceAction" class="org.work.web.web.SuspiciousInsuranceAction" scope="prototype" parent="baseAction">
+		<property name="financialService" ref="financialService"></property>
+	    <property name="suspiciousinsuranceService" ref="suspiciousinsuranceService"></property>
+	</bean>
+	
+	<bean id="suspiciousinsurancedetailAction" class="org.work.web.web.SuspiciousInsuranceDetailAction" scope="prototype" parent="baseAction">
+	    <property name="suspiciousinsuranceService" ref="suspiciousinsuranceService"></property>
+	</bean>
+	
+	<!-- 反洗钱调查信息模块 -->
+	<!-- 调查档案 -->
+	<bean id="informationAction" class="org.work.web.web.InformationAction" scope="prototype" parent="baseAction">
+		<property name="informationService" ref="informationService"></property>
+		<property name="financialService" ref="financialService"></property>
+	</bean>
+	
+	<!-- 协查名单 -->
+	<bean id="investigationAction" class="org.work.web.web.InvestigationAction" scope="prototype" parent="baseAction">
+		<property name="investigationService" ref="investigationService"></property>
+	</bean>
+	
+	<!-- 线索来源（主动调查） -->
+	<bean id="activeculeAction" class="org.work.web.web.ActiveculeAction" scope="prototype" parent="baseAction">
+		<property name="activeculeService" ref="activeculeService"></property>
+	</bean>
+	
+	<!-- 线索来源（举报或者专报） -->
+	<bean id="reportculeAction" class="org.work.web.web.ReportCuleAction" scope="prototype" parent="baseAction">
+		<property name="reportCuleService" ref="reportCuleService"></property>
+	</bean>
+	
+	<!-- 线索来源（司法机关） -->
+	<bean id="judicialculeAction" class="org.work.web.web.JudicialCuleAction" scope="prototype" parent="baseAction">
+		<property name="judicialculeService" ref="judicialculeService"></property>
+	</bean>
+	
+	<!-- 线索来源（总行或者兄弟行） -->
+	<bean id="headculeAction" class="org.work.web.web.HeadCuleAction" scope="prototype" parent="baseAction">
+		<property name="headculeService" ref="headculeService"></property>
+	</bean>
+	
+	<!-- 线索移交 -->
+	<bean id="transferculeAction" class="org.work.web.web.TransferCuleAction" scope="prototype" parent="baseAction">
+		<property name="transferculeService" ref="transferculeService"></property>
+	</bean>
+	
+	<!-- 报表上报模块 -->
+	<bean id="reportAction" class="org.work.web.web.ReportAction" scope="prototype" parent="baseAction">
+		<property name="reportService" ref="reportService"></property>
+		<property name="financialService" ref="financialService"></property>
+	</bean>
+	
+	<!-- 监管评分模块 -->
+	<bean id="assessAction" class="org.work.web.web.AssessAction" scope="prototype" parent="baseAction">
+		<property name="assessService" ref="assessService"></property>
+		<property name="financialService" ref="financialService"></property>
+	</bean>
+	<!-- 用户管理模块 -->
+	<bean id="userAction" class="org.work.web.web.UserAction" scope="prototype" parent="baseAction">
+		<property name="financialService" ref="financialService"></property>
+		<property name="manageService" ref="manageService"></property>
+	</bean>
+	
+	<!-- 角色管理模块 -->
+	<bean id="roleAction" class="org.work.web.web.RoleAction" scope="prototype" parent="baseAction">
+		<property name="manageService" ref="manageService"></property>
+	</bean>
+	<!-- 日志模块 -->
+	<bean id="logAction" class="org.work.web.web.LogAction" scope="prototype" parent="baseAction">
+		<property name="financialService" ref="financialService"></property>
+	</bean>
+	<!-- 统计模块 -->
+	<bean id="caculAction" class="org.work.web.web.CaculAction" scope="prototype" parent="baseAction">
+		<property name="financialService" ref="financialService"></property>
+		<property name="caculService" ref="caculService"></property>
+	</bean>
+	<!-- 参数模块 -->
+	<bean id="paraAction" class="org.work.web.web.ParaAction" scope="prototype" parent="baseAction">
+	</bean>
+</beans>

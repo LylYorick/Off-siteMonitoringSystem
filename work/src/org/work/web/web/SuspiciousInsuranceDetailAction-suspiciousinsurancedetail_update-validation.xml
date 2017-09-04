@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.dtd">
+<validators>	
+	
+	<!-- 交易日期 -->
+	<field name="trandate">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 交易种类 -->
+	<field name="tranmethod">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+     <!-- 资金开户行 -->
+	<field name="bname">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 银行转账资金账号 -->
+	<field name="iaccount">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 币种 -->
+	<field name="currency">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 交易额（按原币计） -->
+	<field name="lamt">
+		<field-validator type="required">
+			<message key="FieldRequired"/>
+		</field-validator>	
+		<field-validator type="CurrencyAndAmount">
+			<message key="CurrencyAndAmount"/>
+		</field-validator>	
+	</field>
+	
+	<!-- 交易额（折合美元） -->
+	<field name="fmat">
+		<field-validator type="required">
+			<message key="FieldRequired"/>
+		</field-validator>	
+		<field-validator type="CurrencyAndAmount">
+			<message key="CurrencyAndAmount"/>
+		</field-validator>	
+	</field>	
+	
+	<!-- 资金进出方式 -->
+	<field name="rorpmethod">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>	
+	
+	<!-- 资金进出方向 -->
+	<field name="rorp">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>	 
+	
+	<!-- 经办人名称 -->
+	<field name="agname">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 经办人号码 -->
+	<field name="agid">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 备注 -->
+	<field name="remark">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+</validators>

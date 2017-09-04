@@ -1,0 +1,11 @@
+@charset "utf-8";
+/* CSS Document */
+body{ 
+	font-size:12px;
+	font-family: 宋体, Times New Roman;
+	}
+/**datapicker behind the layout's problem**/
+#ui-datepicker-div {
+  z-index: 5;
+}
+

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.dtd">
+<validators>
+	<!-- 线索来源主动调查 -->
+	<!-- 案件总编号 -->
+	<field name="aid">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 调查名称 -->
+	<field name="surveyname">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 涉及账户数 -->
+	<field name="involvenum">
+		<field-validator type="int">
+			<message key="documentField.integer"/>
+		</field-validator>		
+	</field>
+		
+	<!-- 来源 -->
+	<field name="source">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 时间 -->
+	<field name="date">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 来函单位主办人 -->
+	<field name="sponsor">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+
+	<!-- 涉案金额（元）、立案情况 -->
+	<field name="amountSituation">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 是否涉案 -->
+	<field name="isinvolved">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 立案决定书编号 -->
+	<field name="letterid">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 反洗钱处主办人 -->
+	<field name="antisponsor">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 支付处查询书编号 -->
+	<field name="paymentletterid">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 向异地人民银行协查 -->
+	<field name="investigation">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 反洗钱调查审批表编号 -->
+	<field name="approvalno">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 涉及的金融机构名称 -->
+	<field name="finaname">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 涉及金融机构数 -->
+	<field name="finannum">
+		<field-validator type="int">
+			<message key="documentField.integer"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 向金融机构发出反洗钱调查通知书 -->
+	<field name="sendresearch">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 调查通知书账户数 -->
+	<field name="accountnum">
+		<field-validator type="int">
+			<message key="documentField.integer"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 我行反馈时间 -->
+	<field name="feedbackdate">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 反馈资料文书号 -->
+	<field name="feedbackno">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 处理结果 -->
+	<field name="dealresult">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 存档案号 -->
+	<field name="recordeno">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 主体名称 -->
+	<field name="subjectname">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 证件号 -->
+	<field name="idnumber">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+	
+	<!-- 备注 -->
+	<field name="notes">
+		<field-validator type="requiredstring">
+			<message key="FieldRequired"/>
+		</field-validator>		
+	</field>
+</validators>

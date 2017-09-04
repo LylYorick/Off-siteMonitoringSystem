@@ -1,0 +1,27 @@
+package org.work.web.web.tags;
+
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.PageContext;
+import javax.servlet.jsp.tagext.SimpleTagSupport;
+
+/**
+ * @author fred.du
+ *
+ */
+public class Css extends SimpleTagSupport {
+	private static final long serialVersionUID = 1L;
+	private String href;
+	
+	public void setHref(String href) {
+		this.href = href;
+	}
+
+	@Override
+	public void doTag() throws JspException, IOException {
+		String contextPath = ((HttpServletRequest) ((PageContext) this.getJspContext()).getRequest()).getContextPath();
+		this.getJspContext().getOut().write("<link rel=\"stylesheet\" type=\"text/css\" href=\"" + contextPath + href + "\" />");
+	}
+}

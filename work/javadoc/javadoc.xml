@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="javadoc">
+<target name="javadoc">
+<javadoc access="public" author="true" classpath="../WebRoot/WEB-INF/lib/spring-jms.jar;../WebRoot/WEB-INF/lib/spring-web.jar;../WebRoot/WEB-INF/lib/spring-orm.jar;../WebRoot/WEB-INF/lib/spring-test.jar;../WebRoot/WEB-INF/lib/spring-webmvc.jar;../WebRoot/WEB-INF/lib/spring-core.jar;../WebRoot/WEB-INF/lib/spring-beans.jar;../WebRoot/WEB-INF/lib/spring-jdbc.jar;../WebRoot/WEB-INF/lib/spring-aop.jar;../WebRoot/WEB-INF/lib/spring-context-support.jar;../WebRoot/WEB-INF/lib/spring-tx.jar;../WebRoot/WEB-INF/lib/sitemesh-2.4.jar;../WebRoot/WEB-INF/lib/spring-context.jar;E:\Program Files\MyEclipse 6.5M1 Blue\eclipse\plugins\org.junit4_4.3.1\junit.jar" destdir="" doctitle="fred jquery" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="com.work.junit" source="1.5" sourcepath="../src" splitindex="true" use="true" version="true"/>
+</target>
+</project>

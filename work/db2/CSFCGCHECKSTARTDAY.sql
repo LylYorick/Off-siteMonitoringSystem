@@ -1,0 +1,29 @@
+CREATE FUNCTION CSFCGCHECKSTARTDAY
+ (V_DTNEWDATE TIMESTAMP,
+  V_IMONTH INTEGER,
+  V_IDAY INTEGER
+ ) 
+  RETURNS SMALLINT
+  SPECIFIC SQL060401160656300
+  LANGUAGE SQL
+  NOT DETERMINISTIC
+  READS SQL DATA
+  STATIC DISPATCH
+  CALLED ON NULL INPUT
+  EXTERNAL ACTION
+  INHERIT SPECIAL REGISTERS
+  BEGIN ATOMIC
+    DECLARE v_tiReturnValue SMALLINT;
+    DECLARE v_iNewMonth INTEGER;
+    DECLARE v_iNewDay INTEGER;
+    SET v_tiReturnValue = 0;
+    SET v_iNewMonth = mod((MONTH(V_DTNEWDATE)-1),3)+1;
+    SET v_iNewDay = DAY(V_DTNEWDATE);
+    IF v_iNewMonth > v_iMonth THEN
+      SET v_tiReturnValue = 1;
+    ELSEIF v_iNewMonth = v_iMonth
+      AND v_iNewDay >= v_iDay THEN
+      SET v_tiReturnValue = 1;
+    END IF;
+    RETURN v_tiReturnValue;
+  END;
