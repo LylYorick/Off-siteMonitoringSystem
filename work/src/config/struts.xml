@@ -6,6 +6,8 @@
 
 <!-- START SNIPPET: xworkSample -->
 <struts>
+  <constant name="struts.enable.DynamicMethodInvocation" value="false" /> 
+    <constant name="struts.devMode" value="true" />
 	<!-- struts配置文件导入 -->
 	<include file="struts-default.xml"></include>
 	<include file="struts-plugin.xml"></include>
