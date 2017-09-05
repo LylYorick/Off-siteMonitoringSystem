@@ -508,5 +508,32 @@ public class AssessAction  extends JsonBaseAction implements ModelDriven<AssessI
         session.put("level", null);
 		return SUCCESS;
 	}
+	/**
+	 *一级指标管理
+	 */
+	public String oneClassIndex(){
+		logger.info("***");
+		
+		logger.info("进入一级指标管理");
+		return SUCCESS;
+	}
+	/**
+	 *二级指标管理
+	 */
+	public String twoClassIndex(){
+		logger.info("***");
+		
+		logger.info("进入二级指标管理");
+		return SUCCESS;
+	}
+	/**
+	 *初评管理
+	 */
+	public String peopleBankFirstRate(){
+		logger.info("***");
+		
+		logger.info("进入初评管理");
+		return SUCCESS;
+	}
 	
 }
