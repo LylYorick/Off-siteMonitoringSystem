@@ -535,5 +535,14 @@ public class AssessAction  extends JsonBaseAction implements ModelDriven<AssessI
 		logger.info("进入初评管理");
 		return SUCCESS;
 	}
+	/**
+	 *金融机构自评管理
+	 */
+	public String selfAssessment(){
+		logger.info("***");
+		
+		logger.info("进入金融机构自评管理");
+		return SUCCESS;
+	}
 	
 }
