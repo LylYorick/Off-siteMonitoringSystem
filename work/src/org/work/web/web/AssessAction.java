@@ -517,13 +517,47 @@ public class AssessAction  extends JsonBaseAction implements ModelDriven<AssessI
 		logger.info("进入一级指标管理");
 		return SUCCESS;
 	}
+	/**新增一级指标管理
+	 * @return
+	 */
+	public String addOneClassIndex(){
+		logger.info("***");
+		
+		logger.info("进入新增一级指标管理");
+		return SUCCESS;
+	}
+	/**
+	 * @return
+	 */
+	public String alterOneClassIndex(){
+		logger.info("***");
+		
+		logger.info("进入新增一级指标管理");
+		return SUCCESS;
+	}
+
 	/**
 	 *二级指标管理
 	 */
 	public String twoClassIndex(){
 		logger.info("***");
-		
 		logger.info("进入二级指标管理");
+		return SUCCESS;
+	}
+	/**
+	 *新增二级指标管理
+	 */
+	public String addTwoClassIndex(){
+		logger.info("***");
+		logger.info("进入新增二级指标管理");
+		return SUCCESS;
+	}
+	/**
+	 *修改二级指标
+	 */
+	public String alterTwoClassIndex(){
+		logger.info("***");
+		logger.info("进入修改二级指标");
 		return SUCCESS;
 	}
 	/**

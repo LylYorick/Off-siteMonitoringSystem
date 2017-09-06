@@ -5,18 +5,13 @@
 	<title>监管评分>>二级指标管理</title>
 	<script type="text/javascript">
      $.subscribe('indexadd', function(event,data) {
-    	window.location.href="<%=request.getContextPath()%>/assess/assess_indexadd.shtml";
+    	window.location.href="<%=request.getContextPath()%>/assess/assess_addTwoClassIndex.shtml";
+  	});
+     $.subscribe('alterIndex', function(event,data) {
+    	window.location.href="<%=request.getContextPath()%>/assess/assess_alterTwoClassIndex.shtml";
   	});
      
-     $.subscribe('indexmodify', function(event,data) {
-    	var s = $("#gridtable").jqGrid('getGridParam','selrow');
- 	    if(s==null){
-   	        alert("请选择记录！");
-   	        return;
-   	    }
-    	var r = $("#gridtable").jqGrid('getRowData',s);
-    	window.location.href="<%=request.getContextPath()%>/assess/assess_indexmodify.shtml?acsid="+r.acsid;
-  	});
+    
 </script>
 <style type="text/css">
 .span_left{
@@ -86,7 +81,8 @@ td.ssr{font-size:28px;padding:0px;padding-top:0px;line-height:110% !important;}
 		</div>
 	</fieldset>
 	<div style="overflow:hidden;">
-		<input type="submit"  value="新增指标" class="ui-button ui-widget ui-state-default ui-corner-all" >
+		<sj:submit id="grid_add_colsbutton" value="新增指标"
+			onClickTopics="indexadd" button="true" />
    		<span class=" ui-state-default ui-corner-all span_left">年度:2017</span>
    		<span  class="ui-state-default ui-corner-all span_left">指标类型:法人机构</span>
    		<span  class="ui-state-default ui-corner-all span_left">总分:80分</span>
@@ -139,7 +135,7 @@ td.ssr{font-size:28px;padding:0px;padding-top:0px;line-height:110% !important;}
 					20
 					</td>
 					<td>
-						<input type="submit"  value="修改" class="ui-button ui-widget ui-state-default ui-corner-all" >
+						<sj:submit id="grid_alter_colsbutton" value="修改" onClickTopics="alterIndex" button="true" />
 						<input type="submit"  value="删除" class="ui-button ui-widget ui-state-default ui-corner-all" >
 					</td>
 				</tr>
