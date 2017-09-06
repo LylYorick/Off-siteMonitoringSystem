@@ -15,6 +15,16 @@ td{
 	text-align:center;
 }
 </style>
+<script type="text/javascript">
+     $.subscribe('listIndex', function(event,data) {
+    	window.location.href="<%=request.getContextPath()%>/assess/assess_listSelfAssessment.shtml";
+  	});
+     $.subscribe('alterIndex', function(event,data) {
+    	window.location.href="<%=request.getContextPath()%>/assess/assess_alterTwoClassIndex.shtml";
+  	});
+     
+    
+</script>
 </head>
 <body>
 	<div class="grid">
@@ -114,7 +124,8 @@ td{
 					<td>
 					</td>
 					<td>
-						<input type="submit"  value="查看" class="ui-button ui-widget ui-state-default ui-corner-all" >
+						<sj:submit id="grid_list_colsbutton" value="查看"
+						onClickTopics="listIndex" button="true" />
 						<input type="submit"  value="自评" class="ui-button ui-widget ui-state-default ui-corner-all" >
 						<input type="submit"  value="复核" class="ui-button ui-widget ui-state-default ui-corner-all" >
 					</td>
