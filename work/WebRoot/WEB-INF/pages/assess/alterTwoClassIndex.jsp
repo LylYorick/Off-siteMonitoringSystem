@@ -5,6 +5,7 @@
 	<title>监管评分>>二级指标管理>>修改二级指标</title>
 
 <style type="text/css">
+	
 .span_left{
 	float:right; 
 	padding:.4em 1em; 
@@ -19,6 +20,21 @@ textarea {
 	text-align:left;
 }
 </style>
+<script type="text/javascript">
+
+$(function(){
+ $("#noSelf").click(function(){
+ 	if($(this).attr("checked") == true){
+ 		$("#request").hide();
+ 	}
+ });
+ $("#needSelf").click(function(){
+ 	if($(this).attr("checked") == true){
+ 		$("#request").show();
+ 	}
+ });
+});
+</script>
 </head>
 <body>
 	<div class="grid">
@@ -90,14 +106,24 @@ textarea {
 									id="assess_indexsave_ascdesc" >1.未建立客户身份识别、客户风险等级划分和分类管理、大额交易和可疑交易报告、客户身份资料和交易记录保存、反恐怖融资、涉恐资产冻结、洗钱风险自评估、分支机构反洗钱工作管理、反洗钱保密、内部审计、宣传培训、绩效考核、责任追究以及协助反洗钱调查等制度，缺1项扣1分；2.未将反洗钱工作要求分解、细化到每一个业务环节和操作岗位，发现1次扣1分。最多扣3分。</textarea>﻿
 							</td>
 						</tr>
-							<tr>
+						<tr>
 							<td class="tdLabel" colspan="1"><label
-								for="assess_indexsave_ascadd" class="label"><span
+								for="assess_indexsave_ascadd" class="label">是否允许自评<span
 									class="required">(*)</span>:</label>
 							</td>
 							<td colspan="1">
-							<textarea name="ascdesc" cols="50" rows="5"
-									id="assess_indexsave_ascdesc" >自评理由要求</textarea>﻿
+								<input id="needSelf" type="radio" name="identity" value="0" checked="checked" />需要自评
+								<input id="noSelf" type="radio" name="identity" value="1" />无需自评﻿
+							</td>
+						</tr>
+						<tr>
+							<td class="tdLabel" colspan="1"><label
+								for="assess_indexsave_ascadd" class="label">自评理由要求<span
+									class="required">(*)</span>:</label>
+							</td>
+							<td colspan="1">
+							<textarea id="request" name="ascdesc" cols="50" rows="5"
+									id="assess_indexsave_ascdesc" ></textarea>﻿
 							</td>
 						</tr>
 						<tr>
@@ -109,7 +135,7 @@ textarea {
 							</td>
 						</tr>
 						<tr>
-							<td colspan="2" align="center"><input type="submit"
+							<td colspan="2" align="center"><input type="button"
 								id="assess_indexsave_0" value="提    交"
 								class="ui-button ui-state-default ui-corner-all"></td>
 						</tr>

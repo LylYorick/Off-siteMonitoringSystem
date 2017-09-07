@@ -2,13 +2,10 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <head>
-	<title>监管评分>>金融机构自评</title>
+	<title>监管评分>>二级指标管理</title>
 	<script type="text/javascript">
-     $.subscribe('indexadd', function(event,data) {
-    	window.location.href="<%=request.getContextPath()%>/assess/assess_addTwoClassIndex.shtml";
-  	});
-     $.subscribe('alterIndex', function(event,data) {
-    	window.location.href="<%=request.getContextPath()%>/assess/assess_alterTwoClassIndex.shtml";
+     $.subscribe('uploadFiles', function(event,data) {
+    	window.location.href="<%=request.getContextPath()%>/assess/assess_selfAssessmentUpload.shtml";
   	});
      
     
@@ -33,6 +30,9 @@ td.ssr{font-size:28px;padding:0px;padding-top:0px;line-height:110% !important;}
 	min-width: 1400px;
 
 }
+textarea[readonly] {
+	background: #DDDDDD;
+}
 </style> 
 
 </head>
@@ -42,9 +42,9 @@ td.ssr{font-size:28px;padding:0px;padding-top:0px;line-height:110% !important;}
    		<span class=" ui-state-default ui-corner-all span_left">年度:2017</span>
    		<span  class="ui-state-default ui-corner-all span_left">机构类型:法人机构</span>
    		<span  class="ui-state-default ui-corner-all span_left">机构名称:中国银行股份有限公司深圳市分行</span>
-   		<span  class="ui-state-default ui-corner-all span_left">自评总分:80分</span>
-   		<span  class="ui-state-default ui-corner-all span_left">人民银行评级总分:80分</span>
-   		<span  class="ui-state-default ui-corner-all span_left">人民银行评级:B</span>
+   		<span  class="ui-state-default ui-corner-all span_left">状态:退回修改</span>
+   		<span  class="ui-state-default ui-corner-all span_left">自评总分:90分</span>
+   		<span  class="ui-state-default ui-corner-all span_left">自评得分:80分</span>
 	</div>
 	<div style="overflow: auto; height: 95%">
 			<table class="wwFormTable tablesDiv" >
@@ -63,19 +63,22 @@ td.ssr{font-size:28px;padding:0px;padding-top:0px;line-height:110% !important;}
 					评分标准
 					</th>
 					<th  style="min-width: 100px;width:10%;">
-					自评理由要求
+						自评理由要求
 					</th>
 					<th   align="center" style="min-width: 40px;width:5%;">
-					分值
+						分值
 					</th>
-					<th   align="center" style="min-width: 40px;width:5%;">
-					自评得分
+					<th   align="center" style="min-width: 80px;width:10%;">
+						自评得分
 					</th>
-					<th   align="center" style="min-width: 40px;width:5%;">
-					人民银行评分
+					<th   align="center" style="min-width:150px;width:15%;">
+						自评理由
 					</th>
-					<th   align="center" style="min-width:40px; width:5%;">
-					附件
+					<th   align="center" style="min-width:100px; width:10%;">
+						附件
+					</th>
+					<th   align="center" style="min-width:100px; width:10%;">
+					 	 复核拒绝理由
 					</th>
 				</tr>
 				<tr>
@@ -98,14 +101,17 @@ td.ssr{font-size:28px;padding:0px;padding-top:0px;line-height:110% !important;}
 					<td>
 					20
 					</td>
-					<td>
-					15
+					<td align="center">
+						<input type="text" style="width: 50px;">
 					</td>
 					<td>
-					15
+					<textarea rows="3" cols="20"></textarea>
 					</td>
 					<td>
-					<sj:submit id="grid_alter_colsbutton" value="附件" onClickTopics="alterIndex" button="true" />
+						<sj:submit id="grid_alter_colsbutton" value="上传附件" onClickTopics="uploadFiles" button="true" />
+					</td>
+					<td>
+						<textarea rows="3" cols="10" readonly="readonly" >附件上传错误</textarea>
 					</td>
 				</tr>
 				<tr>
@@ -119,23 +125,29 @@ td.ssr{font-size:28px;padding:0px;padding-top:0px;line-height:110% !important;}
 						<textarea rows="3" cols="30"   readonly="readonly">1.未按法律法规和监管要求及时修订内控制度；2.评级期内推出新业务（产品、服务），未及时制定或对已有的反洗钱内控制度或相关业务操作规程进行更新；3.评级期内反洗钱工作组织形式或反洗钱工作流程、内容等发生变更，未及时制定或对已有的反洗钱内控制度或相关业务操作规程进行更新。存在1项扣1分，最多扣3分。</textarea>
 					</td>
 					<td>
-						<textarea rows="3" cols="10"   readonly="readonly">请详细说明以下情况：1.评级期内本机构产品、业务是否有变化及具体变化情况；2.评级期内本机构反洗钱工作组织形式或反洗钱工作流程、内容是否有变更及具体变更情况；</textarea>
+						<textarea rows="3" cols="10"   readonly="readonly">此项无需自评</textarea>
 					</td>
 					<td>
 					20
 					</td>
 					<td>
-						20
+						
 					</td>
 					<td>
-					20
+					<label class="lable"></label>
 					</td>
 					<td>
-						<sj:submit id="grid_asda_colsbutton" value="附件" onClickTopics="alterIndex" button="true" />
+					<input type="button" value="上传附件" class="ui-button ui-widget ui-state-default ui-corner-all" > 
+					</td>
+					<td>
+						<textarea rows="3" cols="10" readonly="readonly" >附件上传错误</textarea>
 					</td>
 				</tr>
-					
 			</table>
+			<div align="center" style="margin-top:10px;">
+				<input type="button" id="searchbutton" value="保存" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+				<input type="button" id="searchbutton" value="提交" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+			</div>
 		</div>
 	</div>
 	

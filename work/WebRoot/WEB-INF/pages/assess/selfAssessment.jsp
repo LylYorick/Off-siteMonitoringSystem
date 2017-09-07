@@ -19,8 +19,11 @@ td{
      $.subscribe('listIndex', function(event,data) {
     	window.location.href="<%=request.getContextPath()%>/assess/assess_listSelfAssessment.shtml";
   	});
-     $.subscribe('alterIndex', function(event,data) {
-    	window.location.href="<%=request.getContextPath()%>/assess/assess_alterTwoClassIndex.shtml";
+     $.subscribe('doIndex', function(event,data) {
+    	window.location.href="<%=request.getContextPath()%>/assess/assess_selfAssessmentDo.shtml";
+  	});
+     $.subscribe('checkIndex', function(event,data) {
+    	window.location.href="<%=request.getContextPath()%>/assess/assess_selfAssessmentCheck.shtml";
   	});
      
     
@@ -85,13 +88,16 @@ td{
 						状态
 					</th>
 					<th width="10%" >
+						自评总分
+					</th>
+					<th width="10%" >
 						自评得分
 					</th>
 					<th  width="10%">
-						自评等级
+					 	人民银行评分总分
 					</th>
 					<th  width="10%">
-					 	人民银行评分
+					 	人民银行评分得分
 					</th>
 					<th  width="10%">
 						人民银行评级
@@ -114,10 +120,13 @@ td{
 						机构自评
 					</td>
 					<td>
+						90
+					</td>
+					<td>
 						80
 					</td>
 					<td>
-						B
+						100
 					</td>
 					<td>
 					</td>
@@ -126,8 +135,10 @@ td{
 					<td>
 						<sj:submit id="grid_list_colsbutton" value="查看"
 						onClickTopics="listIndex" button="true" />
-						<input type="submit"  value="自评" class="ui-button ui-widget ui-state-default ui-corner-all" >
-						<input type="submit"  value="复核" class="ui-button ui-widget ui-state-default ui-corner-all" >
+						<sj:submit id="grid_do_colsbutton" value="自评"
+						onClickTopics="doIndex" button="true" />
+						<sj:submit id="grid_check_colsbutton" value="复核"
+						onClickTopics="checkIndex" button="true" />
 					</td>
 				</tr>
 			</table>
@@ -136,15 +147,3 @@ td{
 	
 	
 </body>
-
-	<script type="text/javascript">
-		function checkNum(cellvalue, options, rowObject) { 
-			if(cellvalue>=80){
-				return "<span style='color:green;'>"+cellvalue+"</span>";
-				}else if(cellvalue>50){
-					return "<span style='color:red'>"+cellvalue+"</span>";
-				}else{
-					return "<span style='color:blue;font-weight:bold'>"+cellvalue+"</span>";
-				}
-        } 
-	</script>
