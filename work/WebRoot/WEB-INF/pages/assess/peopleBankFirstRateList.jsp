@@ -30,7 +30,7 @@ textarea.erji{width:90%; height:100%;}
 </head>
 <body>
 	<div class="grid">
-	<fieldset>
+	<!-- <fieldset> 
 		<legend>
 			查询条件
 		</legend>
@@ -39,12 +39,6 @@ textarea.erji{width:90%; height:100%;}
 		<table class="wwFormTable">
 	   		 <tbody>
 	   		 	<tr>  
-	   		 		<!-- <td class="tdLabel" colspan="1">
-						<label for="assess_list_year" class="label">年度:</label>
-					</td> 
-		    		<td colspan="1">
-		    			<input type="text" name="year" value="" id="assess_list_year">﻿
-					</td>    -->
 			    	<td class="tdLabel" colspan="1">
 			    		<label for="bpid" class="label">金融机构类别:</label>
 			    	</td> 
@@ -79,7 +73,8 @@ textarea.erji{width:90%; height:100%;}
 			<input type="submit" id="searchbutton" value="查  询"   style="margin-top:7px;" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
 			<img id="indicator" src="/work/images/027.gif" alt="Loading..." style="display: none">
 		</div>
-	</fieldset>
+	</fieldset> -->
+	<table id="gridtable" class="wwFormTable"></table>  
 	<div style="overflow:hidden;">
 		<sj:submit id="grid_add_colsbutton" value="新增指标"
 			onClickTopics="indexadd" button="true" />
@@ -87,8 +82,8 @@ textarea.erji{width:90%; height:100%;}
    		<span  class="ui-state-default ui-corner-all span_left">指标类型:法人机构</span>
    		<span  class="ui-state-default ui-corner-all span_left">总分:80分</span>
 	</div>
-<!-- 	<table id="gridtable" class="wwFormTable"></table>  -->
-		<div id="gridtable_pager" style="width:1000px; height:225px; overflow:auto;" >
+	<table id="gridtable" class="wwFormTable"></table>  
+		<div id="gridtable_pager" style="width:1000px; height:380px; overflow:auto;" >
 				<table class="wwFormTable" >
 					<tr style="font-weight: bold;">
 						<th width="50">序号</th>

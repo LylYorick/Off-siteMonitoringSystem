@@ -20,6 +20,7 @@
 td{
 	text-align:center;
 }
+textarea.erji{width:90%; height:100%;}
 </style>
 </head>
 <body>
@@ -57,13 +58,12 @@ td{
 		</table>
 		</s:form>
 		<div align="center">
-			<input type="submit" id="searchbutton" value="查  询" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+			<input type="submit" id="searchbutton" value="查  询" style="margin-top:7px;" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
 			<img id="indicator" src="/work/images/027.gif" alt="Loading..." style="display: none">
 		</div>
 	</fieldset>
 	<div style="overflow:hidden;">
    		<span  class="ui-state-default ui-corner-all span_left">当前机构类型:法人机构</span>
-   		<span  class="ui-state-default ui-corner-all span_left">总分:80分</span>
 	</div>
 	<table id="gridtable" class="wwFormTable"></table> 
 	<div id="gridtable_pager" ></div> 
@@ -79,17 +79,17 @@ td{
 					<th width="10%">
 						状态
 					</th>
-					<th width="10%" >
+					<th width="5%" >
 						自评得分
-					</th>
-					<th  width="10%">
-						自评等级
 					</th>
 					<th  width="10%">
 					 	人民银行评分
 					</th>
-					<th  width="10%">
+					<th  width="5%">
 						人民银行评级
+					</th>
+					<th  width="20%">
+						人行评级理由
 					</th>
 					<th width="15%">
 						操作
@@ -111,12 +111,14 @@ td{
 					<td>
 						80
 					</td>
-					<td>
-						B
-					</td>
+				
 					<td>
 					</td>
 					<td>
+						E
+					</td>
+					<td>
+						<textarea   class="erji"   readonly="readonly">违反保密规定，出现失密、泄密情况，导致严重后果</textarea>
 					</td>
 					<td>
 						<input type="submit"  value="查看" class="ui-button ui-widget ui-state-default ui-corner-all" >
@@ -140,7 +142,6 @@ td{
 						90
 					</td>
 					<td>
-						A
 					</td>
 					<td>
 					</td>
@@ -148,7 +149,7 @@ td{
 					</td>
 					<td>
 						<input type="submit"  value="查看" class="ui-button ui-widget ui-state-default ui-corner-all" >
-						<sj:submit id="grid_alter_colsbutton" value="人行初评" onClickTopics="firstRate" button="true" />
+						<sj:submit id="grid_alter_colsbutton2" value="人行初评" onClickTopics="firstRate" button="true" />
 					</td>
 				</tr>
 			</table>
