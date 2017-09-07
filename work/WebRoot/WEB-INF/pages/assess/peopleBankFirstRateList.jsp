@@ -10,7 +10,9 @@
      $.subscribe('alterIndex', function(event,data) {
     	window.location.href="<%=request.getContextPath()%>/assess/assess_alterTwoClassIndex.shtml";
   	});
-     
+     $.subscribe('file', function(event,data) {
+    	window.location.href="<%=request.getContextPath()%>/assess/assess_fileManager.shtml";
+  	});
     
 </script>
 <style type="text/css">
@@ -30,57 +32,12 @@ textarea.erji{width:90%; height:100%;}
 </head>
 <body>
 	<div class="grid">
-	<!-- <fieldset> 
-		<legend>
-			查询条件
-		</legend>
-		<br>
-		<s:form namespace="/assess" action="assess_list" method="post">
-		<table class="wwFormTable">
-	   		 <tbody>
-	   		 	<tr>  
-			    	<td class="tdLabel" colspan="1">
-			    		<label for="bpid" class="label">金融机构类别:</label>
-			    	</td> 
-		    		<td colspan="1">
-	    				<select name="bid" id="bpid" onchange="getsort()">
-	    					<option value="1">法人金融机构</option>
-	    					<option value="1">银行业</option>
-	    					<option value="1">证券业</option>
-	    					<option value="1">保险业</option>
-						</select>
-					</td>
-					
-	        	</tr>
-	        	<tr>  
-	   		 		<td class="tdLabel" colspan="1">
-						<label for="assess_list_year" class="label">一级指标名称:</label>
-					</td> 
-		    		<td colspan="1">
-		    			<input type="text" >﻿
-					</td>   
-			    	<td class="tdLabel" colspan="1">
-			    		<label for="bpid" class="label">二级指标:</label>
-			    	</td> 
-		    		<td colspan="1">
-	    				<input type="text" >
-					</td>
-	        	</tr>        
-			</tbody>
-		</table>
-		</s:form>
-		<div align="center">
-			<input type="submit" id="searchbutton" value="查  询"   style="margin-top:7px;" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
-			<img id="indicator" src="/work/images/027.gif" alt="Loading..." style="display: none">
-		</div>
-	</fieldset> -->
+	
 	<table id="gridtable" class="wwFormTable"></table>  
 	<div style="overflow:hidden;">
-		<sj:submit id="grid_add_colsbutton" value="新增指标"
-			onClickTopics="indexadd" button="true" />
    		<span class=" ui-state-default ui-corner-all span_left">年度:2017</span>
    		<span  class="ui-state-default ui-corner-all span_left">指标类型:法人机构</span>
-   		<span  class="ui-state-default ui-corner-all span_left">总分:80分</span>
+   		<span  class="ui-state-default ui-corner-all span_left">总分:100分</span>
 	</div>
 	<table id="gridtable" class="wwFormTable"></table>  
 		<div id="gridtable_pager" style="width:1000px; height:380px; overflow:auto;" >
@@ -114,9 +71,10 @@ textarea.erji{width:90%; height:100%;}
 						<th width="100">
 							自评附件
 						</th>
-						<th width="150">
-							操作
+						<th width="80">
+							人行初评分数
 						</th>
+						
 					</tr>
 					<tr>
 						<td>
@@ -145,12 +103,12 @@ textarea.erji{width:90%; height:100%;}
 						想想就能得90%
 						</td>
 						<td>
-						附件暂无1
+							<sj:submit id="file_colsbutton" value="附件详情" onClickTopics="file" button="true" />
 						</td>
-						<td>
-							<sj:submit id="grid_alter_colsbutton" value="修改" onClickTopics="alterIndex" button="true" />
-							<input type="submit"  value="删除" class="ui-button ui-widget ui-state-default ui-corner-all" >
+						<td align="center">
+							<input type="text" style="width:35px"  name="asd" value="15" id="asd">﻿
 						</td>
+						
 					</tr>
 					<tr>
 						<td>
@@ -174,13 +132,22 @@ textarea.erji{width:90%; height:100%;}
 						<td>
 						我觉得我能得90%
 						</td>
+						
 						<td>
-						附件暂无2
+							<sj:submit id="file_colsbutton2" value="附件详情" onClickTopics="file" button="true" />
 						</td>
-						<td>
-							<input type="submit"  value="修改" class="ui-button ui-widget ui-state-default ui-corner-all" >
-							<input type="submit"  value="删除" class="ui-button ui-widget ui-state-default ui-corner-all" >
+						<td align="center">
+							<input type="text" style="width:35px"  name="asdf" value="15" id="asdf">
 						</td>
+						
+					</tr>
+				</table>
+				<table  align="center">
+					<tr align="center">
+						<td colspan="2" align="center"><input type="submit"
+								id="assess_indexsave_0" value="提    交"
+								class="ui-button ui-state-default ui-corner-all"></td>
+					
 					</tr>
 				</table>
 		</div> 

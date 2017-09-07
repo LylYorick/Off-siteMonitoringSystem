@@ -8,6 +8,9 @@
 		 $.subscribe('firstRate', function(event,data) {
 	    	window.location.href="<%=request.getContextPath()%>/assess/assess_peopleBankFirstRateList.shtml";
 	  	});
+	  	 $.subscribe('directRate', function(event,data) {
+	    	window.location.href="<%=request.getContextPath()%>/assess/assess_directRate.shtml";
+	  	});
 		</script>
 
 <style type="text/css">
@@ -123,6 +126,7 @@ textarea.erji{width:90%; height:100%;}
 					<td>
 						<input type="submit"  value="查看" class="ui-button ui-widget ui-state-default ui-corner-all" >
 						<sj:submit id="grid_alter_colsbutton" value="人行初评" onClickTopics="firstRate" button="true" />
+						<sj:submit id="direct_colsbutton" value="直接评定等级" onClickTopics="directRate" button="true" />
 					</td>
 				</tr>
 				<tr>
@@ -150,6 +154,7 @@ textarea.erji{width:90%; height:100%;}
 					<td>
 						<input type="submit"  value="查看" class="ui-button ui-widget ui-state-default ui-corner-all" >
 						<sj:submit id="grid_alter_colsbutton2" value="人行初评" onClickTopics="firstRate" button="true" />
+						<sj:submit id="direct_colsbutton2" value="直接评定等级" onClickTopics="directRate" button="true" />
 					</td>
 				</tr>
 			</table>
