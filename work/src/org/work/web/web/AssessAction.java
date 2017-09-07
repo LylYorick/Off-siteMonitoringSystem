@@ -580,6 +580,26 @@ public class AssessAction  extends JsonBaseAction implements ModelDriven<AssessI
 	}
 	
 	/**
+	 *初评管理直接评定等级
+	 */
+	public String directRate(){
+		logger.info("***");
+		
+		logger.info("进入初评管理-直接评定等级");
+		return SUCCESS;
+	}
+	
+	/**
+	 *附件管理
+	 */
+	public String fileManager(){
+		logger.info("***");
+		
+		logger.info("附件管理");
+		return SUCCESS;
+	}
+	
+	/**
 	 *金融机构自评管理
 	 */
 	public String selfAssessment(){
@@ -623,6 +643,15 @@ public class AssessAction  extends JsonBaseAction implements ModelDriven<AssessI
 		logger.info("***");
 		
 		logger.info("进入金融机构复核");
+		return SUCCESS;
+	}
+	/**
+	 * 金融机构异议申请查询界面
+	 */
+	public String applyOppositionList(){
+		logger.info("***");
+		
+		logger.info("进入金融机构异议申请查询界面");
 		return SUCCESS;
 	}
 	
