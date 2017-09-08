@@ -100,7 +100,7 @@ textarea.erji{width:90%; height:100%;}
 						18
 						</td>
 						<td>
-						想想就能得90%
+							<textarea   class="erji"  readonly="readonly">想想就能得90%</textarea>
 						</td>
 						<td>
 							<sj:submit id="file_colsbutton" value="附件详情" onClickTopics="file" button="true" />
@@ -130,7 +130,7 @@ textarea.erji{width:90%; height:100%;}
 						16
 						</td>
 						<td>
-						我觉得我能得90%
+						<textarea   class="erji"  readonly="readonly">我觉得我能得90%</textarea>
 						</td>
 						
 						<td>

@@ -628,7 +628,7 @@ public class AssessAction  extends JsonBaseAction implements ModelDriven<AssessI
 		return SUCCESS;
 	}
 	/**
-	 * 金融机构自评
+	 * 金融机构自评附件上传
 	 */
 	public String selfAssessmentUpload(){
 		logger.info("***");
@@ -652,6 +652,67 @@ public class AssessAction  extends JsonBaseAction implements ModelDriven<AssessI
 		logger.info("***");
 		
 		logger.info("进入金融机构异议申请查询界面");
+		return SUCCESS;
+	}
+	
+	/**
+	 * 监管意见书管理(人行端)
+	 */
+	public String superviseOpinionManager(){
+		logger.info("***");
+		
+		logger.info("进入监管意见书管理(人行端)");
+		return SUCCESS;
+	}
+	
+	/**
+	 * 上传监管意见书
+	 */
+	public String superviseOpinionAdd(){
+		logger.info("***");
+		
+		logger.info("上传监管意见书");
+		return SUCCESS;
+	}
+	
+	/**
+	 * 监管意见书管理(机构端)
+	 */
+	public String superviseOpinionBankManager(){
+		logger.info("***");
+		
+		logger.info("进入监管意见书管理(机构端)");
+		return SUCCESS;
+	}
+	
+	/**
+	 * 整改报告管理(人行端)
+	 */
+	public String rectificationReportManager(){
+		logger.info("***");
+		
+		logger.info("进入整改报告管理(人行端)");
+		return SUCCESS;
+	}
+	
+	
+	/**
+	 * 整改报告管理(机构端)
+	 */
+	public String rectificationReportBankManager(){
+		logger.info("***");
+		
+		logger.info("进入整改报告管理(机构端)");
+		return SUCCESS;
+	}
+	
+	/**
+	 * 上传整改报告
+	 */
+	public String rectificationReportAdd(){
+		logger.info("***");
+		
+		logger.info("上传整改报告");
 		return SUCCESS;
 	}
 	
