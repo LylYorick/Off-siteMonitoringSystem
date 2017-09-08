@@ -760,5 +760,14 @@ public class AssessAction  extends JsonBaseAction implements ModelDriven<AssessI
 		logger.info("进入评级等级异议界面");
 		return SUCCESS;
 	}
+	/**
+	 * 评级状态管理
+	 */
+	public String assessmentStatusManager(){
+		logger.info("***");
+		
+		logger.info("进入评级等级异议界面");
+		return SUCCESS;
+	}
 	
 }
