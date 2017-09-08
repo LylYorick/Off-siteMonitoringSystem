@@ -715,5 +715,50 @@ public class AssessAction  extends JsonBaseAction implements ModelDriven<AssessI
 		logger.info("上传整改报告");
 		return SUCCESS;
 	}
+	/**
+	 * 金融机构提出异议申请 二级指标评分异议
+	 */
+	public String applyOppositionAdd(){
+		logger.info("***");
+		
+		logger.info("进入金融机构提出异议申请-二级指标评分异议 界面");
+		return SUCCESS;
+	}
+	/**
+	 * 金融机构提出异议申请 评级等级异议
+	 */
+	public String applyOppositionForAssess(){
+		logger.info("***");
+		
+		logger.info("进入金融机构提出异议申请-评级等级异议 界面");
+		return SUCCESS;
+	}
+	/**
+	 * 异议申请处理查询界面
+	 */
+	public String manageOppositionList(){
+		logger.info("***");
+		
+		logger.info("进入异议申请处理查询界面");
+		return SUCCESS;
+	}
+	/**
+	 * 处理 二级指标评分异议
+	 */
+	public String manageOppositionDeal(){
+		logger.info("***");
+		
+		logger.info("进入处理二级指标评分异议界面");
+		return SUCCESS;
+	}
+	/**
+	 * 处理评级等级异议
+	 */
+	public String manageOppositionDealAssess(){
+		logger.info("***");
+		
+		logger.info("进入评级等级异议界面");
+		return SUCCESS;
+	}
 	
 }

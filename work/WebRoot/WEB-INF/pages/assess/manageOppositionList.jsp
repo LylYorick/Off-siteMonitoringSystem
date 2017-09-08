@@ -2,7 +2,7 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <head>
-	<title>监管评分>>金融机构自评管理</title>
+	<title>监管评分>>异议申请处理</title>
 
 <style type="text/css">
 .span_left{
@@ -27,7 +27,14 @@ textarea[readonly] {
     	window.location.href="<%=request.getContextPath()%>/assess/assess_applyOppositionForAssess.shtml";
   	});
   
-     
+     $(function(){
+	  $("#deal").click(function() {
+	    	window.location.href="<%=request.getContextPath()%>/assess/assess_manageOppositionDeal.shtml";
+	  	});  
+	  $("#dealAssess").click(function() {
+	    	window.location.href="<%=request.getContextPath()%>/assess/assess_manageOppositionDealAssess.shtml";
+	  	});  
+	});
     
 </script>
 </head>
@@ -49,14 +56,38 @@ textarea[readonly] {
 		    			<input type="text" name="year" value="" id="assess_list_year">﻿
 					</td>   
 		    		<td class="tdLabel" colspan="1">
+		    			<label for="assess_list_year" class="label">机构类型:</label>
+					</td> 
+					<td colspan="1">
+						<select style="height:25px;">
+	    					<option value="1">法人金融机构</option>
+	    					<option value="1">银行业</option>
+	    					<option value="1">证券业</option>
+	    					<option value="1">保险业</option>
+						</select>
+					</td>   
+	        	</tr>
+	        		<td class="tdLabel" colspan="1">
+		    			<label for="assess_list_year" class="label">机构名称:</label>
+					</td> 
+					<td colspan="1">
+						<select style="height:25px;">
+	    					<option value="1">上海浦东发展银行股份有限公司</option>
+	    					<option value="1">交通银行股份有限公司深圳分行</option>
+	    					<option value="1">江苏银行股份有限公司深圳分行</option>
+	    					<option value="1">浙商银行深圳分行</option>
+						</select>
+					</td>  
+					<td class="tdLabel" colspan="1">
 		    			<label class="label" >状态:</label>﻿
 					</td>   
 			    	<td  colspan="1">
 						<select style="height:25px;">
-	    					<option value="1">已发出/未处理</option>
+	    					<option value="1">待处理</option>
 	    					<option value="1">已处理</option>
 						</select>
 					</td> 
+	        	<tr>
 	        	</tr>
 	        	<tr>  
 	   		 		<td class="tdLabel" colspan="1">
@@ -71,7 +102,7 @@ textarea[readonly] {
 					<td class="tdLabel" colspan="1">
 					</td> 
 					<td colspan="1">
-					</td>   
+					</td> 
 	        	</tr>
 			</tbody>
 		</table>
@@ -82,17 +113,14 @@ textarea[readonly] {
 		</div>
 	</fieldset>
 	<div style="overflow:hidden;">
-		<sj:submit id="grid_add_colsbutton" value="提出二级指标评分异议"
-						onClickTopics="addApply" button="true" />
-		<sj:submit id="grid_addAssess_colsbutton" value="提出评级等级异议"
-						onClickTopics="addAssess" button="true" />
    		<span class=" ui-state-default ui-corner-all span_left">年度:2017</span>
    		<span  class="ui-state-default ui-corner-all span_left">当前机构类型:法人机构</span>
 	</div>
 	<div id="gridtable_pager" style="width:100%; overflow:auto;">
-			<table class="wwFormTable" style="width: 100%;min-width: 1200px;">
+			<table class="wwFormTable" style="width: 100%;min-width: 1450px;">
 				<tr style="font-weight: bold;">
 					<th style="min-width: 50px;width:5%;">编号</th>
+					<th style="min-width: 200px;width:20%;">机构名称</th>
 					<th style="min-width: 100px;width:10%;">
 						异议类型
 					</th>
@@ -111,15 +139,14 @@ textarea[readonly] {
 					<th style="min-width: 100px;width:10%;" >
 						状态
 					</th>
-				
+					<th style="min-width: 100px;width:10%;" >
+						附件
+					</th>
 					<th  style="min-width: 50px;width:5%;">
 					 	处理结果
 					</th>
 					<th  style="min-width: 100px;width:20%;">
 					 	处理理由
-					</th>
-					<th style="min-width: 100px;width:10%;" >
-						附件
 					</th>
 					<th style="min-width: 100px;width:10%;">
 						操作
@@ -128,6 +155,9 @@ textarea[readonly] {
 				<tr>
 					<td>
 						12
+					</td>
+					<td>
+						中国银行股份有限公司深圳市分行
 					</td>
 					<td>
 						评级等级异议
@@ -147,6 +177,10 @@ textarea[readonly] {
 						已处理
 					</td>
 					<td>
+						<sj:submit id="grid_check_colsbutton" value="查看"
+						onClickTopics="checkIndex" button="true" />
+					</td>
+					<td>
 						E
 					</td>
 					<td>
@@ -155,16 +189,15 @@ textarea[readonly] {
 						因此无法修改评级</textarea>
 					</td>
 					<td>
-						<sj:submit id="grid_check_colsbutton" value="查看附件"
-						onClickTopics="checkIndex" button="true" />
-					</td>
-					<td>
-						<input type="button" id="searchbutton" value="删除" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+						<input type="button" id="dealAssess" value="处理" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
 					</td>
 				</tr>
 				<tr>
 				<td>
 						13
+					</td>
+					<td>
+						中国银行股份有限公司深圳市分行
 					</td>
 					<td>
 						二级指标评分异议
@@ -180,17 +213,17 @@ textarea[readonly] {
 						<textarea rows="3" cols="20" readonly="readonly">本机构认为完全达到此项标准的要求，申请材料详见附件</textarea>
 					</td>
 					<td>
-						已发出/未处理
+						待处理
+					</td>
+					<td>
+						<input type="button" id="searchbutton" value="查看" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
 					</td>
 					<td>
 					</td>
 					<td>
 					</td>
 					<td>
-						<input type="button" id="searchbutton" value="查看附件" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
-					</td>
-					<td>
-						<input type="button" id="searchbutton" value="删除" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+						<input type="button" id="deal" value="处理" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
 					</td>
 				</tr>
 			</table>
