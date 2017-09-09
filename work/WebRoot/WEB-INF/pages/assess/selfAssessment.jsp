@@ -4,17 +4,7 @@
 <head>
 	<title>监管评分>>金融机构自评管理</title>
 
-<style type="text/css">
-.span_left{
-	float:right; 
-	padding:.4em 1em; 
-	height:17px;
-	margin-left:5px;
-}
-td{
-	text-align:center;
-}
-</style>
+<link href="<%=request.getContextPath()%>/style/common.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
      $.subscribe('listIndex', function(event,data) {
     	window.location.href="<%=request.getContextPath()%>/assess/assess_listSelfAssessment.shtml";
@@ -68,14 +58,14 @@ td{
 			<img id="indicator" src="/work/images/027.gif" alt="Loading..." style="display: none">
 		</div>
 	</fieldset>
-	<div style="overflow:hidden;">
-   		<span class=" ui-state-default ui-corner-all span_left">年度:2017</span>
-   		<span  class="ui-state-default ui-corner-all span_left">当前机构类型:法人机构</span>
-   		<span  class="ui-state-default ui-corner-all span_left">总分:80分</span>
+	<div  class="ui-banner  ui-noBottomboder">
+   		<span class="span_left">年度:2017</span>
+   		<span  class=" span_left">当前机构类型:法人机构</span>
+   		<span  class=" span_left">总分:80分</span>
 	</div>
 	<table id="gridtable" class="wwFormTable"></table> 
 	<div id="gridtable_pager" ></div> 
-			<table class="wwFormTable" style="width: 100%;">
+			<table class="wwFormTable"  id="tabel_detail" style="width: 100%;">
 				<tr style="font-weight: bold;">
 					<th width="15%">
 						操作

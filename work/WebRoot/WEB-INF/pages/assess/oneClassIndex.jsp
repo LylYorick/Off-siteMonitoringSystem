@@ -59,7 +59,7 @@
 	</div>
 	<table id="gridtable" class="wwFormTable"></table> 
 	<div id="gridtable_pager" ></div> 
-			<table class="wwFormTable" style="width: 100%">
+			<table class="wwFormTable" id="tabel_detail"  style="width: 100%">
 			<tr style="font-weight: bold;">
 					<th width="20%">
 						操作

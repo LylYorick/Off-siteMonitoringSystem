@@ -4,19 +4,7 @@
 <head>
 	<title>监管评分>>金融机构自评管理</title>
 
-<style type="text/css">
-.span_left{
-	float:right; 
-	padding:.4em 1em; 
-	height:17px;
-	margin-left:5px;
-}
-td.ssr{font-size:28px;padding:0px;padding-top:0px;line-height:110% !important;} 
-textarea[readonly] {
-	background: #DDDDDD;
-}
 
-</style>
 <script type="text/javascript">
      $.subscribe('addApply', function(event,data) {
     	window.location.href="<%=request.getContextPath()%>/assess/assess_applyOppositionAdd.shtml";
@@ -24,10 +12,8 @@ textarea[readonly] {
      $.subscribe('addAssess', function(event,data) {
     	window.location.href="<%=request.getContextPath()%>/assess/assess_applyOppositionForAssess.shtml";
   	});
-  
-     
-    
 </script>
+<link href="<%=request.getContextPath()%>/style/common.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<div class="grid">
@@ -79,13 +65,13 @@ textarea[readonly] {
 			<img id="indicator" src="/work/images/027.gif" alt="Loading..." style="display: none">
 		</div>
 	</fieldset>
-	<div style="overflow:hidden;">
+	<div class="ui-banner  ui-noBottomboder">
 		<sj:submit id="grid_add_colsbutton" value="提出二级指标评分异议"
 						onClickTopics="addApply" button="true" />
 		<sj:submit id="grid_addAssess_colsbutton" value="提出评级等级异议"
 						onClickTopics="addAssess" button="true" />
-   		<span class=" ui-state-default ui-corner-all span_left">年度:2017</span>
-   		<span  class="ui-state-default ui-corner-all span_left">当前机构类型:法人机构</span>
+   		<span class="span_left">年度:2017</span>
+   		<span  class="span_left">当前机构类型:法人机构</span>
 	</div>
 	<div id="gridtable_pager" style="width:100%; overflow:auto;">
 			<table class="wwFormTable" id="tabel_detail" style="width: 100%;min-width: 1200px;">

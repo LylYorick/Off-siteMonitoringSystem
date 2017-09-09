@@ -63,7 +63,7 @@ textarea[readonly] {
 		</table>
 		</s:form>
 	</fieldset>
-	<div style="overflow: auto; height: 95%">
+	<div style="overflow: auto; ">
 			<table class="wwFormTable tablesDiv" >
 				<tr style="font-weight: bold;">
 					<th  style="width:20%;">年度</th>

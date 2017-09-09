@@ -13,20 +13,7 @@
      
     
 </script>
-<style type="text/css">
-.span_left{
-	float:right; 
-	padding:.4em 1em; 
-	height:17px;
-	margin-left:5px;
-}
-
-td.ssr{font-size:28px;padding:0px;padding-top:0px;line-height:110% !important;} 
-
-
-
-</style> 
-
+<link href="<%=request.getContextPath()%>/style/common.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<div class="grid">
@@ -80,12 +67,12 @@ td.ssr{font-size:28px;padding:0px;padding-top:0px;line-height:110% !important;}
 			<img id="indicator" src="/work/images/027.gif" alt="Loading..." style="display: none">
 		</div>
 	</fieldset>
-	<div style="overflow:hidden;">
+	<div  class="ui-banner  ui-noBottomboder">
 		<sj:submit id="grid_add_colsbutton" value="新增指标"
 			onClickTopics="indexadd" button="true" />
-   		<span class=" ui-state-default ui-corner-all span_left">年度:2017</span>
-   		<span  class="ui-state-default ui-corner-all span_left">指标类型:法人机构</span>
-   		<span  class="ui-state-default ui-corner-all span_left">总分:80分</span>
+   		<span class="span_left">年度:2017</span>
+   		<span  class="span_left">指标类型:法人机构</span>
+   		<span  class="span_left">总分:80分</span>
 	</div>
 	<table id="gridtable" class="wwFormTable"></table> 
 	<div id="gridtable_pager" ></div> 

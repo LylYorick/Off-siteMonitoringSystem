@@ -20,16 +20,16 @@
 </head>
 <body>
 	<div class="tableDiv">
-	<div style="padding: 5px;">
-   		<span class=" ui-state-default ui-corner-all span_left">年度:2017</span>
-   		<span  class="ui-state-default ui-corner-all span_left">机构类型:法人机构</span>
-   		<span  class="ui-state-default ui-corner-all span_left">机构名称:中国银行股份有限公司深圳市分行</span>
-   		<span  class="ui-state-default ui-corner-all span_left">自评总分:80分</span>
-   		<span  class="ui-state-default ui-corner-all span_left">人民银行评级总分:80分</span>
-   		<span  class="ui-state-default ui-corner-all span_left">人民银行评级:B</span>
+	<div style="padding: 5px;" class="ui-banner  ui-noBottomboder" >
+   		<span class="left_span">年度:2017</span>
+   		<span  class="left_span">机构类型:法人机构</span>
+   		<span  class="left_span">机构名称:中国银行股份有限公司深圳市分行</span>
+   		<span  class="left_span">自评总分:80分</span>
+   		<span  class="left_span">人民银行评级总分:80分</span>
+   		<span  class="left_span">人民银行评级:B</span>
 	</div>
-	<div style="overflow: auto; height: 95%">
-			<table class="wwFormTable tablesDiv" >
+	<div style="overflow: auto; height: 90%">
+			<table class="wwFormTable tablesDiv"  id="tabel_detail"  >
 				<tr style="font-weight: bold;">
 					<th  style="min-width: 40px;width:5%;">序号</th>
 					<th   align="center" style="min-width:40px; width:5%;">
