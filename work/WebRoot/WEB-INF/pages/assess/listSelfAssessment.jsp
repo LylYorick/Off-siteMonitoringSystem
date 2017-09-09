@@ -4,14 +4,17 @@
 <head>
 	<title>监管评分>>金融机构自评</title>
 	<script type="text/javascript">
+	 $(function(){
+		 $("#return").click(function(){
+			 window.history.back();
+		 });
+	});
      $.subscribe('indexadd', function(event,data) {
     	window.location.href="<%=request.getContextPath()%>/assess/assess_addTwoClassIndex.shtml";
   	});
      $.subscribe('alterIndex', function(event,data) {
     	window.location.href="<%=request.getContextPath()%>/assess/assess_alterTwoClassIndex.shtml";
   	});
-     
-    
 </script>
 <style type="text/css">
 .span_left{
@@ -136,6 +139,10 @@ td.ssr{font-size:28px;padding:0px;padding-top:0px;line-height:110% !important;}
 				</tr>
 					
 			</table>
+			<div align="center" style="margin-top:10px;">
+				<input type="button" id="return" value="返  回" 
+									class="ui-button ui-state-default ui-corner-all">
+			</div>
 		</div>
 	</div>
 	

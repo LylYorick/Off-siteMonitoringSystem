@@ -21,9 +21,12 @@ textarea {
 <script type="text/javascript">
 $(function(){
 
-  $("#addApply").click(function() {
+  	$("#addApply").click(function() {
     	window.location.href="<%=request.getContextPath()%>/assess/assess_selfAssessmentUpload.shtml";
-  	});  
+  	});
+   	$("#return").click(function(){
+		 window.history.back();
+	}); 
 });
    
 </script>
@@ -82,7 +85,10 @@ $(function(){
 						<tr>
 							<td colspan="2" align="center"><input type="button"
 								id="assess_indexsave_0" value="提    交"
-								class="ui-button ui-state-default ui-corner-all"></td>
+								class="ui-button ui-state-default ui-corner-all">
+									<input type="button" id="return" value="返    回" 
+									class="ui-button ui-state-default ui-corner-all">
+								</td>
 						</tr>
 					</tbody>
 				</table>

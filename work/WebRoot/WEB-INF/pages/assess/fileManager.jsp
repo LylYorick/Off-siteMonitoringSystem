@@ -8,7 +8,12 @@
 		 $.subscribe('firstRate', function(event,data) {
 	    	window.location.href="<%=request.getContextPath()%>/assess/assess_peopleBankFirstRateList.shtml";
 	  	});
-		</script>
+	  	 $(function(){
+			 $("#return").click(function(){
+				 window.history.back();
+			 });
+		});
+	</script>
 
 <style type="text/css">
 .span_left{
@@ -56,14 +61,10 @@ textarea.erji{width:90%; height:100%;}
 			</tbody>
 		</table>
 		</s:form>
-		<%-- <div align="center">
-			<a target="_blank" href="<%=request.getContextPath()%>/images/logo1.jpg" >查看图片</a>
-			
-			<a href="<%=request.getContextPath()%>/images/logo1.jpg" download="w3logo">下载图片</a>
-			
-			<input type="submit" id="searchbutton" value="查  询" style="margin-top:7px;" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
-			<img id="indicator" src="/work/images/027.gif" alt="Loading..." style="display: none">
-		</div> --%>
+		 <div align="center"  style="margin-top: 5px">
+			<input type="button" id="return" value="返回" 
+									class="ui-button ui-state-default ui-corner-all">
+		</div> 
 	</fieldset>
 	</div>
 	

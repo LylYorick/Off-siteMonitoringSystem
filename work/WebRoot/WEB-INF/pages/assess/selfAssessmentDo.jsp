@@ -7,7 +7,11 @@
      $.subscribe('uploadFiles', function(event,data) {
     	window.location.href="<%=request.getContextPath()%>/assess/assess_selfAssessmentUpload.shtml";
   	});
-     
+     $(function(){
+		 $("#return").click(function(){
+			 window.history.back();
+		 });
+	});
     
 </script>
 <style type="text/css">
@@ -147,6 +151,8 @@ textarea[readonly] {
 			<div align="center" style="margin-top:10px;">
 				<input type="button" id="searchbutton" value="保存" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
 				<input type="button" id="searchbutton" value="提交" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+					<input type="button" id="return" value="返回" 
+									class="ui-button ui-state-default ui-corner-all">
 			</div>
 		</div>
 	</div>

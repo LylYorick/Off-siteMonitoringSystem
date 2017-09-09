@@ -20,9 +20,7 @@
 	height:17px;
 	margin-left:5px;
 }
-td{
-	text-align:center;
-}
+
 textarea.erji{width:90%; height:100%;}
 </style>
 </head>

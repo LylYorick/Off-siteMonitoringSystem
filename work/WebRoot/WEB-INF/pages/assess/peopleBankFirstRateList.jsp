@@ -13,7 +13,11 @@
      $.subscribe('file', function(event,data) {
     	window.location.href="<%=request.getContextPath()%>/assess/assess_fileManager.shtml";
   	});
-    
+     $(function(){
+		 $("#return").click(function(){
+			 window.history.back();
+		 });
+	});
 </script>
 <style type="text/css">
 .span_left{
@@ -144,9 +148,12 @@ textarea.erji{width:90%; height:100%;}
 				</table>
 				<table  align="center">
 					<tr align="center">
-						<td colspan="2" align="center"><input type="submit"
-								id="assess_indexsave_0" value="提    交"
-								class="ui-button ui-state-default ui-corner-all"></td>
+						<td colspan="2" align="center">	
+						<input type="button" id="searchbutton" value="保存" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+						<input type="button" id="searchbutton" value="提交" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+						<input type="button" id="return" value="返回" 
+									class="ui-button ui-state-default ui-corner-all">
+						</td>
 					
 					</tr>
 				</table>
@@ -154,14 +161,4 @@ textarea.erji{width:90%; height:100%;}
 	</div>
 </body>
 
-	<script type="text/javascript">
-		function checkNum(cellvalue, options, rowObject) { 
-			if(cellvalue>=80){
-				return "<span style='color:green;'>"+cellvalue+"</span>";
-				}else if(cellvalue>50){
-					return "<span style='color:red'>"+cellvalue+"</span>";
-				}else{
-					return "<span style='color:blue;font-weight:bold'>"+cellvalue+"</span>";
-				}
-        } 
-	</script>
+	

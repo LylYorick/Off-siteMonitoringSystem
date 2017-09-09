@@ -8,6 +8,11 @@
 		 $.subscribe('firstRate', function(event,data) {
 	    	window.location.href="<%=request.getContextPath()%>/assess/assess_peopleBankFirstRateList.shtml";
 	  	});
+	  	$(function(){
+			 $("#return").click(function(){
+				 window.history.back();
+			 });
+		});
 		</script>
 
 <style type="text/css">
@@ -62,9 +67,8 @@ textarea.erji{width:90%; height:100%;}
 		</s:form>
 		<div align="center">
 			<input type="submit" id="searchbutton" value="提交" style="margin-top:7px;" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
-			<input type="submit" id="searchbutton2" value="取消" style="margin-top:7px;" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
-	
-			<img id="indicator" src="/work/images/027.gif" alt="Loading..." style="display: none">
+			<input type="button" id="return" value="返回" 
+									class="ui-button ui-state-default ui-corner-all">			
 		</div> 
 	</fieldset>
 	</div>

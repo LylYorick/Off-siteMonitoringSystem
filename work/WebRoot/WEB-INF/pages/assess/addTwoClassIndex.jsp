@@ -19,6 +19,15 @@ textarea {
 	text-align:left;
 }
 </style>
+
+<script type="text/javascript">
+	$(function(){
+	
+	 $("#return").click(function(){
+		 window.history.back();
+	 });
+	});
+</script>
 </head>
 <body>
 	<div class="grid">
@@ -110,7 +119,10 @@ textarea {
 						<tr>
 							<td colspan="2" align="center"><input type="submit"
 								id="assess_indexsave_0" value="提    交"
-								class="ui-button ui-state-default ui-corner-all"></td>
+								class="ui-button ui-state-default ui-corner-all">
+								<input type="button" id="return" value="返  回" 
+									class="ui-button ui-state-default ui-corner-all">
+							</td>
 						</tr>
 					</tbody>
 				</table>

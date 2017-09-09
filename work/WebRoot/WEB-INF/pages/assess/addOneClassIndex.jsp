@@ -4,16 +4,23 @@
 <head>
 	<title>监管评分>>一级指标管理>>新增一级指标</title>
 
+<script type="text/javascript">
+	$(function(){
+	
+	 $("#return").click(function(){
+		 window.history.back();
+	 });
+	});
+</script>
 <style type="text/css">
+
 .span_left{
 	float:right; 
 	padding:.4em 1em; 
 	height:17px;
 	margin-left:5px;
 }
-td{
-	text-align:center;
-}
+
 </style>
 </head>
 <body>
@@ -62,17 +69,12 @@ td{
 							
 						</tr>
 						<tr>
-							<td class="tdLabel" colspan="1"><label
-								for="assess_indexsave_ascproject" class="label">分值:</label>
-							</td>
-							<td colspan="1"><label
-								for="assess_indexsave_ascproject" class="label">0分</label>
-							</td>
-						</tr>
-						<tr>
 							<td colspan="2" align="center"><input type="submit"
-								id="assess_indexsave_0" value="提    交"
-								class="ui-button ui-state-default ui-corner-all"></td>
+								id="assess_indexsave_0" value="提 交"
+								class="ui-button ui-state-default ui-corner-all">
+								<input type="button" id="return" value="返 回" 
+									class="ui-button ui-state-default ui-corner-all">
+							</td>
 						</tr>
 					</tbody>
 				</table>

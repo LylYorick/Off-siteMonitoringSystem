@@ -11,7 +11,11 @@
     	window.location.href="<%=request.getContextPath()%>/assess/assess_alterTwoClassIndex.shtml";
   	});
      
-    
+     $(function(){
+		 $("#return").click(function(){
+			 window.history.back();
+		 });
+	});
 </script>
 <style type="text/css">
 .span_left{
@@ -151,6 +155,8 @@ textarea[readonly] {
 				<input type="button" id="searchbutton" value="保存" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" >
 				<input type="submit" id="searchbutton" value="复核通过" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
 				<input type="submit" id="searchbutton" value="复核拒绝" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+				<input type="button" id="return" value="返回" 
+									class="ui-button ui-state-default ui-corner-all">
 			</div>
 		</div>
 	</div>

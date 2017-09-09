@@ -11,10 +11,16 @@
 	height:17px;
 	margin-left:5px;
 }
-td{
-	text-align:center;
-}
+
 </style>
+<script type="text/javascript">
+	$(function(){
+	
+	 $("#return").click(function(){
+		 window.history.back();
+	 });
+	});
+</script>
 </head>
 <body>
 	<div class="grid">
@@ -72,8 +78,11 @@ td{
 						</tr>
 						<tr>
 							<td colspan="2" align="center"><input type="submit"
-								id="assess_indexsave_0" value="提    交"
-								class="ui-button ui-state-default ui-corner-all"></td>
+								id="assess_indexsave_0" value="提   交"
+								class="ui-button ui-state-default ui-corner-all">
+								<input type="button" id="return" value="返 回" 
+									class="ui-button ui-state-default ui-corner-all">
+							</td>
 						</tr>
 					</tbody>
 				</table>
