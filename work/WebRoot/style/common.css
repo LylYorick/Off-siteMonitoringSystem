@@ -1,0 +1,25 @@
+.span_left{
+	padding:.4em 1em; 
+	height:25px;
+	margin:5px 5px 0px 0px;
+}
+
+td.ssr{font-size:28px;padding:0px;padding-top:0px;line-height:110% !important;} 
+.tableDiv{
+	width: 98%; 
+	height:95%;
+	overflow-x: auto; 
+	margin: 10px;
+}
+.tablesDiv{
+	margin:  auto !important;
+	width: 100% !important;
+	min-width: 1400px;
+
+}
+textarea[readonly] {
+	background: #DDDDDD;
+}
+#tabel_detail td{
+	text-align: center;
+}
