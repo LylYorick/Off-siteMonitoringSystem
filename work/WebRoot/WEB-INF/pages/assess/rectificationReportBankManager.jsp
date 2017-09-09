@@ -92,7 +92,7 @@
 			<table class="wwFormTable"  id="tabel_detail" style="width: 100%" >
 					<tr style="font-weight: bold;">
 						<th width="50">序号</th>
-						<th style="width:100px">
+						<th style="min-width:100px">
 							文件操作
 						</th>
 						<th style="min-width:200px">
