@@ -142,10 +142,8 @@ textarea.erji{width:90%; height:100%;}
 						<td colspan="2" align="center">	
 						<input type="button" id="searchbutton" value="保存" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
 						<input type="button" id="searchbutton" value="提交" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
-						<input type="button" id="return" value="返回" 
-									class="ui-button ui-state-default ui-corner-all">
+						<input type="button" id="return" value="返回" class="ui-button ui-state-default ui-corner-all">
 						</td>
-					
 					</tr>
 				</table>
 		</div> 

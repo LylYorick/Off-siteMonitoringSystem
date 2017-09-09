@@ -12,6 +12,11 @@
 			  $('.wwFormTable tr:first').after(newfile);
 	        });
       });
+     $(function(){
+		 $("#return").click(function(){
+			 window.history.back();
+		 });
+	});
       	function deltr(index)
 	{
 		 var $table=$(".wwFormTable tr");
@@ -81,10 +86,12 @@
 					</tr>
 					<tr>
 						<td colspan="2" align="center">
-							<!-- <input type="button" value="新增资料" id="addDoc" class="ui-button ui-state-default ui-corner-all"> -->
 							<input type="submit" id="document_save_0"
 							value="&#25552;    &#20132;"
-							class="ui-button ui-state-default ui-corner-all" /></td>
+							class="ui-button ui-state-default ui-corner-all" />
+							<input type="button" id="return" value="返回" 
+									class="ui-button ui-state-default ui-corner-all">
+						</td>
 					</tr>
 				</table>
 			</s:form>

@@ -99,9 +99,10 @@
 				style="display: none" />
 		</div>
 	</fieldset><br/>
-	
-		<sj:submit id="grid_upload_colsbutton" value="整改报告上传"
-			onClickTopics="upload" button="true"/>
+		<div  class="ui-banner  ui-noBottomboder">
+			<sj:submit id="grid_upload_colsbutton" value="整改报告上传"
+				onClickTopics="upload" button="true"/>
+		</div>
 			<table class="wwFormTable"  id="tabel_detail">
 					<tr style="font-weight: bold;">
 						<th width="50">序号</th>

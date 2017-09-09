@@ -24,13 +24,7 @@
 	height:17px;
 	margin-left:5px;
 }
-/* td.ldLabel{
-	text-align:left;
-}	
-td{
-	text-align:center;
-}
-	 */	
+
 textarea.erji{width:90%; height:100%;}
 </style>
 </head>
@@ -73,8 +67,8 @@ textarea.erji{width:90%; height:100%;}
 			<img id="indicator" src="/work/images/027.gif" alt="Loading..." style="display: none">
 		</div>
 	</fieldset>
-	<div style="overflow:hidden;">
-   		<span  class="ui-state-default ui-corner-all span_left">当前机构类型:法人机构</span>
+	<div  class="ui-banner  ui-noBottomboder">
+		<span  class=" span_left ">当前机构类型:法人机构</span>
 	</div>
 	<table id="gridtable" class="wwFormTable"></table> 
 	<div id="gridtable_pager" ></div> 
