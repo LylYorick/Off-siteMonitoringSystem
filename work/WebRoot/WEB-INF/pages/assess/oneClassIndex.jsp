@@ -11,17 +11,7 @@
     	window.location.href="<%=request.getContextPath()%>/assess/assess_alterOneClassIndex.shtml";
   	});
 	</script>
-<style type="text/css">
-	.span_left{
-		float:right; 
-		padding:.4em 1em; 
-		height:17px;
-		margin-left:5px;
-	}
-	td{
-	 text-align: center;
-	}
-</style>
+<link href="<%=request.getContextPath()%>/style/common.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<div class="grid">
@@ -60,18 +50,20 @@
 			<img id="indicator" src="/work/images/027.gif" alt="Loading..." style="display: none">
 		</div>
 	</fieldset>
-	<div style="overflow:hidden;">
+	<div  class="ui-banner  ui-noBottomboder">
 		<sj:submit id="grid_add_colsbutton" value="新增指标"
 			onClickTopics="indexadd" button="true" />
-<!-- 		<input id="addOneClassIndex" type="submit"  value="新增指标" class="ui-button ui-widget ui-state-default ui-corner-all" >
- -->   		<span style="float:right; padding:.4em 1em; " class=" span_left ui-state-default ui-corner-all">年度:2017</span>
-   		<span style="float:right; padding:.4em 1em; " class=" span_left ui-state-default ui-corner-all">指标类型:法人机构</span>
-   		<span style="float:right; padding:.4em 1em; " class="span_left ui-state-default ui-corner-all">总分:80分</span>
+		<span  class=" span_left ">年度:2017</span>
+   		<span  class=" span_left ">指标类型:法人机构</span>
+   		<span  class="span_left ">总分:80分</span>
 	</div>
 	<table id="gridtable" class="wwFormTable"></table> 
 	<div id="gridtable_pager" ></div> 
 			<table class="wwFormTable" style="width: 100%">
 			<tr style="font-weight: bold;">
+					<th width="20%">
+						操作
+					</th>
 					<th width="5%">序号</th>
 					<th width="10%">
 						年度
@@ -86,11 +78,14 @@
 					<th width="10%">
 						分值
 					</th>
-					<th width="20%">
-						操作
-					</th>
+				
 				</tr>
 				<tr>
+					<td>
+						<sj:submit id="grid_alter_colsbutton" value="修改"
+						onClickTopics="alterIndex" button="true" />
+						<input type="submit"  value="删除" class="ui-button ui-widget ui-state-default ui-corner-all" >
+					</td>
 					<td>
 						1
 					</td>
@@ -106,13 +101,13 @@
 					<td>
 					20
 					</td>
-					<td>
-						<sj:submit id="grid_alter_colsbutton" value="修改"
-						onClickTopics="alterIndex" button="true" />
-						<input type="submit"  value="删除" class="ui-button ui-widget ui-state-default ui-corner-all" >
-					</td>
+					
 				</tr>
 					<tr>
+					<td>
+						<input type="submit"  value="修改" class="ui-button ui-widget ui-state-default ui-corner-all" >
+						<input type="submit"  value="删除" class="ui-button ui-widget ui-state-default ui-corner-all" >
+					</td>
 					<td>
 						2
 					</td>
@@ -128,10 +123,7 @@
 					<td>
 					20
 					</td>
-					<td>
-						<input type="submit"  value="修改" class="ui-button ui-widget ui-state-default ui-corner-all" >
-						<input type="submit"  value="删除" class="ui-button ui-widget ui-state-default ui-corner-all" >
-					</td>
+				
 				</tr>
 			</table>
 	

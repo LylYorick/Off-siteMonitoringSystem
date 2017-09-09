@@ -54,11 +54,20 @@ textarea[readonly] {
 			<table class="wwFormTable tablesDiv" >
 				<tr style="font-weight: bold;">
 					<th  style="min-width: 40px;width:5%;">序号</th>
-					<th  style="min-width: 80px;width:10%;">
-						一级指标名称
+					<th   align="center" style="min-width:100px; width:10%;">
+						附件
 					</th>
-					<th  style="min-width: 80px;width:10%;">
-						一级指标描述
+					<th   align="center" style="min-width: 80px;width:10%;">
+						自评得分
+					</th>
+					<th   align="center" style="min-width:150px;width:15%;">
+						自评理由
+					</th>
+					<th   align="center" style="min-width: 40px;width:5%;">
+						分值
+					</th>
+					<th   align="center" style="min-width:100px; width:10%;">
+					 	 复核拒绝理由
 					</th>
 					<th  style="min-width: 160px;width:20%;">
 					二级指标
@@ -69,41 +78,19 @@ textarea[readonly] {
 					<th  style="min-width: 100px;width:10%;">
 						自评理由要求
 					</th>
-					<th   align="center" style="min-width: 40px;width:5%;">
-						分值
+					<th  style="min-width: 80px;width:10%;">
+						一级指标名称
 					</th>
-					<th   align="center" style="min-width: 80px;width:10%;">
-						自评得分
-					</th>
-					<th   align="center" style="min-width:150px;width:15%;">
-						自评理由
-					</th>
-					<th   align="center" style="min-width:100px; width:10%;">
-						附件
-					</th>
-					<th   align="center" style="min-width:100px; width:10%;">
-					 	 复核拒绝理由
+					<th  style="min-width: 80px;width:10%;">
+						一级指标描述
 					</th>
 				</tr>
 				<tr>
 					<td>
 						1
 					</td>
-					<td rowspan="2">
-						制度完善程度
-					</td>
-					<td rowspan="2">
-						<textarea rows="7" cols="10"  readonly="readonly">结合自身业务特点，按照洗钱风险防控、预警和处理程序以及相应的反洗钱要求，建立健全反洗钱内控制度，落实各项监管要求。重点评价制度完备性、修订及时性、报备自觉性。</textarea>
-					</td>
-					<td  class="ssr" >总部内控制度体系全面覆盖法律法规和监管要求涉及的反洗钱各方面义务，各项反洗钱内控措施符合法规要求</td>
-					<td>
-						<textarea rows="3" cols="30" readonly="readonly">1.未建立客户身份识别、客户风险等级划分和分类管理、大额交易和可疑交易报告、客户身份资料和交易记录保存、反恐怖融资、涉恐资产冻结、洗钱风险自评估、分支机构反洗钱工作管理、反洗钱保密、内部审计、宣传培训、绩效考核、责任追究以及协助反洗钱调查等制度，缺1项扣1分；2.未将反洗钱工作要求分解、细化到每一个业务环节和操作岗位，发现1次扣1分。最多扣3分。</textarea>
-					</td>
-					<td>
-						<textarea rows="3" cols="10" readonly="readonly">请重点说明xx年度制度新建、修订和废止情况。</textarea>
-					</td>
-					<td>
-					20
+						<td>
+						<sj:submit id="grid_alter_colsbutton" value="上传附件" onClickTopics="uploadFiles" button="true" />
 					</td>
 					<td align="center">
 						<input type="text" style="width: 50px;">
@@ -112,15 +99,42 @@ textarea[readonly] {
 					<textarea rows="3" cols="20"></textarea>
 					</td>
 					<td>
-						<sj:submit id="grid_alter_colsbutton" value="上传附件" onClickTopics="uploadFiles" button="true" />
+					20
 					</td>
 					<td>
 						<textarea rows="3" cols="10" readonly="readonly" >附件上传错误</textarea>
+					</td>
+					<td  class="ssr" >总部内控制度体系全面覆盖法律法规和监管要求涉及的反洗钱各方面义务，各项反洗钱内控措施符合法规要求</td>
+					<td>
+						<textarea rows="3" cols="30" readonly="readonly">1.未建立客户身份识别、客户风险等级划分和分类管理、大额交易和可疑交易报告、客户身份资料和交易记录保存、反恐怖融资、涉恐资产冻结、洗钱风险自评估、分支机构反洗钱工作管理、反洗钱保密、内部审计、宣传培训、绩效考核、责任追究以及协助反洗钱调查等制度，缺1项扣1分；2.未将反洗钱工作要求分解、细化到每一个业务环节和操作岗位，发现1次扣1分。最多扣3分。</textarea>
+					</td>
+					<td>
+						<textarea rows="3" cols="10" readonly="readonly">请重点说明xx年度制度新建、修订和废止情况。</textarea>
+					</td>
+					<td rowspan="2">
+						制度完善程度
+					</td>
+					<td rowspan="2">
+						<textarea rows="7" cols="10"  readonly="readonly">结合自身业务特点，按照洗钱风险防控、预警和处理程序以及相应的反洗钱要求，建立健全反洗钱内控制度，落实各项监管要求。重点评价制度完备性、修订及时性、报备自觉性。</textarea>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						2
+					</td>
+					<td>
+					<input type="button" value="上传附件" class="ui-button ui-widget ui-state-default ui-corner-all" > 
+					</td>
+					<td>
+					</td>
+					<td>
+					<label class="lable"></label>
+					</td>
+					<td>
+					20
+					</td>
+					<td>
+						<textarea rows="3" cols="10" readonly="readonly" >附件上传错误</textarea>
 					</td>
 					<td class="ssr">
 						1总部根据法律法规和监管要求以及本机构业务发展和反洗钱工作实际及时修订或更新内控制度
@@ -130,21 +144,6 @@ textarea[readonly] {
 					</td>
 					<td>
 						<textarea rows="3" cols="10"   readonly="readonly">此项无需自评</textarea>
-					</td>
-					<td>
-					20
-					</td>
-					<td>
-						
-					</td>
-					<td>
-					<label class="lable"></label>
-					</td>
-					<td>
-					<input type="button" value="上传附件" class="ui-button ui-widget ui-state-default ui-corner-all" > 
-					</td>
-					<td>
-						<textarea rows="3" cols="10" readonly="readonly" >附件上传错误</textarea>
 					</td>
 				</tr>
 			</table>

@@ -11,13 +11,11 @@
 	height:17px;
 	margin-left:5px;
 }
-td{
-	text-align:center;
-}
 td.ssr{font-size:28px;padding:0px;padding-top:0px;line-height:110% !important;} 
 textarea[readonly] {
 	background: #DDDDDD;
 }
+
 </style>
 <script type="text/javascript">
      $.subscribe('addApply', function(event,data) {
@@ -90,9 +88,12 @@ textarea[readonly] {
    		<span  class="ui-state-default ui-corner-all span_left">当前机构类型:法人机构</span>
 	</div>
 	<div id="gridtable_pager" style="width:100%; overflow:auto;">
-			<table class="wwFormTable" style="width: 100%;min-width: 1200px;">
+			<table class="wwFormTable" id="tabel_detail" style="width: 100%;min-width: 1200px;">
 				<tr style="font-weight: bold;">
 					<th style="min-width: 50px;width:5%;">编号</th>
+					<th style="min-width: 100px;width:15%;">
+						操作
+					</th>
 					<th style="min-width: 100px;width:10%;">
 						异议类型
 					</th>
@@ -118,16 +119,15 @@ textarea[readonly] {
 					<th  style="min-width: 100px;width:20%;">
 					 	处理理由
 					</th>
-					<th style="min-width: 100px;width:10%;" >
-						附件
-					</th>
-					<th style="min-width: 100px;width:10%;">
-						操作
-					</th>
+					
 				</tr>
 				<tr>
 					<td>
 						12
+					</td>
+					<td>
+						<sj:submit id="grid_check_colsbutton" value="附件" onClickTopics="checkIndex" button="true" />
+						<input type="button" id="searchbutton" value="删除" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
 					</td>
 					<td>
 						评级等级异议
@@ -154,17 +154,15 @@ textarea[readonly] {
 						(2)提供信息资料存在重大事项隐瞒、重大信息遗漏、虚假陈述或误导性陈述，情节严重
 						因此无法修改评级</textarea>
 					</td>
-					<td>
-						<sj:submit id="grid_check_colsbutton" value="查看附件"
-						onClickTopics="checkIndex" button="true" />
-					</td>
-					<td>
-						<input type="button" id="searchbutton" value="删除" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
-					</td>
+					
 				</tr>
 				<tr>
 				<td>
 						13
+					</td>
+						<td>
+						<input type="button" id="searchbutton" value="附件" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+						<input type="button" id="searchbutton" value="删除" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
 					</td>
 					<td>
 						二级指标评分异议
@@ -185,12 +183,6 @@ textarea[readonly] {
 					<td>
 					</td>
 					<td>
-					</td>
-					<td>
-						<input type="button" id="searchbutton" value="查看附件" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
-					</td>
-					<td>
-						<input type="button" id="searchbutton" value="删除" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
 					</td>
 				</tr>
 			</table>

@@ -1,7 +1,10 @@
 .span_left{
-	padding:.4em 1em; 
-	height:25px;
+	padding:2px; 
+	height:15px;
+	text-align:center;
 	margin:5px 5px 0px 0px;
+	float:right; 
+	margin-left:5px;
 }
 
 td.ssr{font-size:28px;padding:0px;padding-top:0px;line-height:110% !important;} 
@@ -22,4 +25,14 @@ textarea[readonly] {
 }
 #tabel_detail td{
 	text-align: center;
+}
+
+.ui-banner{
+ 	font-weight: bold; 
+ 	color: #2e6e9e; 
+ 	overflow:hidden;
+ 	height: 29px;
+}
+.ui-noboder{
+	border: none;
 }

@@ -91,6 +91,9 @@ td.ssr{font-size:28px;padding:0px;padding-top:0px;line-height:110% !important;}
 	<div id="gridtable_pager" ></div> 
 			<table class="wwFormTable" style="width: 100%">
 				<tr style="font-weight: bold;">
+					<th width="15%">
+						操作
+					</th>
 					<th width="5%">序号</th>
 					<th width="10%">
 						一级指标名称
@@ -110,11 +113,12 @@ td.ssr{font-size:28px;padding:0px;padding-top:0px;line-height:110% !important;}
 					<th  width="5%" align="center">
 					分值
 					</th>
-					<th width="15%">
-						操作
-					</th>
 				</tr>
 				<tr>
+					<td>
+						<sj:submit id="grid_alter_colsbutton" value="修改" onClickTopics="alterIndex" button="true" />
+						<input type="submit"  value="删除" class="ui-button ui-widget ui-state-default ui-corner-all" >
+					</td>
 					<td>
 						1
 					</td>
@@ -134,12 +138,12 @@ td.ssr{font-size:28px;padding:0px;padding-top:0px;line-height:110% !important;}
 					<td>
 					20
 					</td>
-					<td>
-						<sj:submit id="grid_alter_colsbutton" value="修改" onClickTopics="alterIndex" button="true" />
-						<input type="submit"  value="删除" class="ui-button ui-widget ui-state-default ui-corner-all" >
-					</td>
 				</tr>
 				<tr>
+					<td>
+						<input type="submit"  value="修改" class="ui-button ui-widget ui-state-default ui-corner-all" >
+						<input type="submit"  value="删除" class="ui-button ui-widget ui-state-default ui-corner-all" >
+					</td>
 					<td>
 						2
 					</td>
@@ -154,10 +158,6 @@ td.ssr{font-size:28px;padding:0px;padding-top:0px;line-height:110% !important;}
 					</td>
 					<td>
 					20
-					</td>
-					<td>
-						<input type="submit"  value="修改" class="ui-button ui-widget ui-state-default ui-corner-all" >
-						<input type="submit"  value="删除" class="ui-button ui-widget ui-state-default ui-corner-all" >
 					</td>
 				</tr>
 					

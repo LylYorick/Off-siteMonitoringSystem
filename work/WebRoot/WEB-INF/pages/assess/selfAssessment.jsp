@@ -77,6 +77,9 @@ td{
 	<div id="gridtable_pager" ></div> 
 			<table class="wwFormTable" style="width: 100%;">
 				<tr style="font-weight: bold;">
+					<th width="15%">
+						操作
+					</th>
 					<th width="5%">年度</th>
 					<th width="10%">
 						机构类型
@@ -102,11 +105,17 @@ td{
 					<th  width="10%">
 						人民银行评级
 					</th>
-					<th width="15%">
-						操作
-					</th>
+					
 				</tr>
 				<tr>
+					<td>
+						<sj:submit id="grid_list_colsbutton" value="查看"
+						onClickTopics="listIndex" button="true" />
+						<sj:submit id="grid_do_colsbutton" value="自评"
+						onClickTopics="doIndex" button="true" />
+						<sj:submit id="grid_check_colsbutton" value="复核"
+						onClickTopics="checkIndex" button="true" />
+					</td>
 					<td>
 						2017
 					</td>
@@ -132,14 +141,7 @@ td{
 					</td>
 					<td>
 					</td>
-					<td>
-						<sj:submit id="grid_list_colsbutton" value="查看"
-						onClickTopics="listIndex" button="true" />
-						<sj:submit id="grid_do_colsbutton" value="自评"
-						onClickTopics="doIndex" button="true" />
-						<sj:submit id="grid_check_colsbutton" value="复核"
-						onClickTopics="checkIndex" button="true" />
-					</td>
+					
 				</tr>
 			</table>
 	

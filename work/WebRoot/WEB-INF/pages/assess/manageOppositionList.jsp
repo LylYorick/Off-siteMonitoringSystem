@@ -5,15 +5,7 @@
 	<title>监管评分>>异议申请处理</title>
 
 <style type="text/css">
-.span_left{
-	float:right; 
-	padding:.4em 1em; 
-	height:17px;
-	margin-left:5px;
-}
-td{
-	text-align:center;
-}
+
 td.ssr{font-size:28px;padding:0px;padding-top:0px;line-height:110% !important;} 
 textarea[readonly] {
 	background: #DDDDDD;
@@ -37,6 +29,7 @@ textarea[readonly] {
 	});
     
 </script>
+<link href="<%=request.getContextPath()%>/style/common.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<div class="grid">
@@ -112,14 +105,17 @@ textarea[readonly] {
 			<img id="indicator" src="/work/images/027.gif" alt="Loading..." style="display: none">
 		</div>
 	</fieldset>
-	<div style="overflow:hidden;">
-   		<span class=" ui-state-default ui-corner-all span_left">年度:2017</span>
-   		<span  class="ui-state-default ui-corner-all span_left">当前机构类型:法人机构</span>
+	<div class="ui-banner  ui-noBottomboder">
+   		<span 	class=" span_left">年度:2017</span>
+   		<span  class="span_left">当前机构类型:法人机构</span>
 	</div>
 	<div id="gridtable_pager" style="width:100%; overflow:auto;">
-			<table class="wwFormTable" style="width: 100%;min-width: 1450px;">
+			<table class="wwFormTable"  id="tabel_detail" style="width: 100%;min-width: 1450px;">
 				<tr style="font-weight: bold;">
 					<th style="min-width: 50px;width:5%;">编号</th>
+					<th style="min-width: 150px;width:15%;">
+						操作
+					</th>
 					<th style="min-width: 200px;width:20%;">机构名称</th>
 					<th style="min-width: 100px;width:10%;">
 						异议类型
@@ -139,22 +135,22 @@ textarea[readonly] {
 					<th style="min-width: 100px;width:10%;" >
 						状态
 					</th>
-					<th style="min-width: 100px;width:10%;" >
-						附件
-					</th>
 					<th  style="min-width: 50px;width:5%;">
 					 	处理结果
 					</th>
 					<th  style="min-width: 100px;width:20%;">
 					 	处理理由
 					</th>
-					<th style="min-width: 100px;width:10%;">
-						操作
-					</th>
+					
 				</tr>
 				<tr>
 					<td>
 						12
+					</td>
+					<td>
+						<sj:submit id="grid_check_colsbutton" value="附件"
+						onClickTopics="checkIndex" button="true" />
+						<input type="button" id="dealAssess" value="处理" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
 					</td>
 					<td>
 						中国银行股份有限公司深圳市分行
@@ -177,10 +173,6 @@ textarea[readonly] {
 						已处理
 					</td>
 					<td>
-						<sj:submit id="grid_check_colsbutton" value="查看"
-						onClickTopics="checkIndex" button="true" />
-					</td>
-					<td>
 						E
 					</td>
 					<td>
@@ -188,13 +180,15 @@ textarea[readonly] {
 						(2)提供信息资料存在重大事项隐瞒、重大信息遗漏、虚假陈述或误导性陈述，情节严重
 						因此无法修改评级</textarea>
 					</td>
-					<td>
-						<input type="button" id="dealAssess" value="处理" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
-					</td>
+					
 				</tr>
 				<tr>
 				<td>
 						13
+					</td>
+					<td>
+						<input type="button" id="searchbutton" value="附件" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+						<input type="button" id="deal" value="处理" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
 					</td>
 					<td>
 						中国银行股份有限公司深圳市分行
@@ -216,15 +210,10 @@ textarea[readonly] {
 						待处理
 					</td>
 					<td>
-						<input type="button" id="searchbutton" value="查看" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
 					</td>
 					<td>
 					</td>
-					<td>
-					</td>
-					<td>
-						<input type="button" id="deal" value="处理" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
-					</td>
+					
 				</tr>
 			</table>
 		</div> 
