@@ -88,8 +88,8 @@ textarea[readonly] {
 					</td> 
 					<td colspan="1">
 						<select style="height:25px;">
-	    					<option value="1">二级指标评分异议</option>
-	    					<option value="1">评级等级异议</option>
+	    					<option value="1">评分异议</option>
+	    					<option value="1">等级异议</option>
 						</select>
 					</td>   
 					<td class="tdLabel" colspan="1">
@@ -107,7 +107,7 @@ textarea[readonly] {
 	</fieldset>
 	<div class="ui-banner  ui-noBottomboder">
    		<span 	class=" span_left">年度:2017</span>
-   		<span  class="span_left">当前机构类型:法人机构</span>
+   		<span  class="span_left">机构类型:法人机构</span>
 	</div>
 	<div id="gridtable_pager" style="width:100%; overflow:auto;">
 			<table class="wwFormTable"  id="tabel_detail" style="width: 100%;min-width: 1450px;">
@@ -127,7 +127,7 @@ textarea[readonly] {
 						异议值				
 					</th>
 					<th style="min-width: 50px;width:10%;">
-						期望结果
+						期望值
 					</th>
 					<th style="min-width: 200px;width:20%;">
 						理由
@@ -156,7 +156,7 @@ textarea[readonly] {
 						中国银行股份有限公司深圳市分行
 					</td>
 					<td>
-						评级等级异议
+						等级异议
 					</td>
 					<td  class="ssr" ></td>
 					<td>
@@ -194,7 +194,7 @@ textarea[readonly] {
 						中国银行股份有限公司深圳市分行
 					</td>
 					<td>
-						二级指标评分异议
+						评分异议
 					</td>
 					<td  class="ssr" >总部内控制度体系全面覆盖法律法规和监管要求涉及的反洗钱各方面义务，各项反洗钱内控措施符合法规要求</td>
 					<td>

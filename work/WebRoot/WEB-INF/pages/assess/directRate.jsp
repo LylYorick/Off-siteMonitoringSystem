@@ -30,7 +30,7 @@ textarea.erji{width:90%; height:100%;}
 	<div class="grid">
 	<fieldset>
 		<legend>
-			查看附件
+			直接定级
 		</legend>
 		<br>
 		<s:form namespace="/assess" action="assess_list" method="post">
@@ -38,7 +38,7 @@ textarea.erji{width:90%; height:100%;}
 	   		 <tbody>
 	   		 	<tr>  
 	   		 		<td class="tdLabel" colspan="1">
-		    			<label class="label" >直接评定等级:</label>﻿
+		    			<label class="label" >直接定级:</label>﻿
 					</td>   
 			    	<td   colspan="1" align="left">
 						<select style="height:25px;">
@@ -51,7 +51,7 @@ textarea.erji{width:90%; height:100%;}
 	        	
 	        	<tr>
 	        		<td   class="tdLabel" colspan="1">
-						直接评定理由
+						直接定级理由
 					</td> 
 					<td align="left">
 						<textarea style="width:230px;height:50px;" ></textarea>

@@ -25,7 +25,7 @@
 	margin-left:5px;
 }
 
-textarea.erji{width:90%; height:100%;}
+
 </style>
 </head>
 <body>
@@ -91,20 +91,20 @@ textarea.erji{width:90%; height:100%;}
 						自评得分
 					</th>
 					<th  width="10%">
-					 	人民银行评分
+					 	评级得分
 					</th>
 					<th  width="5%">
-						人民银行评级
+						评级等级
 					</th>
 					<th  width="20%">
-						人行评级理由
+						定级理由
 					</th>
 				</tr>
 				<tr>
 					<td>
 						<sj:submit id="grid_alter_colsbutton1" value="查看" onClickTopics="viewRate" button="true" />
-						<sj:submit id="grid_alter_colsbutton" value="人行初评" onClickTopics="firstRate" button="true" />
-						<sj:submit id="direct_colsbutton" value="直接评定等级" onClickTopics="directRate" button="true" />
+						<sj:submit id="grid_alter_colsbutton" value="评级" onClickTopics="firstRate" button="true" />
+						<sj:submit id="direct_colsbutton" value="直接定级" onClickTopics="directRate" button="true" />
 					</td>
 					<td>
 						2017
@@ -135,8 +135,8 @@ textarea.erji{width:90%; height:100%;}
 				<tr>
 					<td>
 						<sj:submit id="grid_alter_colsbutton3" value="查看" onClickTopics="viewRate" button="true" />
-						<sj:submit id="grid_alter_colsbutton2" value="人行初评" onClickTopics="firstRate" button="true" />
-						<sj:submit id="direct_colsbutton2" value="直接评定等级" onClickTopics="directRate" button="true" />
+						<sj:submit id="grid_alter_colsbutton2" value="评级" onClickTopics="firstRate" button="true" />
+						<sj:submit id="direct_colsbutton2" value="直接定级" onClickTopics="directRate" button="true" />
 					</td>
 					<td>
 						2017

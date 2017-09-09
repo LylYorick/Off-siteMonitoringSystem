@@ -59,7 +59,7 @@
 	<div class="grid">
 		<fieldset>
 		<legend>
-			监管意见书管理
+			报告管理
 		</legend>
 		<br>
 		<s:form namespace="/document" action="document_list" method="post">
@@ -100,17 +100,17 @@
 				style="display: none" />
 		</div>
 	</fieldset><br/>
-			<table class="wwFormTable" id="tabel_detail">
+			<table class="wwFormTable" id="tabel_detail" style="width: 100%" >
 					<tr style="font-weight: bold;">
 						<th width="50">序号</th>
 						<th width="100">
 							操作
 						</th>
-						<th width="200">
+						<th style="min-width:150px">
 							金融机构名称
 						</th>
 						<th width="100" >
-							人民银行评级等级
+							评级等级
 						</th>
 						<th  width="100">
 							年份
@@ -118,7 +118,7 @@
 						<th  width="100">
 							报告类型
 						</th>
-						<th  width="280" align="center">
+						<th  style="min-width:200px" align="center">
 							报告名称
 						</th>
 					</tr>
@@ -127,7 +127,7 @@
 							1
 						</td>
 						<td >
-							<sj:submit id="grid_download_colsbutton" value="文件下载" timeout="2500"
+							<sj:submit id="grid_download_colsbutton" value="下载" timeout="2500"
 									onClickTopics="downloadfile" button="true" indicator="loading" loadingText="正在下载..."/>
 						</td>
 						<td >
@@ -151,7 +151,7 @@
 							2
 						</td>
 						<td >
-							<sj:submit id="grid_download_colsbutton1" value="文件下载" timeout="2500"
+							<sj:submit id="grid_download_colsbutton1" value="下载" timeout="2500"
 									onClickTopics="downloadfile" button="true" indicator="loading" loadingText="正在下载..."/>
 						</td>
 						<td >
@@ -175,7 +175,7 @@
 							3
 						</td>
 						<td >
-							<sj:submit id="grid_download_colsbutton2" value="文件下载" timeout="2500"
+							<sj:submit id="grid_download_colsbutton2" value="下载" timeout="2500"
 								onClickTopics="downloadfile" button="true" indicator="loading" loadingText="正在下载..."/>
 						</td>
 						<td >

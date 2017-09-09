@@ -37,7 +37,7 @@
 	<div class="grid">
 		<fieldset>
 		<legend>
-			金融机构上传整改报告
+			上传整改报告
 		</legend>
 		<br>
 		<s:form namespace="/document" action="document_save" method="post" enctype="multipart/form-data">

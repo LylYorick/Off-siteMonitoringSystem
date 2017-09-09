@@ -23,8 +23,6 @@
 	<div class="tableDiv">
 	<div style="padding: 5px;" class="ui-banner  ui-noBottomboder">
    		<span  class="left_span">年度:2017</span>
-   		<span  class="left_span">机构类型:法人机构</span>
-   		<span  class="left_span">机构名称:中国银行股份有限公司深圳市分行</span>
    		<span  class="left_span">状态:退回修改</span>
    		<span  class="left_span">自评总分:90分</span>
    		<span  class="left_span">自评得分:80分</span>
@@ -37,7 +35,7 @@
 						附件
 					</th>
 					<th   align="center" style="min-width:100px; width:10%;">
-					 	 复核拒绝理由
+					 	拒绝理由
 					</th>
 					<th   align="center" style="min-width: 80px;width:10%;">
 						自评得分
@@ -69,7 +67,7 @@
 						1
 					</td>
 						<td>
-						<sj:submit id="grid_alter_colsbutton" value="查看附件" onClickTopics="uploadFiles" button="true" />
+						<sj:submit id="grid_alter_colsbutton" value="查看" onClickTopics="uploadFiles" button="true" />
 					</td>
 					<td>
 						<textarea rows="3" cols="10" ></textarea>
@@ -104,7 +102,7 @@
 						2
 					</td>
 					<td>
-					<input type="button" value="查看附件" class="ui-button ui-widget ui-state-default ui-corner-all" > 
+					<input type="button" value="查看" class="ui-button ui-widget ui-state-default ui-corner-all" > 
 					</td>
 					<td>
 						<textarea rows="3" cols="10" ></textarea>

@@ -38,7 +38,7 @@
 	<div class="grid">
 		<fieldset>
 		<legend>
-			人民银行上传监管意见书
+			上传监管意见书
 		</legend>
 		<br>
 		<s:form namespace="/document" action="document_save" method="post" enctype="multipart/form-data">

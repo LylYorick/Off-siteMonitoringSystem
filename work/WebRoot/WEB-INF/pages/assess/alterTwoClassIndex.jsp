@@ -60,11 +60,11 @@ $(function(){
 						</tr>
 						<tr>
 							<td class="tdLabel" colspan="1"><label
-								for="assess_indexsave_ascdesc" class="label">指标类型<span
+								for="assess_indexsave_ascdesc" class="label">机构类型<span
 									class="required">(*)</span>:</label>
 							</td>
 							<td colspan="1">
-							<label for="assess_indexsave_ascproject" class="label">法人机构</label>
+							<label for="assess_indexsave_ascproject" class="label">法人金融机构</label>
 							</td>
 						</tr>
 						<tr>

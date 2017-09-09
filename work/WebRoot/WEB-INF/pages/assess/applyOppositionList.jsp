@@ -37,7 +37,7 @@
 					</td>   
 			    	<td  colspan="1">
 						<select style="height:25px;">
-	    					<option value="1">已发出/未处理</option>
+	    					<option value="1">未处理</option>
 	    					<option value="1">已处理</option>
 						</select>
 					</td> 
@@ -48,8 +48,8 @@
 					</td> 
 					<td colspan="1">
 						<select style="height:25px;">
-	    					<option value="1">二级指标评分异议</option>
-	    					<option value="1">评级等级异议</option>
+	    					<option value="1">评分异议</option>
+	    					<option value="1">等级异议</option>
 						</select>
 					</td>   
 					<td class="tdLabel" colspan="1">
@@ -66,9 +66,9 @@
 		</div>
 	</fieldset>
 	<div class="ui-banner  ui-noBottomboder">
-		<sj:submit id="grid_add_colsbutton" value="提出二级指标评分异议"
+		<sj:submit id="grid_add_colsbutton" value="提出评分异议"
 						onClickTopics="addApply" button="true" />
-		<sj:submit id="grid_addAssess_colsbutton" value="提出评级等级异议"
+		<sj:submit id="grid_addAssess_colsbutton" value="提出等级异议"
 						onClickTopics="addAssess" button="true" />
    		<span class="span_left">年度:2017</span>
    		<span  class="span_left">当前机构类型:法人机构</span>
@@ -90,10 +90,10 @@
 						异议值				
 					</th>
 					<th style="min-width: 50px;width:10%;">
-						期望结果
+						期望值
 					</th>
 					<th style="min-width: 200px;width:20%;">
-						理由
+					异议理由
 					</th>
 					<th style="min-width: 100px;width:10%;" >
 						状态
@@ -116,7 +116,7 @@
 						<input type="button" id="searchbutton" value="删除" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
 					</td>
 					<td>
-						评级等级异议
+						等级异议
 					</td>
 					<td  class="ssr" ></td>
 					<td>
@@ -136,9 +136,8 @@
 						E
 					</td>
 					<td>
-						<textarea rows="3" cols="20" readonly="readonly">重新查看文件后认为依旧违反
-						(2)提供信息资料存在重大事项隐瞒、重大信息遗漏、虚假陈述或误导性陈述，情节严重
-						因此无法修改评级</textarea>
+						<textarea rows="3" cols="20" readonly="readonly">重新查看文件后认为依旧违反(2)提供信息资料存在重大事项隐瞒、重大信息遗漏、虚假陈述或误导性陈述，情节严重
+						</textarea>
 					</td>
 					
 				</tr>
@@ -151,7 +150,7 @@
 						<input type="button" id="searchbutton" value="删除" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
 					</td>
 					<td>
-						二级指标评分异议
+						评分异议
 					</td>
 					<td  class="ssr" >总部内控制度体系全面覆盖法律法规和监管要求涉及的反洗钱各方面义务，各项反洗钱内控措施符合法规要求</td>
 					<td>
@@ -164,7 +163,7 @@
 						<textarea rows="3" cols="20" readonly="readonly">本机构认为完全达到此项标准的要求，申请材料详见附件</textarea>
 					</td>
 					<td>
-						已发出/未处理
+						未处理
 					</td>
 					<td>
 					</td>

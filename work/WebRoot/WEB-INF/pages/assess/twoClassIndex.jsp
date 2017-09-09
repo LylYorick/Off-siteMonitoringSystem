@@ -70,18 +70,18 @@
 	<div  class="ui-banner  ui-noBottomboder">
 		<sj:submit id="grid_add_colsbutton" value="新增指标"
 			onClickTopics="indexadd" button="true" />
-   		<span class="span_left">年度:2017</span>
-   		<span  class="span_left">指标类型:法人机构</span>
    		<span  class="span_left">总分:80分</span>
+   		<span  class="span_left">机构类型:法人机构</span>
+   		<span class="span_left">年度:2017</span>
 	</div>
 	<table id="gridtable" class="wwFormTable"></table> 
 	<div id="gridtable_pager" ></div> 
-			<table class="wwFormTable" style="width: 100%">
+			<table class="wwFormTable" style="width: 100%" id="tabel_detail">
 				<tr style="font-weight: bold;">
+					<th width="5%">序号</th>
 					<th width="15%">
 						操作
 					</th>
-					<th width="5%">序号</th>
 					<th width="10%">
 						一级指标名称
 					</th>
@@ -103,11 +103,11 @@
 				</tr>
 				<tr>
 					<td>
-						<sj:submit id="grid_alter_colsbutton" value="修改" onClickTopics="alterIndex" button="true" />
-						<input type="submit"  value="删除" class="ui-button ui-widget ui-state-default ui-corner-all" >
+						1
 					</td>
 					<td>
-						1
+						<sj:submit id="grid_alter_colsbutton" value="修改" onClickTopics="alterIndex" button="true" />
+						<input type="submit"  value="删除" class="ui-button ui-widget ui-state-default ui-corner-all" >
 					</td>
 					<td rowspan="2">
 						制度完善程度
@@ -128,11 +128,11 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="submit"  value="修改" class="ui-button ui-widget ui-state-default ui-corner-all" >
-						<input type="submit"  value="删除" class="ui-button ui-widget ui-state-default ui-corner-all" >
+						2
 					</td>
 					<td>
-						2
+						<input type="submit"  value="修改" class="ui-button ui-widget ui-state-default ui-corner-all" >
+						<input type="submit"  value="删除" class="ui-button ui-widget ui-state-default ui-corner-all" >
 					</td>
 					<td class="ssr">
 						1总部根据法律法规和监管要求以及本机构业务发展和反洗钱工作实际及时修订或更新内控制度

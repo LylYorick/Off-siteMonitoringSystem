@@ -53,16 +53,10 @@
 			</tbody>
 		</table>
 		</s:form>
-		<div align="center">
-			<input type="submit" id="searchbutton" value="查  询" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
-			<img id="indicator" src="/work/images/027.gif" alt="Loading..." style="display: none">
+		<div align="center" style="margin-top:7px;">
+			<input type="submit" id="searchbutton" value="查  询" class="ui-button ui-widget ui-state-default ui-corner-all gap" role="button" aria-disabled="false">
 		</div>
 	</fieldset>
-	<div  class="ui-banner  ui-noBottomboder">
-   		<span class="span_left">年度:2017</span>
-   		<span  class=" span_left">当前机构类型:法人机构</span>
-   		<span  class=" span_left">总分:80分</span>
-	</div>
 	<table id="gridtable" class="wwFormTable"></table> 
 	<div id="gridtable_pager" ></div> 
 			<table class="wwFormTable"  id="tabel_detail" style="width: 100%;">
@@ -87,13 +81,13 @@
 						自评得分
 					</th>
 					<th  width="10%">
-					 	人民银行评分总分
+					 	评级得分
 					</th>
 					<th  width="10%">
-					 	人民银行评分得分
+						评级等级
 					</th>
-					<th  width="10%">
-						人民银行评级
+					<th  width="20%">
+						定级理由
 					</th>
 					
 				</tr>
@@ -130,8 +124,8 @@
 					<td>
 					</td>
 					<td>
+						<textarea class="erji" readonly="readonly">违反保密规定，出现失密、泄密情况，导致严重后果</textarea>
 					</td>
-					
 				</tr>
 			</table>
 	

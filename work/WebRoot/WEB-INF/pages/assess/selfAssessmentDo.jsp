@@ -20,8 +20,6 @@
 	<div class="tableDiv">
 	<div style="padding: 5px;"  class="ui-banner  ui-noBottomboder">
    		<span class="left_span">年度:2017</span>
-   		<span  class="left_span">机构类型:法人机构</span>
-   		<span  class="left_span">机构名称:中国银行股份有限公司深圳市分行</span>
    		<span  class="left_span">状态:退回修改</span>
    		<span  class="left_span">自评总分:90分</span>
    		<span  class="left_span">自评得分:80分</span>
@@ -66,7 +64,7 @@
 						1
 					</td>
 						<td>
-						<sj:submit id="grid_alter_colsbutton" value="上传附件" onClickTopics="uploadFiles" button="true" />
+						<sj:submit id="grid_alter_colsbutton" value="上传" onClickTopics="uploadFiles" button="true" />
 					</td>
 					<td align="center">
 						<input type="text" style="width: 50px;">
@@ -99,7 +97,7 @@
 						2
 					</td>
 					<td>
-					<input type="button" value="上传附件" class="ui-button ui-widget ui-state-default ui-corner-all" > 
+					<input type="button" value="上传" class="ui-button ui-widget ui-state-default ui-corner-all" > 
 					</td>
 					<td>
 					</td>

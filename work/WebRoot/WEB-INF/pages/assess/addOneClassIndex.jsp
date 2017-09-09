@@ -27,7 +27,7 @@
 	<div class="grid">
 		<fieldset>
 		<legend>
-			新增二级指标
+			新增一级指标
 		</legend>
 		<br>
 		<s:form namespace="/assess" action="assess_indexsave" method="post">

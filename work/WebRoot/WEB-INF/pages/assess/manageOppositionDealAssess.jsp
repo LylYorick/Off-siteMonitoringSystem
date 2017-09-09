@@ -25,9 +25,15 @@ textarea[readonly] {
 $(function(){
 
   $("#addApply").click(function() {
-    	window.location.href="<%=request.getContextPath()%>/assess/assess_selfAssessmentUpload.shtml";
+    	window.location.href="<%=request.getContextPath()%>/assess/assess_fileManager.shtml";
   	});  
 });
+$(function(){
+	
+	 $("#return").click(function(){
+		 window.history.back();
+	 });
+	});
    
 </script>
 </head>
@@ -67,7 +73,7 @@ $(function(){
 						</tr>
 						<tr>
 							<td class="tdLabel" colspan="1"><label
-								for="assess_indexsave_ascadd" class="label">原结果:</label>
+								for="assess_indexsave_ascadd" class="label">异议值:</label>
 							</td>
 							<td colspan="1">
 								<label for="assess_indexsave_ascproject" class="label">E</label>
@@ -75,7 +81,7 @@ $(function(){
 						</tr>
 						<tr>
 							<td class="tdLabel" colspan="1"><label
-								for="assess_indexsave_ascadd" class="label">期望结果:</label>
+								for="assess_indexsave_ascadd" class="label">期望值:</label>
 							</td>
 							<td colspan="1">
 								<label for="assess_indexsave_ascproject" class="label">B</label>
@@ -83,7 +89,7 @@ $(function(){
 						</tr>
 						<tr>
 							<td class="tdLabel" colspan="1"><label
-								for="assess_indexsave_ascadd" class="label">理由:</label>
+								for="assess_indexsave_ascadd" class="label">异议理由:</label>
 							</td>
 							<td colspan="1">
 								<textarea name="ascdesc" cols="50" rows="5"
@@ -96,7 +102,7 @@ $(function(){
 								for="assess_indexsave_ascproject" class="label">附件:</label>
 							</td>
 							<td colspan="1">
-								<input type="button" id="addApply" value="查看附件" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+								<input type="button" id="addApply" value="查看" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
 							</td>
 						</tr>
 						<tr>
@@ -121,7 +127,10 @@ $(function(){
 						<tr>
 							<td colspan="2" align="center"><input type="button"
 								id="assess_indexsave_0" value="提    交"
-								class="ui-button ui-state-default ui-corner-all"></td>
+								class="ui-button ui-state-default ui-corner-all">
+								<input type="button" id="return" value="返  回" 
+									class="ui-button ui-state-default ui-corner-all">
+							</td>
 						</tr>
 					</tbody>
 				</table>

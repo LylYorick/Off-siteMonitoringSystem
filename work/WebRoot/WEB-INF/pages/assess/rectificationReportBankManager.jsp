@@ -59,7 +59,7 @@
 	<div class="grid">
 		<fieldset>
 		<legend>
-			监管意见书管理
+			报告查询
 		</legend>
 		<br>
 		<s:form namespace="/document" action="document_list" method="post">
@@ -73,20 +73,6 @@
 			<td align="left">
 			 	<input type="text"   name="asdf" value="" id="asdf">
 			</td>
-				
-			<%-- <td class="tdLabel" colspan="1">
-    			<label class="label" >金融机构名称:</label>﻿
-			</td>   
-	    	<td  colspan="1">
-				<select style="height:25px;">
-   					<option value="1">招商银行</option>
-   					<option value="1">上海商业银行有限公司深圳分行</option>
-   					<option value="1">华商银行</option>
-   					<option value="1">方正证券深圳分公司</option>
-   					<option value="1">浙商证券有限责任公司深圳辖区</option>
-   					<option value="1">太平人寿保险有限公司深圳分公司</option>
-				</select>
-			</td>  --%>
 		</s:form>
 		<div align="center">
 			<sj:submit formIds="document_list"   style="margin-top:7px;"  id="searchbutton" value="查  询"
@@ -103,17 +89,17 @@
 			<sj:submit id="grid_upload_colsbutton" value="整改报告上传"
 				onClickTopics="upload" button="true"/>
 		</div>
-			<table class="wwFormTable"  id="tabel_detail">
+			<table class="wwFormTable"  id="tabel_detail" style="width: 100%" >
 					<tr style="font-weight: bold;">
 						<th width="50">序号</th>
-						<th width="100">
-							操作
+						<th style="width:100px">
+							文件操作
 						</th>
-						<th width="200">
+						<th style="min-width:200px">
 							金融机构名称
 						</th>
 						<th width="100" >
-							人民银行评级等级
+							评级等级
 						</th>
 						<th  width="100">
 							年份
@@ -121,7 +107,7 @@
 						<th  width="100">
 							报告类型
 						</th>
-						<th  width="200" align="center">
+						<th  style="min-width:320px" align="center">
 							报告名称
 						</th>
 					</tr>
@@ -130,9 +116,9 @@
 							1
 						</td>
 						<td >
-							<sj:submit id="grid_download_colsbutton" value="文件下载" timeout="2500"
+							<sj:submit id="grid_download_colsbutton" value="下载" timeout="2500"
 									onClickTopics="downloadfile" button="true" indicator="loading" loadingText="正在下载..."/>
-							<sj:submit id="grid_delete_colsbutton" value="文件删除" timeout="2500"
+							<sj:submit id="grid_delete_colsbutton" value="删除" timeout="2500"
 									onClickTopics="deletefile" button="true" indicator="loading" loadingText="正在删除..."/>
 						</td>
 						<td >
@@ -156,9 +142,9 @@
 							2
 						</td>
 						<td >
-							<sj:submit id="grid_download_colsbutton1" value="文件下载" timeout="2500"
+							<sj:submit id="grid_download_colsbutton1" value="下载" timeout="2500"
 										onClickTopics="downloadfile" button="true" indicator="loading" loadingText="正在下载..."/>
-							<sj:submit id="grid_delete_colsbutton1" value="文件删除" timeout="2500"
+							<sj:submit id="grid_delete_colsbutton1" value="删除" timeout="2500"
 										onClickTopics="deletefile" button="true" indicator="loading" loadingText="正在删除..."/>
 						</td>
 						<td >
@@ -182,9 +168,9 @@
 							3
 						</td>
 						<td >
-							<sj:submit id="grid_download_colsbutton2" value="文件下载" timeout="2500"
+							<sj:submit id="grid_download_colsbutton2" value="下载" timeout="2500"
 									onClickTopics="downloadfile" button="true" indicator="loading" loadingText="正在下载..."/>
-							<sj:submit id="grid_delete_colsbutton2" value="文件删除" timeout="2500"
+							<sj:submit id="grid_delete_colsbutton2" value="删除" timeout="2500"
 									onClickTopics="deletefile" button="true" indicator="loading" loadingText="正在删除..."/>
 						</td>
 						<td >

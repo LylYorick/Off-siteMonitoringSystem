@@ -22,11 +22,9 @@
 	<div class="tableDiv">
 	<div style="padding: 5px;" class="ui-banner  ui-noBottomboder" >
    		<span class="left_span">年度:2017</span>
-   		<span  class="left_span">机构类型:法人机构</span>
-   		<span  class="left_span">机构名称:中国银行股份有限公司深圳市分行</span>
-   		<span  class="left_span">自评总分:80分</span>
-   		<span  class="left_span">人民银行评级总分:80分</span>
-   		<span  class="left_span">人民银行评级:B</span>
+   		<span  class="left_span">自评得分:80分</span>
+   		<span  class="left_span">评级得分:80分</span>
+   		<span  class="left_span">评级等级:B</span>
 	</div>
 	<div style="overflow: auto; height: 90%">
 			<table class="wwFormTable tablesDiv"  id="tabel_detail"  >
@@ -42,7 +40,7 @@
 						自评得分
 					</th>
 					<th   align="center" style="min-width: 40px;width:5%;">
-					人民银行评分
+						评级得分
 					</th>
 					<th   align="center" style="min-width: 40px;width:5%;">
 						分值
@@ -68,7 +66,7 @@
 						1
 					</td>
 					<td>
-					<sj:submit id="grid_alter_colsbutton" value="附件" onClickTopics="alterIndex" button="true" />
+					<sj:submit id="grid_alter_colsbutton" value="查看" onClickTopics="alterIndex" button="true" />
 					</td>
 					<td>
 						<textarea rows="3" cols="20" readonly="readonly">本机构认为并没有存在下列任一情形，可以直接评定为E类机构：（1）不配合反洗钱调查工作，拒绝提供信息资料；
@@ -104,7 +102,7 @@
 						2
 					</td>
 					<td>
-						<sj:submit id="grid_asda_colsbutton" value="附件" onClickTopics="alterIndex" button="true" />
+						<sj:submit id="grid_asda_colsbutton" value="查看" onClickTopics="alterIndex" button="true" />
 					</td>
 					<td>
 						<textarea rows="3" cols="20" readonly="readonly">本机构认为并没有存在下列任一情形，可以直接评定为E类机构：（1）不配合反洗钱调查工作，拒绝提供信息资料；

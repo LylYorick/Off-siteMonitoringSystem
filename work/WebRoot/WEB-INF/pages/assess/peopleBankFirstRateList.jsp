@@ -21,14 +21,6 @@
 	});
 </script>
 <style type="text/css">
-.span_left{
-	float:right; 
-	padding:.4em 1em; 
-	height:17px;
-	margin-left:5px;
-}
-
-td.ssr{font-size:28px;padding:0px;padding-top:0px;line-height:1 !important;} 
 
 textarea.erji{width:90%; height:100%;}
 
@@ -36,27 +28,26 @@ textarea.erji{width:90%; height:100%;}
 
 </head>
 <body>
-	<div class="grid">
+	<div class="tableDiv">
 	
 	<table id="gridtable" class="wwFormTable"></table>  
-	<div style="overflow:hidden;">
-   		<span class=" ui-state-default ui-corner-all span_left">年度:2017</span>
-   		<span  class="ui-state-default ui-corner-all span_left">指标类型:法人机构</span>
-   		<span  class="ui-state-default ui-corner-all span_left">总分:100分</span>
+	<div class="ui-banner  ui-noBottomboder">
+   		<span class="left_span">年度:2017</span>
+   		<span  class="left_span">机构类型:法人机构</span>
+   		<span  class="left_span">总分:100分</span>
 	</div>
-	<table id="gridtable" class="wwFormTable"></table>  
-		<div id="gridtable_pager" style="width:1000px; height:380px; overflow:auto;" >
-				<table class="wwFormTable" >
+		<div id="gridtable_pager" style=" height:90%; overflow:auto;" >
+				<table class="wwFormTable" id="tabel_detail" >
 					<tr style="font-weight: bold;">
 						<th width="50">序号</th>
 						<th width="100">
-							自评附件
+							附件
 						</th>
 						<th width="80">
-							人行初评分数
+							评级得分
 						</th>
 							<th width="50">
-							自评分数
+							自评得分
 						</th>
 						<th width="150">
 							自评理由
@@ -83,7 +74,7 @@ textarea.erji{width:90%; height:100%;}
 							1
 						</td>
 						<td>
-							<sj:submit id="file_colsbutton" value="附件详情" onClickTopics="file" button="true" />
+							<sj:submit id="file_colsbutton" value="查看" onClickTopics="file" button="true" />
 						</td>
 						<td align="center">
 							<input type="text" style="width:35px"  name="asd" value="15" id="asd">﻿
@@ -115,7 +106,7 @@ textarea.erji{width:90%; height:100%;}
 							2
 						</td>
 						<td>
-							<sj:submit id="file_colsbutton2" value="附件详情" onClickTopics="file" button="true" />
+							<sj:submit id="file_colsbutton2" value="查看" onClickTopics="file" button="true" />
 						</td>
 						<td align="center">
 							<input type="text" style="width:35px"  name="asdf" value="15" id="asdf">

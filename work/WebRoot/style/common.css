@@ -43,3 +43,10 @@ textarea[readonly] {
 .ui-noboder{
 	border: none;
 }
+.gap{
+	margin-top:7px;
+}
+.erji {
+	width: 90%;
+	height: 100%;
+}

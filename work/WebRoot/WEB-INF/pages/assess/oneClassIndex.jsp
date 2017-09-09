@@ -53,9 +53,8 @@
 	<div  class="ui-banner  ui-noBottomboder">
 		<sj:submit id="grid_add_colsbutton" value="新增指标"
 			onClickTopics="indexadd" button="true" />
-		<span  class=" span_left ">年度:2017</span>
-   		<span  class=" span_left ">指标类型:法人机构</span>
    		<span  class="span_left ">总分:80分</span>
+   		<span  class="span_left ">机构类型:法人机构</span>
 	</div>
 	<table id="gridtable" class="wwFormTable"></table> 
 	<div id="gridtable_pager" ></div> 

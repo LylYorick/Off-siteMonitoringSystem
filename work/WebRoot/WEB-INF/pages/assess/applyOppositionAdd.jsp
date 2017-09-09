@@ -35,7 +35,7 @@ $(function(){
 	<div class="grid">
 		<fieldset>
 		<legend>
-			提出异议申请
+			评分异议
 		</legend>
 		<br>
 		<s:form namespace="/assess" method="post">
@@ -84,7 +84,7 @@ $(function(){
 						</tr>
 						<tr>
 							<td class="tdLabel" colspan="1"><label
-								for="assess_indexsave_ascadd" class="label">原结果:</label>
+								for="assess_indexsave_ascadd" class="label">异议值:</label>
 							</td>
 							<td colspan="1">
 								<label for="assess_indexsave_ascproject" class="label">20分</label>
@@ -92,7 +92,7 @@ $(function(){
 						</tr>
 						<tr>
 							<td class="tdLabel" colspan="1"><label
-								for="assess_indexsave_ascadd" class="label">期望结果:</label>
+								for="assess_indexsave_ascadd" class="label">期望值:</label>
 							</td>
 							<td colspan="1">
 								<input type="text"  />
@@ -100,7 +100,7 @@ $(function(){
 						</tr>
 						<tr>
 							<td class="tdLabel" colspan="1"><label
-								for="assess_indexsave_ascadd" class="label">理由:</label>
+								for="assess_indexsave_ascadd" class="label">异议理由:</label>
 							</td>
 							<td colspan="1">
 								<textarea name="ascdesc" cols="50" rows="5"

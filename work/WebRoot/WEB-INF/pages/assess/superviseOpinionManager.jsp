@@ -59,7 +59,7 @@
 	<div class="grid">
 		<fieldset>
 		<legend>
-			监管意见书管理
+			监管意见书查询
 		</legend>
 		<br>
 		<s:form namespace="/document" action="document_list" method="post">
@@ -103,46 +103,36 @@
 			<sj:submit id="grid_upload_colsbutton" value="监管意见书上传"
 				onClickTopics="upload" button="true"/>
 		</div>
-			<table class="wwFormTable" id="tabel_detail">
+			<table class="wwFormTable" id="tabel_detail" style="width: 100%">
 					<tr style="font-weight: bold;">
-						<th width="50">序号</th>
-						<th width="100">
-							操作
+						<th style="width: 50px">序号</th>
+						<th style="min-width:150px">
+							文件操作
 						</th>
-						<th width="200">
-							上报金融机构名称
+						<th style="min-width:200px">
+							金融机构名称
 						</th>
-						<th width="200" >
+						<th style="min-width:300px" >
 							文件名
 						</th>
-						<th  width="100">
+						<th  style="min-width:50">
 							年份
 						</th>
-						<th  width="200">
-							金融机构自评分数
+						<th style="min-width:100">
+							评级等级
 						</th>
-						<th  width="50" align="center">
-							人民银行评级分数
+						<th style="min-width:100">
+							下载状态
 						</th>
-						<th width="50">
-							人民银行评级等级
-						</th>
-						<th width="150">
-							人民银行评级理由
-						</th>
-						<th width="100">
-							金融机构下载状态
-						</th>
-					
 					</tr>
 					<tr>
 						<td>
 							1
 						</td>
 						<td >
-							<sj:submit id="grid_download_colsbutton" value="文件下载" timeout="2500"
+							<sj:submit id="grid_download_colsbutton" value="下载" timeout="2500"
 								onClickTopics="downloadfile" button="true" indicator="loading" loadingText="正在下载..."/>
-							<sj:submit id="grid_delete_colsbutton" value="文件删除" timeout="2500"
+							<sj:submit id="grid_delete_colsbutton" value="删除" timeout="2500"
 								onClickTopics="deletefile" button="true" indicator="loading" loadingText="正在删除..."/>
 						</td>
 						<td >
@@ -152,17 +142,8 @@
 						<td>
 						    2017
 						</td>
-						<td>
-							90
-						</td>
-						<td align="center">
-							80
-						</td>
 						<td align="center">
 							BBB
-						</td>
-						<td>
-							
 						</td>
 						<td>
 							未下载
@@ -175,9 +156,9 @@
 							2
 						</td>
 						<td >
-							<sj:submit id="grid_download_colsbutton1" value="文件下载" timeout="2500"
+							<sj:submit id="grid_download_colsbutton1" value="下载" timeout="2500"
 								onClickTopics="downloadfile" button="true" indicator="loading" loadingText="正在下载..."/>
-							<sj:submit id="grid_delete_colsbutton1" value="文件删除" timeout="2500"
+							<sj:submit id="grid_delete_colsbutton1" value="删除" timeout="2500"
 								onClickTopics="deletefile" button="true" indicator="loading" loadingText="正在删除..."/>
 						</td>
 						<td >
@@ -187,17 +168,8 @@
 						<td>
 						    2017
 						</td>
-						<td>
-							90
-						</td>
-						<td align="center">
-							79
-						</td>
 						<td align="center">
 							BB
-						</td>
-						<td>
-							
 						</td>
 						<td>
 							未下载
