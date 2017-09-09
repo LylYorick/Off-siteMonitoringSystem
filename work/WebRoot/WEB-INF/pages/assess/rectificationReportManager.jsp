@@ -5,6 +5,7 @@
 	<title>监管评分管理>>整改报告管理</title>
 </head>
 <body>
+<link href="<%=request.getContextPath()%>/style/common.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript"> 
 	/**页面加载时渲染日期空间*/
   	$(document).ready(function() {
@@ -28,11 +29,7 @@
     	});
     	
       $.subscribe('downloadfile', function(event,data) {
-     	if(document.getElementById("che1").checked||document.getElementById("che2").checked){
   			window.location.href="<%=request.getContextPath()%>/images/123.docx"; 
-		}else{
-			alert("请选择要下载的资料！");
-		}
    	 }); 	
      $.subscribe('deletefile', function(event,data) {
      	var s = $("#gridtable").jqGrid('getGridParam','selarrrow');
@@ -59,11 +56,6 @@
 		    }); 
     
     </script>     
-    <style type="text/css">
-    	td{
-			text-align:center;
-			}
-	</style>
 	<div class="grid">
 		<fieldset>
 		<legend>
@@ -108,14 +100,11 @@
 				style="display: none" />
 		</div>
 	</fieldset><br/>
-	
-		<sj:submit id="grid_download_colsbutton" value="文件下载" timeout="2500"
-			onClickTopics="downloadfile" button="true" indicator="loading" loadingText="正在下载..."/>
-			<table class="wwFormTable" >
+			<table class="wwFormTable" id="tabel_detail">
 					<tr style="font-weight: bold;">
 						<th width="50">序号</th>
 						<th width="100">
-							<input  type="checkbox"  id="che"  name="che"  class="cbox" disabled="disabled">
+							操作
 						</th>
 						<th width="200">
 							金融机构名称
@@ -138,7 +127,8 @@
 							1
 						</td>
 						<td >
-							<input  type="checkbox"  id="che1"  name="che1"  class="cbox">	
+							<sj:submit id="grid_download_colsbutton" value="文件下载" timeout="2500"
+									onClickTopics="downloadfile" button="true" indicator="loading" loadingText="正在下载..."/>
 						</td>
 						<td >
 							招商银行
@@ -161,7 +151,8 @@
 							2
 						</td>
 						<td >
-							<input  type="checkbox"  id="che2"  name="che2"  class="cbox">	
+							<sj:submit id="grid_download_colsbutton1" value="文件下载" timeout="2500"
+									onClickTopics="downloadfile" button="true" indicator="loading" loadingText="正在下载..."/>
 						</td>
 						<td >
 							上海商业银行有限公司深圳分行
@@ -184,7 +175,8 @@
 							3
 						</td>
 						<td >
-							<input  type="checkbox"  id="che3"  name="che3"  class="cbox">	
+							<sj:submit id="grid_download_colsbutton2" value="文件下载" timeout="2500"
+								onClickTopics="downloadfile" button="true" indicator="loading" loadingText="正在下载..."/>
 						</td>
 						<td >
 							上海商业银行有限公司深圳分行

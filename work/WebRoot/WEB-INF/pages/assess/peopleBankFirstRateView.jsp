@@ -86,7 +86,7 @@ textarea.erji{width:90%; height:100%;}
 							<sj:submit id="file_colsbutton" value="附件详情" onClickTopics="file" button="true" />
 						</td>
 						<td align="center">
-							<input type="text" style="width:35px"  name="asd" value="15" id="asd">﻿
+							<input type="text" style="width:35px"  name="asd" value="15" id="asd" readonly>﻿
 						</td>
 							<td align="center">
 						18
@@ -118,7 +118,7 @@ textarea.erji{width:90%; height:100%;}
 							<sj:submit id="file_colsbutton2" value="附件详情" onClickTopics="file" button="true" />
 						</td>
 						<td align="center">
-							<input type="text" style="width:35px"  name="asdf" value="15" id="asdf">
+							<input type="text" style="width:35px"  name="asdf" value="15" id="asdf" readonly>
 						</td>
 						<td align="center">
 						16
@@ -140,8 +140,6 @@ textarea.erji{width:90%; height:100%;}
 				<table  align="center">
 					<tr align="center">
 						<td colspan="2" align="center">	
-						<input type="button" id="searchbutton" value="保存" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
-						<input type="button" id="searchbutton" value="提交" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
 						<input type="button" id="return" value="返回" 
 									class="ui-button ui-state-default ui-corner-all">
 						</td>

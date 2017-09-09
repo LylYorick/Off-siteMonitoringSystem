@@ -22,9 +22,7 @@
 	height:17px;
 	margin-left:5px;
 }
-td{
-	text-align:center;
-}
+
 textarea.erji{width:90%; height:100%;}
 </style>
 </head>
@@ -42,7 +40,7 @@ textarea.erji{width:90%; height:100%;}
 	   		 		<td class="tdLabel" colspan="1">
 		    			<label class="label" >直接评定等级:</label>﻿
 					</td>   
-			    	<td  colspan="1">
+			    	<td   colspan="1" align="left">
 						<select style="height:25px;">
 							<option value="1">请选择等级</option>
 	    					<option value="1">D</option>
@@ -52,16 +50,13 @@ textarea.erji{width:90%; height:100%;}
 	        	</tr>
 	        	
 	        	<tr>
-	        		<td  colspan="1">
+	        		<td   class="tdLabel" colspan="1">
 						直接评定理由
 					</td> 
-					<td>
+					<td align="left">
 						<textarea style="width:230px;height:50px;" ></textarea>
 					</td>
 	        	</tr>
-	        	
-	        	
-	        	
 			</tbody>
 		</table>
 		</s:form>

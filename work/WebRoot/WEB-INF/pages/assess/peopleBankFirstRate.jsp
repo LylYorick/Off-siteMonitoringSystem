@@ -2,6 +2,7 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <head>
+<link href="<%=request.getContextPath()%>/style/common.css" rel="stylesheet" type="text/css" />
 	<title>监管评分>>人民银行初评管理</title>
 
 	<script type="text/javascript">
@@ -10,6 +11,9 @@
 	  	});
 	  	 $.subscribe('directRate', function(event,data) {
 	    	window.location.href="<%=request.getContextPath()%>/assess/assess_directRate.shtml";
+	  	});
+	  	 $.subscribe('viewRate', function(event,data) {
+	    	window.location.href="<%=request.getContextPath()%>/assess/assess_peopleBankFirstRateView.shtml";
 	  	});
 		</script>
 
@@ -20,7 +24,13 @@
 	height:17px;
 	margin-left:5px;
 }
-
+/* td.ldLabel{
+	text-align:left;
+}	
+td{
+	text-align:center;
+}
+	 */	
 textarea.erji{width:90%; height:100%;}
 </style>
 </head>
@@ -32,19 +42,19 @@ textarea.erji{width:90%; height:100%;}
 		</legend>
 		<br>
 		<s:form namespace="/assess" action="assess_list" method="post">
-		<table class="wwFormTable">
+		<table class="wwFormTable" >
 	   		 <tbody>
 	   		 	<tr>  
 	   		 		<td class="tdLabel" colspan="1">
 						<label for="assess_list_year" class="label">年度:</label>
 					</td> 
-					<td colspan="1">
+					<td class="ldLabel" colspan="1" >
 		    			<input type="text" name="year" value="2017" id="assess_list_year" readonly>﻿
 					</td>   
 		    		<td class="tdLabel" colspan="1">
 		    			<label class="label" >金融机构名称:</label>﻿
 					</td>   
-			    	<td  colspan="1">
+			    	<td class="ldLabel" colspan="1">
 						<select style="height:25px;">
 	    					<option value="1">招商银行</option>
 	    					<option value="1">上海商业银行有限公司深圳分行</option>
@@ -68,8 +78,11 @@ textarea.erji{width:90%; height:100%;}
 	</div>
 	<table id="gridtable" class="wwFormTable"></table> 
 	<div id="gridtable_pager" ></div> 
-			<table class="wwFormTable" style="width: 100%;">
+			<table class="wwFormTable" style="width: 100%;" id="tabel_detail" >
 				<tr style="font-weight: bold;">
+					<th width="15%">
+						操作
+					</th>
 					<th width="5%">年度</th>
 					<th width="10%">
 						机构类型
@@ -92,11 +105,13 @@ textarea.erji{width:90%; height:100%;}
 					<th  width="20%">
 						人行评级理由
 					</th>
-					<th width="15%">
-						操作
-					</th>
 				</tr>
 				<tr>
+					<td>
+						<sj:submit id="grid_alter_colsbutton1" value="查看" onClickTopics="viewRate" button="true" />
+						<sj:submit id="grid_alter_colsbutton" value="人行初评" onClickTopics="firstRate" button="true" />
+						<sj:submit id="direct_colsbutton" value="直接评定等级" onClickTopics="directRate" button="true" />
+					</td>
 					<td>
 						2017
 					</td>
@@ -121,13 +136,14 @@ textarea.erji{width:90%; height:100%;}
 					<td>
 						<textarea   class="erji"   readonly="readonly">违反保密规定，出现失密、泄密情况，导致严重后果</textarea>
 					</td>
-					<td>
-						<input type="submit"  value="查看" class="ui-button ui-widget ui-state-default ui-corner-all" >
-						<sj:submit id="grid_alter_colsbutton" value="人行初评" onClickTopics="firstRate" button="true" />
-						<sj:submit id="direct_colsbutton" value="直接评定等级" onClickTopics="directRate" button="true" />
-					</td>
+					
 				</tr>
 				<tr>
+					<td>
+						<sj:submit id="grid_alter_colsbutton3" value="查看" onClickTopics="viewRate" button="true" />
+						<sj:submit id="grid_alter_colsbutton2" value="人行初评" onClickTopics="firstRate" button="true" />
+						<sj:submit id="direct_colsbutton2" value="直接评定等级" onClickTopics="directRate" button="true" />
+					</td>
 					<td>
 						2017
 					</td>
@@ -149,11 +165,7 @@ textarea.erji{width:90%; height:100%;}
 					</td>
 					<td>
 					</td>
-					<td>
-						<input type="submit"  value="查看" class="ui-button ui-widget ui-state-default ui-corner-all" >
-						<sj:submit id="grid_alter_colsbutton2" value="人行初评" onClickTopics="firstRate" button="true" />
-						<sj:submit id="direct_colsbutton2" value="直接评定等级" onClickTopics="directRate" button="true" />
-					</td>
+					
 				</tr>
 			</table>
 	</div>
