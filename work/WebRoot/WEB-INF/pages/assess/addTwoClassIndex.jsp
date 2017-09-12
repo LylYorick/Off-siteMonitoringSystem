@@ -22,6 +22,16 @@ textarea {
 
 <script type="text/javascript">
 	$(function(){
+	 $("#noSelf").click(function(){
+	 	if($(this).attr("checked") == true){
+	 		$("#request").hide();
+	 	}
+	 });
+	 $("#needSelf").click(function(){
+	 	if($(this).attr("checked") == true){
+	 		$("#request").show();
+	 	}
+	 });
 	
 	 $("#return").click(function(){
 		 window.history.back();
@@ -86,6 +96,16 @@ textarea {
 							<td colspan="1">
 								<textarea name="ascdesc" cols="50" rows="5"
 										id="assess_indexsave_ascdesc" ></textarea>﻿
+							</td>
+						</tr>
+						<tr>
+							<td class="tdLabel" colspan="1"><label
+								for="assess_indexsave_ascadd" class="label">是否允许自评<span
+									class="required">(*)</span>:</label>
+							</td>
+							<td colspan="1">
+								<input id="needSelf" type="radio" name="identity" value="0" checked="checked" />需要自评
+								<input id="noSelf" type="radio" name="identity" value="1" />无需自评﻿
 							</td>
 						</tr>
 						<tr>
