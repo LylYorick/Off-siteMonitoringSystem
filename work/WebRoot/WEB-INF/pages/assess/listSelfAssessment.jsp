@@ -30,7 +30,7 @@
 			<table class="wwFormTable tablesDiv"  id="tabel_detail"  >
 				<tr style="font-weight: bold;">
 					<th  style="min-width: 40px;width:5%;">序号</th>
-					<th   align="center" style="min-width:40px; width:5%;">
+					<th   align="center" style="min-width:40px; width:7%;">
 						附件
 					</th>
 					<th   align="center" style="min-width:40px; width:15%;">
@@ -66,7 +66,7 @@
 						1
 					</td>
 					<td>
-					<sj:submit id="grid_alter_colsbutton" value="查看" onClickTopics="alterIndex" button="true" />
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="自评附件1">自评附件1</a>
 					</td>
 					<td>
 						<textarea rows="3" cols="20" readonly="readonly">本机构认为并没有存在下列任一情形，可以直接评定为E类机构：（1）不配合反洗钱调查工作，拒绝提供信息资料；
@@ -102,7 +102,7 @@
 						2
 					</td>
 					<td>
-						<sj:submit id="grid_asda_colsbutton" value="查看" onClickTopics="alterIndex" button="true" />
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="自评附件2">自评附件2</a>
 					</td>
 					<td>
 						<textarea rows="3" cols="20" readonly="readonly">本机构认为并没有存在下列任一情形，可以直接评定为E类机构：（1）不配合反洗钱调查工作，拒绝提供信息资料；

@@ -4,7 +4,7 @@
 <head>
 	<title>监管评分>>二级指标管理</title>
 	<script type="text/javascript">
-     $.subscribe('uploadFiles', function(event,data) {
+     $.subscribe('uploadFile', function(event,data) {
     	window.location.href="<%=request.getContextPath()%>/assess/assess_selfAssessmentUpload.shtml";
   	});
      $(function(){
@@ -12,22 +12,36 @@
 			 window.history.back();
 		 });
 	});
-    
+     $(function(){
+		        $(':checkbox[type="checkbox"]').each(function(){
+		            $(this).click(function(){
+		                if($(this).attr('checked')){
+		                    $(':checkbox[type="checkbox"]').removeAttr('checked');
+		                    $(this).attr('checked','checked');
+		                }
+		            });
+		        });
+		    }); 
 </script>
 <link href="<%=request.getContextPath()%>/style/common.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<div class="tableDiv">
 	<div style="padding: 5px;"  class="ui-banner  ui-noBottomboder">
-   		<span class="left_span">年度:2017</span>
-   		<span  class="left_span">状态:退回修改</span>
-   		<span  class="left_span">自评总分:90分</span>
-   		<span  class="left_span">自评得分:80分</span>
+		<sj:submit id="uploadFile" value="附件上传"
+			onClickTopics="uploadFile" button="true" />
+   		<span class="span_left">年度:2017</span>
+   		<span  class="span_left">状态:退回修改</span>
+   		<span  class="span_left">自评总分:90分</span>
+   		<span  class="span_left">自评得分:80分</span>
 	</div>
-	<div style="overflow: auto; height: 90%" >
+	
 			<table class="wwFormTable tablesDiv"   id="tabel_detail">
 				<tr style="font-weight: bold;">
-					<th  style="min-width: 40px;width:5%;">序号</th>
+					<th  style="min-width: 40px;width:3%;">序号</th>
+					<th width="3%">
+						<input type="checkbox" name="checkbox" value="checkbox" disabled="disabled">
+					</th>
 					<th   align="center" style="min-width:100px; width:10%;">
 						附件
 					</th>
@@ -63,8 +77,11 @@
 					<td>
 						1
 					</td>
-						<td>
-						<sj:submit id="grid_alter_colsbutton" value="上传" onClickTopics="uploadFiles" button="true" />
+					<td >
+						<input type="checkbox" name="checkbox2"  >
+					</td>
+					<td>
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="自评附件">自评附件</a>
 					</td>
 					<td align="center">
 						<input type="text" style="width: 50px;">
@@ -96,8 +113,11 @@
 					<td>
 						2
 					</td>
+					<td >
+						<input type="checkbox" name="checkbox3" >
+					</td>
 					<td>
-					<input type="button" value="上传" class="ui-button ui-widget ui-state-default ui-corner-all" > 
+					
 					</td>
 					<td>
 					</td>
@@ -122,13 +142,14 @@
 				</tr>
 			</table>
 			<div align="center" style="margin-top:10px;">
+						
 				<input type="button" id="searchbutton" value="保存" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
 				<input type="button" id="searchbutton" value="提交" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
 					<input type="button" id="return" value="返回" 
 									class="ui-button ui-state-default ui-corner-all">
 			</div>
 		</div>
-	</div>
+	
 	
 	
 </body>

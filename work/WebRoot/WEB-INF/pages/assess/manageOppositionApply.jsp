@@ -5,14 +5,9 @@
 <link href="<%=request.getContextPath()%>/style/common.css" rel="stylesheet" type="text/css" />
 	<title>监管评分>>人民银行初评管理>>初评明细管理</title>
 	<script type="text/javascript">
-     $.subscribe('indexadd', function(event,data) {
-    	window.location.href="<%=request.getContextPath()%>/assess/assess_addTwoClassIndex.shtml";
-  	});
-     $.subscribe('alterIndex', function(event,data) {
-    	window.location.href="<%=request.getContextPath()%>/assess/assess_alterTwoClassIndex.shtml";
-  	});
-     $.subscribe('file', function(event,data) {
-    	window.location.href="<%=request.getContextPath()%>/assess/assess_fileManager.shtml";
+ 
+     $.subscribe('updateFile', function(event,data) {
+    	window.location.href="<%=request.getContextPath()%>/assess/assess_selfAssessmentUpload.shtml";
   	});
      $(function(){
 		 $("#return").click(function(){
@@ -32,25 +27,27 @@ textarea.erji{width:90%; height:100%;}
 	
 	<table id="gridtable" class="wwFormTable"></table>  
 	<div class="ui-banner  ui-noBottomboder">
-   		<span class="left_span">年度:2017</span>
-   		<span  class="left_span">机构类型:法人机构</span>
-   		<span  class="left_span">总分:100分</span>
+		<sj:submit id="updateFile" value="上传异议附件"
+			onClickTopics="updateFile" button="true" />
+   		<span class="span_left">年度:2017</span>
+   		<span  class="span_left">机构类型:法人机构</span>
+   		<span  class="span_left">总分:100分</span>
 	</div>
 		<div id="gridtable_pager" style=" height:90%; overflow:auto;" >
-				<table class="wwFormTable tablesDiv"  id="tabel_detail">
+				<table class="wwFormTable" id="tabel_detail" >
 					<tr style="font-weight: bold;">
 						<th width="50">序号</th>
 						<th width="100">
 							附件
 						</th>
-						<th width="80">
-							评级得分
-						</th>
-							<th width="50">
-							自评得分
+						<th width="50">
+							期望值
 						</th>
 						<th width="150">
-							自评理由
+							异议理由
+						</th>
+						<th width="80">
+							评级得分
 						</th>
 						<th  width="50" align="center">
 						分值
@@ -77,14 +74,15 @@ textarea.erji{width:90%; height:100%;}
 							<a href="<%=request.getContextPath()%>/images/123.docx" download="自评附件1">自评附件1</a>
 						</td>
 						<td align="center">
-							<input type="text" style="width:35px;background: #DDDDDD;"  name="asd" value="15" id="asd" readonly>﻿
-						</td>
-							<td align="center">
-						18
+							<input type="text" style="width:35px"  name="asd" value="18" id="asd" >
 						</td>
 						<td>
-							<textarea   class="erji"  readonly="readonly">想想就能得90%</textarea>
+							<textarea   class="erji"  >想想就能得90%</textarea>
 						</td>
+						<td align="center">
+							15﻿
+						</td>
+						
 						<td align="center">
 						20
 						</td>
@@ -109,14 +107,15 @@ textarea.erji{width:90%; height:100%;}
 							<a href="<%=request.getContextPath()%>/images/123.docx" download="自评附件2">自评附件2</a>
 						</td>
 						<td align="center">
-							<input type="text" style="width:35px;background: #DDDDDD;"  name="asdf" value="15" id="asdf" readonly>
-						</td>
-						<td align="center">
-						16
+							<input type="text" style="width:35px"  name="asdf" value="16" id="asdf" >
 						</td>
 						<td>
-						<textarea   class="erji"  readonly="readonly">我觉得我能得90%</textarea>
+						<textarea   class="erji"  >我觉得我能得80%</textarea>
 						</td>
+						<td align="center">
+							15
+						</td>
+						
 						<td align="center">
 						20
 						</td>
@@ -131,10 +130,10 @@ textarea.erji{width:90%; height:100%;}
 				<table  align="center">
 					<tr align="center">
 						<td colspan="2" align="center">	
-						<input type="button" id="return" value="返回" 
-									class="ui-button ui-state-default ui-corner-all">
+						<input type="button" id="searchbutton" value="保存" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+						<input type="button" id="searchbutton" value="提交" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+						<input type="button" id="return" value="返回" class="ui-button ui-state-default ui-corner-all">
 						</td>
-					
 					</tr>
 				</table>
 		</div> 

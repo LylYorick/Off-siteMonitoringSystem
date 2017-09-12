@@ -85,6 +85,9 @@
 
 					</tr>
 					<tr>
+						<td colspan="2" align="left"  style="color:red;">再次上传同年份同类型的整改报告将会被替换</td>
+					</tr> 
+					<tr>
 						<td colspan="2" align="center">
 							<input type="submit" id="document_save_0"
 							value="&#25552;    &#20132;"

@@ -22,15 +22,16 @@
 <body>
 	<div class="tableDiv">
 	<div style="padding: 5px;" class="ui-banner  ui-noBottomboder">
-   		<span  class="left_span">年度:2017</span>
-   		<span  class="left_span">状态:退回修改</span>
-   		<span  class="left_span">自评总分:90分</span>
-   		<span  class="left_span">自评得分:80分</span>
+   		<span  class="span_left">年度:2017</span>
+   		<span  class="span_left">状态:退回修改</span>
+   		<span  class="span_left">自评总分:90分</span>
+   		<span  class="span_left">自评得分:80分</span>
 	</div>
 	<div style="overflow: auto; height: 90%">
 			<table class="wwFormTable tablesDiv" id="tabel_detail">
 				<tr style="font-weight: bold;">
-					<th  style="min-width: 40px;width:5%;">序号</th>
+					<th  style="min-width: 40px;width:3%;">序号</th>
+					
 					<th   align="center" style="min-width:100px; width:10%;">
 						附件
 					</th>
@@ -66,8 +67,9 @@
 					<td>
 						1
 					</td>
-						<td>
-						<sj:submit id="grid_alter_colsbutton" value="查看" onClickTopics="uploadFiles" button="true" />
+					
+					<td>
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="自评附件">自评附件</a>
 					</td>
 					<td>
 						<textarea rows="3" cols="10" ></textarea>
@@ -101,8 +103,9 @@
 					<td>
 						2
 					</td>
+					
 					<td>
-					<input type="button" value="查看" class="ui-button ui-widget ui-state-default ui-corner-all" > 
+					
 					</td>
 					<td>
 						<textarea rows="3" cols="10" ></textarea>

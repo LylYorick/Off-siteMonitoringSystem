@@ -780,4 +780,23 @@ public class AssessAction  extends JsonBaseAction implements ModelDriven<AssessI
 		return SUCCESS;
 	}
 	
+	/**
+	 * 异议申请查询界面(金融机构)
+	 */
+	public String manageOppositionBankList(){
+		logger.info("***");
+		
+		logger.info("进入异议申请查询界面(金融机构)");
+		return SUCCESS;
+	}
+	/**
+	 * 异议申请界面(金融机构)
+	 */
+	public String manageOppositionApply(){
+		logger.info("***");
+		
+		logger.info("进入异议申请界面(金融机构)");
+		return SUCCESS;
+	}
+	
 }

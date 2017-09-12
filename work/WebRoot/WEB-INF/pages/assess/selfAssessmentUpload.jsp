@@ -26,6 +26,11 @@
 			}
 		}
 	}
+	  $(function(){
+		 $("#return").click(function(){
+			 window.history.back();
+		 });
+	});
 	</script>
 </head>
 <body><br>
@@ -46,7 +51,10 @@
 			<tr><td colspan="2" align="center">
 			<input type="button" value="新增附件" id="addDoc" class="ui-button ui-state-default ui-corner-all">
 			<s:submit theme="simple" align="center"  value="提    交" cssClass="ui-button ui-state-default ui-corner-all"></s:submit>
-			</td></tr>
+			
+			<input type="button" id="return" value="返回" class="ui-button ui-state-default ui-corner-all">
+			</td>
+			</tr>
 		</s:form>
 
 	</fieldset><br/>
