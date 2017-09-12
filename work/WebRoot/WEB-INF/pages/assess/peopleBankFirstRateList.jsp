@@ -74,7 +74,7 @@ textarea.erji{width:90%; height:100%;}
 							1
 						</td>
 						<td>
-							<sj:submit id="file_colsbutton" value="查看" onClickTopics="file" button="true" />
+							<a href="<%=request.getContextPath()%>/images/123.docx" download="自评附件1">自评附件1</a>
 						</td>
 						<td align="center">
 							<input type="text" style="width:35px"  name="asd" value="15" id="asd">﻿
@@ -106,7 +106,7 @@ textarea.erji{width:90%; height:100%;}
 							2
 						</td>
 						<td>
-							<sj:submit id="file_colsbutton2" value="查看" onClickTopics="file" button="true" />
+							<a href="<%=request.getContextPath()%>/images/123.docx" download="自评附件2">自评附件2</a>
 						</td>
 						<td align="center">
 							<input type="text" style="width:35px"  name="asdf" value="15" id="asdf">

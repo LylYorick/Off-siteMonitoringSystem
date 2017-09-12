@@ -1,3 +1,4 @@
+
 <%@ page contentType="text/html; charset=utf-8" language="java"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
@@ -44,7 +45,7 @@
 		<s:form namespace="/document" action="document_save" method="post" enctype="multipart/form-data">
 
 				<table class="wwFormTable">
-
+					
 					<tr>
 						<td class="tdLabel" colspan="1"><label class="label">年份:</label>﻿
 						</td>
@@ -54,7 +55,7 @@
 					</tr>
 					<tr>
 						<td class="tdLabel" colspan="1"><label class="label">金融机构名称:</label></td>
-						<td colspan="1"><select style="height:25px;">
+						<td colspan="1"><select  style="height:25px; width: 200px; background: #EEEEEE;" disabled="disabled">
 								<option value="1">招商银行</option>
 								<option value="1">上海商业银行有限公司深圳分行</option>
 								<option value="1">华商银行</option>
@@ -74,8 +75,11 @@
 						</td>
 
 					</tr>
+				 	<tr>
+						<td colspan="2" align="left"  style="color:red;">再次上传同年份同机构的监管意见书将会被替换</td>
+					</tr> 
 					<tr>
-						<td colspan="2" align="center">
+						<td colspan="2" align="center" >
 							<input type="submit" id="document_save_0" value="&#25552;    &#20132;" class="ui-button ui-state-default ui-corner-all" />
 							<input type="button" id="return" value="返回" class="ui-button ui-state-default ui-corner-all">
 							</td>

@@ -3,18 +3,38 @@
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <head>
 <link href="<%=request.getContextPath()%>/style/common.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 	<title>监管评分>>人民银行初评管理</title>
 
 	<script type="text/javascript">
-		 $.subscribe('firstRate', function(event,data) {
+		 $.subscribe('rate', function(event,data) {
 	    	window.location.href="<%=request.getContextPath()%>/assess/assess_peopleBankFirstRateList.shtml";
 	  	});
-	  	 $.subscribe('directRate', function(event,data) {
+	  	<%--  $.subscribe('directRate', function(event,data) {
 	    	window.location.href="<%=request.getContextPath()%>/assess/assess_directRate.shtml";
-	  	});
-	  	 $.subscribe('viewRate', function(event,data) {
+	  	}); --%>
+	  	 $.subscribe('view', function(event,data) {
 	    	window.location.href="<%=request.getContextPath()%>/assess/assess_peopleBankFirstRateView.shtml";
 	  	});
+	  	 $.subscribe('processOpposition', function(event,data) {
+    		document.location.href="<%=request.getContextPath()%>/assess/assess_manageOppositionList.shtml";
+    	});
+	  	 $.subscribe('updateOpinion', function(event,data) {
+	  		document.location.href="<%=request.getContextPath()%>/assess/assess_superviseOpinionAdd.shtml";
+    	});
+	  	
+	  	
+	  	 $(function(){
+		        $(':checkbox[type="checkbox"]').each(function(){
+		            $(this).click(function(){
+		                if($(this).attr('checked')){
+		                    $(':checkbox[type="checkbox"]').removeAttr('checked');
+		                    $(this).attr('checked','checked');
+		                  //  alert(this.id);
+		                }
+		            });
+		        });
+		    }); 
 		</script>
 
 <style type="text/css">
@@ -43,13 +63,14 @@
 						<label for="assess_list_year" class="label">年度:</label>
 					</td> 
 					<td class="ldLabel" colspan="1" >
-		    			<input type="text" name="year" value="2017" id="assess_list_year" readonly>﻿
+		    			<input type="text" name="year" value="2017" id="assess_list_year" >﻿
 					</td>   
 		    		<td class="tdLabel" colspan="1">
 		    			<label class="label" >金融机构名称:</label>﻿
 					</td>   
 			    	<td class="ldLabel" colspan="1">
 						<select style="height:25px;">
+							<option value="1">--请选择--</option>
 	    					<option value="1">招商银行</option>
 	    					<option value="1">上海商业银行有限公司深圳分行</option>
 	    					<option value="1">华商银行</option>
@@ -68,14 +89,27 @@
 		</div>
 	</fieldset>
 	<div  class="ui-banner  ui-noBottomboder">
+		<sj:submit id="view" value="查看"
+			onClickTopics="view" button="true" />
+		<sj:submit id="rate" value="评级"
+			onClickTopics="rate" button="true" />
+		<sj:submit id="directRate" value="直接定级提交"
+			onClickTopics="directRate" button="true" />
+		<sj:submit id="processOpposition" value="查看/处理异议"
+			onClickTopics="processOpposition" button="true" />
+		<sj:submit id="updateOpinion" value="上传监管意见书"
+			onClickTopics="updateOpinion" button="true" />
 		<span  class=" span_left ">当前机构类型:法人机构</span>
 	</div>
 	<table id="gridtable" class="wwFormTable"></table> 
 	<div id="gridtable_pager" ></div> 
 			<table class="wwFormTable" style="width: 100%;" id="tabel_detail" >
 				<tr style="font-weight: bold;">
-					<th width="15%">
-						操作
+					<th width="3%">
+						
+					</th>
+					<th width="3%">
+						<input type="checkbox" name="checkbox1" value="checkbox" disabled="disabled">
 					</th>
 					<th width="5%">年度</th>
 					<th width="10%">
@@ -90,7 +124,7 @@
 					<th width="5%" >
 						自评得分
 					</th>
-					<th  width="10%">
+					<th  width="5%">
 					 	评级得分
 					</th>
 					<th  width="5%">
@@ -99,12 +133,19 @@
 					<th  width="20%">
 						定级理由
 					</th>
+					<th  width="10%">
+						监管意见书
+					</th>
+					<th  width="10%">
+						整改报告
+					</th>
 				</tr>
 				<tr>
 					<td>
-						<sj:submit id="grid_alter_colsbutton1" value="查看" onClickTopics="viewRate" button="true" />
-						<sj:submit id="grid_alter_colsbutton" value="评级" onClickTopics="firstRate" button="true" />
-						<sj:submit id="direct_colsbutton" value="直接定级" onClickTopics="directRate" button="true" />
+						1
+					</td>
+					<td>
+						<input type="checkbox" name="checkbox1" value="checkbox">
 					</td>
 					<td>
 						2017
@@ -125,18 +166,24 @@
 					<td>
 					</td>
 					<td>
-						E
+						<input class="alterTextarea" type="text" style="width: 20px;" value="E">
 					</td>
 					<td>
-						<textarea   class="erji"   readonly="readonly">违反保密规定，出现失密、泄密情况，导致严重后果</textarea>
+						<textarea   class="textarea alterTextarea" >违反保密规定，出现失密、泄密情况，导致严重后果</textarea>
 					</td>
-					
+					<td>
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="监管意见书">监管意见书</a>
+					</td>
+					<td>
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="整改报告">整改报告</a>
+					</td>
 				</tr>
 				<tr>
 					<td>
-						<sj:submit id="grid_alter_colsbutton3" value="查看" onClickTopics="viewRate" button="true" />
-						<sj:submit id="grid_alter_colsbutton2" value="评级" onClickTopics="firstRate" button="true" />
-						<sj:submit id="direct_colsbutton2" value="直接定级" onClickTopics="directRate" button="true" />
+						2
+					</td>
+					<td>
+						<input type="checkbox" name="checkbox1" value="checkbox">
 					</td>
 					<td>
 						2017
@@ -159,7 +206,12 @@
 					</td>
 					<td>
 					</td>
-					
+					<td>
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="监管意见书">监管意见书</a>
+					</td>
+					<td>
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="整改报告">整改报告</a>
+					</td>
 				</tr>
 			</table>
 	</div>
