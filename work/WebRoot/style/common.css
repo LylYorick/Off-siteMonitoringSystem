@@ -50,3 +50,8 @@ textarea[readonly] {
 	width: 90%;
 	height: 100%;
 }
+/**统一textarea的宽度和高度*/
+.textarea{
+	width: 90%;
+	height: 40px;
+}
