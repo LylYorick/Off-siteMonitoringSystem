@@ -798,5 +798,40 @@ public class AssessAction  extends JsonBaseAction implements ModelDriven<AssessI
 		logger.info("进入异议申请界面(金融机构)");
 		return SUCCESS;
 	}
+
+	/**
+	 * 指标管理 --
+	 */
+	public String quotaManagerList(){
+		logger.info("***");
+		
+		logger.info("指标管理");
+		return SUCCESS;
+	}
+	
+	/**
+	 *新增指标
+	 */
+	public String addQuota(){
+		logger.info("***");
+		logger.info("新增指标");
+		return SUCCESS;
+	}
+	/**
+	 *初评复核
+	 */
+	public String rateVerify(){
+		logger.info("***");
+		logger.info("新增指标");
+		return SUCCESS;
+	}
+	/**
+	 *评级总览
+	 */
+	public String rateList(){
+		logger.info("***");
+		logger.info("评级总览");
+		return SUCCESS;
+	}
 	
 }
