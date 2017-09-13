@@ -7,6 +7,22 @@ function alterTextarea() {
 		});
 	});
 }
+
+//是否允许自评的checkbox 状态改变
+function alterCheckbox() {
+	var  obj = $(".alterCheckbox");
+	obj.change(function(){
+		$("#allowLabel").css("color","red");
+		if($(this).is(':checked')==false){
+			$("#allowTextarea").val("");
+			$("#allowTextarea").hide();
+		}else{
+			$("#allowTextarea").show();
+		}
+	});
+
+}
 $(function(){
 	alterTextarea();
+	alterCheckbox();
 });
