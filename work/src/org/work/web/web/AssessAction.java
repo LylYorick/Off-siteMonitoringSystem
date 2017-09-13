@@ -833,5 +833,13 @@ public class AssessAction  extends JsonBaseAction implements ModelDriven<AssessI
 		logger.info("评级总览");
 		return SUCCESS;
 	}
+	/**
+	 *评级状态管理
+	 */
+	public String assessStatusManager(){
+		logger.info("***");
+		logger.info("评级总览");
+		return SUCCESS;
+	}
 	
 }
