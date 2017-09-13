@@ -7,22 +7,46 @@
 <link href="<%=request.getContextPath()%>/style/common.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
      $.subscribe('view', function(event,data) {
-    	window.location.href="<%=request.getContextPath()%>/assess/assess_listSelfAssessment.shtml";
+      	if(document.getElementById("checkbox1").checked){
+    		window.location.href="<%=request.getContextPath()%>/assess/assess_listSelfAssessment.shtml";
+    	}else{
+				alert("请选择一条记录");
+		}
   	});
      $.subscribe('rate', function(event,data) {
-    	window.location.href="<%=request.getContextPath()%>/assess/assess_selfAssessmentDo.shtml";
+        	if(document.getElementById("checkbox1").checked){
+    			window.location.href="<%=request.getContextPath()%>/assess/assess_selfAssessmentDo.shtml";
+    		}else{
+				alert("请选择一条记录");
+		}
   	});
      $.subscribe('checkRate', function(event,data) {
-    	window.location.href="<%=request.getContextPath()%>/assess/assess_selfAssessmentCheck.shtml";
+        	if(document.getElementById("checkbox1").checked){
+    			window.location.href="<%=request.getContextPath()%>/assess/assess_selfAssessmentCheck.shtml";
+    		}else{
+				alert("请选择一条记录");
+		}
   	});
   	 $.subscribe('applyOpposition', function(event,data) {
-    	window.location.href="<%=request.getContextPath()%>/assess/assess_manageOppositionApply.shtml";
+  	    	if(document.getElementById("checkbox1").checked){
+    			window.location.href="<%=request.getContextPath()%>/assess/assess_manageOppositionApply.shtml";
+    		}else{
+				alert("请选择一条记录");
+		}
   	});
      $.subscribe('viewOpposition', function(event,data) {
-    	window.location.href="<%=request.getContextPath()%>/assess/assess_manageOppositionBankList.shtml";
+        	if(document.getElementById("checkbox1").checked){
+    			window.location.href="<%=request.getContextPath()%>/assess/assess_manageOppositionBankList.shtml";
+    		}else{
+				alert("请选择一条记录");
+		}
   	});
      $.subscribe('uploadReport', function(event,data) {
-    	window.location.href="<%=request.getContextPath()%>/assess/assess_rectificationReportAdd.shtml";
+        	if(document.getElementById("checkbox1").checked){
+    			window.location.href="<%=request.getContextPath()%>/assess/assess_rectificationReportAdd.shtml";
+    		}else{
+				alert("请选择一条记录");
+		}
   	});
      
     
@@ -89,6 +113,9 @@
 					<th width="5%">
 						序号
 					</th>
+					<th width="5%">
+						<input type="checkbox" id="checkbox" name="checkbox" value="checkbox" disabled="disabled">
+					</th>
 					<th width="5%">年度</th>
 					<th width="10%">
 						机构类型
@@ -127,6 +154,9 @@
 						1
 					</td>
 					<td>
+						<input type="checkbox"  id="checkbox1"  name="checkbox1" value="checkbox">
+					</td>
+					<td>
 						2017
 					</td>
 					<td>
@@ -136,7 +166,7 @@
 						中国银行股份有限公司深圳市分行
 					</td>
 					<td>
-						机构自评
+						已公示
 					</td>
 					<td>
 						90
@@ -145,9 +175,10 @@
 						80
 					</td>
 					<td>
-						100
+						85
 					</td>
 					<td>
+						A
 					</td>
 					<td>
 						<textarea class="erji" readonly="readonly">违反保密规定，出现失密、泄密情况，导致严重后果</textarea>

@@ -799,4 +799,24 @@ public class AssessAction  extends JsonBaseAction implements ModelDriven<AssessI
 		return SUCCESS;
 	}
 	
+	
+	/**
+	 *评级管理(复评)
+	 */
+	public String peopleBankFirstRateTwo(){
+		logger.info("***");
+		
+		logger.info("进入评级管理(复评)");
+		return SUCCESS;
+	}
+	
+	/**
+	 *评级管理(公示后)
+	 */
+	public String peopleBankFirstRateThree(){
+		logger.info("***");
+		
+		logger.info("进入评级管理(公示后)");
+		return SUCCESS;
+	}
 }

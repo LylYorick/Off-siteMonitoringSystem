@@ -9,7 +9,7 @@
 	<script type="text/javascript">
 		 $.subscribe('rate', function(event,data) {
 			 if(document.getElementById("checkbox1").checked||document.getElementById("checkbox2").checked||document.getElementById("checkbox3").checked
-			 ||document.getElementById("checkbox4").checked||document.getElementById("checkbox5").checked ){
+			 ){
 	  			window.location.href="<%=request.getContextPath()%>/assess/assess_peopleBankFirstRateList.shtml";
 			}else{
 				alert("请选择一条记录");
@@ -17,7 +17,7 @@
 	  	});
 	  	 $.subscribe('view', function(event,data) {
 	  	  if(document.getElementById("checkbox1").checked||document.getElementById("checkbox2").checked||document.getElementById("checkbox3").checked
-			 ||document.getElementById("checkbox4").checked||document.getElementById("checkbox5").checked ){
+			){
 	  			window.location.href="<%=request.getContextPath()%>/assess/assess_peopleBankFirstRateView.shtml";
 			}else{
 				alert("请选择一条记录");
@@ -25,7 +25,7 @@
 	  	});
 	  	 $.subscribe('processOpposition', function(event,data) {
 	  	  if(document.getElementById("checkbox1").checked||document.getElementById("checkbox2").checked||document.getElementById("checkbox3").checked
-			 ||document.getElementById("checkbox4").checked||document.getElementById("checkbox5").checked ){
+			){
 	  			document.location.href="<%=request.getContextPath()%>/assess/assess_manageOppositionList.shtml";
 			}else{
 				alert("请选择一条记录");
@@ -33,15 +33,13 @@
     	});
 	  	 $.subscribe('updateOpinion', function(event,data) {
 	  		 if(document.getElementById("checkbox1").checked||document.getElementById("checkbox2").checked||document.getElementById("checkbox3").checked
-			 ||document.getElementById("checkbox4").checked||document.getElementById("checkbox5").checked ){
+			){
 	  			document.location.href="<%=request.getContextPath()%>/assess/assess_superviseOpinionAdd.shtml";
 			}else{
 				alert("请选择一条记录");
 			}
     	});
-	  	<%--  $.subscribe('directRate', function(event,data) {
-	    	window.location.href="<%=request.getContextPath()%>/assess/assess_directRate.shtml";
-	  	}); --%>
+	  	
 	  	
 	  	 $(function(){
 		        $(':checkbox[type="checkbox"]').each(function(){
@@ -127,11 +125,8 @@
 	<div  class="ui-banner  ui-noBottomboder">
 		<sj:submit id="view" value="查看"
 			onClickTopics="view" button="true" />
-		<sj:submit id="rate" value="评级"
-			onClickTopics="rate" button="true" />
-	<%-- 	<sj:submit id="directRate" value="直接定级提交"
-			onClickTopics="directRate" button="true" /> --%>
-		<%-- <span  class=" span_left ">当前机构类型:银行业</span> --%>
+		<sj:submit id="updateOpinion" value="上传监管意见书"
+			onClickTopics="updateOpinion" button="true" />
 	</div>
 	<table id="gridtable" class="wwFormTable"></table> 
 	<div id="gridtable_pager" ></div> 
@@ -141,7 +136,7 @@
 						
 					</th>
 					<th width="3%">
-						<input type="checkbox" id="checkbox" name="checkbox" value="checkbox" disabled="disabled">
+						<input type="checkbox"   id="checkbox" name="checkbox" value="checkbox" disabled="disabled">
 					</th>
 					<th width="5%">年度</th>
 					<th width="10%">
@@ -153,23 +148,14 @@
 					<th width="10%">
 						状态
 					</th>
-					<th width="5%" >
-						自评得分
-					</th>
-					<th  width="5%">
-					 	评级得分
-					</th>
 					<th  width="5%">
 						评级等级
 					</th>
-					<th  width="5%">
-						定级等级
+					<th  width="10%">
+						监管意见书
 					</th>
-					<th  width="20%">
-						定级理由
-					</th>
-					<th  width="20%">
-						审核拒绝理由
+					<th  width="10%">
+						整改报告
 					</th>
 				</tr>
 				<tr>
@@ -177,7 +163,7 @@
 						1
 					</td>
 					<td>
-						<input type="checkbox"  id="checkbox1"  name="checkbox1" value="checkbox">
+						<input type="checkbox" id="checkbox1" name="checkbox1" value="checkbox">
 					</td>
 					<td>
 						2017
@@ -189,176 +175,75 @@
 						上海商业银行有限公司深圳分行
 					</td>
 					<td>
-						人行初评
-					</td>
-					<td>
-						80
-					</td>
-					<td>
-					</td>
-					<td>
-					</td>
-					<td>
-						
-					</td>
-					<td>
-						<textarea   class="textarea alterTextarea" disabled="disabled"></textarea>
-					</td>
-					<td>
-						<textarea   class="textarea alterTextarea" disabled="disabled"></textarea>
+						已公示
 					</td>
 					
+					<td>
+						E
+					</td>
+					
+					<td>
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="监管意见书">监管意见书</a>
+					</td>
+					<td>
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="整改报告">整改报告</a>
+					</td>
 				</tr>
 				<tr>
 					<td>
 						2
 					</td>
 					<td>
-						<input type="checkbox"  id="checkbox2"  name="checkbox2" value="checkbox">
+						<input type="checkbox"   id="checkbox2" name="checkbox2" value="checkbox">
 					</td>
 					<td>
 						2017
 					</td>
 					<td>
-						银行业
+						证券业
 					</td>
 					<td>
-						渤海银行深圳分行
+						浙商证券有限责任公司深圳辖区
 					</td>
 					<td>
-						初评结束
+						已公示
 					</td>
 					<td>
-						90
 					</td>
 					<td>
-						89
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="监管意见书">监管意见书</a>
+					</td>
+					<td>
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="整改报告">整改报告</a>
+					</td>
+				</tr>
+					<tr>
+					<td>
+						3
+					</td>
+					<td>
+						<input type="checkbox"  id="checkbox3" name="checkbox3" value="checkbox">
+					</td>
+					<td>
+						2017
+					</td>
+					<td>
+						证券业
+					</td>
+					<td>
+						浙商证券有限责任公司深圳辖区
+					</td>
+					<td>
+						已公示
 					</td>
 					<td>
 						A
 					</td>
 					<td>
-						
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="监管意见书">监管意见书</a>
 					</td>
 					<td>
-						<textarea   class="textarea alterTextarea" disabled="disabled"></textarea>
-					</td>
-					<td>
-						<textarea   class="textarea alterTextarea" disabled="disabled"></textarea>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						3
-					</td>
-					<td>
-						<input type="checkbox"  id="checkbox3"  name="checkbox3" value="checkbox">
-					</td>
-					<td>
-						2017
-					</td>
-					<td>
-						银行业
-					</td>
-					<td>
-						平安银行总行
-					</td>
-					<td>
-						待复核
-					</td>
-					<td>
-						80
-					</td>
-				
-					<td>
-					</td>
-					<td>
-					</td>
-					<td>
-						E
-					</td>
-					<td>
-						<textarea   class="textarea alterTextarea" disabled="disabled">违反保密规定，出现失密、泄密情况，导致严重后果</textarea>
-					</td>
-					<td>
-						<textarea   class="textarea alterTextarea" disabled="disabled"></textarea>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						4
-					</td>
-					<td>
-						<input type="checkbox"  id="checkbox4"  name="checkbox4" value="checkbox">
-					</td>
-					<td>
-						2017
-					</td>
-					<td>
-						银行业
-					</td>
-					<td>
-						华商银行
-					</td>
-					<td>
-						待复核
-					</td>
-					<td>
-						90
-					</td>
-					<td>
-						51
-					</td>
-					<td>
-						D
-					</td>
-					<td>
-						
-					</td>
-					<td>
-						<textarea   class="textarea alterTextarea" disabled="disabled"></textarea>
-					</td>
-					<td>
-						<textarea   class="textarea alterTextarea" disabled="disabled"></textarea>
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-						5
-					</td>
-					<td>
-						<input type="checkbox"  id="checkbox5"  name="checkbox5" value="checkbox">
-					</td>
-					<td>
-						2017
-					</td>
-					<td>
-						银行业
-					</td>
-					<td>
-						广东发展银行深圳分行
-					</td>
-					<td>
-						初评结束
-					</td>
-					<td>
-						90
-					</td>
-					<td>
-						51
-					</td>
-					<td>
-						D
-					</td>
-					<td>
-						
-					</td>
-					<td>
-						<textarea   class="textarea alterTextarea" disabled="disabled"></textarea>
-					</td>
-					<td>
-						<textarea   class="textarea alterTextarea" disabled="disabled"></textarea>
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="整改报告">整改报告</a>
 					</td>
 				</tr>
 			</table>

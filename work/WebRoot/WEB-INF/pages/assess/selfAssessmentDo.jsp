@@ -5,7 +5,11 @@
 	<title>监管评分>>二级指标管理</title>
 	<script type="text/javascript">
      $.subscribe('uploadFile', function(event,data) {
+     if(document.getElementById("checkbox1").checked ||document.getElementById("checkbox2").checked||document.getElementById("checkbox2").checked){
     	window.location.href="<%=request.getContextPath()%>/assess/assess_selfAssessmentUpload.shtml";
+    	}else {
+    		alert("请选择一行");
+    	}
   	});
      $(function(){
 		 $("#return").click(function(){
@@ -78,7 +82,7 @@
 						1
 					</td>
 					<td >
-						<input type="checkbox" name="checkbox2"  >
+						<input type="checkbox" id="checkbox1" name="checkbox1"  >
 					</td>
 					<td>
 						<a href="<%=request.getContextPath()%>/images/123.docx" download="自评附件">自评附件</a>
@@ -114,7 +118,7 @@
 						2
 					</td>
 					<td >
-						<input type="checkbox" name="checkbox3" >
+						<input type="checkbox" id="checkbox2"  name="checkbox2" >
 					</td>
 					<td>
 					

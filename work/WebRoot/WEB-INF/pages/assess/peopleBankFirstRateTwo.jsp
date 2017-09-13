@@ -9,7 +9,7 @@
 	<script type="text/javascript">
 		 $.subscribe('rate', function(event,data) {
 			 if(document.getElementById("checkbox1").checked||document.getElementById("checkbox2").checked||document.getElementById("checkbox3").checked
-			 ||document.getElementById("checkbox4").checked||document.getElementById("checkbox5").checked ){
+			 ||document.getElementById("checkbox4").checked ){
 	  			window.location.href="<%=request.getContextPath()%>/assess/assess_peopleBankFirstRateList.shtml";
 			}else{
 				alert("请选择一条记录");
@@ -17,7 +17,7 @@
 	  	});
 	  	 $.subscribe('view', function(event,data) {
 	  	  if(document.getElementById("checkbox1").checked||document.getElementById("checkbox2").checked||document.getElementById("checkbox3").checked
-			 ||document.getElementById("checkbox4").checked||document.getElementById("checkbox5").checked ){
+			 ||document.getElementById("checkbox4").checked){
 	  			window.location.href="<%=request.getContextPath()%>/assess/assess_peopleBankFirstRateView.shtml";
 			}else{
 				alert("请选择一条记录");
@@ -25,7 +25,7 @@
 	  	});
 	  	 $.subscribe('processOpposition', function(event,data) {
 	  	  if(document.getElementById("checkbox1").checked||document.getElementById("checkbox2").checked||document.getElementById("checkbox3").checked
-			 ||document.getElementById("checkbox4").checked||document.getElementById("checkbox5").checked ){
+			 ||document.getElementById("checkbox4").checked ){
 	  			document.location.href="<%=request.getContextPath()%>/assess/assess_manageOppositionList.shtml";
 			}else{
 				alert("请选择一条记录");
@@ -33,15 +33,12 @@
     	});
 	  	 $.subscribe('updateOpinion', function(event,data) {
 	  		 if(document.getElementById("checkbox1").checked||document.getElementById("checkbox2").checked||document.getElementById("checkbox3").checked
-			 ||document.getElementById("checkbox4").checked||document.getElementById("checkbox5").checked ){
+			 ||document.getElementById("checkbox4").checked){
 	  			document.location.href="<%=request.getContextPath()%>/assess/assess_superviseOpinionAdd.shtml";
 			}else{
 				alert("请选择一条记录");
 			}
     	});
-	  	<%--  $.subscribe('directRate', function(event,data) {
-	    	window.location.href="<%=request.getContextPath()%>/assess/assess_directRate.shtml";
-	  	}); --%>
 	  	
 	  	 $(function(){
 		        $(':checkbox[type="checkbox"]').each(function(){
@@ -127,11 +124,8 @@
 	<div  class="ui-banner  ui-noBottomboder">
 		<sj:submit id="view" value="查看"
 			onClickTopics="view" button="true" />
-		<sj:submit id="rate" value="评级"
-			onClickTopics="rate" button="true" />
-	<%-- 	<sj:submit id="directRate" value="直接定级提交"
-			onClickTopics="directRate" button="true" /> --%>
-		<%-- <span  class=" span_left ">当前机构类型:银行业</span> --%>
+		<sj:submit id="processOpposition" value="查看/处理异议"
+			onClickTopics="processOpposition" button="true" />
 	</div>
 	<table id="gridtable" class="wwFormTable"></table> 
 	<div id="gridtable_pager" ></div> 
@@ -168,9 +162,7 @@
 					<th  width="20%">
 						定级理由
 					</th>
-					<th  width="20%">
-						审核拒绝理由
-					</th>
+				
 				</tr>
 				<tr>
 					<td>
@@ -189,20 +181,19 @@
 						上海商业银行有限公司深圳分行
 					</td>
 					<td>
-						人行初评
+						人行复评
 					</td>
 					<td>
 						80
 					</td>
 					<td>
+						83
 					</td>
 					<td>
+						BBB
 					</td>
 					<td>
 						
-					</td>
-					<td>
-						<textarea   class="textarea alterTextarea" disabled="disabled"></textarea>
 					</td>
 					<td>
 						<textarea   class="textarea alterTextarea" disabled="disabled"></textarea>
@@ -226,7 +217,7 @@
 						渤海银行深圳分行
 					</td>
 					<td>
-						初评结束
+						人行复评
 					</td>
 					<td>
 						90
@@ -243,9 +234,7 @@
 					<td>
 						<textarea   class="textarea alterTextarea" disabled="disabled"></textarea>
 					</td>
-					<td>
-						<textarea   class="textarea alterTextarea" disabled="disabled"></textarea>
-					</td>
+					
 				</tr>
 				<tr>
 					<td>
@@ -264,7 +253,7 @@
 						平安银行总行
 					</td>
 					<td>
-						待复核
+						人行复评
 					</td>
 					<td>
 						80
@@ -280,9 +269,7 @@
 					<td>
 						<textarea   class="textarea alterTextarea" disabled="disabled">违反保密规定，出现失密、泄密情况，导致严重后果</textarea>
 					</td>
-					<td>
-						<textarea   class="textarea alterTextarea" disabled="disabled"></textarea>
-					</td>
+					
 				</tr>
 				<tr>
 					<td>
@@ -301,7 +288,7 @@
 						华商银行
 					</td>
 					<td>
-						待复核
+						人行复评
 					</td>
 					<td>
 						90
@@ -318,48 +305,7 @@
 					<td>
 						<textarea   class="textarea alterTextarea" disabled="disabled"></textarea>
 					</td>
-					<td>
-						<textarea   class="textarea alterTextarea" disabled="disabled"></textarea>
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-						5
-					</td>
-					<td>
-						<input type="checkbox"  id="checkbox5"  name="checkbox5" value="checkbox">
-					</td>
-					<td>
-						2017
-					</td>
-					<td>
-						银行业
-					</td>
-					<td>
-						广东发展银行深圳分行
-					</td>
-					<td>
-						初评结束
-					</td>
-					<td>
-						90
-					</td>
-					<td>
-						51
-					</td>
-					<td>
-						D
-					</td>
-					<td>
-						
-					</td>
-					<td>
-						<textarea   class="textarea alterTextarea" disabled="disabled"></textarea>
-					</td>
-					<td>
-						<textarea   class="textarea alterTextarea" disabled="disabled"></textarea>
-					</td>
+					
 				</tr>
 			</table>
 	</div>
