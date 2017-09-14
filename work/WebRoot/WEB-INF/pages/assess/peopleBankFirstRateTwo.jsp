@@ -111,7 +111,16 @@
 	    					<option value="1">法人-保险业</option>
 						</select>
 					</td> 
-					<td class="tdLabel" colspan="1"></td><td class="ldLabel" colspan="1" ></td>
+					<td class="tdLabel" colspan="1">
+		    			<label class="label" >状态:</label>﻿
+					</td>   
+			    	<td class="ldLabel" colspan="1">
+						<select style="height:25px;">
+							<option value="1">--请选择--</option>
+							<option value="1">人行复评</option>
+	    					<option value="1">公示中</option>
+						</select>
+					</td> 
 	        	</tr>
 			</tbody>
 		</table>
@@ -181,7 +190,7 @@
 						上海商业银行有限公司深圳分行
 					</td>
 					<td>
-						人行复评
+						公示中
 					</td>
 					<td>
 						80

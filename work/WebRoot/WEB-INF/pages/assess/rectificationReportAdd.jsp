@@ -47,14 +47,14 @@
 						<td class="tdLabel" colspan="1"><label class="label">金融机构名称:</label>﻿
 						</td>
 						<td  colspan="1">
-							  <input type="text"      readonly="readonly" name="asd" value="招商银行" id="asd">  
+							  <input type="text"    style=" background: #EEEEEE;"   readonly="readonly" name="asd" value="招商银行" id="asd">  
 						</td>
 					</tr>
 					<tr>
 						<td class="tdLabel" colspan="1"><label class="label">金融机构等级:</label>﻿
 						</td>
 						<td  colspan="1">
-							  <input type="text"      readonly="readonly" name="asd2" value="B" id="asd">  
+							  <input type="text"    style=" background: #EEEEEE;"   readonly="readonly" name="asd2" value="B" id="asd">  
 						</td>
 					</tr>
 
@@ -62,12 +62,12 @@
 						<td class="tdLabel" colspan="1"><label class="label">年份:</label>﻿
 						</td>
 						<td  colspan="1">
-							  <input type="text"      readonly="readonly" name="asd" value="2017" id="asd">  
+							  <input type="text"   style=" background: #EEEEEE;"    readonly="readonly" name="asd" value="2017" id="asd">  
 						</td>
 					</tr>
 					<tr>
 						<td class="tdLabel" colspan="1"><label class="label">报告类型：</label></td>
-						<td colspan="1"><select style="height:25px;">
+						<td colspan="1"><select style="height:25px; background: #EEEEEE;">
 								<option value="1">上半年</option>
 								<option value="1">下半年</option>
 								<option value="1">全年制</option>

@@ -13,22 +13,14 @@ textarea[readonly] {
 </style>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 <script type="text/javascript">
-     $.subscribe('addApply', function(event,data) {
-    	window.location.href="<%=request.getContextPath()%>/assess/assess_applyOppositionAdd.shtml";
-  	});
-     $.subscribe('addAssess', function(event,data) {
-    	window.location.href="<%=request.getContextPath()%>/assess/assess_applyOppositionForAssess.shtml";
-  	});
   
-     $(function(){
-	  $("#deal").click(function() {
-	    	window.location.href="<%=request.getContextPath()%>/assess/assess_manageOppositionDeal.shtml";
-	  	});  
-	  $("#dealAssess").click(function() {
-	    	window.location.href="<%=request.getContextPath()%>/assess/assess_manageOppositionDealAssess.shtml";
-	  	});  
-	});
 	 $(function(){
+	  $("#deal").click(function() {
+ 	
+	 	  if(confirm("是否确认处理这条异议？")){
+	    		alert("已成功处理");
+	    	}
+	  	});  
 		 $("#return").click(function(){
 			 window.history.back();
 		 });
@@ -39,79 +31,8 @@ textarea[readonly] {
 </head>
 <body>
 	<div class="grid">
-	<%-- <fieldset>
-		<legend>
-			查询条件
-		</legend>
-		<br>
-		<s:form namespace="/assess" action="assess_list" method="post">
-		<table class="wwFormTable">
-	   		 <tbody>
-	   		 	<tr>  
-	   		 		<td class="tdLabel" colspan="1">
-						<label for="assess_list_year" class="label">年度:</label>
-					</td> 
-					<td colspan="1">
-		    			<input type="text" name="year" value="" id="assess_list_year">﻿
-					</td>   
-		    		<td class="tdLabel" colspan="1">
-		    			<label for="assess_list_year" class="label">机构类型:</label>
-					</td> 
-					<td colspan="1">
-						<select style="height:25px;">
-	    					<option value="1">法人金融机构</option>
-	    					<option value="1">银行业</option>
-	    					<option value="1">证券业</option>
-	    					<option value="1">保险业</option>
-						</select>
-					</td>   
-	        	</tr>
-	        		<td class="tdLabel" colspan="1">
-		    			<label for="assess_list_year" class="label">机构名称:</label>
-					</td> 
-					<td colspan="1">
-						<select style="height:25px;">
-	    					<option value="1">上海浦东发展银行股份有限公司</option>
-	    					<option value="1">交通银行股份有限公司深圳分行</option>
-	    					<option value="1">江苏银行股份有限公司深圳分行</option>
-	    					<option value="1">浙商银行深圳分行</option>
-						</select>
-					</td>  
-					<td class="tdLabel" colspan="1">
-		    			<label class="label" >状态:</label>﻿
-					</td>   
-			    	<td  colspan="1">
-						<select style="height:25px;">
-	    					<option value="1">待处理</option>
-	    					<option value="1">已处理</option>
-						</select>
-					</td> 
-	        	<tr>
-	        	</tr>
-	        	<tr>  
-	   		 		<td class="tdLabel" colspan="1">
-						<label for="assess_list_year" class="label">异议类型:</label>
-					</td> 
-					<td colspan="1">
-						<select style="height:25px;">
-	    					<option value="1">评分异议</option>
-	    					<option value="1">等级异议</option>
-						</select>
-					</td>   
-					<td class="tdLabel" colspan="1">
-					</td> 
-					<td colspan="1">
-					</td> 
-	        	</tr>
-			</tbody>
-		</table>
-		</s:form>
-		<div align="center">
-			<input type="submit" id="searchbutton" value="查  询" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
-			<img id="indicator" src="/work/images/027.gif" alt="Loading..." style="display: none">
-		</div>
-	</fieldset> --%>
 	<div  class="ui-banner  ui-noBottomboder">
+			<input type="button" id="deal" value="处理" class="ui-button ui-state-default ui-corner-all">
 		<span 	class=" span_left">年度:2017</span>
    		<span  class="span_left">机构类型:法人机构</span>
 	</div>
@@ -120,6 +41,9 @@ textarea[readonly] {
 			<table class="wwFormTable"  id="tabel_detail" style="width: 100%;min-width: 1450px;">
 				<tr style="font-weight: bold;">
 					<th style="min-width: 50px;width:5%;">编号</th>
+					<th width="3%">
+						<input type="checkbox" id="checkbox" name="checkbox" value="checkbox" disabled="disabled">
+					</th>
 					<th  style="min-width: 50px;width:5%;">
 					 	处理结果
 					</th>
@@ -128,13 +52,6 @@ textarea[readonly] {
 					</th>
 					<th style="min-width: 150px;width:15%;">
 						异议附件
-					</th>
-					<th style="min-width: 200px;width:20%;">机构名称</th>
-					<th style="min-width: 100px;width:10%;">
-						异议类型
-					</th>
-					<th style="min-width: 200px;width:20%;">
-						二级指标名称
 					</th>
 					<th style="min-width: 50px;width:5%;">
 						异议值				
@@ -148,10 +65,21 @@ textarea[readonly] {
 					<th style="min-width: 100px;width:10%;" >
 						状态
 					</th>
+					<th style="min-width: 200px;width:20%;">机构名称</th>
+					<th style="min-width: 100px;width:10%;">
+						异议类型
+					</th>
+					<th style="min-width: 200px;width:20%;">
+						二级指标名称
+					</th>
+					
 				</tr>
 				<tr>
 					<td>
 						1
+					</td>
+					<td>
+						<input type="checkbox"  id="checkbox1"  name="checkbox1" value="checkbox">
 					</td>
 					<td>
 						E
@@ -162,13 +90,6 @@ textarea[readonly] {
 					<td>
 						<a href="<%=request.getContextPath()%>/images/123.docx" download="异议附件1">异议附件1</a>
 					</td>
-					<td>
-						中国银行股份有限公司深圳市分行
-					</td>
-					<td>
-						等级异议
-					</td>
-					<td  class="ssr" ></td>
 					<td>
 						E
 					</td>
@@ -181,12 +102,20 @@ textarea[readonly] {
 					<td>
 						已处理
 					</td>
-					
-					
+					<td>
+						中国银行股份有限公司深圳市分行
+					</td>
+					<td>
+						等级异议
+					</td>
+					<td  class="ssr" ></td>
 				</tr>
 				<tr>
 					<td>
 						2
+					</td>
+					<td>
+						<input type="checkbox"  id="checkbox2"  name="checkbox2" value="checkbox">
 					</td>
 					<td>
 						<input class="alterTextarea" type="text" style="width: 20px;" >
@@ -197,13 +126,6 @@ textarea[readonly] {
 					<td>
 						<a href="<%=request.getContextPath()%>/images/123.docx" download="异议附件2">异议附件2</a>	
 					</td>
-					<td>
-						中国银行股份有限公司深圳市分行
-					</td>
-					<td>
-						评分异议
-					</td>
-					<td  class="ssr" >总部内控制度体系全面覆盖法律法规和监管要求涉及的反洗钱各方面义务，各项反洗钱内控措施符合法规要求</td>
 					<td>
 						18
 					</td>
@@ -216,6 +138,14 @@ textarea[readonly] {
 					<td>
 						待处理
 					</td>
+					<td>
+						中国银行股份有限公司深圳市分行
+					</td>
+					<td>
+						评分异议
+					</td>
+					<td  class="ssr" >总部内控制度体系全面覆盖法律法规和监管要求涉及的反洗钱各方面义务，各项反洗钱内控措施符合法规要求</td>
+					
 				</tr>
 			</table>
 		</div> 
@@ -223,8 +153,6 @@ textarea[readonly] {
 	<table  align="center">
 		<tr align="center">
 			<td colspan="2" align="center">	
-			<input type="button" id="searchbutton" value="保存" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
-			<input type="button" id="searchbutton" value="提交" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
 			<input type="button" id="return" value="返回" class="ui-button ui-state-default ui-corner-all">
 			</td>
 		

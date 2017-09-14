@@ -23,7 +23,7 @@
 	<div class="tableDiv">
 	<div style="padding: 5px;" class="ui-banner  ui-noBottomboder">
    		<span  class="span_left">年度:2017</span>
-   		<span  class="span_left">状态:退回修改</span>
+   		<span  class="span_left">状态:待复核</span>
    		<span  class="span_left">自评总分:90分</span>
    		<span  class="span_left">自评得分:80分</span>
 	</div>
@@ -31,7 +31,6 @@
 			<table class="wwFormTable tablesDiv" id="tabel_detail">
 				<tr style="font-weight: bold;">
 					<th  style="min-width: 40px;width:3%;">序号</th>
-					
 					<th   align="center" style="min-width:100px; width:10%;">
 						附件
 					</th>

@@ -10,7 +10,16 @@
 		 $.subscribe('rate', function(event,data) {
 			 if(document.getElementById("checkbox1").checked||document.getElementById("checkbox2").checked||document.getElementById("checkbox3").checked
 			 ||document.getElementById("checkbox4").checked||document.getElementById("checkbox5").checked ){
-	  			window.location.href="<%=request.getContextPath()%>/assess/assess_peopleBankFirstRateList.shtml";
+			 	if(document.getElementById("checkbox2").checked || document.getElementById("checkbox3").checked||document.getElementById("checkbox4").checked){
+			 	 if(confirm("该记录已经初评过,是否仍要再次初评。")){
+	  				window.location.href="<%=request.getContextPath()%>/assess/assess_peopleBankFirstRateList.shtml";
+			 	 }
+			 	
+			 	}else  if(document.getElementById("checkbox5").checked){
+			 	 alert("此记录。已经审核通过。禁止再次初评。");
+			 	 }else{
+		  			window.location.href="<%=request.getContextPath()%>/assess/assess_peopleBankFirstRateList.shtml";
+			 	}
 			}else{
 				alert("请选择一条记录");
 			}

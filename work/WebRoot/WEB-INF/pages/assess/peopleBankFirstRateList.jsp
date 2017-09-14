@@ -21,7 +21,11 @@
 	});
 </script>
 <style type="text/css">
-
+.tdLabel2{
+    background: RGB(234, 244, 253) !important;
+    text-align: right;
+    padding: 3px 3px 3px 8px;
+}
 textarea.erji{width:90%; height:100%;}
 
 </style> 
@@ -29,13 +33,53 @@ textarea.erji{width:90%; height:100%;}
 </head>
 <body>
 	<div class="tableDiv">
-	
-	<table id="gridtable" class="wwFormTable"></table>  
-	<div class="ui-banner  ui-noBottomboder">
-   		<span class="left_span">年度:2017</span>
-   		<span  class="left_span">机构类型:法人机构</span>
-   		<span  class="left_span">总分:100分</span>
-	</div>
+	<fieldset>
+		<table class="wwFormTable" style="width: 100%">
+	   		 <tbody>
+	   		 	<tr> 
+	   		 		<td class="tdLabel2" >
+						<label for="assess_list_year" class="label">机构名称:</label>
+					</td> 
+					<td colspan="1">
+		    		上海商业银行有限公司深圳分行﻿
+					</td> 
+					<td class="tdLabel2" >
+						<label for="assess_list_year" class="label">机构类型:</label>
+					</td> 
+					<td colspan="1">
+		    		银行业﻿
+					</td> 
+	   		 		<td class="tdLabel2" >
+						<label for="assess_list_year" class="label">系统统计得分:</label>
+					</td> 
+					<td colspan="1">
+		    			·﻿
+					</td>
+				<tr>
+				</tr>
+	   		 		<td class="tdLabel2" >
+						<label for="assess_list_year" class="label">系统统计等级:</label>
+					</td> 
+					<td colspan="1">
+		    		BBB﻿
+					</td> 
+	   		 		<td class="tdLabel2">
+						<label for="assess_list_year" class="label">定级等级:</label>
+					</td> 
+					<td colspan="1">
+							<input class="alterTextarea" type="text" style="width: 35px;" value="">
+					</td> 
+	   		 		<td class="tdLabel2" >
+						<label for="assess_list_year" class="label">定级理由:</label>
+					</td> 
+					<td >
+						<textarea  class="textarea alterTextarea" ></textarea>
+					</td> 
+	        	</tr>
+	        		
+			</tbody>
+		</table>
+	</fieldset>
 		<div id="gridtable_pager" style=" height:90%; overflow:auto;" >
 				<table class="wwFormTable" id="tabel_detail" >
 					<tr style="font-weight: bold;">
@@ -55,7 +99,6 @@ textarea.erji{width:90%; height:100%;}
 						<th  width="50" align="center">
 						分值
 						</th>
-						
 						<th width="200" >
 						二级指标
 						</th>

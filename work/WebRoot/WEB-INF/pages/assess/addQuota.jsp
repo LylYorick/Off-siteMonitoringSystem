@@ -40,12 +40,14 @@
 				$("#quotaDescription").removeAttr("readonly");
 				$("#quotaDescription").css("back-ground","#FFF");
 				$("#quotaDescription").text("");
+				$("#quotaDescriptionTr").show();
 			}else{
 			//如果是二级指标
 				$("#quotaDescription").attr("readonly","readonly");
 				$("#quotaDescription").css("back-ground","#DDD");
 				$("#quotaDescription").text("结合自身业务特点，按照洗钱风险防控、预警和处理程序以及相应的反洗钱要求，建立健全反洗钱内控制度，落实各项监管要求。重点评价制度完备性、修订及时性、报备自觉性");
 				$(".twoClassIndex").show();
+				$("#quotaDescriptionTr").hide();
 			}
 		});
 	}
@@ -103,7 +105,7 @@
 								<textarea class="textarea"></textarea>﻿
 							</td>
 						</tr>
-						<tr>
+						<tr id="quotaDescriptionTr">
 							<td class="tdLabel" colspan="1"><label
 								for="assess_indexsave_ascadd" class="label">指标描述<span
 									class="required">(*)</span>:</label>

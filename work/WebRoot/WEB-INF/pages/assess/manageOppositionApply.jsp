@@ -5,7 +5,6 @@
 <link href="<%=request.getContextPath()%>/style/common.css" rel="stylesheet" type="text/css" />
 	<title>监管评分>>人民银行初评管理>>初评明细管理</title>
 	<script type="text/javascript">
- 
      $.subscribe('updateFile', function(event,data) {
     	window.location.href="<%=request.getContextPath()%>/assess/assess_selfAssessmentUpload.shtml";
   	});
@@ -17,28 +16,25 @@
 </script>
 <style type="text/css">
 
-textarea.erji{width:90%; height:100%;}
 
 </style> 
 
 </head>
 <body>
 	<div class="tableDiv">
-	
-	<table id="gridtable" class="wwFormTable"></table>  
 	<div class="ui-banner  ui-noBottomboder">
 		<sj:submit id="updateFile" value="上传异议附件"
 			onClickTopics="updateFile" button="true" />
    		<span class="span_left">年度:2017</span>
-   		<span  class="span_left">机构类型:法人机构</span>
-   		<span  class="span_left">总分:100分</span>
+   		<span  class="span_left">机构类型:银行业</span>
 	</div>
 		<div id="gridtable_pager" style=" height:90%; overflow:auto;" >
 				<table class="wwFormTable" id="tabel_detail" >
 					<tr style="font-weight: bold;">
 						<th width="50">序号</th>
+						<th width="50">操作</th>
 						<th width="100">
-							附件
+							异议附件
 						</th>
 						<th width="50">
 							期望值
@@ -47,17 +43,19 @@ textarea.erji{width:90%; height:100%;}
 							异议理由
 						</th>
 						<th width="80">
-							评级得分
+							异议值
+						</th>
+						<th width="80">
+							自评得分
 						</th>
 						<th  width="50" align="center">
-						分值
+							分值
 						</th>
-						
 						<th width="200" >
-						二级指标
+						 	二级指标
 						</th>
 						<th  width="250">
-						评分标准
+							评分标准
 						</th>
 						<th width="100">
 							一级指标名称
@@ -68,23 +66,61 @@ textarea.erji{width:90%; height:100%;}
 					</tr>
 					<tr>
 						<td>
+							0
+						</td>
+						<td>
+							<input type="checkbox">
+						</td>
+						<td>
+							<a href="<%=request.getContextPath()%>/images/123.docx" download="异议附件0">异议附件0</a>
+						</td>
+						<td align="center">
+							<input type="text" style="width:35px"  name="asd" value="A" id="asd" >
+						</td>
+						<td>
+							<textarea   class="erji"  ></textarea>
+						</td>
+						<td align="center">
+							E﻿
+						</td>
+						<td align="center">
+							80
+						</td>
+						<td align="center">
+							100
+						</td>
+						<td ></td>
+						<td>
+						</td>
+						<td >
+						</td>
+						<td >
+						</td>
+					</tr>
+					<tr>
+						<td>
 							1
 						</td>
 						<td>
-							<a href="<%=request.getContextPath()%>/images/123.docx" download="自评附件1">自评附件1</a>
+							<input type="checkbox">
+						</td>
+						<td>
+							<a href="<%=request.getContextPath()%>/images/123.docx" download="异议附件1">异议附件1</a>
 						</td>
 						<td align="center">
 							<input type="text" style="width:35px"  name="asd" value="18" id="asd" >
 						</td>
 						<td>
-							<textarea   class="erji"  >想想就能得90%</textarea>
+							<textarea   class="erji"  ></textarea>
 						</td>
 						<td align="center">
 							15﻿
 						</td>
-						
 						<td align="center">
-						20
+							15﻿
+						</td>
+						<td align="center">
+							20
 						</td>
 						
 						<td  class="ssr" >总部内控制度体系全面覆盖法律法规和监管要求涉及的反洗钱各方面义务，各项反洗钱内控措施符合法规要求</td>
@@ -97,25 +133,28 @@ textarea.erji{width:90%; height:100%;}
 						<td rowspan="2">
 							<textarea  style="width:85%; height:100px;"  readonly="readonly">结合自身业务特点，按照洗钱风险防控、预警和处理程序以及相应的反洗钱要求，建立健全反洗钱内控制度，落实各项监管要求。重点评价制度完备性、修订及时性、报备自觉性。</textarea>
 						</td>
-						
 					</tr>
 					<tr>
 						<td>
 							2
 						</td>
 						<td>
-							<a href="<%=request.getContextPath()%>/images/123.docx" download="自评附件2">自评附件2</a>
+							<input type="checkbox">
+						</td>
+						<td>
+							<a href="<%=request.getContextPath()%>/images/123.docx" download="异议附件2">异议附件2</a>
 						</td>
 						<td align="center">
 							<input type="text" style="width:35px"  name="asdf" value="16" id="asdf" >
 						</td>
 						<td>
-						<textarea   class="erji"  >我觉得我能得80%</textarea>
+						<textarea   class="erji"  ></textarea>
 						</td>
 						<td align="center">
 							15
 						</td>
-						
+						<td align="center">
+						</td>
 						<td align="center">
 						20
 						</td>

@@ -50,7 +50,7 @@
 						<td class="tdLabel" colspan="1"><label class="label">年份:</label>﻿
 						</td>
 						<td  colspan="1">
-							  <input type="text"      readonly="readonly" name="asd" value="2017" id="asd">  
+							  <input type="text"  style=" background: #EEEEEE;"   readonly="readonly" name="asd" value="2017" id="asd">  
 						</td>
 					</tr>
 					<tr>

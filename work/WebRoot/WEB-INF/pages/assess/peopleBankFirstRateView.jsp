@@ -21,9 +21,7 @@
 	});
 </script>
 <style type="text/css">
-
 textarea.erji{width:90%; height:100%;}
-
 </style> 
 
 </head>
@@ -33,8 +31,11 @@ textarea.erji{width:90%; height:100%;}
 	<table id="gridtable" class="wwFormTable"></table>  
 	<div class="ui-banner  ui-noBottomboder">
    		<span class="left_span">年度:2017</span>
-   		<span  class="left_span">机构类型:法人机构</span>
-   		<span  class="left_span">总分:100分</span>
+   		<span  class="left_span">机构类型:银行业</span>
+   		<span  class="left_span">机构名称:上海商业银行有限公司深圳分行</span>
+   		<span  class="left_span">评级得分:83</span>
+   		<span  class="left_span">定级等级:BBB</span>
+   		<span  class="left_span">定级等级:BBB</span>
 	</div>
 		<div id="gridtable_pager" style=" height:90%; overflow:auto;" >
 				<table class="wwFormTable tablesDiv"  id="tabel_detail">
