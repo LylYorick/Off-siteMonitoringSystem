@@ -94,9 +94,8 @@
 	<div  class="ui-banner  ui-noBottomboder">
 		<sj:submit id="view" value="查看"
 			onClickTopics="view" button="true" />
-		<sj:submit id="rate" value="自评"
-			onClickTopics="rate" button="true" />
-		
+		<sj:submit id="checkRate" value="复核"
+			onClickTopics="checkRate" button="true" />
 	</div>
 	
 	<table id="gridtable" class="wwFormTable"></table> 
@@ -153,7 +152,7 @@
 						中国银行股份有限公司深圳市分行
 					</td>
 					<td>
-						金融机构自评
+						待复核
 					</td>
 					<td>
 						90

@@ -94,9 +94,8 @@
 	<div  class="ui-banner  ui-noBottomboder">
 		<sj:submit id="view" value="查看"
 			onClickTopics="view" button="true" />
-		<sj:submit id="rate" value="自评"
-			onClickTopics="rate" button="true" />
-		
+		<sj:submit id="uploadReport" value="上传整改报告"
+			onClickTopics="uploadReport" button="true" />
 	</div>
 	
 	<table id="gridtable" class="wwFormTable"></table> 
@@ -119,21 +118,19 @@
 					<th width="10%">
 						状态
 					</th>
-					<th width="10%" >
-						自评总分
-					</th>
-					<th width="10%" >
-						自评得分
-					</th>
-					<!-- <th  width="10%">
-					 	评级得分
-					</th>
+				
 					<th  width="10%">
 						评级等级
 					</th>
 					<th  width="20%">
 						定级理由
-					</th> -->
+					</th>
+					<th  width="10%">
+						监管意见书
+					</th>
+					<th  width="10%">
+						整改报告
+					</th>
 					
 				</tr>
 				<tr>
@@ -153,23 +150,20 @@
 						中国银行股份有限公司深圳市分行
 					</td>
 					<td>
-						金融机构自评
-					</td>
-					<td>
-						90
-					</td>
-					<td>
-						80
-					</td>
-					<!-- <td>
-						85
+						已公示
 					</td>
 					<td>
 						A
 					</td>
 					<td>
 						<textarea class="erji" readonly="readonly">违反保密规定，出现失密、泄密情况，导致严重后果</textarea>
-					</td> -->
+					</td>
+					<td>
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="监管意见书">监管意见书</a>
+					</td>
+					<td>
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="整改报告">整改报告</a>
+					</td>
 				</tr>
 			</table>
 	

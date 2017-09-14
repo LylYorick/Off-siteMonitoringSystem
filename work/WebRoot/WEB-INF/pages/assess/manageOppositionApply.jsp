@@ -43,6 +43,9 @@
 							异议理由
 						</th>
 						<th width="80">
+							异议类型
+						</th>
+						<th width="80">
 							异议值
 						</th>
 						<th width="80">
@@ -80,6 +83,9 @@
 						<td>
 							<textarea   class="erji"  ></textarea>
 						</td>
+						<td>
+							等级异议
+						</td>
 						<td align="center">
 							E﻿
 						</td>
@@ -112,6 +118,9 @@
 						</td>
 						<td>
 							<textarea   class="erji"  ></textarea>
+						</td>
+						<td>
+							评分异议
 						</td>
 						<td align="center">
 							15﻿
@@ -150,13 +159,16 @@
 						<td>
 						<textarea   class="erji"  ></textarea>
 						</td>
+						<td>
+							评分异议
+						</td>
 						<td align="center">
 							15
 						</td>
 						<td align="center">
 						</td>
 						<td align="center">
-						20
+							20
 						</td>
 						<td class="ssr">
 							1总部根据法律法规和监管要求以及本机构业务发展和反洗钱工作实际及时修订或更新内控制度

@@ -94,9 +94,10 @@
 	<div  class="ui-banner  ui-noBottomboder">
 		<sj:submit id="view" value="查看"
 			onClickTopics="view" button="true" />
-		<sj:submit id="rate" value="自评"
-			onClickTopics="rate" button="true" />
-		
+		<sj:submit id="applyOpposition" value="提出异议"
+			onClickTopics="applyOpposition" button="true" />
+		<sj:submit id="viewOpposition" value="异议处理情况"
+			onClickTopics="viewOpposition" button="true" />
 	</div>
 	
 	<table id="gridtable" class="wwFormTable"></table> 
@@ -125,7 +126,7 @@
 					<th width="10%" >
 						自评得分
 					</th>
-					<!-- <th  width="10%">
+					<th  width="10%">
 					 	评级得分
 					</th>
 					<th  width="10%">
@@ -133,7 +134,8 @@
 					</th>
 					<th  width="20%">
 						定级理由
-					</th> -->
+					</th>
+					
 					
 				</tr>
 				<tr>
@@ -153,7 +155,7 @@
 						中国银行股份有限公司深圳市分行
 					</td>
 					<td>
-						金融机构自评
+						人行复评
 					</td>
 					<td>
 						90
@@ -161,7 +163,7 @@
 					<td>
 						80
 					</td>
-					<!-- <td>
+					<td>
 						85
 					</td>
 					<td>
@@ -169,7 +171,7 @@
 					</td>
 					<td>
 						<textarea class="erji" readonly="readonly">违反保密规定，出现失密、泄密情况，导致严重后果</textarea>
-					</td> -->
+					</td>
 				</tr>
 			</table>
 	
