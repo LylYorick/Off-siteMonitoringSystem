@@ -3,7 +3,7 @@
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <head>
 	<title>监管评分>>金融机构自评管理</title>
-
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 <link href="<%=request.getContextPath()%>/style/common.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
      $.subscribe('view', function(event,data) {
@@ -159,10 +159,10 @@
 						<textarea class="erji" readonly="readonly">违反保密规定，出现失密、泄密情况，导致严重后果</textarea>
 					</td>
 					<td>
-						<a href="<%=request.getContextPath()%>/images/123.docx" download="监管意见书">监管意见书</a>
+						<a  class="proposeFileA" href="<%=request.getContextPath()%>/images/123.docx" download="监管意见书">监管意见书</a><label class="proposeFileLabel" style="color:red;">(新)</label>
 					</td>
 					<td>
-						<a href="<%=request.getContextPath()%>/images/123.docx" download="整改报告">整改报告</a>
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="整改报告">整改报告</a><label style="color:red;">(新)</label>
 					</td>
 				</tr>
 			</table>

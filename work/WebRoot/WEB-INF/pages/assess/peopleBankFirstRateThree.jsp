@@ -209,12 +209,13 @@
 						已公示
 					</td>
 					<td>
+						B
 					</td>
 					<td>
-						<a href="<%=request.getContextPath()%>/images/123.docx" download="监管意见书">监管意见书</a>
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="监管意见书">监管意见书</a><label style="color:red;">(新)</label>
 					</td>
 					<td>
-						<a href="<%=request.getContextPath()%>/images/123.docx" download="整改报告">整改报告</a>
+						<a class="reportFileA" href="<%=request.getContextPath()%>/images/123.docx" download="整改报告">整改报告</a><label class="reportFileLabel" style="color:red;">(新)</label>
 					</td>
 				</tr>
 					<tr>

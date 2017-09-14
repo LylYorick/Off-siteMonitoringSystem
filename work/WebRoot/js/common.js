@@ -22,7 +22,27 @@ function alterCheckbox() {
 	});
 
 }
+//设定 所有class有 numberInput 只能输入正整数 且最大值为20
+function numberInput() {
+	$(".numberInput").keyup(function(){
+		this.value=this.value.replace(/\D/g,'');
+		if(this.value>20){
+	  		this.value = 20;
+		}
+	});
+}
+//文件点击下载后 新字去掉
+function downLoadFile() {
+	$(".proposeFileA").click(function(){
+		$(".proposeFileLabel").hide();
+	});
+	$(".reportFileA").click(function(){
+		$(".reportFileLabel").hide();
+	});
+}
 $(function(){
 	alterTextarea();
 	alterCheckbox();
+	numberInput();
+	downLoadFile();
 });

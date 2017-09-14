@@ -15,18 +15,22 @@
 		 $("#return").click(function(){
 			 window.history.back();
 		 });
+		checkonlyOne();
 	});
-     $(function(){
-		        $(':checkbox[type="checkbox"]').each(function(){
-		            $(this).click(function(){
-		                if($(this).attr('checked')){
-		                    $(':checkbox[type="checkbox"]').removeAttr('checked');
-		                    $(this).attr('checked','checked');
-		                }
-		            });
-		        });
-		    }); 
+	function checkonlyOne(){
+	  $(':checkbox[type="checkbox"]').each(function(){
+	           $(this).click(function(){
+	               if($(this).attr('checked')){
+	                   $(':checkbox[type="checkbox"]').removeAttr('checked');
+	                   $(this).attr('checked','checked');
+	               }
+	           });
+	       });
+	}		   
+
 </script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
+
 <link href="<%=request.getContextPath()%>/style/common.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -88,7 +92,7 @@
 						<a href="<%=request.getContextPath()%>/images/123.docx" download="自评附件">自评附件</a>
 					</td>
 					<td align="center">
-						<input type="text" style="width: 50px;">
+						<input type="text" style="width: 50px;" class="numberInput">
 					</td>
 					<td>
 					<textarea rows="3" cols="20"></textarea>

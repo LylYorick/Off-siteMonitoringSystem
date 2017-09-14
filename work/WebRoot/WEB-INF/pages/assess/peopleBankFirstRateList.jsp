@@ -3,6 +3,8 @@
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <head>
 <link href="<%=request.getContextPath()%>/style/common.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
+
 	<title>监管评分>>人民银行初评管理>>初评明细管理</title>
 	<script type="text/javascript">
      $.subscribe('indexadd', function(event,data) {
@@ -120,7 +122,7 @@ textarea.erji{width:90%; height:100%;}
 							<a href="<%=request.getContextPath()%>/images/123.docx" download="自评附件1">自评附件1</a>
 						</td>
 						<td align="center">
-							<input type="text" style="width:35px"  name="asd" value="15" id="asd">﻿
+							<input type="text" style="width:35px" class="numberInput">﻿
 						</td>
 							<td align="center">
 						18
@@ -152,7 +154,7 @@ textarea.erji{width:90%; height:100%;}
 							<a href="<%=request.getContextPath()%>/images/123.docx" download="自评附件2">自评附件2</a>
 						</td>
 						<td align="center">
-							<input type="text" style="width:35px"  name="asdf" value="15" id="asdf">
+							<input type="text" style="width:35px"  class="numberInput">
 						</td>
 						<td align="center">
 						16
