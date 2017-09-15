@@ -41,6 +41,7 @@
 		</legend>
 		<br>
 		<s:form namespace="/document"  method="post" enctype="multipart/form-data">
+			
 			<s:bean name="java.util.HashMap" id="qTableLayout">
 				<s:param name="tablecolspan" value="" />
 			</s:bean>
@@ -48,6 +49,18 @@
 			<s:file name="documentFile" label="待上传的附件" required="true" size="40" >
 				<s:param name="remark" value="%{getText('documentFile.remark')}" />
 			</s:file>
+			<tr id="alreadyUpload">  
+			    <td class="tdLabel" colspan="1"><label for="assess_selfAssessmentUpload_documentFile" class="label" >已上传的附件:</label><label><a onclick="deltr('alreadyUpload')">删除</a></label></td> 
+			    <td colspan="1" >
+			    	<a href="/work/images/123.docx" download="制度体系.docx">制度体系.docx</a>
+				</td>  
+			</tr>
+			<tr id="alreadyUpload2">  
+			    <td class="tdLabel" colspan="1"><label for="assess_selfAssessmentUpload_documentFile" class="label" >已上传的附件:</label><label><a onclick="deltr('alreadyUpload2')">删除</a></label></td> 
+			    <td colspan="1" >
+			    	<a href="<%=request.getContextPath()%>/images/123.docx" download="内控措施.docx">内控措施.docx</a>
+				</td>  
+			</tr>
 			<tr><td colspan="2" align="center">
 			<input type="button" value="新增附件" id="addDoc" class="ui-button ui-state-default ui-corner-all">
 			<s:submit theme="simple" align="center"  value="提    交" cssClass="ui-button ui-state-default ui-corner-all"></s:submit>
