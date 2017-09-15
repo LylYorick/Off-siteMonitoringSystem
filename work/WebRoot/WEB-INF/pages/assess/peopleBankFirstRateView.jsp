@@ -41,8 +41,8 @@ textarea.erji{width:90%; height:100%;}
 				<table class="wwFormTable tablesDiv"  id="tabel_detail">
 					<tr style="font-weight: bold;">
 						<th width="50">序号</th>
-						<th width="100">
-							附件
+						<th width="200">
+							自评附件
 						</th>
 						<th width="80">
 							评级得分
@@ -75,7 +75,10 @@ textarea.erji{width:90%; height:100%;}
 							1
 						</td>
 						<td>
-							<a href="<%=request.getContextPath()%>/images/123.docx" download="自评附件1">自评附件1</a>
+							<a href="<%=request.getContextPath()%>/images/123.docx" download="制度体系.docx">制度体系.docx</a>
+							<a href="<%=request.getContextPath()%>/images/123.docx" download="内控措施.docx">内控措施.docx</a></br>
+							<a href="<%=request.getContextPath()%>/images/123.docx" download="各项举措.docx">各项举措.docx</a>
+							<a href="<%=request.getContextPath()%>/images/logo1.jpg" download="材料图片.jpg">材料图片.jpg</a>
 						</td>
 						<td align="center">
 							<input type="text" style="width:35px;background: #DDDDDD;"  name="asd" value="15" id="asd" readonly>﻿
@@ -107,7 +110,7 @@ textarea.erji{width:90%; height:100%;}
 							2
 						</td>
 						<td>
-							<a href="<%=request.getContextPath()%>/images/123.docx" download="自评附件2">自评附件2</a>
+							<a href="<%=request.getContextPath()%>/images/123.docx" download="人员分配.docx">人员分配.docx</a></br>
 						</td>
 						<td align="center">
 							<input type="text" style="width:35px;background: #DDDDDD;"  name="asdf" value="15" id="asdf" readonly>

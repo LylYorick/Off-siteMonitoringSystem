@@ -76,7 +76,7 @@
 							<input type="checkbox">
 						</td>
 						<td>
-							<a href="<%=request.getContextPath()%>/images/123.docx" download="异议附件0">异议附件0</a>
+							<a href="<%=request.getContextPath()%>/images/123.docx" download="异议材料1">异议材料1</a>
 						</td>
 						<td align="center">
 							<input type="text" style="width:35px"  name="asd" value="A" id="asd" >
@@ -112,7 +112,7 @@
 							<input type="checkbox">
 						</td>
 						<td>
-							<a href="<%=request.getContextPath()%>/images/123.docx" download="异议附件1">异议附件1</a>
+							<a href="<%=request.getContextPath()%>/images/123.docx" download="异议材料2">异议材料2</a>
 						</td>
 						<td align="center">
 							<input type="text" style="width:35px"  class="numberInput">
@@ -152,7 +152,7 @@
 							<input type="checkbox">
 						</td>
 						<td>
-							<a href="<%=request.getContextPath()%>/images/123.docx" download="异议附件2">异议附件2</a>
+							<a href="<%=request.getContextPath()%>/images/123.docx" download="异议材料3">异议材料3</a>
 						</td>
 						<td align="center">
 							<input type="text" style="width:35px"  class="numberInput">

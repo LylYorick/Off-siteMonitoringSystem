@@ -30,8 +30,8 @@
 			<table class="wwFormTable tablesDiv"  id="tabel_detail"  >
 				<tr style="font-weight: bold;">
 					<th  style="min-width: 40px;width:5%;">序号</th>
-					<th   align="center" style="min-width:40px; width:7%;">
-						附件
+					<th   align="center" style="min-width:40px; width:17%;">
+						自评附件
 					</th>
 					<th   align="center" style="min-width:40px; width:15%;">
 						自评理由
@@ -66,7 +66,10 @@
 						1
 					</td>
 					<td>
-						<a href="<%=request.getContextPath()%>/images/123.docx" download="自评附件1">自评附件1</a>
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="制度体系.docx">制度体系.docx</a>
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="内控措施.docx">内控措施.docx</a></br>
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="各项举措.docx">各项举措.docx</a>
+						<a href="<%=request.getContextPath()%>/images/logo1.jpg" download="材料图片.jpg">材料图片.jpg</a>
 					</td>
 					<td>
 						<textarea rows="3" cols="20" readonly="readonly">本机构认为并没有存在下列任一情形，可以直接评定为E类机构：（1）不配合反洗钱调查工作，拒绝提供信息资料；
@@ -102,7 +105,7 @@
 						2
 					</td>
 					<td>
-						<a href="<%=request.getContextPath()%>/images/123.docx" download="自评附件2">自评附件2</a>
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="人员分配.docx">人员分配.docx</a></br>
 					</td>
 					<td>
 						<textarea rows="3" cols="20" readonly="readonly">本机构认为并没有存在下列任一情形，可以直接评定为E类机构：（1）不配合反洗钱调查工作，拒绝提供信息资料；

@@ -88,7 +88,8 @@ textarea[readonly] {
 						<textarea rows="3" cols="20" readonly="readonly">重新查看文件后认为依旧违反(2)提供信息资料存在重大事项隐瞒、重大信息遗漏、虚假陈述或误导性陈述，情节严重因此无法修改评级</textarea>
 					</td>
 					<td>
-						<a href="<%=request.getContextPath()%>/images/123.docx" download="异议附件1">异议附件1</a>
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="异议材料1">异议材料1</a>
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="异议材料2">异议材料2</a>
 					</td>
 					<td>
 						E
@@ -124,7 +125,7 @@ textarea[readonly] {
 						<textarea   class="textarea alterTextarea" ></textarea>
 					</td>
 					<td>
-						<a href="<%=request.getContextPath()%>/images/123.docx" download="异议附件2">异议附件2</a>	
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="异议材料3">异议材料3</a>	
 					</td>
 					<td>
 						18

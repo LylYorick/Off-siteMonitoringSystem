@@ -39,78 +39,6 @@ textarea[readonly] {
 </head>
 <body>
 	<div class="grid">
-	<%-- <fieldset>
-		<legend>
-			查询条件
-		</legend>
-		<br>
-		<s:form namespace="/assess" action="assess_list" method="post">
-		<table class="wwFormTable">
-	   		 <tbody>
-	   		 	<tr>  
-	   		 		<td class="tdLabel" colspan="1">
-						<label for="assess_list_year" class="label">年度:</label>
-					</td> 
-					<td colspan="1">
-		    			<input type="text" name="year" value="" id="assess_list_year">﻿
-					</td>   
-		    		<td class="tdLabel" colspan="1">
-		    			<label for="assess_list_year" class="label">机构类型:</label>
-					</td> 
-					<td colspan="1">
-						<select style="height:25px;">
-	    					<option value="1">法人金融机构</option>
-	    					<option value="1">银行业</option>
-	    					<option value="1">证券业</option>
-	    					<option value="1">保险业</option>
-						</select>
-					</td>   
-	        	</tr>
-	        		<td class="tdLabel" colspan="1">
-		    			<label for="assess_list_year" class="label">机构名称:</label>
-					</td> 
-					<td colspan="1">
-						<select style="height:25px;">
-	    					<option value="1">上海浦东发展银行股份有限公司</option>
-	    					<option value="1">交通银行股份有限公司深圳分行</option>
-	    					<option value="1">江苏银行股份有限公司深圳分行</option>
-	    					<option value="1">浙商银行深圳分行</option>
-						</select>
-					</td>  
-					<td class="tdLabel" colspan="1">
-		    			<label class="label" >状态:</label>﻿
-					</td>   
-			    	<td  colspan="1">
-						<select style="height:25px;">
-	    					<option value="1">待处理</option>
-	    					<option value="1">已处理</option>
-						</select>
-					</td> 
-	        	<tr>
-	        	</tr>
-	        	<tr>  
-	   		 		<td class="tdLabel" colspan="1">
-						<label for="assess_list_year" class="label">异议类型:</label>
-					</td> 
-					<td colspan="1">
-						<select style="height:25px;">
-	    					<option value="1">评分异议</option>
-	    					<option value="1">等级异议</option>
-						</select>
-					</td>   
-					<td class="tdLabel" colspan="1">
-					</td> 
-					<td colspan="1">
-					</td> 
-	        	</tr>
-			</tbody>
-		</table>
-		</s:form>
-		<div align="center">
-			<input type="submit" id="searchbutton" value="查  询" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
-			<img id="indicator" src="/work/images/027.gif" alt="Loading..." style="display: none">
-		</div>
-	</fieldset> --%>
 	<div  class="ui-banner  ui-noBottomboder">
 		<span 	class=" span_left">年度:2017</span>
    		<span  class="span_left">机构类型:法人机构</span>
@@ -160,7 +88,7 @@ textarea[readonly] {
 						<textarea rows="3" cols="20" readonly="readonly">重新查看文件后认为依旧违反(2)提供信息资料存在重大事项隐瞒、重大信息遗漏、虚假陈述或误导性陈述，情节严重因此无法修改评级</textarea>
 					</td>
 					<td>
-						<a href="<%=request.getContextPath()%>/images/123.docx" download="异议附件1">异议附件1</a>
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="异议材料1">异议材料1</a>
 					</td>
 					<td>
 						中国银行股份有限公司深圳市分行
@@ -195,7 +123,7 @@ textarea[readonly] {
 						<textarea   class="textarea alterTextarea" readonly="readonly"></textarea>
 					</td>
 					<td>
-						<a href="<%=request.getContextPath()%>/images/123.docx" download="异议附件2">异议附件2</a>	
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="异议材料2">异议材料2</a>	
 					</td>
 					<td>
 						中国银行股份有限公司深圳市分行

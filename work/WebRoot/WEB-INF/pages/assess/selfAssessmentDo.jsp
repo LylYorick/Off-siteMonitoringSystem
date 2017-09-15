@@ -89,7 +89,8 @@
 						<input type="checkbox" id="checkbox1" name="checkbox1"  >
 					</td>
 					<td>
-						<a href="<%=request.getContextPath()%>/images/123.docx" download="自评附件">自评附件</a>
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="制度体系.docx">制度体系.docx</a></br>
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="内控措施.docx">内控措施.docx</a>
 					</td>
 					<td align="center">
 						<input type="text" style="width: 50px;" class="numberInput">

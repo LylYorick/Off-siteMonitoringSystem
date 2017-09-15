@@ -30,7 +30,7 @@
 			<table class="wwFormTable tablesDiv" id="tabel_detail">
 				<tr style="font-weight: bold;">
 					<th  style="min-width: 40px;width:3%;">序号</th>
-					<th   align="center" style="min-width:100px; width:10%;">
+					<th   align="center" style="min-width:100px; width:17%;">
 						附件
 					</th>
 					<th   align="center" style="min-width:100px; width:10%;">
@@ -67,7 +67,10 @@
 					</td>
 					
 					<td>
-						<a href="<%=request.getContextPath()%>/images/123.docx" download="自评附件">自评附件</a>
+							<a href="<%=request.getContextPath()%>/images/123.docx" download="制度体系.docx">制度体系.docx</a>
+							<a href="<%=request.getContextPath()%>/images/123.docx" download="内控措施.docx">内控措施.docx</a></br>
+							<a href="<%=request.getContextPath()%>/images/123.docx" download="各项举措.docx">各项举措.docx</a>
+							<a href="<%=request.getContextPath()%>/images/logo1.jpg" download="材料图片.jpg">材料图片.jpg</a>
 					</td>
 					<td>
 						<textarea rows="3" cols="10" ></textarea>

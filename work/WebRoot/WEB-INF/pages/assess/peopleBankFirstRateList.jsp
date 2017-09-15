@@ -55,7 +55,7 @@ textarea.erji{width:90%; height:100%;}
 						<label for="assess_list_year" class="label">系统统计得分:</label>
 					</td> 
 					<td colspan="1">
-		    			·﻿
+		    			80﻿
 					</td>
 				<tr>
 				</tr>
@@ -86,8 +86,8 @@ textarea.erji{width:90%; height:100%;}
 				<table class="wwFormTable" id="tabel_detail" >
 					<tr style="font-weight: bold;">
 						<th width="50">序号</th>
-						<th width="100">
-							附件
+						<th width="200">
+							自评附件
 						</th>
 						<th width="80">
 							评级得分
@@ -119,7 +119,10 @@ textarea.erji{width:90%; height:100%;}
 							1
 						</td>
 						<td>
-							<a href="<%=request.getContextPath()%>/images/123.docx" download="自评附件1">自评附件1</a>
+							<a href="<%=request.getContextPath()%>/images/123.docx" download="制度体系.docx">制度体系.docx</a>
+							<a href="<%=request.getContextPath()%>/images/123.docx" download="内控措施.docx">内控措施.docx</a></br>
+							<a href="<%=request.getContextPath()%>/images/123.docx" download="各项举措.docx">各项举措.docx</a>
+							<a href="<%=request.getContextPath()%>/images/logo1.jpg" download="材料图片.jpg">材料图片.jpg</a>
 						</td>
 						<td align="center">
 							<input type="text" style="width:35px" class="numberInput">﻿
@@ -127,9 +130,9 @@ textarea.erji{width:90%; height:100%;}
 							<td align="center">
 						18
 						</td>
-						<td>
-							<textarea   class="erji"  readonly="readonly">想想就能得90%</textarea>
-						</td>
+							<td>
+								<textarea  class="fillArea"  readonly="readonly">制度建立较为完善</textarea>
+							</td>
 						<td align="center">
 						20
 						</td>
@@ -151,7 +154,7 @@ textarea.erji{width:90%; height:100%;}
 							2
 						</td>
 						<td>
-							<a href="<%=request.getContextPath()%>/images/123.docx" download="自评附件2">自评附件2</a>
+							<a href="<%=request.getContextPath()%>/images/123.docx" download="人员分配.docx">人员分配.docx</a></br>
 						</td>
 						<td align="center">
 							<input type="text" style="width:35px"  class="numberInput">
@@ -160,7 +163,7 @@ textarea.erji{width:90%; height:100%;}
 						16
 						</td>
 						<td>
-						<textarea   class="erji"  readonly="readonly">我觉得我能得90%</textarea>
+						<textarea   class="erji"  readonly="readonly">制度建立较为完善</textarea>
 						</td>
 						<td align="center">
 						20
