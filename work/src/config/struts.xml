@@ -806,5 +806,16 @@
 			<result name="JSON" type="json"></result>
 		</action>
 	</package>
+	
+	<!-- 金融机构制度管理 -->
+	<package name="institution" extends="json" namespace="/institution">
+	 	<action name="*_*" class="{1}Action" method="{2}">
+			<interceptor-ref name="chainStack" />
+			<interceptor-ref name="modelDriven" />
+			<result>/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="JSON" type="json"></result>
+		</action> 
+	</package>
+	
 </struts>
 
