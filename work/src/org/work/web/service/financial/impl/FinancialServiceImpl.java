@@ -137,7 +137,6 @@ public class FinancialServiceImpl implements IFinancialService{
 		for(Information info : financials){
 			List tmpList2 = new ArrayList();
 			Parameter parameter = new Parameter();
-			
 			tmpList2.add(info.getBoid());			
 			tmpList2.add(info.getBname());
 			tmpList2.add(info.getBaddr());			
@@ -147,7 +146,6 @@ public class FinancialServiceImpl implements IFinancialService{
 			tmpList2.add(info.getBdeptlead());
 			tmpList2.add(info.getBwork());
 			tmpList2.add(info.getBworktel());
-			
 			parameter.setList(tmpList2);			
 			valueList.add(parameter);
 		}

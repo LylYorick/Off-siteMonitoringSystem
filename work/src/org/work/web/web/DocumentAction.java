@@ -38,7 +38,7 @@ import com.opensymphony.xwork2.ModelDriven;
  * @版本 深圳V1.0
  */
 @SuppressWarnings("serial")
-public class DocumentAction extends JsonBaseAction implements ModelDriven<Upload> {
+public class DocumentAction extends JsonBaseAction  {
 	private Upload upload = new Upload();
 	private Integer uid;
 	private String uids;
@@ -241,6 +241,7 @@ public class DocumentAction extends JsonBaseAction implements ModelDriven<Upload
 		params.put("bid",session.get("bid"));
 		params.put("starttime",session.get("starttime"));
 		params.put("endtime",session.get("endtime"));		
+		System.out.print(this.getPage());
 		PaginaterList list = documentService.findAllUpload(params,this.getPage());		
 		Long maxRecord = list.getPaginater().getMaxRowCount();
 		this.setGridModel(list.getList());

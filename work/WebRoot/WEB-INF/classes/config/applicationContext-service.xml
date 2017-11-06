@@ -103,5 +103,8 @@
 	<bean id="caculService" class="org.work.web.service.cacul.impl.CaculServiceImpl">
 		<property name="extendDao" ref="extendDao"></property>
 	</bean>
-		
+	
+	<bean id="institutionService" class="org.work.web.service.institution.impl.InstitutionServiceImpl">
+		<property name="institutionDao" ref="institutionDao"></property>
+	</bean>
 </beans>

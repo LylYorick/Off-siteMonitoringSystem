@@ -13,6 +13,8 @@ import java.util.Map;
  */
 public class Constants {
 
+	public static final String DIR_INSTITUTION = "/WEB-INF/institution";
+	
 	public static final String DIR_DOCUMENT = "/WEB-INF/document";
 
 	public static final String DIR_SUSPICIOUS = "/WEB-INF/suspicious";

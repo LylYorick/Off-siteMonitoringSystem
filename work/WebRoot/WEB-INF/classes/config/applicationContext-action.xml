@@ -124,5 +124,7 @@
 	</bean>
 	<!-- 制度模块 -->
 	<bean id="institutionAction" class="org.work.web.web.InstitutionAction" scope="prototype" parent="baseAction">
+		<property name="institutionService" ref="institutionService"></property>
+		<property name="financialService" ref="financialService"></property>
 	</bean>
 </beans>

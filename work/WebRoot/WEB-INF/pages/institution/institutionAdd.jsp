@@ -8,7 +8,7 @@
 			$('#addDoc').click(function(){
 			  var $table=$(".wwFormTable tr");
 			  var len=$table.length;
-	          var newfile = '<tr id='+(len+1)+'><td class="tdLabel" colspan="1"><label for="document_save_documentFile" class="label">待上传的附件<span class="required">(*)</span>:</label><label><a onclick="deltr('+(len+1)+')">删除</a></label></td><td colspan="1"><input type="file" size="40" name="documentFile" value="" id="document_save_documentFile" reg=".*doc|txt|.xls$" tip="允许word,excel,txt文件"/><span >&nbsp;&nbsp;<s:property value="%{getText('documentFile.remark')}" /></span></td></tr>';
+	          var newfile = '<tr id='+(len+1)+'><td class="tdLabel" colspan="1"><label for="institution_save_institutionFile" class="label">待上传的附件<span class="required">(*)</span>:</label><label><a onclick="deltr('+(len+1)+')">删除</a></label></td><td colspan="1"><input type="file" size="40" name="institutionFile" value="" id="institution_save_institutionFile" reg=".*doc|txt|.xls$" tip="允许word,excel,txt文件"/><span >&nbsp;&nbsp;<s:property value="%{getText('documentFile.remark')}" /></span></td></tr>';
 			  $('.wwFormTable tr:first').after(newfile);
 	        });
       });
@@ -22,7 +22,7 @@
 			$("tr[id=\'"+index+"\']").remove();			
 			for(var temp=index+1;temp<=$table.length;temp++)
 			{
-				$("tr[id=\'"+temp+"\']").replaceWith('<tr id='+(temp-1)+'><td class="tdLabel" colspan="1"><label for="document_save_documentFile" class="label">待上传的附件<span class="required">(*)</span>:</label><label><a onclick="deltr('+(temp-1)+')">删除</a></label></td><td colspan="1"><input type="file" size="40" name="documentFile" value="" id="document_save_documentFile"   reg=".*doc|txt|.xls$" tip="允许word,excel,txt文件"/><span >&nbsp;&nbsp;<s:property value="%{getText('documentFile.remark')}" /></span></td></tr>');
+				$("tr[id=\'"+temp+"\']").replaceWith('<tr id='+(temp-1)+'><td class="tdLabel" colspan="1"><label for="institution_save_institutionFile" class="label">待上传的附件<span class="required">(*)</span>:</label><label><a onclick="deltr('+(temp-1)+')">删除</a></label></td><td colspan="1"><input type="file" size="40" name="institutionFile" value="" id="institution_save_institutionFile"   reg=".*doc|txt|.xls$" tip="允许word,excel,txt文件"/><span >&nbsp;&nbsp;<s:property value="%{getText('documentFile.remark')}" /></span></td></tr>');
 			}
 		}
 	}
@@ -40,12 +40,15 @@
 			金融机构上传附件
 		</legend>
 		<br>
-		<s:form namespace="/document"  method="post" enctype="multipart/form-data">
+		<s:form namespace="/institution"  action="institution_save" method="post" enctype="multipart/form-data">
 			<s:bean name="java.util.HashMap" id="qTableLayout">
-				<s:param name="tablecolspan" value="" />
+				<s:param name="tablecolspan" value="%{2}" />
 			</s:bean>
-			
-			<s:file name="documentFile" label="待上传的附件" required="true" size="40" >
+			<s:label label="金融机构名称" required="true" name="#session.userinfo.information.bname" cssStyle="width:240px">
+				<s:param name="labelcolspan" value="%{1}" />
+				<s:param name="inputcolspan" value="%{1}" />
+			</s:label>
+			<s:file name="institutionFile" label="待上传的附件" required="true" size="40" >
 				<s:param name="remark" value="%{getText('documentFile.remark')}" />
 			</s:file>
 			<tr><td colspan="2" align="center">
