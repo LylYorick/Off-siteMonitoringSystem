@@ -18,11 +18,14 @@
   </head>
   
   <body>
+  <s:debug></s:debug>
+  		异常:<s:property value="exceptionStack"/>
    <div align="center" style="width: 300px;margin: 10px auto">
    	<div id="effect" class="ui-widget-content ui-corner-all">
 		<h3 class="ui-widget-header ui-corner-all">操作提示</h3>
 		<p style="height: 100px;vertical-align: center;margin-top: 50px">
 			异常:<s:property value="exception.message"/>
+	
 			</p>
 	</div>
 

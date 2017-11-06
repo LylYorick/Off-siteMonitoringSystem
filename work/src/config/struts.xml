@@ -806,5 +806,15 @@
 			<result name="JSON" type="json"></result>
 		</action>
 	</package>
+		<!-- 档案管理 -->
+	<package name="archives" extends="json" namespace="/archives">
+		<action name="*_*" class="{1}Action" method="{2}">
+			<interceptor-ref name="chainStack" />
+			<interceptor-ref name="modelDriven" />
+			<result>/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="input">/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="JSON" type="json"></result>
+		</action>
+	</package>
 </struts>
 

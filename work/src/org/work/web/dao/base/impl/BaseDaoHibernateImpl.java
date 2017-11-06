@@ -28,6 +28,7 @@ public abstract class BaseDaoHibernateImpl extends HibernateDaoSupport implement
 	@SuppressWarnings("unchecked")
 	abstract public Class getModelClass();
 	
+	
 	public List findAll() {
 		return this.getHibernateTemplate().loadAll(getModelClass());
 	}
@@ -55,6 +56,12 @@ public abstract class BaseDaoHibernateImpl extends HibernateDaoSupport implement
 
 	public void update(Object entity) {
 		this.getHibernateTemplate().update(entity);
+	}
+
+
+	@Override
+	public void merge(Object entity) {
+		this.getHibernateTemplate().merge(entity);
 	}
 
 
@@ -239,7 +246,7 @@ public abstract class BaseDaoHibernateImpl extends HibernateDaoSupport implement
 	protected PaginaterList getPaginaterList(QueryHelper helper, int page) {
 		PaginaterList list = new PaginaterList();
 		list.setPaginater(getPageData(helper, String.valueOf(page)));
-		
+		 
 		return list;
 	}
 	/**

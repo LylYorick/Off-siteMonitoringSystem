@@ -28,6 +28,7 @@ public class BankUser  implements java.io.Serializable {
      private String bustatus;
      private String loadtime;
      private Information information;
+     private Archives archives;
      /*银行用户角色*/
      private Set<Role> TPubRoleusers = new HashSet<Role>(0);
      private Set<Privilege> allprlgs = new HashSet<Privilege>(10);//用于存储该用户拥有的所有权限
@@ -46,27 +47,30 @@ public class BankUser  implements java.io.Serializable {
     }
     
     /** full constructor */
-    public BankUser( 
-    		String buname,String btel,
-    		String bmail, String bupswd, 
-    		String bumark, String brname,
-    		Set TPubRoleusers,String loadtime,
-    		String buupdatetime,String buauthor,String bustatus,Information information
-    		) {
-        this.buname = buname;
-        this.bupswd = bupswd;
-        this.bumark = bumark;
-        this.bmail = bmail;
-        this.loadtime = loadtime;
-        this.brname = brname;
-        this.btel = btel;
-        this.TPubRoleusers = TPubRoleusers;
-        this.buupdatetime = buupdatetime;
-        this.buauthor = buauthor;
-        this.bustatus = bustatus;
-        this.information= information;
+   
+    public BankUser(String buid, String buname, String bupswd, String bumark,
+    		String brname, String btel, String bmail, String buupdatetime,
+    		String buauthor, String bustatus, String loadtime,
+    		Information information, Archives archives,
+    		Set<Role> tPubRoleusers, Set<Privilege> allprlgs, List menus) {
+    	super();
+    	this.buid = buid;
+    	this.buname = buname;
+    	this.bupswd = bupswd;
+    	this.bumark = bumark;
+    	this.brname = brname;
+    	this.btel = btel;
+    	this.bmail = bmail;
+    	this.buupdatetime = buupdatetime;
+    	this.buauthor = buauthor;
+    	this.bustatus = bustatus;
+    	this.loadtime = loadtime;
+    	this.information = information;
+    	this.archives = archives;
+    	TPubRoleusers = tPubRoleusers;
+    	this.allprlgs = allprlgs;
+    	this.menus = menus;
     }
-
    
     // Property accessors
 
@@ -74,7 +78,8 @@ public class BankUser  implements java.io.Serializable {
         return this.buid;
     }
     
-    public void setBuid(String buid) {
+
+	public void setBuid(String buid) {
         this.buid = buid;
     }
 
@@ -192,4 +197,12 @@ public class BankUser  implements java.io.Serializable {
 		this.loadtime = loadtime;
 	}
 
+	public Archives getArchives() {
+		return archives;
+	}
+
+	public void setArchives(Archives archives) {
+		this.archives = archives;
+	}
+	
 }

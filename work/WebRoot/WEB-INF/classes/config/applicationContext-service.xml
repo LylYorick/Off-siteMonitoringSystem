@@ -103,5 +103,10 @@
 	<bean id="caculService" class="org.work.web.service.cacul.impl.CaculServiceImpl">
 		<property name="extendDao" ref="extendDao"></property>
 	</bean>
+	<!-- 档案模块 -->
+	<bean id="archivesService" class="org.work.web.service.archives.impl.ArchivesServiceImpl">
+		<property name="catalogDao" ref="catalogDao"></property>
+		<property name="archivesDao" ref="archivesDao"></property>
+	</bean>
 		
 </beans>

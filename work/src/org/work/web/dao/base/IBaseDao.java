@@ -47,6 +47,18 @@ public interface IBaseDao{
 	 * @since 2007-11-26
 	 */
 	public void update(Object entity);
+	/**
+	 * description: 更新对象.
+	 * 当更新出现  a different object with the same identifier value was already associated with the session。
+	 * 时使用此方法
+	 * @param object
+	 * @return
+	 * 
+	 * @author fred.du
+	 * @since 2007-11-25
+	 */
+	public void merge(Object entity);
+
 
 	/**
 	 * description: 删除对象.

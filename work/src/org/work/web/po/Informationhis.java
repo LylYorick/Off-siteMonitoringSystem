@@ -248,4 +248,19 @@ public class Informationhis implements java.io.Serializable {
 		this.bupdateuser = bupdateuser;
 	}
 
+	@Override
+	public String toString() {
+		return "Informationhis [ooid=" + ooid + ", BOrgCatalog=" + BOrgCatalog
+				+ ", BOrgInformation=" + BOrgInformation + ", bname=" + bname
+				+ ", baddr=" + baddr + ", bbrchnum=" + bbrchnum + ", blead="
+				+ blead + ", bleadpst=" + bleadpst + ", bleadtel=" + bleadtel
+				+ ", bdept=" + bdept + ", bdeptlead=" + bdeptlead
+				+ ", bdeptleadtel=" + bdeptleadtel + ", bdeptleadphe="
+				+ bdeptleadphe + ", bwork=" + bwork + ", bworktel=" + bworktel
+				+ ", bworkphe=" + bworkphe + ", bfax=" + bfax + ", bworknum="
+				+ bworknum + ", blastamt=" + blastamt + ", blastnet="
+				+ blastnet + ", bupdatetime=" + bupdatetime + ", bupdateuser="
+				+ bupdateuser + "]";
+	}
+
 }

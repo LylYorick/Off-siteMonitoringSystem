@@ -8,7 +8,7 @@
 	</script>
 </head>
 <body>
-	<div class="grid">
+<div class="grid">
 		<fieldset>
 			<legend>
 				金融机构信息录入
@@ -137,4 +137,5 @@
 
 		</fieldset><br/>
 	</div>
+
 </body>

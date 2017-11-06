@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-10-30 17:15:00 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+     <class name="org.work.web.po.Archives" table="B_ORG_INFORMATION_NEW">
+         <id name="oid" type="java.lang.Integer" unsaved-value="0">
+            <column name="OID" />
+            <generator class="increment"></generator>
+        </id>
+         <many-to-one name="BOrgCatalog" class="org.work.web.po.Catalog"  fetch="select" lazy="false" >
+            <column name="BID" />
+        </many-to-one>
+            <property name="boid" type="string">
+                <column name="BOID" length="32" />
+            </property>
+            <property name="corporation_type" type="string">
+                <column name="CORPORATION_TYPE" length="2" />
+            </property>
+            <property name="bname" type="string">
+                <column name="BNAME" length="60" />
+            </property>
+            <property name="blead" type="string">
+                <column name="BLEAD" length="40" />
+            </property>
+            <property name="bworkphe" type="string">
+                <column name="BWORKPHE" length="12" />
+            </property>
+            <property name="establishTime" type="string">
+                <column name="ESTABLISH_TIME" length="14" />
+            </property>
+            <property name="bdeptlead" type="string">
+                <column name="BDEPTLEAD" length="40" />
+            </property>
+            <property name="bdeptleadtel" type="string">
+                <column name="BDEPTLEADTEL" length="14" />
+            </property>
+            <property name="blastnet" type="big_decimal">
+                <column name="BLASTNET" precision="18" />
+            </property>
+            <property name="bworktel" type="string">
+                <column name="BWORKTEL" length="14" />
+            </property>
+            <property name="bdeptleadphe" type="string">
+                <column name="BDEPTLEADPHE" length="12" />
+            </property>
+            <property name="bworknum" type="java.lang.Integer">
+                <column name="BWORKNUM" />
+            </property>
+            <property name="bleadtel" type="string">
+                <column name="BLEADTEL" length="14" />
+            </property>
+            <property name="bupdatetime" type="string">
+                <column name="BUPDATETIME" length="20" />
+            </property>
+            <property name="bwork" type="string">
+                <column name="BWORK" length="40" />
+            </property>
+            <property name="registeredArea" type="string">
+                <column name="REGISTERED_AREA" length="500" />
+            </property>
+            <property name="registeredCapital" type="big_decimal">
+                <column name="REGISTERED_CAPITAL" precision="18"  />
+            </property>
+            <property name="businessArea" type="string">
+                <column name="BUSINESS_AREA" precision="500" />
+            </property>
+            <property name="overseasBranchOffice" type="string">
+                <column name="OVERSEAS_BRANCH_OFFICE" precision="500" />
+            </property>
+            <property name="numberOfBranchOffice" type="java.lang.Integer">
+                <column name="NUMBER_OF_BRANCH_OFFICE" />
+            </property>
+         
+            <property name="headquarter" type="string">
+                <column name="HEADQUARTER" length="500" />
+            </property>
+            <property name="numberOfHall" type="java.lang.Integer">
+                <column name="NUMBER_OF_HALL" />
+            </property>
+            <property name="bupdateuser" type="string">
+                <column name="BUPDATEUSER" length="40" />
+            </property>
+            <property name="blastamt" type="big_decimal">
+                <column name="BLASTAMT" precision="18" />
+            </property>
+             <property name="ishead" type="java.lang.String">
+            	<column name="ISHEAD" length="1" />
+       	 	</property>
+        	<property name="isneed" type="java.lang.String" >
+            	<column name="ISNEED" length="1" default="1" />
+        	</property>
+        	 <property name="bmininame" type="java.lang.String">
+            	<column name="BMININAME" length="20" />
+        	</property>
+        	  <property name="shareholder1" type="string">
+                <column name="SHAREHOLDER1" length="100" />
+            </property>
+              <property name="rate1" type="big_decimal">
+                <column name="RATE1" precision="5" />
+            </property>
+              <property name="shareholder2" type="string">
+                <column name="SHAREHOLDER2" length="100" />
+            </property>
+              <property name="rate2" type="big_decimal">
+                <column name="RATE2" precision="5" />
+            </property>
+              <property name="shareholder3" type="string">
+                <column name="SHAREHOLDER3" length="100" />
+            </property>
+              <property name="rate3" type="big_decimal">
+                <column name="RATE3" precision="5" />
+            </property>
+              <property name="shareholder4" type="string">
+                <column name="SHAREHOLDER4" length="100" />
+            </property>
+              <property name="rate4" type="big_decimal">
+                <column name="RATE4" precision="5" />
+            </property>
+              <property name="shareholder5" type="string">
+                <column name="SHAREHOLDER5" length="100" />
+            </property>
+              <property name="rate5" type="big_decimal">
+                <column name="RATE5" precision="5" />
+            </property>
+    </class>
+</hibernate-mapping>

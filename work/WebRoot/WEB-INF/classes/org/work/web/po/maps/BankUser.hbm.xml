@@ -45,12 +45,16 @@
             	<comment>金融机构ID</comment>
             </column>
         </many-to-one>
+		<many-to-one name="archives" class="org.work.web.po.Archives" fetch="select" lazy="false" cascade="none" insert="false" update="false">
+            <column name="OID">
+            	<comment>金融机构ID</comment>
+            </column>
+        </many-to-one>
 		<property name="buupdatetime" type="java.lang.String">
 			<column name="BUUPDATETIME" length="20">
 				<comment>更新时间</comment>
 			</column>
 		</property>
-
 		<property name="buauthor" type="java.lang.String">
 			<column name="BUAUTHOR" length="40">
 				<comment>插入者</comment>

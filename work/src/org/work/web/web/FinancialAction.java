@@ -100,12 +100,34 @@ public class FinancialAction extends JsonBaseAction implements ModelDriven<Infor
 		return SUCCESS;
 	}
 	
+	/**
+	 * 档案管理查询
+	 * @return
+	 */
+	public String entrance() {
+		ActionContext actionContext = ActionContext.getContext();
+        Map session = actionContext.getSession();
+        session.put("toid",null);
+        session.put("tbid",null);
+		List<Catalog> list = this.financialService.findByCatalog();
+		Catalog ct = new Catalog();
+		ct.setBid(null);
+		ct.setCatname("所有");
+		list.add(ct);
+		this.put("list", list);
+		log("金融机构资料查询", Constants.LOG_TYPE_SELECT);
+//		log("金融机构查询", "查询");
+		return SUCCESS;
+	}
+	
 	public String add() {
 		BankUser bankUser = getSessionUserCode();
 		information = bankUser.getInformation();
 		put("info", information);
 		return SUCCESS;
 	}
+
+
 
 	/**
 	 * 保存金融机构的所有信息
@@ -150,7 +172,10 @@ public class FinancialAction extends JsonBaseAction implements ModelDriven<Infor
 		if(iList.size()>0){
 			throw new ServiceException("机构代码重复");
 		}
+
 		this.financialService.addInformation(information);
+		System.out.println("金融机构类别id" + information.getBoid());
+	
 		log("后期维护新增金融机构，只新增金融机构代码和金融机构名称", Constants.LOG_TYPE_ADD);
 		this.addNaviButton("继续操作", "financial/financial_baseadd.shtml");
 		return OK;
@@ -279,6 +304,17 @@ public class FinancialAction extends JsonBaseAction implements ModelDriven<Infor
 	 * @return
 	 */
 	public String view() {		
+		if(information == null)
+			throw new ServiceException("没有找到指定的金融机构");		
+		put("information", information);
+		log("查看金融机构明细", Constants.LOG_TYPE_SELECT);
+		return SUCCESS;
+	}
+	/**
+	 * 查看金融机构档案明细
+	 * @return
+	 */
+	public String sight() {		
 		if(information == null)
 			throw new ServiceException("没有找到指定的金融机构");		
 		put("information", information);

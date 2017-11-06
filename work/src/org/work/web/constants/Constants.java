@@ -117,6 +117,23 @@ public class Constants {
 		REPORT_CHOOSE.put(REPORT_CHOOSE_NO, "否");
 		REPORT_CHOOSE.put(REPORT_CHOOSE_YES, "是");
 	}
+	
+	//是否是法人机构
+	/**
+	 * 法人机构
+	 */
+	public static final String IS_CORPORATION = "00";
+	
+	/**
+	 * 是分支机构
+	 */
+	public static final String IS_BRANCH = "01";	
+	public static Map<String, String> CORPORATION_TYPE = new HashMap<String, String>();
+	static {
+		CORPORATION_TYPE.put(IS_CORPORATION, "是");
+		CORPORATION_TYPE.put(IS_BRANCH, "否");
+	}
+	
 	/*
 	 * 协助单位
 	 */

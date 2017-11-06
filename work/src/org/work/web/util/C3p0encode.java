@@ -82,8 +82,12 @@ public class C3p0encode implements FactoryBean {
 		System.out.println(C3p0encode.decode(C3p0encode.encode("work1202")));*/
 		System.out.println(C3p0encode.decode("671abf7cf795b0c3125c218bb9954cc9")+"/"+
 				C3p0encode.decode("28a7d74de0ae912b"));
-		System.out.println(C3p0encode.encode("workdb"));
+		System.out.println(C3p0encode.encode("workdb")) ;
 		System.out.println(C3p0encode.decode(C3p0encode.encode("workdb")));
+		
+		
+		System.out.println("encode db2inst1: "+C3p0encode.encode("db2inst1"));
+		System.out.println("encode 1: "+C3p0encode.encode("1"));
 	}
 	
 	

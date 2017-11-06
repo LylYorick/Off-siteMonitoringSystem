@@ -33,6 +33,4 @@ public interface IInformationService {
 
 	void deletesurvey(Integer parseInt);
 
-	
-
 }

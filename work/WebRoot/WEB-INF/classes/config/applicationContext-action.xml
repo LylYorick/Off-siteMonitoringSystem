@@ -122,4 +122,8 @@
 	<!-- 参数模块 -->
 	<bean id="paraAction" class="org.work.web.web.ParaAction" scope="prototype" parent="baseAction">
 	</bean>
+		<!-- 参数模块 -->
+	<bean id="archivesAction" class="org.work.web.web.ArchivesAction" scope="prototype" parent="baseAction">
+		<property name="archivesService" ref="archivesService"></property>
+	</bean>
 </beans>
