@@ -65,6 +65,7 @@ public class DocumentServiceImpl implements IDocumentService{
 			fileItem.setUpdatetime(DateUtil.formatDateTime());	
 			fileItem.setCnt(0);
 			File newFile = new File(filename);
+			System.out.println(filename);
 			try {
 				FileUtils.copyFile(documentFile[i], newFile);
 				uploadDao.save(fileItem);				
