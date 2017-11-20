@@ -287,8 +287,8 @@ public class InstitutionAction  extends JsonBaseAction {
 		System.out.println("----path: "+path);
 		institutionService.uploadInstitution(infomation,institutionFile,institutionFileFileName,path,bankUser.getBuname());
 		log("新增制度上报", Constants.LOG_TYPE_ADD);
-		this.addNaviButton("继续上报", "institution/institution_add.shtml");
-		this.addNaviButton("返回", "institution/institution_institutionBankManager.shtml");
+		this.addNaviButton("继续上报", "institution/institution_institutionAdd.shtml");
+		this.addNaviButton("返回", "institution/institution_institutionManager.shtml");
 		return OK;
 	}
 	

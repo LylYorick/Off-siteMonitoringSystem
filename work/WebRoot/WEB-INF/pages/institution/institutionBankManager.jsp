@@ -173,13 +173,13 @@
 			</div>
         
 		</fieldset><br/>
-		<sj:submit id="grid_upload_colsbutton" value="制度上报"
-			onClickTopics="upload" button="true"/>
+		<%-- <sj:submit id="grid_upload_colsbutton" value="制度上报"
+			onClickTopics="upload" button="true"/> --%>
 		<sj:submit id="grid_download_colsbutton" value="文件下载" timeout="2500"
 			onClickTopics="downloadfile" button="true" indicator="loading" loadingText="正在下载..."/>
-		<sj:submit id="grid_delete_colsbutton" value="记录删除" timeout="2500"
+		<%-- <sj:submit id="grid_delete_colsbutton" value="记录删除" timeout="2500"
 			onClickTopics="deletefile" button="true" indicator="loading" loadingText="正在删除..."/>
-			
+		 --%>	
 		<sj:grid id="gridtable" caption="金融机构列表" dataType="json"
 			href="../institution/institution_list.shtml" pager="true" gridModel="gridModel"
 			rowList="10,15,20" rowNum="20" rownumbers="true" viewrecords="true"

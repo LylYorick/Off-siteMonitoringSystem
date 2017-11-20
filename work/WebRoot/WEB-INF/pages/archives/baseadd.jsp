@@ -5,7 +5,7 @@
 	<title>金融机构管理>>金融机构基本信息新增</title>
 </head>
 <body>
-<s:debug></s:debug>
+
 	<br>
 	<div class="grid">
 		<fieldset>

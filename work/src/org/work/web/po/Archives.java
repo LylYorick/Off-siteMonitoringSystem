@@ -161,6 +161,9 @@ public class Archives implements Serializable {
 		this.registeredArea = registeredArea;
 	}
 	public BigDecimal getRegisteredCapital() {
+		if (registeredCapital == null) {
+			registeredCapital = new BigDecimal(0);
+		}
 		return registeredCapital;
 	}
 	public void setRegisteredCapital(BigDecimal registeredCapital) {
