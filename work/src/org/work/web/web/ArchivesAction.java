@@ -1,6 +1,7 @@
 package org.work.web.web;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +14,7 @@ import org.work.web.po.Catalog;
 import org.work.web.po.Archives;
 import org.work.web.service.archives.ArchivesService;
 import org.work.web.util.DateUtil;
+import org.work.web.util.PaginaterList;
 
 import com.google.gson.Gson;
 import com.opensymphony.xwork2.ActionContext;
@@ -120,6 +122,33 @@ public class ArchivesAction extends JsonBaseAction implements ModelDriven<Archiv
 		this.addNaviButton("继续操作", "archives/archives_baseadd.shtml");
 		return OK;
 	}
+	
+	public String historyentry(){
+		if(this.oid==null)
+			throw new ServiceException("没有找到指定金融机构");
+		put("oid", oid);
+		return SUCCESS;
+	}
+	/**
+	 * 查看金融机构的变更历史
+	 * @return
+	 */
+	public String history() {
+//		Map<String, Object> params = new HashMap<String, Object>();
+//		params.put("oid", this.getOid());		
+//		PaginaterList list = financialService.getHistoryFinancial(params,this.getPage());	
+//		Long maxRecord = list.getPaginater().getMaxRowCount();
+//		this.setGridModelhistory(list.getList());		
+//		setPage(this.getPage());
+//		setRows(getRows());
+//		setTotal(list.getPaginater().getMaxPage());
+//		setRecord(maxRecord.intValue());
+//		setSidx("");
+//		setSord("asc");
+//		log("查看金融机构变更历史", Constants.LOG_TYPE_SELECT);
+		return JSON;
+	}
+	
 	
 	@Override
 	public List getGridModel() {

@@ -32,7 +32,9 @@
 			</s:select>
 			<s:select label="是否报送报表" required="true" name="archives.isneed" list='@org.work.web.constants.Constants@REPORT_CHOOSE' listKey="key" listValue="value">
 			</s:select>
-			<s:select label="是否为法人机构" required="true" name="archives.corporation_type" list='@org.work.web.constants.Constants@CORPORATION_TYPE' listKey="key" listValue="value">
+			<s:select label="是否为法人机构" required="true" name="archives.corporationType" list='@org.work.web.constants.Constants@CORPORATION_TYPE' listKey="key" listValue="value">
+			</s:select>
+			<s:select label="评级类别" required="true" name="archives.rateType" list='@org.work.web.constants.Constants@RATE_TYPE' listKey="key" listValue="value">
 			</s:select>
 			<tr><td colspan="2" align="center">
 			<s:submit theme="simple" align="center"  value="提    交" cssClass="ui-button ui-state-default ui-corner-all"></s:submit>

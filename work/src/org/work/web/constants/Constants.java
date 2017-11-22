@@ -136,6 +136,23 @@ public class Constants {
 		CORPORATION_TYPE.put(IS_BRANCH, "否");
 	}
 	
+	//评级类型
+	/**
+	 * 法人机构评级
+	 */
+	public static final String IS_CORPORATION_RATE = "00";
+	
+	/**
+	 *非法人机构评级 
+	 */
+	public static final String IS_NOCORPORATION_RATE = "01";
+	
+	public static Map<String, String> RATE_TYPE = new HashMap<String, String>();
+	static {
+		RATE_TYPE.put(IS_CORPORATION_RATE, "法人机构评级");
+		RATE_TYPE.put(IS_NOCORPORATION_RATE, "非法人机构评级 ");
+	}
+	
 	/*
 	 * 协助单位
 	 */

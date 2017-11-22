@@ -14,6 +14,8 @@
 			if(hallNum.val() == 0 || $.trim(hallNum.val())==''){
 				juridiction.attr('checked', false);
 				hallNum.hide();
+			}else{
+				juridiction.attr('checked', true);
 			}
 		};
 		function controllInput_HallNum(){
@@ -73,24 +75,36 @@
 							<s:hidden name="archives.bmininame" value="%{#info.bmininame}"></s:hidden>
 							<s:hidden name="archives.ishead" value="%{#info.ishead}"></s:hidden>
 							<s:hidden name="archives.isneed" value="%{#info.isneed}"></s:hidden>
-							<s:hidden name="archives.corporation_type" value="%{#info.corporation_type}"></s:hidden>
+							<s:hidden name="archives.corporationType" value="%{#info.corporationType}"></s:hidden>
 							<s:hidden name="archives.BOrgCatalog.bid" value="%{#info.BOrgCatalog.bid}"></s:hidden>
+							<s:hidden name="archives.rateType" value="%{#info.rateType}"></s:hidden>
 							<s:textfield label="金融机构名称" required="true" name="archives.bname"
 								value="%{#info.bname}" size="60" reg="^[\s|\S]{1,100}$" tip="不能为空">
 							</s:textfield>
 							<s:select label="金融机构类型" list="#{'1':'银行业', '2':'证券业','3':'保险业','4':'基金业','5':'期货业','7':'第三方支付公司','8':'证券或基金子公司','6':'其他'}" >
 							</s:select>
-							<s:textfield label="员工人数" required="true" name="archives.bworknum" reg="^\d{1,6}$" tip="只允许输入1-6位的数字"
+							<s:textfield label="联系地址" required="true" name="archives.address"
+								value="%{#info.address}" size="60" reg="^[\s|\S]{1,1000}$" tip="不能为空">
+							</s:textfield>
+							<s:textfield label="机构负责人" required="true" name="archives.responsiblePerson"
+								value="%{#info.responsiblePerson}" size="50" reg="^[\s|\S]{1,50}$" tip="不能为空">
+							</s:textfield>
+							<s:textfield label="员工人数:" required="true" name="archives.bworknum" reg="^\d{1,6}$" tip="只允许输入1-6位的数字"
 								value="%{#info.bworknum}">
 							</s:textfield>
-							<s:textfield label="反洗钱岗位人员" name="archives.bwork" value="%{#info.bwork}" tip="反洗钱岗位人员" >
-							</s:textfield>
-							<s:textfield label="岗位人员办公电话" required="true" name="archives.bworktel" reg="^\d{3}-\d{8}$|^\d{4}-\d{8}$" tip="国内电话号码，格式: 0755-22590240 或 021-88888888"
-								value="%{#info.bworktel}">
-							</s:textfield>
-							<s:textfield label="岗位人员手机号码" required="true" name="archives.bworkphe" reg="^\d{11}$" tip="只允许输入11位数字"
-								value="%{#info.bworkphe}">
-							</s:textfield>
+							<tr>
+								<td class="tdLabel">
+									评级类型:
+								</td>
+								<td>
+									<s:if test="#info.rateType.equals('00')">
+										法人机构评级
+									</s:if>
+									<s:if test="#info.rateType.equals('01')">
+										非法人机构评级
+									</s:if>
+								</td>
+							</tr>
 						</table>
 					</td>
 				</tr>
@@ -135,7 +149,7 @@
 				</tr>
 				<tr>
 					<td class="slabel">
-						反洗钱部门负责人信息
+					反洗钱工作牵头部门负责人信息
 					</td>
 					<td class="sinput">
 						<table frame="void" class="inputform">
@@ -154,7 +168,24 @@
 						</table>
 					</td>
 				</tr>
-				<s:if test="#info.corporation_type.equals('00')">	
+				<tr>
+					<td class="slabel">
+					反洗钱岗位人员信息
+					</td>
+					<td class="sinput">
+						<table frame="void" class="inputform">
+							<s:textfield label="反洗钱岗位人员" required="true" name="archives.bwork" value="%{#info.bwork}" tip="反洗钱岗位人员" >
+							</s:textfield>
+							<s:textfield label="岗位人员办公电话" required="true" name="archives.bworktel" reg="^\d{3}-\d{8}$|^\d{4}-\d{8}$" tip="国内电话号码，格式: 0755-22590240 或 021-88888888"
+								value="%{#info.bworktel}">
+							</s:textfield>
+							<s:textfield label="岗位人员手机号码" required="true" name="archives.bworkphe" reg="^\d{11}$" tip="只允许输入11位数字"
+								value="%{#info.bworkphe}">
+							</s:textfield>
+						</table>
+					</td>
+				</tr>
+				<s:if test="#info.corporationType.equals('00')">	
 				<tr>
 					<td class="slabel">
 						法人机构信息
@@ -216,7 +247,7 @@
 						</table>
 					</tr>
 				</s:if>
-				<s:if test="#info.corporation_type.equals('01')">	
+				<s:if test="#info.corporationType.equals('01')">	
 					<tr>
 						<td class="slabel">
 							分支机构
@@ -230,12 +261,12 @@
 									value="%{#info.headquarter}">
 								</s:textfield>
 								<tr>
-								<td  class="tdLabel"><lable>本分公司对营业厅是否有管辖权</lable></td>
+								<td  class="tdLabel"><lable>本分公司对营业厅是否有管辖权<span class="required">(*)</span></lable></td>
 								<td>
 									<input type="checkbox" name="haveJurisdiction" value="0" >是
 								</td>
 								</tr>
-								<s:textfield label="在深的营业部家数" required="true"  id="numberOfHall" name="archives.numberOfHall" 
+								<s:textfield label="在深的营业部家数" id="numberOfHall" name="archives.numberOfHall" 
 									value="%{#info.numberOfHall}">
 								</s:textfield>
 							</table>

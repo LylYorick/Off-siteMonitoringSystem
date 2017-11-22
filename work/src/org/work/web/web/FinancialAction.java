@@ -277,7 +277,8 @@ public class FinancialAction extends JsonBaseAction implements ModelDriven<Infor
 	public String historyentry(){
 		if(this.oid==null)
 			throw new ServiceException("没有找到指定金融机构");
-		put("oid", oid);
+		//怎么觉得下面这句代码无效啊
+//		put("oid", oid);
 		return SUCCESS;
 	}
 	/**
@@ -286,6 +287,7 @@ public class FinancialAction extends JsonBaseAction implements ModelDriven<Infor
 	 */
 	public String history() {
 		Map<String, Object> params = new HashMap<String, Object>();
+		// this.getOid() 为啥能获取到呢？
 		params.put("oid", this.getOid());		
 		PaginaterList list = financialService.getHistoryFinancial(params,this.getPage());	
 		Long maxRecord = list.getPaginater().getMaxRowCount();

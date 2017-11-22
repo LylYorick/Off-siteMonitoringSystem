@@ -51,6 +51,22 @@
 							</tr>
 							<tr>
 								<td class="tdLabel">
+								 联系地址
+								</td>
+								<td>
+									<s:property value="#information.address" />
+								</td>
+							</tr>
+							<tr>
+								<td class="tdLabel">
+								 机构负责人
+								</td>
+								<td>
+									<s:property value="#information.responsiblePerson" />
+								</td>
+							</tr>
+								<tr>
+								<td class="tdLabel">
 									员工人数
 								</td>
 								<td>
@@ -60,26 +76,15 @@
 							
 							<tr>
 								<td class="tdLabel">
-									反洗钱岗位人员
+									评级类型
 								</td>
 								<td>
-									<s:property value="#information.bwork" />
-								</td>
-							</tr>
-							<tr>
-								<td class="tdLabel">
-									岗位人员办公电话
-								</td>
-								<td>
-									<s:property value="#information.bworktel" />
-								</td>
-							</tr>
-							<tr>
-								<td class="tdLabel">
-								岗位人员手机号码
-								</td>
-								<td>
-									<s:property value="#information.bworkphe" />
+									<s:if test="#information.rateType.equals('00')">
+										法人机构评级
+									</s:if>
+									<s:if test="#information.rateType.equals('01')">
+										非法人机构评级
+									</s:if>
 								</td>
 							</tr>
 						</table>
@@ -135,10 +140,9 @@
 						</table>
 					</td>
 				</tr>
-				
 				<tr>
 					<td class="slabel">
-						反洗钱部门负责人信息
+						反洗钱工作牵头部门负责人信息
 					</td>
 					<td class="sinput">
 						<table frame="void" class="inputform">
@@ -169,7 +173,40 @@
 						</table>
 					</td>
 				</tr>
-				<s:if test="#information.corporation_type.equals('00')">	
+				<tr>
+					<td class="slabel">
+					反洗钱岗位人员信息
+					</td>
+					<td class="sinput">
+						<table frame="void" class="inputform">
+							<tr>
+								<td class="tdLabel">
+									反洗钱岗位人员
+								</td>
+								<td>
+									<s:property value="#information.bwork" />
+								</td>
+							</tr>
+							<tr>
+								<td class="tdLabel">
+									岗位人员办公电话
+								</td>
+								<td>
+									<s:property value="#information.bworktel" />
+								</td>
+							</tr>
+							<tr>
+								<td class="tdLabel">
+								岗位人员手机号码
+								</td>
+								<td>
+									<s:property value="#information.bworkphe" />
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<s:if test="#information.corporationType.equals('00')">	
 					<tr>
 						<td class="slabel">
 							法人机构信息
@@ -262,7 +299,7 @@
 						</td>
 					</tr>
 				</s:if>
-				<s:if test="#information.corporation_type.equals('01')">	
+				<s:if test="#information.corporationType.equals('01')">	
 					<tr>
 						<td class="slabel">
 							分支机构

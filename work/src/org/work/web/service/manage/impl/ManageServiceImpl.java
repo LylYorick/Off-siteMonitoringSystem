@@ -88,4 +88,5 @@ public class ManageServiceImpl implements IManageService{
 		logger.info("updateUser(BankUser bankUser)开始执行了");
 		userDao.update(bankUser);
 	}
+	
 }

@@ -14,7 +14,7 @@
             <property name="boid" type="string">
                 <column name="BOID" length="32" />
             </property>
-            <property name="corporation_type" type="string">
+            <property name="corporationType" type="string">
                 <column name="CORPORATION_TYPE" length="2" />
             </property>
             <property name="bname" type="string">
@@ -71,7 +71,6 @@
             <property name="numberOfBranchOffice" type="java.lang.Integer">
                 <column name="NUMBER_OF_BRANCH_OFFICE" />
             </property>
-         
             <property name="headquarter" type="string">
                 <column name="HEADQUARTER" length="500" />
             </property>
@@ -92,6 +91,9 @@
         	</property>
         	 <property name="bmininame" type="java.lang.String">
             	<column name="BMININAME" length="20" />
+        	</property>
+        	 <property name="rateType" type="java.lang.String">
+            	<column name="RATE_TYPE" length="2" />
         	</property>
         	  <property name="shareholder1" type="string">
                 <column name="SHAREHOLDER1" length="100" />
@@ -122,6 +124,12 @@
             </property>
               <property name="rate5" type="big_decimal">
                 <column name="RATE5" precision="5" />
+            </property>
+            <property name="address" type="string">
+                <column name="ADDRESS" precision="1000" />
+            </property>
+            <property name="responsiblePerson" type="string">
+                <column name="RESPONSIBLE_PERSON" precision="50" />
             </property>
     </class>
 </hibernate-mapping>

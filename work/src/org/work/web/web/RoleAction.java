@@ -129,10 +129,14 @@ public class RoleAction extends JsonBaseAction implements ModelDriven<Role> {
 		}		
 		Role role = null;
 		StringBuffer sb = new StringBuffer();
+		//根据角色id获取此角色
 		role = manageService.findRoleById(rid);
 		if (role == null) {
 			throw new ServiceException("没有找到指定记录！");
 		}
+		// 角色和角色权限是 1对多的关系 T_PUB_ROLEPRIVILEGE 是一个关联表 关联  T_PUB_PRIVILEGE 和 T_PUB_ROLE 
+		//获取此角色的角色权限集合 
+		//并将权限集合转化为字符串 放到 session中的havePrivileges属性总去
 		Set<Privilege> ps = role.getTPubRoleprivileges();
 		int i = 0;
 		for(Privilege rp : ps){
@@ -164,6 +168,7 @@ public class RoleAction extends JsonBaseAction implements ModelDriven<Role> {
 			sb.append("\",");
 			
 			sb.append("\"");
+			//判断是否为定级结点 如果是则设置为-1
 			sb.append((p.getParent().getPid()==9999?"-1":p.getParent().getPid()));
 			sb.append("\",");
 			
@@ -210,6 +215,7 @@ public class RoleAction extends JsonBaseAction implements ModelDriven<Role> {
 			privileges.add(p);
 		}
 		role.setTPubRoleprivileges(privileges);
+		//TODO hibernate真牛逼 这么用 啥sql都不用写了
 		manageService.saveOrUpdateRole(role);
 		return OK;
 	}
@@ -258,5 +264,4 @@ public class RoleAction extends JsonBaseAction implements ModelDriven<Role> {
 	public Role getModel() {
 		return role;
 	}
-
 }

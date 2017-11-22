@@ -46,6 +46,7 @@ public class SystemAction extends ActionSupport implements ServletRequestAware {
 	private IUserLogService userLogService;
 	private IFinancialService financialService;
 	private String usernm;
+	
 	private String passwd;
 	private IManageService manageService;
 	private IReportService reportService;
@@ -124,35 +125,53 @@ public class SystemAction extends ActionSupport implements ServletRequestAware {
 			setErrorMsg("用户名或者密码错误!");
 			return INPUT;
 		}
-		// 用户拥有的角色
+		//begin 熟悉权限代码 liyuelong
+		
+		// 用户拥有的角色 一个用户可以拥有多个角色
 		Set<Role> roles = user.getTPubRoleusers();
 		Role role = null;
 		Privilege prlg = null;
-		// 循环取出每个角色中的权限
+		/**循环取出每个角色中的权限*/
+		
+		//获取用户的角色列表
 		Iterator<Role> it = roles.iterator();
+		//循环角色列表
 		while (it.hasNext()) {
 			role = it.next();
+			//获取此角色的权限列表
+			//迭代器可以这么用？
 			Iterator<Privilege> itr = role.getTPubRoleprivileges().iterator();
+			//循环此角色的权限列表
 			while (itr.hasNext()) {
 				prlg = itr.next();
+				//获取此列表中此权限的全部功能  Resource是存放全部功能的表
 				Set<Resource> resources = prlg.getTPubResources();
+				//全部功能循环
 				for (Iterator<Resource> iterator = resources.iterator(); iterator.hasNext();) {
 					Resource resource = iterator.next();
+					//auth 这个对象很重要 是干啥的？这里以url为key resource对象为value存放到auth中 
+					//特性 HashMap相同的key，会被覆盖。这里去掉的不同角色中的相同功能权限 
+					//去重
 					auth.put(resource.getPrurl(), resource);
 				}
 				privileges.add(prlg);
 			}
 		}
 		// 用户拥有的菜单资源
+		// PrivilegeMenu对象不是持久化对象 没有hibernate映射文件
 		Set<PrivilegeMenu> menus = new HashSet<PrivilegeMenu>(10);
 		Iterator<Privilege> iter = privileges.iterator();
 		// 对用户所拥有的权限进行循环
 		while (iter.hasNext()) {
 			Privilege p = iter.next();
 			// 如果该资源不是菜单类资源，则不加入菜单集合 (1为菜单资源)
+		
 			if (null != p.getPismenu() && p.getPismenu() != 1) {
 				continue;
 			}
+			//可以说添加非菜单权限的全部内容到此为止 下面都是 如何显示菜单权限
+			//可以找找这里有没有写 获取非菜单权限的公共方法。
+			//end
 			if (p.getTPubResources().size() <= 0) {
 				// 菜单权限
 				PrivilegeMenu pm = new PrivilegeMenu();
@@ -252,6 +271,10 @@ public class SystemAction extends ActionSupport implements ServletRequestAware {
 		user.setAllprlgs(privileges);// 所有权限集合
 		user.setMenus(list);// 所有菜单权限集合
 		session.put(Constants.SESSION_USER, user);
+		//TODO 实现非菜单功能的权限配置
+		//这里auth全部放到session的privilege属性中了
+		//那看来 我们要保证所有的非菜单功能的prurl字段都不能相同
+		//这样可以获取全部的非菜单功能
 		session.put(Constants.SESSION_USERPRIVILETE, auth);
 		BankUser updateUser = manageService.findById(user.getBuid());
 		updateUser.setLoadtime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));

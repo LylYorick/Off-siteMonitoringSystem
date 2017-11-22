@@ -8,7 +8,7 @@ public class Archives implements Serializable {
 	//private Integer bid;
 	private Catalog BOrgCatalog;//机构种类对象 
 	private String boid;
-	private String corporation_type;//是否是法人机构
+	private String corporationType;//是否是法人机构
 	private String bname;
 	private String bwork;//反洗钱岗位人员
 	private String bworktel;//反洗钱岗位人员电话
@@ -34,6 +34,7 @@ public class Archives implements Serializable {
 	private String bmininame;
 	private String bupdatetime;
 	private String bupdateuser;
+	private String rateType;//评级类型 00-法人金融机构评级表 01-非法人金融机构评级表 ;
 	private String shareholder1;//股东信息1
 	private BigDecimal rate1;//股东1持股比例
 	private String shareholder2;//股东信息2
@@ -44,6 +45,8 @@ public class Archives implements Serializable {
 	private BigDecimal rate4 ;//股东4持股比例
 	private String shareholder5;//股东信息5
 	private BigDecimal rate5;//股东5持股比例
+	private String address;//联系地址
+	private String responsiblePerson;//机构负责人
 	
 	public Archives() {
 		super();
@@ -70,11 +73,12 @@ public class Archives implements Serializable {
 	public void setBoid(String boid) {
 		this.boid = boid;
 	}
-	public String getCorporation_type() {
-		return corporation_type;
+	
+	public String getCorporationType() {
+		return corporationType;
 	}
-	public void setCorporation_type(String corporation_type) {
-		this.corporation_type = corporation_type;
+	public void setCorporationType(String corporationType) {
+		this.corporationType = corporationType;
 	}
 	public String getBname() {
 		return bname;
@@ -312,6 +316,23 @@ public class Archives implements Serializable {
 	public void setRate5(BigDecimal rate5) {
 		this.rate5 = rate5;
 	}
-	
+	public String getRateType() {
+		return rateType;
+	}
+	public void setRateType(String rateType) {
+		this.rateType = rateType;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getResponsiblePerson() {
+		return responsiblePerson;
+	}
+	public void setResponsiblePerson(String responsiblePerson) {
+		this.responsiblePerson = responsiblePerson;
+	}
 	
 }
