@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping >
+	<class name="org.work.web.po.ArchivesHis" table="B_ORG_INFORMATIONHIS_NEW">
+		<meta attribute="class-description">变更历史表-新</meta>
+		<meta attribute="class-gb2312-name">变更历史表-新</meta>
+		<id name="id" column="OOID"  type="java.lang.Integer">
+			<generator class="increment"></generator>
+		</id>
+        <many-to-one name="archives" class="org.work.web.po.Archives" fetch="select">
+            <column name="OID" />
+        </many-to-one>
+		<many-to-one name="BOrgCatalog" class="org.work.web.po.Catalog" fetch="select">
+            <column name="BID" />
+        </many-to-one>
+		<property name="corporationType" column="CORPORATION_TYPE"   type="java.lang.String">
+			
+		</property>
+		<property name="boid" column="BOID"   type="java.lang.String">
+		
+		</property>
+		<property name="bname" column="BNAME"   type="java.lang.String">
+			
+		</property>
+		<property name="blead" column="BLEAD"   type="java.lang.String">
+		
+		</property>
+		<property name="bworkphe" column="BWORKPHE"   type="java.lang.String">
+			
+		</property>
+		<property name="establishTime" column="ESTABLISH_TIME"   type="java.lang.String">
+			
+		</property>
+		<property name="bdeptlead" column="BDEPTLEAD"   type="java.lang.String">
+			
+		</property>
+		<property name="bdeptleadtel" column="BDEPTLEADTEL"   type="java.lang.String">
+			
+		</property>
+		<property name="blastnet" column="BLASTNET"   type="java.lang.String">
+			
+		</property>
+		<property name="bworktel" column="BWORKTEL"   type="java.lang.String">
+			
+		</property>
+		<property name="bdeptleadphe" column="BDEPTLEADPHE"   type="java.lang.String">
+			
+		</property>
+		<property name="bworknum" column="BWORKNUM"   type="java.lang.String">
+			
+		</property>
+		<property name="bleadtel" column="BLEADTEL"   type="java.lang.String">
+			
+		</property>
+		<property name="bwork" column="BWORK"   type="java.lang.String">
+			
+		</property>
+		<property name="businessArea" column="BUSINESS_AREA"   type="java.lang.String">
+		
+		</property>
+		<property name="registeredArea" column="REGISTERED_AREA"   type="java.lang.String">
+		
+		</property>
+		<property name="registeredCapital" column="REGISTERED_CAPITAL"   type="java.lang.String">
+			
+		</property>
+		<property name="headquarter" column="HEADQUARTER"   type="java.lang.String">
+		
+		</property>
+		<property name="overseasBranchOffice" column="OVERSEAS_BRANCH_OFFICE"   type="java.lang.String">
+		
+		</property>
+		<property name="numberOfBranchOffice" column="NUMBER_OF_BRANCH_OFFICE"   type="java.lang.String">
+		
+		</property>
+		<property name="numberOfHall" column="NUMBER_OF_HALL"   type="java.lang.String">
+		
+		</property>
+		<property name="blastamt" column="BLASTAMT"   type="java.lang.String">
+			
+		</property>
+		<property name="bupdateuser" column="BUPDATEUSER"   type="java.lang.String">
+		
+		</property>
+		<property name="bupdatetime" column="BUPDATETIME"   type="java.lang.String">
+			
+		</property>
+		<property name="ishead" column="ISHEAD"   type="java.lang.String">
+		</property>
+		<property name="isneed" column="ISNEED"   type="java.lang.String">
+		</property>
+		<property name="bmininame" column="BMININAME"   type="java.lang.String">
+		</property>
+		<property name="rateType" column="RATE_TYPE"   type="java.lang.String">
+		</property>
+		<property name="shareholder1" column="SHAREHOLDER1"   type="java.lang.String">
+		</property>
+		<property name="rate1" column="RATE1"   type="java.lang.String">
+		</property>
+		<property name="shareholder2" column="SHAREHOLDER2"   type="java.lang.String">
+		</property>
+		<property name="rate2" column="RATE2"   type="java.lang.String">
+		</property>
+		<property name="shareholder3" column="SHAREHOLDER3"   type="java.lang.String">
+		</property>
+		<property name="rate3" column="RATE3"   type="java.lang.String">
+		</property>
+		<property name="shareholder4" column="SHAREHOLDER4"   type="java.lang.String">
+		</property>
+		<property name="rate4" column="RATE4"   type="java.lang.String">
+		</property>
+		<property name="shareholder5" column="SHAREHOLDER5"   type="java.lang.String">
+		</property>
+		<property name="rate5" column="RATE5"   type="java.lang.String">
+		</property>
+		<property name="address" column="ADDRESS"   type="java.lang.String">
+		</property>
+		<property name="responsiblePerson" column="RESPONSIBLE_PERSON"   type="java.lang.String">
+		</property>
+	</class>
+</hibernate-mapping>

@@ -9,7 +9,7 @@ public class Archives implements Serializable {
 	private Catalog BOrgCatalog;//机构种类对象 
 	private String boid;
 	private String corporationType;//是否是法人机构
-	private String bname;
+	private String bname;//机构名称
 	private String bwork;//反洗钱岗位人员
 	private String bworktel;//反洗钱岗位人员电话
 	private String bworkphe;//反洗钱岗位人员手机
@@ -31,7 +31,7 @@ public class Archives implements Serializable {
 	private Integer bworknum;//员工人数
 	private String ishead;//是否为总行
 	private String isneed;//是否需要报送
-	private String bmininame;
+	private String bmininame;//金融机构拼音缩写
 	private String bupdatetime;
 	private String bupdateuser;
 	private String rateType;//评级类型 00-法人金融机构评级表 01-非法人金融机构评级表 ;

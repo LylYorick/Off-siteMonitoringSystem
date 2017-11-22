@@ -28,7 +28,7 @@
     		alert("请选择金融机构")
     		return;
     	}
-	  	window.location.href="<%=request.getContextPath()%>/financial/financial_historyentry.shtml?oid="+r.oid;
+	  	window.location.href="<%=request.getContextPath()%>/archives/archives_historyentry.shtml?oid="+r.oid;
   	});
   	
      $.subscribe('getselectedtai', function(event,data) {

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.struts2.json.annotations.JSON;
 import org.work.web.constants.Constants;
 import org.work.web.exception.ServiceException;
 import org.work.web.po.Archives;
@@ -17,6 +18,7 @@ import org.work.web.util.DateUtil;
 import org.work.web.util.PaginaterList;
 
 import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -28,14 +30,9 @@ import com.opensymphony.xwork2.ModelDriven;
 public class ArchivesAction extends JsonBaseAction implements ModelDriven<Archives>{
 	private Archives archives = new Archives();
 	private Integer oid;//金融机构ID
+	private List gridModelhistory;//金融机构变更历史记录
 	
 	private ArchivesService archivesService;
-	
-	
-	public ArchivesService getArchivesService() {
-		return archivesService;
-	}
-
 	public void setArchivesService(ArchivesService archivesService) {
 		this.archivesService = archivesService;
 	}
@@ -132,23 +129,39 @@ public class ArchivesAction extends JsonBaseAction implements ModelDriven<Archiv
 	/**
 	 * 查看金融机构的变更历史
 	 * @return
+	 * @throws Exception 
 	 */
-	public String history() {
-//		Map<String, Object> params = new HashMap<String, Object>();
-//		params.put("oid", this.getOid());		
-//		PaginaterList list = financialService.getHistoryFinancial(params,this.getPage());	
-//		Long maxRecord = list.getPaginater().getMaxRowCount();
-//		this.setGridModelhistory(list.getList());		
-//		setPage(this.getPage());
-//		setRows(getRows());
-//		setTotal(list.getPaginater().getMaxPage());
-//		setRecord(maxRecord.intValue());
-//		setSidx("");
-//		setSord("asc");
-//		log("查看金融机构变更历史", Constants.LOG_TYPE_SELECT);
+	public String history() throws Exception {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("oid", this.getOid());		
+		PaginaterList list = null;
+		try {
+			list = 	archivesService.getHistoryFinancial(params,this.getPage());	
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+		Long maxRecord = list.getPaginater().getMaxRowCount();
+		this.setGridModelhistory(list.getList());		
+		setPage(this.getPage());
+		setRows(getRows());
+		setTotal(list.getPaginater().getMaxPage());
+		setRecord(maxRecord.intValue());
+		setSidx("");
+		setSord("asc");
+		log("查看金融机构变更历史", Constants.LOG_TYPE_SELECT);
 		return JSON;
 	}
-	
+	/**
+	 * 档案信息维护
+	 * @return
+	 */
+	public String increase() {
+		BankUser bankUser = getSessionUserCode();
+		archives = bankUser.getArchives();
+		put("info", archives);
+		return SUCCESS;
+	}
 	
 	@Override
 	public List getGridModel() {
@@ -186,7 +199,7 @@ public class ArchivesAction extends JsonBaseAction implements ModelDriven<Archiv
 	}
 
 
-	
+	@JSON(serialize = false)
 	public Archives getArchives() {
 		return archives;
 	}
@@ -196,10 +209,15 @@ public class ArchivesAction extends JsonBaseAction implements ModelDriven<Archiv
 	}
 
 	@Override
+	@JSON(serialize = false)
 	public Archives getModel() {
 		return this.archives;
 	}
-
+	
+	@JSON(serialize = false)
+	public Integer getOid() {
+		return oid;
+	}
 	public void setOid(Integer oid) {
 		if(oid == null) return;
 		try {
@@ -214,14 +232,14 @@ public class ArchivesAction extends JsonBaseAction implements ModelDriven<Archiv
 		}
 		this.oid = oid;
 	}
-	/**
-	 * 档案信息维护
-	 * @return
-	 */
-	public String increase() {
-		BankUser bankUser = getSessionUserCode();
-		archives = bankUser.getArchives();
-		put("info", archives);
-		return SUCCESS;
+	public List getGridModelhistory() {
+		return gridModelhistory;
 	}
+
+	public void setGridModelhistory(List gridModelhistory) {
+		this.gridModelhistory = gridModelhistory;
+	}
+	
+	
+	
 }

@@ -405,7 +405,6 @@ public class FinancialAction extends JsonBaseAction implements ModelDriven<Infor
 
 	@Override
 	public String getSord() {
-		
 		return this.sord;
 	}
 
