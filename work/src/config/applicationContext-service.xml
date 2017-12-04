@@ -106,9 +106,11 @@
 
 	<!-- 档案模块 -->
 	<bean id="archivesService" class="org.work.web.service.archives.impl.ArchivesServiceImpl">
-		<property name="catalogDao" ref="catalogDao"></property>
-		<property name="archivesDao" ref="archivesDao"></property>
+		<!-- <property name="catalogDao" ref="catalogDao"></property> -->
+		<property name="catalogNewDao" ref="catalogNewDao"></property>
 		<property name="iArchivesHisDao" ref="iArchivesHisDao"></property>
+		<property name="archivesDao" ref="archivesDao"></property>
+		<property name="manageService" ref="manageService"></property>
 	</bean>
 
 	

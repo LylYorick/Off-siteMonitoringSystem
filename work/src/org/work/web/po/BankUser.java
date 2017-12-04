@@ -20,7 +20,7 @@ public class BankUser  implements java.io.Serializable {
      private String buname;
      private String bupswd;
      private String bumark;
-     private String brname;
+     private String brname;//用户名称
      private String btel;
      private String bmail;
      private String buupdatetime;

@@ -30,6 +30,18 @@
 				}
 			});
 		}
+		$(document).ready(function() {
+		  	 	var dates = $("#archives_save_archives_establishTime").datepicker({
+	  	 		changeMonth: true,
+	  	 		changeYear: true,
+				onSelect: function(selectedDate) {
+					var option = this.id == "startdate" ? "mixDate" : "maxDate";
+					var instance = $(this).data("datepicker");
+					var date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+					dates.not(this).datepicker("option", option, date);
+				}
+			});
+		});
 	</script>
 	<style type="text/css">
 	#shareholders td{
@@ -61,73 +73,140 @@
 			</legend>
 			<br>
 			<s:form namespace="/archives" action="archives_save" method="post" target="_self">
-				<tr>
+				<!-- <tr>
 					<td class="slabel">
 						金融机构基本信息
 					</td>
 					<td class="sinput">
-						<table frame="void" class="inputform">
-							<s:bean name="java.util.HashMap" id="qTableLayout">
-								<s:param name="tablecolspan" value="%{2}" />
-							</s:bean>
-							<s:hidden name="archives.oid" value="%{#info.oid}"></s:hidden>
-							<s:hidden name="archives.boid" value="%{#info.boid}"></s:hidden>
-							<s:hidden name="archives.bmininame" value="%{#info.bmininame}"></s:hidden>
-							<s:hidden name="archives.ishead" value="%{#info.ishead}"></s:hidden>
-							<s:hidden name="archives.isneed" value="%{#info.isneed}"></s:hidden>
-							<s:hidden name="archives.corporationType" value="%{#info.corporationType}"></s:hidden>
-							<s:hidden name="archives.BOrgCatalog.bid" value="%{#info.BOrgCatalog.bid}"></s:hidden>
-							<s:hidden name="archives.rateType" value="%{#info.rateType}"></s:hidden>
-							<s:textfield label="金融机构名称" required="true" name="archives.bname"
-								value="%{#info.bname}" size="60" reg="^[\s|\S]{1,100}$" tip="不能为空">
-							</s:textfield>
-							<s:select label="金融机构类型" list="#{'1':'银行业', '2':'证券业','3':'保险业','4':'基金业','5':'期货业','7':'第三方支付公司','8':'证券或基金子公司','6':'其他'}" >
-							</s:select>
-							<s:textfield label="联系地址" required="true" name="archives.address"
-								value="%{#info.address}" size="60" reg="^[\s|\S]{1,1000}$" tip="不能为空">
-							</s:textfield>
-							<s:textfield label="机构负责人" required="true" name="archives.responsiblePerson"
-								value="%{#info.responsiblePerson}" size="50" reg="^[\s|\S]{1,50}$" tip="不能为空">
-							</s:textfield>
-							<s:textfield label="员工人数:" required="true" name="archives.bworknum" reg="^\d{1,6}$" tip="只允许输入1-6位的数字"
-								value="%{#info.bworknum}">
-							</s:textfield>
-							<tr>
-								<td class="tdLabel">
-									评级类型:
-								</td>
-								<td>
-									<s:if test="#info.rateType.equals('00')">
-										法人机构评级
-									</s:if>
-									<s:if test="#info.rateType.equals('01')">
-										非法人机构评级
-									</s:if>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
+						<table frame="void" class="inputform"> -->
+				<s:bean name="java.util.HashMap" id="qTableLayout">
+					<s:param name="tablecolspan" value="%{2}" />
+				</s:bean>
+				<s:hidden name="archives.oid" value="%{#info.oid}"></s:hidden>
+				<s:hidden name="archives.corporationType" value="%{#info.corporationType}"></s:hidden>
+				<s:hidden name="archives.BOrgCatalog.bid" value="%{#info.BOrgCatalog.bid}"></s:hidden>
+				<s:hidden name="archives.rateType" value="%{#info.rateType}"></s:hidden>
+				<s:hidden name="archives.catalogNew.id.bfirstid" value="%{#info.catalogNew.id.bfirstid}"></s:hidden>
+				<s:hidden name="archives.catalogNew.id.bsecondid" value="%{#info.catalogNew.id.bsecondid}"></s:hidden>
+				<s:hidden name="archives.catalogNew.id.bthirdid" value="%{#info.catalogNew.id.bthirdid}"></s:hidden>
+				<s:textfield label="金融机构名称" required="true" name="archives.bname"
+					value="%{#info.bname}" size="60" reg="^[\s|\S]{1,100}$" tip="不能为空">
+				</s:textfield>
 				<tr>
-					<td class="slabel">
-						上年度资产
+					<td class="tdLabel" colspan="1">
+					  <label for="shareholdingStructure" class="label">金融机构类型:</span>:</label>
 					</td>
-					<td class="sinput">
-						<table frame="void" class="inputform">
-							<s:bean name="java.util.HashMap" id="qTableLayout">
-								<s:param name="tablecolspan" value="%{2}" />
-							</s:bean>
-							<s:textfield label="上年末度总资产(万)" required="true" name="archives.blastamt"  reg="^(\-|\+)?\d+(\.\d+)?$" tip="只能输入数值"
-								value="%{#info.blastamt}">
-								<s:param name="remark" value="%{getText('documentField.number')}" />
-							</s:textfield>
-							<s:textfield label="上年度税后净利润(万)" required="true" name="archives.blastnet"  reg="^(\-|\+)?\d+(\.\d+)?$" tip="只能输入数值"
-								value="%{#info.blastnet}">
-								<s:param name="remark" value="%{getText('documentField.number')}" />
-							</s:textfield>							
-						</table>
+					<td>
+						<s:property  value="#info.catalogNew.firstCatname"/>
+						<s:property  value="#info.catalogNew.secondCatname"/>
+						<s:property  value="#info.catalogNew.thirdCatname"/>
 					</td>
 				</tr>
+				<s:textfield label="金融机构代码" required="true" name="archives.boid" size="20">
+				</s:textfield>
+				<s:textfield label="金融机构拼音缩写" required="true" name="archives.bmininame" size="20">
+					<s:param name="remark" value="%{getText('financialField.mininame')}" />
+				</s:textfield>
+				<s:textfield label="联系地址" required="true" name="archives.address"
+					value="%{#info.address}" size="60" reg="^[\s|\S]{1,1000}$" tip="不能为空">
+				</s:textfield>
+				<s:textfield label="机构负责人" required="true" name="archives.responsiblePerson"
+					value="%{#info.responsiblePerson}" size="50" reg="^[\s|\S]{1,50}$" tip="不能为空">
+				</s:textfield>
+				<s:textfield label="员工人数:" required="true" name="archives.bworknum" reg="^\d{1,6}$" tip="只允许输入1-6位的数字"
+					value="%{#info.bworknum}">
+				</s:textfield>
+				<tr>
+					<td class="tdLabel">
+						评级类型:
+					</td>
+					<td>
+						<s:if test="#info.rateType.equals('00')">
+							法人机构评级
+						</s:if>
+						<s:if test="#info.rateType.equals('01')">
+							非法人机构评级
+						</s:if>
+					</td>
+				</tr>
+				<s:textfield label="上年末度总资产(万)" required="true" name="archives.blastamt"  reg="^(\-|\+)?\d+(\.\d+)?$" tip="只能输入数值"
+					value="%{#info.blastamt}">
+					<s:param name="remark" value="%{getText('documentField.number')}" />
+				</s:textfield>
+				<s:textfield label="上年度税后净利润(万)" required="true" name="archives.blastnet"  reg="^(\-|\+)?\d+(\.\d+)?$" tip="只能输入数值"
+					value="%{#info.blastnet}">
+					<s:param name="remark" value="%{getText('documentField.number')}" />
+				</s:textfield>
+				<s:if test="#info.corporationType.equals('00')">	
+					<s:textfield label="成立时间" required="true" name="archives.establishTime"
+						value="%{#info.establishTime} ">
+					</s:textfield>
+					<s:textfield label="注册资本(万)" required="true" name="archives.registeredCapital"
+						value="%{#info.registeredCapital}">
+					</s:textfield>
+					<s:textfield label="注册地" required="true" name="archives.registeredArea" 
+						value="%{#info.registeredArea}">
+					</s:textfield>
+					<s:textfield label="经营地" required="true" name="archives.businessArea"
+						value="%{#info.businessArea}">
+					</s:textfield>
+					<s:textfield label="分支机构数量" required="true" name="archives.numberOfBranchOffice"
+						value="%{#info.numberOfBranchOffice}">
+					</s:textfield>
+					<s:textarea label="境外分支机构所在国家或地区"  name="archives.overseasBranchOffice"
+						value="%{#info.overseasBranchOffice}">
+					</s:textarea>
+					<tr>
+					    <td class="tdLabel" colspan="1">
+					    <label for="shareholdingStructure" class="label">公司股东结构（列明前5名股东及其占比）<span class="required">(*)</span>:</label>
+					    </td>
+					    <td colspan="1">
+					   		<table id="shareholders">
+					    	    <tr id="th">
+						    		<td>股东名称</td>
+						    	    <td>占比</td>
+					    	    </tr>
+						    	<tr>
+						    		<td><input name="archives.shareholder1" class="shareholderName" value="${info.shareholder1}"></td>
+						    		<td><input  name="archives.rate1" class="rate" value="${info.rate1}"><label class="labelRate"> %</label></td>
+						    	</tr>
+						    	<tr>
+						    		<td><input name="archives.shareholder2"class="shareholderName" value="${info.shareholder2}"></td>
+						    		<td><input name="archives.rate2" class="rate" value="${info.rate2}"><label class="labelRate"> %</label></td>
+						    	</tr>
+						    	<tr>
+						    		<td><input name="archives.shareholder3" class="shareholderName" value="${info.shareholder3}"></td>
+						    		<td><input name="archives.rate3" class="rate" value="${info.rate3}"><label class="labelRate"> %</label></td>
+						    	</tr>
+						    	<tr>
+						    		<td><input name="archives.shareholder4" class="shareholderName" value="${info.shareholder4}" ></td>
+						    		<td><input  name="archives.rate4" class="rate" value="${info.rate4}"><label class="labelRate"> %</label></td>
+						    	</tr>
+						    	<tr>
+						    		<td><input name="archives.shareholder5" class="shareholderName" value="${info.shareholder5}"></td>
+						    		<td><input name="archives.rate5" class="rate" value="${info.rate5}"><label class="labelRate"> %</label></td>
+						    	</tr>
+							 	</table>
+						</td>
+					</tr>
+				</s:if>
+				<s:if test="#info.corporationType.equals('01')">	
+					<s:textfield label="总部所在地" required="true" name="archives.headquarter"
+						value="%{#info.headquarter}">
+					</s:textfield>
+					<s:if test="#info.catalogNew.id.bthirdid.equals('01')">
+							<tr>
+							<td  class="tdLabel"><lable>本分公司对营业厅是否有管辖权<span class="required">(*)</span></lable></td>
+							<td>
+								<input type="checkbox" name="haveJurisdiction" value="0" >是
+							</td>
+							</tr>
+						<s:textfield label="在深的营业部家数" id="numberOfHall" name="archives.numberOfHall" 
+							value="%{#info.numberOfHall}">
+						</s:textfield>
+					</s:if>
+				</s:if>
+											
 				<tr>
 					<td class="slabel">
 						分管领导
@@ -185,94 +264,6 @@
 						</table>
 					</td>
 				</tr>
-				<s:if test="#info.corporationType.equals('00')">	
-				<tr>
-					<td class="slabel">
-						法人机构信息
-					</td>
-					<td class="sinput">
-						<table frame="void" class="inputform">
-							<s:bean name="java.util.HashMap" id="qTableLayout">
-								<s:param name="tablecolspan" value="%{2}" />
-							</s:bean>
-							<s:textfield label="成立时间" required="true" name="archives.establishTime"
-								value="%{#info.establishTime} ">
-							</s:textfield>
-							<s:textfield label="注册资本(万)" required="true" name="archives.registeredCapital"
-								value="%{#info.registeredCapital}">
-							</s:textfield>
-							<s:textfield label="注册地" required="true" name="archives.registeredArea" 
-								value="%{#info.registeredArea}">
-							</s:textfield>
-							<s:textfield label="经营地" required="true" name="archives.businessArea"
-								value="%{#info.businessArea}">
-							</s:textfield>
-							<s:textfield label="分支机构数量" required="true" name="archives.numberOfBranchOffice"
-								value="%{#info.numberOfBranchOffice}">
-							</s:textfield>
-							<s:textarea label="境外分支机构所在国家或地区"  name="archives.overseasBranchOffice"
-								value="%{#info.overseasBranchOffice}">
-							</s:textarea>
-						    <td class="tdLabel" colspan="1">
-						    <label for="shareholdingStructure" class="label">公司股东结构（列明前5名股东及其占比）<span class="required">(*)</span>:</label>
-						    </td>
-						    <td colspan="1">
-						   		<table id="shareholders">
-						    	    <tr id="th">
-							    		<td>股东名称</td>
-							    	    <td>占比</td>
-						    	    </tr>
-							    	<tr>
-							    		<td><input name="archives.shareholder1" class="shareholderName" value="${info.shareholder1}"></td>
-							    		<td><input  name="archives.rate1" class="rate" value="${info.rate1}"><label class="labelRate"> %</label></td>
-							    	</tr>
-							    	<tr>
-							    		<td><input name="archives.shareholder2"class="shareholderName" value="${info.shareholder2}"></td>
-							    		<td><input name="archives.rate2" class="rate" value="${info.rate2}"><label class="labelRate"> %</label></td>
-							    	</tr>
-							    	<tr>
-							    		<td><input name="archives.shareholder3" class="shareholderName" value="${info.shareholder3}"></td>
-							    		<td><input name="archives.rate3" class="rate" value="${info.rate3}"><label class="labelRate"> %</label></td>
-							    	</tr>
-							    	<tr>
-							    		<td><input name="archives.shareholder4" class="shareholderName" value="${info.shareholder4}" ></td>
-							    		<td><input  name="archives.rate4" class="rate" value="${info.rate4}"><label class="labelRate"> %</label></td>
-							    	</tr>
-							    	<tr>
-							    		<td><input name="archives.shareholder5" class="shareholderName" value="${info.shareholder5}"></td>
-							    		<td><input name="archives.rate5" class="rate" value="${info.rate5}"><label class="labelRate"> %</label></td>
-							    	</tr>
- 						 	</table>
-							</td>
-						</table>
-					</tr>
-				</s:if>
-				<s:if test="#info.corporationType.equals('01')">	
-					<tr>
-						<td class="slabel">
-							分支机构
-						</td>
-						<td class="sinput">
-							<table frame="void" class="inputform">
-								<s:bean name="java.util.HashMap" id="qTableLayout">
-									<s:param name="tablecolspan" value="%{2}" />
-								</s:bean>
-								<s:textfield label="总部所在地" required="true" name="archives.headquarter"
-									value="%{#info.headquarter}">
-								</s:textfield>
-								<tr>
-								<td  class="tdLabel"><lable>本分公司对营业厅是否有管辖权<span class="required">(*)</span></lable></td>
-								<td>
-									<input type="checkbox" name="haveJurisdiction" value="0" >是
-								</td>
-								</tr>
-								<s:textfield label="在深的营业部家数" id="numberOfHall" name="archives.numberOfHall" 
-									value="%{#info.numberOfHall}">
-								</s:textfield>
-							</table>
-						</td>
-					</tr>
-				</s:if>
 				<tr align="center">
 				<td colspan="2">
 					<s:submit theme="simple" align="center" value="提    交" cssClass="ui-button ui-state-default ui-corner-all"></s:submit>

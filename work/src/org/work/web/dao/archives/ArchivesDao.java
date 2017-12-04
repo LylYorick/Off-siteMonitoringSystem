@@ -26,5 +26,6 @@ public interface ArchivesDao   extends IBaseDao{
 	 * @return
 	 */
 	public List findByBoid(String Archives);
-
+	PaginaterList getArchivesinformation(Map<String, Object> params,Integer page);
+	List findArchivesByBfirstid(String bfirstid);
 }

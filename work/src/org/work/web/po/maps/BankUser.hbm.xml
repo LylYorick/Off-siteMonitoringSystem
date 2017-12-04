@@ -40,12 +40,12 @@
 				<comment>邮箱</comment>
 			</column>
 		</property>
-		<many-to-one name="information" class="org.work.web.po.Information" fetch="select" lazy="false" cascade="none">
+		<!-- <many-to-one name="information" class="org.work.web.po.Information" fetch="select" lazy="false" cascade="none">
             <column name="OID">
             	<comment>金融机构ID</comment>
             </column>
-        </many-to-one>
-		<many-to-one name="archives" class="org.work.web.po.Archives" fetch="select" lazy="false" cascade="none" insert="false" update="false">
+        </many-to-one> -->
+		<many-to-one name="archives" class="org.work.web.po.Archives" fetch="select" lazy="false" cascade="none">
             <column name="OID">
             	<comment>金融机构ID</comment>
             </column>

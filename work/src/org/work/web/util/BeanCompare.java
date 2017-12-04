@@ -68,7 +68,7 @@ public class BeanCompare {
 	 * @throws InvocationTargetException
 	 * @throws NoSuchMethodException
 	 */
-	public static ArchivesHis compareInformation(Archives o1,Archives o2) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException{
+	public static ArchivesHis compareArchives(Archives o1,Archives o2) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException{
 		Class class1 = Archives.class;
 		//增加一个boolean型的数据，如果为true，则该方法返回空,因为只有不相等的时候才往历史记录表中插记录，add by yanghc 
 		boolean isEquals = true;
@@ -82,15 +82,13 @@ public class BeanCompare {
 			Field field = fields[i];
 			Class c = field.getType();
 			//如下几个字段是不需要比对的
-			if("oid".equals(field.getName())
-					|| "boid".equals(field.getName())//金融机构代码
-					//|| "bcatid".equals(field.getName()) bcatid 为金融机构类别代码 暂时不知道干啥的
-					||"bupdatetime".equals(field.getName()) //更新时间
-					||"bupdateuser".equals(field.getName())//更新人
-					|| "bmininame".equals(field.getName())//金融机构拼音缩写
-					|| "ishead".equals(field.getName())//是否总行
-					|| "isneed".equals(field.getName()))//是否报送报表
-					continue;
+			if(
+				"oid".equals(field.getName())
+				||"bupdatetime".equals(field.getName()) //更新时间
+				||"bupdateuser".equals(field.getName())//更新人
+				||"rateType".equals(field.getName())//评级表类型
+				)
+				continue;
 			System.out.println("fieldName:" +field);
 			if(!"java.lang.String".equals(c.getName()) 
 					&& !"java.lang.Integer".equals(c.getName())

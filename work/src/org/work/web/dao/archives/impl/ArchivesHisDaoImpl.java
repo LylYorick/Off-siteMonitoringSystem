@@ -23,6 +23,7 @@ public class ArchivesHisDaoImpl extends BaseDaoHibernateImpl  implements IArchiv
 			queryHelper.append("where 1 = 1 ");			
 			queryHelper.append("and archives.oid = ? ",params.get("oid"));
 		}
+	
 		queryHelper.append("order by ooid desc ");
 		return getPaginaterList(queryHelper, page);
 	}

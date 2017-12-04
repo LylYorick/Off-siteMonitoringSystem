@@ -23,6 +23,7 @@ public class RoleDaoImpl extends BaseDaoHibernateImpl implements IRoleDao {
 		helper.append("from Role r");
 		if (null==params) {
 			helper.append(" where 1 = 1");
+			helper.append(" ORDER BY r.rid ");
 		}
 		return getPaginaterList(helper, pageNumber);
 	}

@@ -9,7 +9,6 @@ import java.util.Map;
 import org.work.web.dao.archives.ArchivesDao;
 import org.work.web.dao.base.impl.BaseDaoHibernateImpl;
 import org.work.web.po.Archives;
-import org.work.web.po.Information;
 import org.work.web.util.PaginaterList;
 import org.work.web.util.QueryHelper;
 
@@ -60,6 +59,28 @@ public class ArchivesDaoImpl extends BaseDaoHibernateImpl implements ArchivesDao
 	public List findByBoid(String Archives) {
 		QueryHelper queryHelper = new QueryHelper(getSession());
 		queryHelper.append("from Archives where boid=?",Archives );
+		return getList(queryHelper);
+	}
+
+	@Override
+	public PaginaterList getArchivesinformation(Map<String, Object> params,
+			Integer page) {
+		QueryHelper queryHelper = new QueryHelper(getSession());
+		queryHelper.append("from Archives" );
+		if (params != null) {
+			queryHelper.append("where 1 = 1");
+			queryHelper.append("and oid = ?",params.get("oid"));
+			queryHelper.append("and catalogNew.id.bfirstid = ?",params.get("bfirstid"));
+		}
+		queryHelper.append(" order by bname asc");
+		return getPaginaterList(queryHelper, page);
+	}
+
+	@Override
+	public List findArchivesByBfirstid(String bfirstid) {
+		QueryHelper queryHelper = new QueryHelper(getSession());
+		queryHelper.append("from Archives" );
+		queryHelper.append("where catalogNew.id.bfirstid = ?",bfirstid);
 		return getList(queryHelper);
 	}
 

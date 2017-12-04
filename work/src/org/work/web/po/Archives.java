@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 public class Archives implements Serializable {
 	private int oid;
 	//private Integer bid;
-	private Catalog BOrgCatalog;//机构种类对象 
+	private CatalogNew catalogNew ;//机构种类对象 
 	private String boid;
 	private String corporationType;//是否是法人机构
 	private String bname;//机构名称
@@ -29,8 +29,6 @@ public class Archives implements Serializable {
 	private String headquarter; //总部所在地
 	private Integer numberOfHall;//在深的营业部家数
 	private Integer bworknum;//员工人数
-	private String ishead;//是否为总行
-	private String isneed;//是否需要报送
 	private String bmininame;//金融机构拼音缩写
 	private String bupdatetime;
 	private String bupdateuser;
@@ -47,6 +45,8 @@ public class Archives implements Serializable {
 	private BigDecimal rate5;//股东5持股比例
 	private String address;//联系地址
 	private String responsiblePerson;//机构负责人
+	
+	
 	
 	public Archives() {
 		super();
@@ -216,29 +216,18 @@ public class Archives implements Serializable {
 	public void setBusinessArea(String businessArea) {
 		this.businessArea = businessArea;
 	}
-	public String getIshead() {
-		return ishead;
-	}
-	public void setIshead(String ishead) {
-		this.ishead = ishead;
-	}
-	public String getIsneed() {
-		return isneed;
-	}
-	public void setIsneed(String isneed) {
-		this.isneed = isneed;
-	}
 	public String getBmininame() {
 		return bmininame;
 	}
 	public void setBmininame(String bmininame) {
 		this.bmininame = bmininame;
 	}
-	public Catalog getBOrgCatalog() {
-		return BOrgCatalog;
+	
+	public CatalogNew getCatalogNew() {
+		return catalogNew;
 	}
-	public void setBOrgCatalog(Catalog bOrgCatalog) {
-		BOrgCatalog = bOrgCatalog;
+	public void setCatalogNew(CatalogNew catalogNew) {
+		this.catalogNew = catalogNew;
 	}
 	public String getShareholder1() {
 		return shareholder1;

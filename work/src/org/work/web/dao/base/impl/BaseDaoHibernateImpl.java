@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.LockMode;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.util.ArrayHelper;
@@ -306,4 +307,9 @@ public abstract class BaseDaoHibernateImpl extends HibernateDaoSupport implement
 			}
 		});
 	}
+	
+	 public List executeSql(Session session,String sql){
+		List list =  session.createSQLQuery(sql).list();
+		return list;
+	 }
 }

@@ -64,6 +64,8 @@
 	<bean name="archivesDao" class="org.work.web.dao.archives.impl.ArchivesDaoImpl" parent="baseDao"></bean>
 	<bean name="iArchivesHisDao" class="org.work.web.dao.archives.impl.ArchivesHisDaoImpl" parent="baseDao"></bean>
 	
+	<bean name="catalogNewDao" class="org.work.web.dao.manage.impl.CatalogNewDaoImpl" parent="baseDao"></bean>
+	
 	<!-- 日志模块 -->
 	<bean name="logInfoDao" class="org.work.web.dao.manage.impl.LogInfoDaoImpl" parent="baseDao"></bean>
 	<!-- 参数模块 -->

@@ -30,7 +30,7 @@ public abstract class JsonBaseAction extends ActionSupport {
 	protected static final String JSON = "JSON";
 	private IUserLogService userLogService;
 	protected List btList = new ArrayList();
-	
+	protected String successMessage;
 	protected List gridModel;
 	@SuppressWarnings("unused")
 	protected Integer rows = 0;
@@ -171,4 +171,16 @@ public abstract class JsonBaseAction extends ActionSupport {
 	public void setBtList(List btList) {
 		this.btList = btList;
 	}
+	public String getSuccessMessage() {
+		return successMessage;
+	}
+	
+	/**
+	 * 向成功的界面插入提示信息
+	 * @param successMessage
+	 */
+	public void setSuccessMessage(String successMessage) {
+		this.successMessage = successMessage;
+	}
+	
 }

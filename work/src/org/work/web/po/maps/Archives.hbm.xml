@@ -8,8 +8,10 @@
             <column name="OID" />
             <generator class="increment"></generator>
         </id>
-         <many-to-one name="BOrgCatalog" class="org.work.web.po.Catalog"  fetch="select" lazy="false" >
-            <column name="BID" />
+         <many-to-one name="catalogNew" class="org.work.web.po.CatalogNew"  fetch="select" lazy="false" >
+           		<column name="BFIRSTID" ></column>
+          		<column name="BSECONDID"></column>
+           		<column name="BTHIRDID"></column>
         </many-to-one>
             <property name="boid" type="string">
                 <column name="BOID" length="32" />
@@ -83,12 +85,6 @@
             <property name="blastamt" type="big_decimal">
                 <column name="BLASTAMT" precision="18" />
             </property>
-             <property name="ishead" type="java.lang.String">
-            	<column name="ISHEAD" length="1" />
-       	 	</property>
-        	<property name="isneed" type="java.lang.String" >
-            	<column name="ISNEED" length="1" default="1" />
-        	</property>
         	 <property name="bmininame" type="java.lang.String">
             	<column name="BMININAME" length="20" />
         	</property>

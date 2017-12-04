@@ -6,6 +6,8 @@ package org.work.web.constants;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.work.web.po.CatalogNewId;
+
 /**
  * @作者 aps-dux
  * @创建日期 @{date}
@@ -188,5 +190,6 @@ public class Constants {
 	public static final String LOG_TYPE_DOWNLOAD = "增加";
 	public static final String LOG_TYPE_DELETE = "删除";
 	public static final String LOG_TYPE_LOGIN = "登录";
+	
 
 }

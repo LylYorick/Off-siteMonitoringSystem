@@ -12,8 +12,6 @@
 			multiselect="true" 
 			cssStyle="line-height:30px;" onSelectRowTopics="rowselect"
 			height="400">			
-			<sj:gridColumn name="BOrgCatalog.catname" index="BOrgCatalog.catname" title="机构类别" sortable="false" width="100" />
-			<sj:gridColumn name="boid" index="boid" title="金融机构代码" sortable="false" width="100" />
 			<sj:gridColumn name="bname" index="bname" title="机构名称" sortable="false" width="100" />
 			<sj:gridColumn name="bmininame" index="bmininame" title="金融机构拼音缩写" sortable="false" width="100" />
 			<sj:gridColumn name="address" index="address" title="联系地址" sortable="false" width="100" />
@@ -21,7 +19,6 @@
 			<sj:gridColumn name="address" index="baddr" title="办公地址" sortable="false" width="200" />
 			<sj:gridColumn name="corporationTypeName" index="corporationTypeName" title="是否是法人机构" sortable="false" width="100" />
 			<sj:gridColumn name="bworknum" index="bworknum" title="员工人数" sortable="false" width="100" />
-			<sj:gridColumn name="rateType" index="rateType" title="评级类型" sortable="false" width="100" />
 			<sj:gridColumn name="blastamt" index="blastamt" title="上年度末度总资产" sortable="false" width="100" />
 			<sj:gridColumn name="blastnet" index="blastnet" title="上年度税后净利润" sortable="false" width="100" />
 			<sj:gridColumn name="blead" index="blead" title="反洗钱工作分管领导" sortable="false" width="100" />
@@ -42,8 +39,6 @@
 			<sj:gridColumn name="rate1" index="rate1" title="股东1持股比例" sortable="false" width="100" />
 			<sj:gridColumn name="headquarter" index="headquarter" title="总部所在地" sortable="false" width="100" />
 			<sj:gridColumn name="numberOfHall" index="numberOfHall" title="在深的营业部家数" sortable="false" width="100" />
-			<sj:gridColumn name="ishead" index="ishead" title="是否为总行" sortable="false" width="100" />
-			<sj:gridColumn name="isneed" index="isneed" title="是否需要报送" sortable="false" width="100" />
 			<sj:gridColumn name="bupdatetime" index="bupdatetime" title="更新时间" sortable="false" width="100" />
 			<sj:gridColumn name="bupdateuser" index="bupdateuser" title="更新人" sortable="false" width="100" />
 		</sj:grid>

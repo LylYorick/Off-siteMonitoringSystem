@@ -15,17 +15,16 @@ public class ArchivesHis implements java.io.Serializable{
 		this.id=id;
 	}
 	
-	private Catalog BOrgCatalog;
+	private CatalogNew catalogNew;
 	
-	public Catalog getBOrgCatalog() {
-		return BOrgCatalog;
+	
+	public CatalogNew getCatalogNew() {
+		return catalogNew;
+	}
+	public void setCatalogNew(CatalogNew catalogNew) {
+		this.catalogNew = catalogNew;
 	}
 
-	public void setBOrgCatalog(Catalog bOrgCatalog) {
-		BOrgCatalog = bOrgCatalog;
-	}
-
-	
 	private Archives archives;
 	
 	public Archives getArchives() {
@@ -580,59 +579,6 @@ public class ArchivesHis implements java.io.Serializable{
 		return this.getId() + "";
 	}
 	
-	/**
-	 * toHqlString
-	 * 生成HQL初始全字段语句，用于配置设计器数据集时使用
-	 */
-	public String toHqlString(){
-		StringBuffer sb = new StringBuffer();
-		sb.append("select id as id");
-		sb.append(", oid as oid");
-		sb.append(", bid as bid");
-		sb.append(", corporationType as corporationType");
-		sb.append(", boid as boid");
-		sb.append(", bname as bname");
-		sb.append(", blead as blead");
-		sb.append(", bworkphe as bworkphe");
-		sb.append(", establishTime as establishTime");
-		sb.append(", bdeptlead as bdeptlead");
-		sb.append(", bdeptleadtel as bdeptleadtel");
-		sb.append(", blastnet as blastnet");
-		sb.append(", bworktel as bworktel");
-		sb.append(", bdeptleadphe as bdeptleadphe");
-		sb.append(", bworknum as bworknum");
-		sb.append(", bleadtel as bleadtel");
-		sb.append(", bwork as bwork");
-		sb.append(", businessArea as businessArea");
-		sb.append(", registeredArea as registeredArea");
-		sb.append(", registeredCapital as registeredCapital");
-		sb.append(", headquarter as headquarter");
-		sb.append(", overseasBranchOffice as overseasBranchOffice");
-		sb.append(", numberOfBranchOffice as numberOfBranchOffice");
-		sb.append(", numberOfHall as numberOfHall");
-		sb.append(", blastamt as blastamt");
-		sb.append(", bupdateuser as bupdateuser");
-		sb.append(", bupdatetime as bupdatetime");
-		sb.append(", ishead as ishead");
-		sb.append(", isneed as isneed");
-		sb.append(", bmininame as bmininame");
-		sb.append(", rateType as rateType");
-		sb.append(", shareholder1 as shareholder1");
-		sb.append(", rate1 as rate1");
-		sb.append(", shareholder2 as shareholder2");
-		sb.append(", rate2 as rate2");
-		sb.append(", shareholder3 as shareholder3");
-		sb.append(", rate3 as rate3");
-		sb.append(", shareholder4 as shareholder4");
-		sb.append(", rate4 as rate4");
-		sb.append(", shareholder5 as shareholder5");
-		sb.append(", rate5 as rate5");
-		sb.append(", address as address");
-		sb.append(", responsiblePerson as responsiblePerson");
-		sb.append(" from OrgInformationhisNew");
-		return sb.toString();
-	}
-
 	
 
 }

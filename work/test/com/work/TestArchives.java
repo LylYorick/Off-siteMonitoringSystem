@@ -1,29 +1,32 @@
 package com.work;
 
-import net.sf.json.util.JSONUtils;
+import java.util.HashMap;
+import java.util.Map;
 
-import org.apache.struts2.json.JSONUtil;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.work.web.dao.archives.ArchivesDao;
-import org.work.web.dao.archives.impl.ArchivesDaoImpl;
+import org.work.web.dao.archives.IArchivesHisDao;
 import org.work.web.po.Archives;
 import org.work.web.po.Catalog;
 import org.work.web.service.archives.ArchivesService;
+import org.work.web.util.PaginaterList;
 
 import com.google.gson.Gson;
 
 public class TestArchives {
 	private ApplicationContext ctx;
 	private ArchivesDao archivesDao=null;
+	private IArchivesHisDao archivesHisDao;
 	private ArchivesService archivesService;
 	@Before
 	public void setUp() throws Exception {
 		ctx = new ClassPathXmlApplicationContext("classpath:config/applicationContext-*.xml");
 		archivesDao = (ArchivesDao) ctx.getBean("archivesDao");
+		archivesHisDao = (IArchivesHisDao) ctx.getBean("iArchivesHisDao");
 		archivesService = (ArchivesService) ctx.getBean("archivesService");
 	}
 
@@ -38,15 +41,27 @@ public class TestArchives {
 		Archives archives = gson.fromJson(jsonString, Archives.class);
 		Catalog bOrgCatalog = new Catalog();
 		bOrgCatalog.setBid(3);
-		archives.setBOrgCatalog(bOrgCatalog);
+	//	archives.setBOrgCatalog(bOrgCatalog);
 		archivesService.updateInformation(null, archives);
 	}
 	@Test
 	public void testArchivesget(){
 		Archives archives = (Archives) archivesDao.findById(4);
-		archives.setBOrgCatalog(null);
+		/*archives.setCatalogNew(new CatalogNew());*/
 		Gson gson = new Gson();
 		String aa = gson.toJson(archives);
 		System.out.println(aa);
+	}
+	@Test
+	public void testArchivesHisget(){
+		Map<String, Object> params = new HashMap();
+		PaginaterList list = archivesHisDao.getHistoryFinancial(params, 1);
+		System.out.println(list);
+	}
+	@Test
+	public void testSaveUser(){
+		Map<String, Object> params = new HashMap();
+		PaginaterList list = archivesHisDao.getHistoryFinancial(params, 1);
+		System.out.println(list);
 	}
 }

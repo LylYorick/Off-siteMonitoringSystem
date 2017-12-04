@@ -11,14 +11,14 @@
         <many-to-one name="archives" class="org.work.web.po.Archives" fetch="select">
             <column name="OID" />
         </many-to-one>
-		<many-to-one name="BOrgCatalog" class="org.work.web.po.Catalog" fetch="select">
-            <column name="BID" />
+	    <many-to-one name="catalogNew" class="org.work.web.po.CatalogNew"  fetch="select" lazy="false" >
+           		<column name="BFIRSTID" ></column>
+          		<column name="BSECONDID"></column>
+           		<column name="BTHIRDID"></column>
         </many-to-one>
 		<property name="corporationType" column="CORPORATION_TYPE"   type="java.lang.String">
-			
 		</property>
 		<property name="boid" column="BOID"   type="java.lang.String">
-		
 		</property>
 		<property name="bname" column="BNAME"   type="java.lang.String">
 			
@@ -85,10 +85,6 @@
 		</property>
 		<property name="bupdatetime" column="BUPDATETIME"   type="java.lang.String">
 			
-		</property>
-		<property name="ishead" column="ISHEAD"   type="java.lang.String">
-		</property>
-		<property name="isneed" column="ISNEED"   type="java.lang.String">
 		</property>
 		<property name="bmininame" column="BMININAME"   type="java.lang.String">
 		</property>

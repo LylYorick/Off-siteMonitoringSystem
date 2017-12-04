@@ -57,19 +57,21 @@
   	
   	$(getsort);   
 function getsort(){   
-    var cid=$("#bpid").val();   
+    var bfirstid=$("#bpid").val();   
     var time=new Date();   
     $.ajax({   
         cache:false,   
-        url:'<%=request.getContextPath()%>/financial/financial_findInformation.shtml',    
+        url:'<%=request.getContextPath()%>/archives/archives_findArchivesByBfirstid.shtml',    
         type:'post',   
         dataType:'json',   
-        data:{cid:cid,t:time},   
+        data:{bfirstid:bfirstid,t:time},   
         success:update_c   
     });   
 }
 function update_c(json){
-   var sort=json.informationSet;   
+	
+   var sort=json.archivesList;   
+   console.table(sort);
    var cbanner=json.bname;   
    var s_root=document.getElementById('bannerid');   
    s_root.options.length=0; 
@@ -81,11 +83,12 @@ function update_c(json){
            
    for(var i in sort){   
        var option = document.createElement("option");   
-       var value=sort[i].oid;      
+       var value=sort[i].oid;
+       console.table(sort[i].catalogNew);      
        var text=sort[i].bname;   
-           option.text=text;   
-           option.value=value;   
-           s_root.options[s_root.options.length] =option;   
+          option.text=text;   
+          option.value=value;   
+          s_root.options[s_root.options.length] =option;   
    }   
 }
     </script>
@@ -95,12 +98,11 @@ function update_c(json){
 				金融机构查询<s:property value="bid"/>
 			</legend>
 			<br>
-			<s:form namespace="/financial" action="financial_list" method="post">
-
+			<s:form namespace="/archives" action="archives_list" method="post">
 				<s:bean name="java.util.HashMap" id="qTableLayout">
 					<s:param name="tablecolspan" value="%{4}" />
 				</s:bean>
-				<s:select list="#list" label="金融机构类别" id="bpid" name="bid" listKey="bid" listValue="catname" onchange="getsort()">
+				<s:select list="#list" label="金融机构类别" id="bpid" name="bid" listKey="id.bfirstid" listValue="firstCatname" onchange="getsort()">
 					<s:param name="labelcolspan" value="%{1}" />
 					<s:param name="inputcolspan" value="%{1}" />
 				</s:select>
@@ -108,10 +110,9 @@ function update_c(json){
 					<s:param name="labelcolspan" value="%{1}" />
 					<s:param name="inputcolspan" value="%{1}" />
 				</s:select>
-
 			</s:form>
 			<div align="center">
-				<sj:submit formIds="financial_list" id="searchbutton" value="查  询"
+				<sj:submit formIds="archives_list" id="searchbutton" value="查  询"
 					timeout="2500" button="true" indicator="indicator"
 					onBeforeTopics="before" onCompleteTopics="complete"
 					onErrorTopics="errorState" />
@@ -124,25 +125,23 @@ function update_c(json){
 			onClickTopics="view" button="true" />
 		<sj:submit id="grid_select_colsbutton" value="显示变更记录"
 			onClickTopics="getselectedhistory" button="true" />
-		<sj:submit id="grid_tai_colsbutton" value="台账记录"
-			onClickTopics="getselectedtai" button="true" />
+		<%-- <sj:submit id="grid_tai_colsbutton" value="台账记录"
+			onClickTopics="getselectedtai" button="true" /> --%>
 		<sj:submit id="grid_export_colsbutton" value="导出到Excel"
 			onClickTopics="createxls" button="true" loadingText="正在导出..." />
 
 		<sj:grid id="gridtable" caption="金融机构列表" dataType="json"
-			href="../financial/financial_list.shtml" pager="true" gridModel="gridModel"
+			href="../archives/archives_list.shtml" pager="true" gridModel="gridModel"
 			rowList="10,15,20" rowNum="20" rownumbers="true" viewrecords="true"
 			multiselect="true" 
 			cssStyle="line-height:30px;" onSelectRowTopics="rowselect">
 			<sj:gridColumn name="oid" index="oid" title="机构ID" sortable="false" hidden="true" width="70"/>
-			<sj:gridColumn name="boid" index="boid" title="机构代码" sortable="false" width="70" />
+			<sj:gridColumn name="boid" index="boid" title="机构代码" sortable="false" width="100" />
 			<sj:gridColumn name="bname" index="bname" title="机构名称" sortable="false" width="170" />
-			<sj:gridColumn name="baddr" index="baddr" title="办公地址" sortable="false" width="240" />
-			<sj:gridColumn name="blead" index="blead" title="分管领导" sortable="false" width="90" />
-			<sj:gridColumn name="bleadpst" index="bleadpst" title="领导职务" sortable="false" width="90" />
-			<sj:gridColumn name="bdept" index="bdept" title="反洗钱部门" sortable="false" width="90" />
-			<sj:gridColumn name="bdeptlead" index="bdeptlead" title="部门负责人" 	sortable="false" width="90" />
-			<sj:gridColumn name="bwork" index="bwork" title="反洗钱联系人" sortable="false" width="90" />
+			<sj:gridColumn name="address" index="address" title="办公地址" sortable="false" width="240" />
+			<sj:gridColumn name="blead" index="blead" title="分管领导" sortable="false" width="150" />
+			<sj:gridColumn name="bdeptlead" index=" bdeptlead" title="反洗钱部门负责人" sortable="false" width="150" />
+			<sj:gridColumn name="bwork" index="bwork" title="反洗钱联系人" sortable="false" width="150" />
 		</sj:grid>
         </div>
 	
