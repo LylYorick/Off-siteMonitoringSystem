@@ -45,11 +45,11 @@
             	<comment>金融机构ID</comment>
             </column>
         </many-to-one> -->
-		<many-to-one name="archives" class="org.work.web.po.Archives" fetch="select" lazy="false" cascade="none">
+	<many-to-one name="archives" class="org.work.web.po.Archives" fetch="select" lazy="false" cascade="none" not-found="ignore">
             <column name="OID">
             	<comment>金融机构ID</comment>
             </column>
-        </many-to-one>
+        </many-to-one> 
 		<property name="buupdatetime" type="java.lang.String">
 			<column name="BUUPDATETIME" length="20">
 				<comment>更新时间</comment>

@@ -21,8 +21,11 @@ import org.work.web.constants.Constants;
 import org.work.web.exception.ServiceException;
 import org.work.web.po.BankUser;
 import org.work.web.po.Catalog;
+import org.work.web.po.CatalogNew;
+import org.work.web.po.CatalogNewId;
 import org.work.web.po.Information;
 import org.work.web.po.Role;
+import org.work.web.service.archives.ArchivesService;
 import org.work.web.service.financial.IFinancialService;
 import org.work.web.service.manage.IManageService;
 import org.work.web.util.DateUtil;
@@ -41,9 +44,11 @@ public class UserAction extends JsonBaseAction implements ModelDriven<BankUser> 
 	private BankUser bankUser = new BankUser();
 	private IManageService manageService;
 	private IFinancialService financialService;
-
+	private ArchivesService archivesService;
+	
 	private Integer oid;//金融机构ID
 	private Integer bid;//金融机构类别
+	private String bfirstid;//金融机构一级类别id
 	private String buname;//用户名称
 	private String bumark;//角色ID
 	private String buid;//用户ID
@@ -89,6 +94,14 @@ public class UserAction extends JsonBaseAction implements ModelDriven<BankUser> 
 
 	public void setBid(Integer bid) {
 		this.bid = bid;
+	}
+
+	public String getBfirstid() {
+		return bfirstid;
+	}
+
+	public void setBfirstid(String bfirstid) {
+		this.bfirstid = bfirstid;
 	}
 
 	public String getBuname() {
@@ -173,11 +186,11 @@ public class UserAction extends JsonBaseAction implements ModelDriven<BankUser> 
 		}else{
 			session.put("toid",oid);
 		}
-		if(getBid()==null){
-			if(session.get("tbid")==null)
-			session.put("tbid",null);
+		if(getBfirstid()==null){
+			if(session.get("bfirstid")==null)
+			session.put("bfirstid",null);
 		}else{
-			session.put("tbid",bid);
+			session.put("bfirstid",bfirstid);
 		}
 		if(getBuname()==null || "".equals(buname)){
 			if(session.get("tbuname")==null || "".equals(buname))
@@ -192,7 +205,8 @@ public class UserAction extends JsonBaseAction implements ModelDriven<BankUser> 
 			session.put("tbumark",bumark);
 		}
 		params.put("oid", session.get("toid"));
-		params.put("bid", session.get("tbid"));
+		params.put("bid", "01");
+		params.put("bfirstid", session.get("bfirstid"));
 		params.put("brname", session.get("tbuname"));	
 		params.put("bumark", session.get("tbumark"));	
 		List<Map> result = new ArrayList<Map>();
@@ -210,7 +224,7 @@ public class UserAction extends JsonBaseAction implements ModelDriven<BankUser> 
 			item.put("brname", bankUser.getBrname());
 			item.put("loadtime", bankUser.getLoadtime());
 			item.put("bumark", bankUser.getBumark());
-			item.put("bname", bankUser.getInformation()==null?Constants.USER_ORG:bankUser.getInformation().getBname());
+			item.put("bname", bankUser.getArchives()==null?Constants.USER_ORG:bankUser.getArchives().getCatalogNew().getFirstCatname());
 			roleSet = bankUser.getTPubRoleusers();
 			for(Iterator<Role> it = roleSet.iterator();it.hasNext();){
 				Role ritem = it.next();
@@ -352,11 +366,13 @@ public class UserAction extends JsonBaseAction implements ModelDriven<BankUser> 
         session.put("tbid",null);
         session.put("tbuname",null);
         session.put("tbumark",null);
-		List<Catalog> list = financialService.findByCatalog();
-		Catalog ct = new Catalog();
-		ct.setBid(0);
-		ct.setCatname("人民银行深圳市中支");
+    	List<CatalogNew> list = new ArrayList<CatalogNew>();
+		CatalogNew ct = new CatalogNew();
+		CatalogNewId catalogNewid = new CatalogNewId();
+		ct.setId(catalogNewid);
+		ct.setFirstCatname("所有");
 		list.add(ct);
+		list.addAll(archivesService.findAllFirstCatname());
 		this.put("list", list);
 		return SUCCESS;
 	}
@@ -380,6 +396,11 @@ public class UserAction extends JsonBaseAction implements ModelDriven<BankUser> 
 		}
 		return null;
 	}
+	
+	public void setArchivesService(ArchivesService archivesService) {
+		this.archivesService = archivesService;
+	}
+
 	@Override
 	public List getGridModel() {
 		
@@ -425,5 +446,5 @@ public class UserAction extends JsonBaseAction implements ModelDriven<BankUser> 
 	public BankUser getModel() {
 		return bankUser;
 	}
-
+	
 }

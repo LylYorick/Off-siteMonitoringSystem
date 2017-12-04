@@ -53,7 +53,7 @@ public class ArchivesAction extends JsonBaseAction implements ModelDriven<Archiv
         Map session = actionContext.getSession();
         session.put("toid",null);
         session.put("tbid",null);
-        //TODO 这里好像是用来查询的查询条件
+        //这里是用来查询的查询条件
 		List<CatalogNew> list = new ArrayList<CatalogNew>();
 		CatalogNew ct = new CatalogNew();
 		CatalogNewId catalogNewid = new CatalogNewId();

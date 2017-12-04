@@ -104,6 +104,7 @@
 	<bean id="userAction" class="org.work.web.web.UserAction" scope="prototype" parent="baseAction">
 		<property name="financialService" ref="financialService"></property>
 		<property name="manageService" ref="manageService"></property>
+		<property name="archivesService" ref="archivesService"></property>
 	</bean>
 	
 	<!-- 角色管理模块 -->
