@@ -73,7 +73,7 @@
 		</legend>
 		<br>
 		<s:form namespace="/assess" action="assess_list" method="post">
-		<table class="wwFormTable" >
+	<table class="wwFormTable" >
 	   		 <tbody>
 	   		 	<tr>  
 	   		 		<td class="tdLabel" colspan="1">
@@ -83,6 +83,33 @@
 		    			<input type="text" name="year" value="2017" id="assess_list_year" >﻿
 					</td>   
 		    		<td class="tdLabel" colspan="1">
+						<label for="assess_list_year" class="label">评级表类型:</label>
+					</td> 
+					<td class="ldLabel" colspan="1" >
+						<select style="height:25px;">
+		    					<option value="1">法人评级类型</option>
+		    					<option value="1">非法人评级类型</option>
+		    			</select>
+					</td>   
+	        	</tr>
+	        	<tr>  
+	        		<td class="tdLabel" colspan="1">
+		    			<label class="label" >机构类型:</label>﻿
+					</td>   
+			    	<td class="ldLabel" colspan="1">
+						<select style="height:25px;">
+						    <option value="01">银行业</option>
+						    <option value="02">证券业</option>
+						    <option value="03">保险业</option>
+						    <option value="04">基金业</option>
+						    <option value="05">期货业</option>
+						    <option value="06">第三方支付</option>
+						    <option value="07">六类</option>
+						    <option value="08">证券或基金子公司</option>
+						    <option value="09">其他</option>
+						</select>
+					</td> 
+					<td class="tdLabel" colspan="1">
 		    			<label class="label" >金融机构名称:</label>﻿
 					</td>   
 			    	<td class="ldLabel" colspan="1">
@@ -98,27 +125,35 @@
 					</td> 
 	        	</tr>
 	        	<tr>  
-	        		<td class="tdLabel" colspan="1">
-		    			<label class="label" >机构类型:</label>﻿
+					<td class="tdLabel" colspan="1">
+		    			<label class="label" >最终等级:</label>﻿
 					</td>   
 			    	<td class="ldLabel" colspan="1">
-						<select style="height:25px;">
-							<option value="1">--请选择--</option>
-							<option value="1">银行业</option>
-	    					<option value="1">证券业</option>
-	    					<option value="1">保险业</option>
-	    					<option value="1">法人-银行业</option>
-	    					<option value="1">法人-证券业</option>
-	    					<option value="1">法人-保险业</option>
+							<select style="height:25px;">
+						    <option value="01">AAA</option>
+						    <option value="01">AA</option>
+						    <option value="01">A</option>
+						    <option value="01">BBB</option>
+						    <option value="01">BB</option>
+						    <option value="01">B</option>
+						    <option value="01">CCC</option>
+						    <option value="01">CC</option>
+						    <option value="01">C</option>
+						    <option value="01">D</option>
+						    <option value="01">E</option>
 						</select>
 					</td> 
-					<td class="tdLabel" colspan="1"></td><td class="ldLabel" colspan="1" ></td>
+					<td class="tdLabel" colspan="1">
+					</td>   
+			    	<td class="ldLabel" colspan="1">
+					</td> 
 	        	</tr>
 			</tbody>
-		</table>
 		</s:form>
 		<div align="center">
 			<input type="submit" id="searchbutton" value="查  询" style="margin-top:7px;" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+			<img id="indicator" src="/work/images/027.gif" alt="Loading..." style="display: none">
+			<input type="submit" id="searchbutton" value="导出excel" style="margin-top:7px;" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
 			<img id="indicator" src="/work/images/027.gif" alt="Loading..." style="display: none">
 		</div>
 	</fieldset>

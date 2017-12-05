@@ -29,7 +29,12 @@
     padding: 3px 3px 3px 8px;
 }
 textarea.erji{width:90%; height:100%;}
-
+#tr_yellow td{
+	background-color: yellow;
+}
+#tr_yellow2 td{
+	color: blue;
+}
 </style> 
 
 </head>
@@ -92,7 +97,10 @@ textarea.erji{width:90%; height:100%;}
 						<th width="80">
 							评级得分
 						</th>
-							<th width="50">
+						<th width="150">
+							评级理由
+						</th>
+						<th width="50">
 							自评得分
 						</th>
 						<th width="150">
@@ -127,12 +135,15 @@ textarea.erji{width:90%; height:100%;}
 						<td align="center">
 							<input type="text" style="width:35px" class="numberInput">﻿
 						</td>
-							<td align="center">
-						18
+						<td>
+							<textarea  ></textarea>
 						</td>
-							<td>
-								<textarea  class="fillArea"  readonly="readonly">制度建立较为完善</textarea>
-							</td>
+						<td align="center">
+						20
+						</td>
+						<td>
+							<textarea  class="fillArea"  readonly="readonly">制度建立较为完善</textarea>
+						</td>
 						<td align="center">
 						20
 						</td>
@@ -149,7 +160,7 @@ textarea.erji{width:90%; height:100%;}
 						</td>
 						
 					</tr>
-					<tr>
+					<tr id="tr_yellow">
 						<td>
 							2
 						</td>
@@ -158,6 +169,38 @@ textarea.erji{width:90%; height:100%;}
 						</td>
 						<td align="center">
 							<input type="text" style="width:35px"  class="numberInput">
+						</td>
+						<td>
+							<textarea  class="fillArea"  ></textarea>
+						</td>
+						<td align="center">
+						16
+						</td>
+						<td>
+						<textarea   class="erji"  readonly="readonly">制度建立较为完善</textarea>
+						</td>
+						<td align="center">
+						20
+						</td>
+						<td class="ssr">
+							1总部根据法律法规和监管要求以及本机构业务发展和反洗钱工作实际及时修订或更新内控制度
+						</td>
+						<td>
+							<textarea   class="erji"  readonly="readonly">1.未按法律法规和监管要求及时修订内控制度；2.评级期内推出新业务（产品、服务），未及时制定或对已有的反洗钱内控制度或相关业务操作规程进行更新；3.评级期内反洗钱工作组织形式或反洗钱工作流程、内容等发生变更，未及时制定或对已有的反洗钱内控制度或相关业务操作规程进行更新。存在1项扣1分，最多扣3分。</textarea>
+						</td>
+					</tr>
+					<tr id="tr_yellow2">
+						<td>
+							3
+						</td>
+						<td>
+							<a href="<%=request.getContextPath()%>/images/123.docx" download="人员分配.docx">人员分配.docx</a></br>
+						</td>
+						<td align="center">
+							<input type="text" style="width:35px"  class="numberInput">
+						</td>
+						<td>
+							<textarea  class="fillArea"  ></textarea>
 						</td>
 						<td align="center">
 						16
@@ -179,6 +222,7 @@ textarea.erji{width:90%; height:100%;}
 				<table  align="center">
 					<tr align="center">
 						<td colspan="2" align="center">	
+						<input type="button" id="exportExcel" value="导出excel" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
 						<input type="button" id="searchbutton" value="保存" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
 						<input type="button" id="searchbutton" value="提交" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
 						<input type="button" id="return" value="返回" class="ui-button ui-state-default ui-corner-all">

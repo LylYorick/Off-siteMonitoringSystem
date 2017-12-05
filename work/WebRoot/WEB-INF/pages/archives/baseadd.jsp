@@ -26,7 +26,6 @@
 		bsecondid.empty();
 		var trBsecondid = $("#trBsecondid");
 		if(catalogNewList.length == 1){
-			debugger;
 			trBsecondid.hide();
 		}else{
 			trBsecondid.show();

@@ -892,4 +892,14 @@ public class AssessAction  extends JsonBaseAction implements ModelDriven<AssessI
 		logger.info("进入金融机构评级管理-公示后");
 		return SUCCESS;
 	}
+	
+	/**
+	 * 高级查询
+	 */
+	public String advancedQuery(){
+		logger.info("***");
+		
+		logger.info("进入高级查询");
+		return SUCCESS;
+	}
 }

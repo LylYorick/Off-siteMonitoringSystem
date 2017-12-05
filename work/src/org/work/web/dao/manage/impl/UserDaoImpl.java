@@ -56,9 +56,10 @@ public class UserDaoImpl extends BaseDaoHibernateImpl implements IUserDao {
 		if(params.get("bfirstid")!=null && params.get("bfirstid").equals(0)){
 			
 			}else{
-				helper.append(" and archives.id.bfirstid=?",params.get("bfirstid"));
+				helper.append(" and archives.catalogNew.id.bfirstid=?",params.get("bfirstid"));
 			}
 		}
+		System.out.println(helper.toString());
 		
 		return getPaginaterList(helper, pageNumber);
 	}

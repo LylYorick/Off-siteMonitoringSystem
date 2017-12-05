@@ -72,7 +72,9 @@
 	height:17px;
 	margin-left:5px;
 }
-
+#core{
+overflow-x:hidden;
+}
 
 </style>
 </head>
@@ -93,7 +95,7 @@
 					<td class="ldLabel" colspan="1" >
 		    			<input type="text" name="year" value="2017" id="assess_list_year" >﻿
 					</td>   
-		    		<td class="tdLabel" colspan="1">
+	   		 		<td class="tdLabel" colspan="1">
 						<label for="assess_list_year" class="label">评级表类型:</label>
 					</td> 
 					<td class="ldLabel" colspan="1" >
@@ -102,6 +104,29 @@
 		    					<option value="1">非法人评级类型</option>
 		    			</select>
 					</td>   
+	        	</tr>
+	        	 <tr>  
+	        		<td class="tdLabel" colspan="1">
+		    			<label class="label" >一级指标名称:</label>﻿
+					</td>   
+			    	<td class="ldLabel" colspan="1">
+						<select style="height:25px;">
+						    <option value="01">1制度完善程度</option>
+						    <option value="02">2.机制合理性</option>
+						    <option value="03">3.技术保障能力</option>
+						    <option value="04">4.人员配备、资质及履职情况</option>
+						</select>
+					</td> 
+						<td class="tdLabel" colspan="1">
+		    			<label class="label" >二级指标名称:</label>﻿
+					</td>   
+			    	<td class="ldLabel" colspan="1">
+						<select style="height:25px;width:250px">
+	    					<option value="1">1.1内控制度体系全面覆盖法律法规和监管要求涉及的反洗钱各方面义务，各项反洗钱内控措施符合法规要求</option>
+	    					<option value="1">1.2根据法律法规和监管要求以及本机构业务发展和反洗钱工作实际及时修订或更新内控制度</option>
+	    					<option value="1">1.3及时向人民银行报备内控制度</option>
+						</select>
+					</td> 
 	        	</tr>
 	        	<tr>  
 	        		<td class="tdLabel" colspan="1">
@@ -135,56 +160,6 @@
 						</select>
 					</td> 
 	        	</tr>
-	        	<tr>  
-	        		<td class="tdLabel" colspan="1">
-		    			<label class="label" >状态:</label>﻿
-					</td>   
-			    	<td class="ldLabel" colspan="1">
-						<select style="height:25px;">
-						    <option value="01">自评阶段—>自评中</option>
-						    <option value="01">自评阶段—>待复核</option>
-						    <option value="01">自评阶段—>复核通过</option>
-						    <option value="01">自评阶段—>复核拒绝</option>
-						    <option value="01">初评阶段-->待初评</option>
-						    <option value="01">初评阶段-->已初评</option>
-						    <option value="01">复评阶段-->复评公示</option>
-						    <option value="01">复评阶段-->复评中</option>
-						    <option value="01">结果公示阶段</option>
-						</select>
-					</td> 
-					<td class="tdLabel" colspan="1">
-		    			<label class="label" >自评得分:</label>﻿
-					</td>   
-			    	<td class="ldLabel" colspan="1">
-						<input type="text" name="year" style="width:50px;" > - <input type="text" name="year" style="width:50px;" >
-					</td> 
-	        	</tr>
-	        	<tr>
-					<td class="tdLabel" colspan="1">
-		    			<label class="label" >评级得分:</label>﻿
-					</td>   
-			    	<td class="ldLabel" colspan="1">
-						<input type="text" name="year" style="width:50px;" > - <input type="text" name="year" style="width:50px;" >
-					</td> 
-					<td class="tdLabel" colspan="1">
-		    			<label class="label" >最终等级:</label>﻿
-					</td>   
-			    	<td class="ldLabel" colspan="1">
-							<select style="height:25px;">
-						    <option value="01">AAA</option>
-						    <option value="01">AA</option>
-						    <option value="01">A</option>
-						    <option value="01">BBB</option>
-						    <option value="01">BB</option>
-						    <option value="01">B</option>
-						    <option value="01">CCC</option>
-						    <option value="01">CC</option>
-						    <option value="01">C</option>
-						    <option value="01">D</option>
-						    <option value="01">E</option>
-						</select>
-					</td> 
-	        	</tr>
 			</tbody>
 		</table>
 		</s:form>
@@ -195,61 +170,73 @@
 			<img id="indicator" src="/work/images/027.gif" alt="Loading..." style="display: none">
 		</div>
 	</fieldset>
-	<div  class="ui-banner  ui-noBottomboder">
-		<sj:submit id="view" value="查看"
-			onClickTopics="view" button="true" />
-		<sj:submit id="rate" value="评级"
-			onClickTopics="rate" button="true" />
-	<%-- 	<sj:submit id="directRate" value="直接定级提交"
-			onClickTopics="directRate" button="true" /> --%>
-		<%-- <span  class=" span_left ">当前机构类型:银行业</span> --%>
-	</div>
 	<table id="gridtable" class="wwFormTable"></table> 
 	<div id="gridtable_pager" ></div> 
+	<table class="wwFormTable" style="width: 100%" id="tabel_detail">
+				<tr style="font-weight: bold;">
+					<th width="15%">
+						指标名称
+					</th>
+					<th width="25%">
+						指标描述
+					</th>
+					<th  width="30%">
+					    评分标准
+					</th>
+					<th  width="25%">
+						自评理由要求
+					</th>
+					<th  width="5%" align="center">
+						分值
+					</th>
+				</tr>
+					<tr>
+					<td >
+						<textarea readonly="readonly" class="erji textarea alterTextarea" >1制度完善程度</textarea>
+					</td>
+					<td >
+						<textarea  readonly="readonly" class="erji textarea alterTextarea" >结合自身业务特点，按照洗钱风险防控、预警和处理程序以及相应的反洗钱要求，建立健全反洗钱内控制度，落实各项监管要求。重点评价制度完备性、修订及时性、报备自觉性。</textarea>
+					</td>
+					<td>
+						<textarea readonly="readonly"class="erji alterTextarea">1.未建立客户身份识别、客户风险等级划分和分类管理、大额交易和可疑交易报告、客户身份资料和交易记录保存、反恐怖融资、涉恐资产冻结、洗钱风险自评估、分支机构反洗钱工作管理、反洗钱保密、内部审计、宣传培训、绩效考核、责任追究以及协助反洗钱调查等制度，缺1项扣1分；2.未将反洗钱工作要求分解、细化到每一个业务环节和操作岗位，发现1次扣1分。最多扣3分。</textarea>
+					</td>
+					<td>
+						<textarea   readonly="readonly"class="erji textarea alterTextarea" id="allowTextarea">请重点说明xx年度制度新建、修订和废止情况。</textarea>
+					</td>
+					<td>
+						5
+					</td>
+				</tr>
+			</table>
+			<br/>
 			<table class="wwFormTable" style="width: 100%;" id="tabel_detail" >
 				<tr style="font-weight: bold;">
-					<th width="3%">
-						
+					<th  width="5%">
+						年度
 					</th>
-					<th width="3%">
-						<input type="checkbox" id="checkbox" name="checkbox" value="checkbox" disabled="disabled">
-					</th>
-					<th width="5%">年度</th>
-					<th width="10%">
+					<th  width="5%">
 						机构类型
 					</th>
-					<th width="20%">
+					<th width="10%">
 						机构名称
 					</th>
-					<th width="10%">
-						状态
-					</th>
-					<th width="5%" >
+					<th width="5%">
 						自评得分
 					</th>
-					<th  width="5%">
-					 	评级得分
+					<th width="15%">
+						自评理由
 					</th>
-					<th  width="5%">
-						评级等级
+					<th  width="10%">
+						自评附件
 					</th>
-					<th  width="5%">
-						定级等级
+					<th width="5%" >
+						评级得分
 					</th>
-					<th  width="20%">
-						定级理由
-					</th>
-					<th  width="20%">
-						审核拒绝理由
+					<th  width="15%">
+					 	评级理由
 					</th>
 				</tr>
 				<tr>
-					<td>
-						1
-					</td>
-					<td>
-						<input type="checkbox"  id="checkbox1"  name="checkbox1" value="checkbox">
-					</td>
 					<td>
 						2017
 					</td>
@@ -260,33 +247,29 @@
 						上海商业银行有限公司深圳分行
 					</td>
 					<td>
-						人行初评
+						4
 					</td>
 					<td>
-						80
+						<textarea class="textarea alterTextarea" disabled="disabled">本机构认为并没有存在下列任一情形，可以直接评定为E类机构：（1）不配合反洗钱调查工作，拒绝提供信息资料；
+						（2）提供信息资料存在重大事项隐瞒、重大信息遗漏、虚假陈述或误导性陈述，情节严重的；（3）存在其他重大问题，严重影响反洗钱调查工作的。希望重新评定为B级。申请材料详见附件</textarea>
+						</textarea>
 					</td>
 					<td>
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="制度体系.docx">制度体系.docx</a>
+						<br/>
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="内控措施.docx">内控措施.docx</a></br>
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="各项举措.docx">各项举措.docx</a>
+						<br/>
+						<a href="<%=request.getContextPath()%>/images/logo1.jpg" download="材料图片.jpg">材料图片.jpg</a>
 					</td>
 					<td>
+						4
 					</td>
 					<td>
-						
+						<textarea  class="textarea alterTextarea" disabled="disabled">违反保密规定，出现失密、泄密情况，导致严重后果</textarea>
 					</td>
-					<td>
-						<textarea   class="textarea alterTextarea" disabled="disabled"></textarea>
-					</td>
-					<td>
-						<textarea   class="textarea alterTextarea" disabled="disabled"></textarea>
-					</td>
-					
 				</tr>
 				<tr>
-					<td>
-						2
-					</td>
-					<td>
-						<input type="checkbox"  id="checkbox2"  name="checkbox2" value="checkbox">
-					</td>
 					<td>
 						2017
 					</td>
@@ -297,139 +280,22 @@
 						渤海银行深圳分行
 					</td>
 					<td>
-						初评结束
+						5
 					</td>
 					<td>
-						90
+						<textarea class="textarea alterTextarea" disabled="disabled">本机构认为完全符合此指标的标准，详情见附件</textarea>
+						</textarea>
 					</td>
 					<td>
-						89
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="制度体系.docx">制度体系.docx</a>
+						<br/>
+						<a href="<%=request.getContextPath()%>/images/123.docx" download="内控措施.docx">内控措施.docx</a></br>
 					</td>
-					<td>
-						A
-					</td>
-					<td>
-						
-					</td>
-					<td>
-						<textarea   class="textarea alterTextarea" disabled="disabled"></textarea>
-					</td>
-					<td>
-						<textarea   class="textarea alterTextarea" disabled="disabled"></textarea>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						3
-					</td>
-					<td>
-						<input type="checkbox"  id="checkbox3"  name="checkbox3" value="checkbox">
-					</td>
-					<td>
-						2017
-					</td>
-					<td>
-						银行业
-					</td>
-					<td>
-						平安银行总行
-					</td>
-					<td>
-						待复核
-					</td>
-					<td>
-						80
-					</td>
-				
-					<td>
-					</td>
-					<td>
-					</td>
-					<td>
-						E
-					</td>
-					<td>
-						<textarea   class="textarea alterTextarea" disabled="disabled">违反保密规定，出现失密、泄密情况，导致严重后果</textarea>
-					</td>
-					<td>
-						<textarea   class="textarea alterTextarea" disabled="disabled"></textarea>
-					</td>
-				</tr>
-				<tr>
 					<td>
 						4
 					</td>
 					<td>
-						<input type="checkbox"  id="checkbox4"  name="checkbox4" value="checkbox">
-					</td>
-					<td>
-						2017
-					</td>
-					<td>
-						银行业
-					</td>
-					<td>
-						华商银行
-					</td>
-					<td>
-						待复核
-					</td>
-					<td>
-						90
-					</td>
-					<td>
-						51
-					</td>
-					<td>
-						D
-					</td>
-					<td>
-						
-					</td>
-					<td>
-						<textarea   class="textarea alterTextarea" disabled="disabled"></textarea>
-					</td>
-					<td>
-						<textarea   class="textarea alterTextarea" disabled="disabled"></textarea>
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-						5
-					</td>
-					<td>
-						<input type="checkbox"  id="checkbox5"  name="checkbox5" value="checkbox">
-					</td>
-					<td>
-						2017
-					</td>
-					<td>
-						银行业
-					</td>
-					<td>
-						广东发展银行深圳分行
-					</td>
-					<td>
-						初评结束
-					</td>
-					<td>
-						90
-					</td>
-					<td>
-						51
-					</td>
-					<td>
-						D
-					</td>
-					<td>
-						
-					</td>
-					<td>
-						<textarea   class="textarea alterTextarea" disabled="disabled"></textarea>
-					</td>
-					<td>
-						<textarea   class="textarea alterTextarea" disabled="disabled"></textarea>
+						<textarea  class="textarea alterTextarea" disabled="disabled">违反保密规定，出现失密、泄密情况，导致严重后果</textarea>
 					</td>
 				</tr>
 			</table>

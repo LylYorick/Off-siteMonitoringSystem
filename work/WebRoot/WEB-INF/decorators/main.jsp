@@ -42,7 +42,7 @@
 		</DIV>
 	<!-- menu结束 -->
 	<!-- core开始 -->
-		<DIV class="ui-layout-center">
+		<DIV class="ui-layout-center" id="core">
 			<decorator:body />
 		</DIV>
 	<!-- core结束 -->

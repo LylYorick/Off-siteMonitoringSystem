@@ -33,34 +33,39 @@
 		    		<td colspan="1">
 		    			<input type="text" name="year" value="" id="assess_list_year">﻿
 					</td>   
-			    	<td class="tdLabel" colspan="1">
-			    		<label for="bpid" class="label">机构类别:</label>
-			    	</td> 
-		    		<td colspan="1">
-	    				<select >
-	    					<option value="1">法人机构-银行业</option>
-	    					<option value="1">法人机构-证券业</option>
-	    					<option value="1">法人机构-保险业</option>
-	    					<option value="1">银行业</option>
-	    					<option value="1">证券业</option>
-	    					<option value="1">保险业</option>
-						</select>
-					</td>
-	        	</tr>
-	        	<tr>  
-	   		 		<td class="tdLabel" colspan="1">
-						<label for="assess_list_year" class="label">一级指标名称:</label>
+					<td class="tdLabel" colspan="1">
+						<label for="assess_list_year" class="label">评级表类型:</label>
 					</td> 
-		    		<td colspan="1">
-		    			<input type="text" >﻿
+					<td class="ldLabel" colspan="1" >
+						<select style="height:25px;">
+		    					<option value="1">法人评级类型</option>
+		    					<option value="1">非法人评级类型</option>
+		    			</select>
 					</td>   
-			    	<td class="tdLabel" colspan="1">
-			    		<label for="bpid" class="label">二级指标:</label>
-			    	</td> 
-		    		<td colspan="1">
-	    				<input type="text" >
-					</td>
-	        	</tr>        
+	        	</tr>
+	        		 <tr>  
+	        		<td class="tdLabel" colspan="1">
+		    			<label class="label" >一级指标名称:</label>﻿
+					</td>   
+			    	<td class="ldLabel" colspan="1">
+						<select style="height:25px;">
+						    <option value="01">1制度完善程度</option>
+						    <option value="02">2.机制合理性</option>
+						    <option value="03">3.技术保障能力</option>
+						    <option value="04">4.人员配备、资质及履职情况</option>
+						</select>
+					</td> 
+						<td class="tdLabel" colspan="1">
+		    			<label class="label" >二级指标名称:</label>﻿
+					</td>   
+			    	<td class="ldLabel" colspan="1">
+						<select style="height:25px;width:250px">
+	    					<option value="1">1.1内控制度体系全面覆盖法律法规和监管要求涉及的反洗钱各方面义务，各项反洗钱内控措施符合法规要求</option>
+	    					<option value="1">1.2根据法律法规和监管要求以及本机构业务发展和反洗钱工作实际及时修订或更新内控制度</option>
+	    					<option value="1">1.3及时向人民银行报备内控制度</option>
+						</select>
+					</td> 
+	        	</tr>       
 			</tbody>
 		</table>
 		</s:form>

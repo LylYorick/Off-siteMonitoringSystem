@@ -157,7 +157,7 @@ public class ArchivesServiceImpl implements ArchivesService {
 		user2.setArchives(archives);
 		Set<Role> roles2 = new HashSet<Role>();
 		Role role2 = manageService.findRoleById("12");
-		roles.add(role2);
+		roles2.add(role2);
 		user2.setTPubRoleusers(roles2);
 		user2.setBrname(archives.getBname()+"复评者");
 		manageService.saveUser(user2);

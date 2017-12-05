@@ -39,8 +39,12 @@
 								</td>
 								<td>
 									<s:property  value="#information.catalogNew.firstCatname"/>
-									<s:property  value="#information.catalogNew.secondCatname"/>
-									<s:property  value="#information.catalogNew.thirdCatname"/>
+									<s:if test="!#information.catalogNew.id.bsecondid.equals('00')">
+										<s:property  value="#information.catalogNew.secondCatname"/>
+									</s:if>
+									<s:if test="!#information.catalogNew.id.bthirdid.equals('00')">
+										<s:property  value="#information.catalogNew.thirdCatname"/>
+									</s:if>
 								</td>
 							</tr>
 							<tr>
@@ -176,7 +180,7 @@
 								    		<td>占比</td>
 								    	</tr>
 								    	<tr>
-								    		<td>${information.rate2}</td>
+								    		<td>${information.shareholder1}</td>
 								    		<td>${information.rate1}<label class="labelRate"> %</label></td>
 								    	</tr>
 								    	<tr>

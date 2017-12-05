@@ -98,8 +98,12 @@
 					</td>
 					<td>
 						<s:property  value="#info.catalogNew.firstCatname"/>
-						<s:property  value="#info.catalogNew.secondCatname"/>
-						<s:property  value="#info.catalogNew.thirdCatname"/>
+						<s:if test="!#info.catalogNew.id.bsecondid.equals('00')">
+							<s:property  value="#info.catalogNew.secondCatname"/>
+						</s:if>
+						<s:if test="!#info.catalogNew.id.bthirdid.equals('00')">
+							<s:property  value="#info.catalogNew.thirdCatname"/>
+						</s:if>
 					</td>
 				</tr>
 				<s:textfield label="金融机构代码" required="true" name="archives.boid" size="20">
@@ -258,7 +262,7 @@
 							<s:textfield label="岗位人员办公电话" required="true" name="archives.bworktel" reg="^\d{3}-\d{8}$|^\d{4}-\d{8}$" tip="国内电话号码，格式: 0755-22590240 或 021-88888888"
 								value="%{#info.bworktel}">
 							</s:textfield>
-							<s:textfield label="岗位人员手机号码" required="true" name="archives.bworkphe" reg="^\d{11}$" tip="只允许输入11位数字"
+							<s:textfield label="岗位人员手机号码" required="true" name="archives.bworkphe" reg="\d{11}$" tip="只允许输入11位数字"
 								value="%{#info.bworkphe}">
 							</s:textfield>
 						</table>
