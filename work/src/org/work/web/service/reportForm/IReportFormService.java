@@ -3,6 +3,7 @@ package org.work.web.service.reportForm;
 import java.io.File;
 import java.util.Map;
 
+import org.work.web.po.Archives;
 import org.work.web.po.Information;
 import org.work.web.po.ReportForm;
 import org.work.web.po.Upload;
@@ -30,7 +31,7 @@ public interface IReportFormService {
 	 * @param path	保存路径
 	 * @param buname 上传人
 	 */
-	public void uploadReportForm(Information infomation, File[] ReportFormFile,String[] ReportFormFileFileName, String path, String buname);
+	public void uploadReportForm(Archives archives, File[] ReportFormFile,String[] ReportFormFileFileName, String path, String buname);
 
 	/**
 	 * 根据ID查询制度管理表信息

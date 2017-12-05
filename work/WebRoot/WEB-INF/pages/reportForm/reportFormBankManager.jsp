@@ -34,39 +34,42 @@
         alert('status: ' + event.originalEvent.status + '\n\nrequest status: ' +event.originalEvent.request.status); 
     });
 		
-	$(getsort);   
-    function getsort(){   
-        var cid=$("#bpid").val();   
-        var time=new Date();   
-        $.ajax({   
-            cache:false,   
-            url:'<%=request.getContextPath()%>/financial/financial_findInformation.shtml',    
-            type:'post',   
-            dataType:'json',   
-            data:{cid:cid,t:time},   
-            success:update_c   
-        });   
-    }
-    function update_c(json){
-       var sort=json.informationSet;   
-       var cbanner=json.bname;   
-       var s_root=document.getElementById('bannerid');   
-       s_root.options.length=0; 
-   
-       var option = document.createElement("option");    
-       option.text="---请选择---";   
-       option.value="9999";   
-       s_root.options[s_root.options.length] =option;  
-           
-       for(var i in sort){   
-           var option = document.createElement("option");   
-           var value=sort[i].oid;      
-           var text=sort[i].bname;   
-               option.text=text;   
-               option.value=value;   
-               s_root.options[s_root.options.length] =option;   
-       }   
-    }	
+  	$(getsort);   
+	function getsort(){   
+	    var bfirstid=$("#bpid").val();   
+	    var time=new Date();   
+	    $.ajax({   
+	        cache:false,   
+	        url:'<%=request.getContextPath()%>/archives/archives_findArchivesByBfirstid.shtml',    
+	        type:'post',   
+	        dataType:'json',   
+	        data:{bfirstid:bfirstid,t:time},   
+	        success:update_c   
+	    });   
+	}
+	function update_c(json){
+		
+	   var sort=json.archivesList;   
+	   console.table(sort);
+	   var cbanner=json.bname;   
+	   var s_root=document.getElementById('bannerid');   
+	   s_root.options.length=0; 
+	   
+	   var option = document.createElement("option");    
+	   option.text="---请选择---";   
+	   option.value="9999";   
+	   s_root.options[s_root.options.length] =option;  
+	           
+	   for(var i in sort){   
+	       var option = document.createElement("option");   
+	       var value=sort[i].oid;
+	       console.table(sort[i].catalogNew);      
+	       var text=sort[i].bname;   
+	          option.text=text;   
+	          option.value=value;   
+	          s_root.options[s_root.options.length] =option;   
+	   }   
+	}
 		
 		
 	$.subscribe('upload', function(event,data) {
@@ -78,7 +81,7 @@
 	$.subscribe('downloadfile', function(event,data) {
      	var s = $("#gridtable").jqGrid('getGridParam','selarrrow');
      	var oid="";
-     	var ins_id="";
+     	var fes_id="";
      	if(s==''){
     	    alert("请选择要下载的资料！");
     	    return;
@@ -88,10 +91,10 @@
     			var id = s[i]; 
     			var row = $("#gridtable").jqGrid('getRowData', id); 
     			oid+=row['BOrgInformation.oid']+",";
-    			ins_id+=row.ins_id+",";
+    			fes_id+=row.fes_id+",";
     		}
     	}
-    	document.location.href="<%=request.getContextPath()%>/reportForm/reportForm_download.shtml?oids="+oid+"&ins_ids="+ins_id; 
+    	document.location.href="<%=request.getContextPath()%>/reportForm/reportForm_download.shtml?oids="+oid+"&fes_ids="+fes_id; 
     	}); 
     		
      $.subscribe('deletefile', function(event,data) {
@@ -100,20 +103,20 @@
     	    alert("请选择删除的资料！");
     	    return;
     	} 
-    	var ins_id="";
+    	var fes_id="";
     	if(s.length>0){
     		for (var i=0; i < s.length; i++) { 
     			var id = s[i]; 
     			var row = $("#gridtable").jqGrid('getRowData', id); 
-    			ins_id+=row.ins_id+",";
+    			fes_id+=row.fes_id+",";
     		}
     	}
 	    	if(window.confirm("确定要删除吗？")){
-	    <%-- 	document.location.href="<%=request.getContextPath()%>/reportForm/reportForm_delete.shtml?ins_ids="+ins_id; --%>
+	    <%-- 	document.location.href="<%=request.getContextPath()%>/reportForm/reportForm_delete.shtml?fes_ids="+fes_id; --%>
 		    	$.ajax({
 		            cache:false,   
 		            url:'<%=request.getContextPath()%>/reportForm/reportForm_delete.shtml',    
-                    data:{ins_ids:ins_id},
+                    data:{fes_ids:fes_id},
 		            type:'post',   
 		            dataType:'json',   
 		            success:function(data){
@@ -151,7 +154,7 @@
 				<s:bean name="java.util.HashMap" id="qTableLayout">
 					<s:param name="tablecolspan" value="%{4}" />
 				</s:bean>
-				<s:select list="#list" label="金融机构类别" id="bpid" name="bid" listKey="bid" listValue="catname" onchange="getsort()">
+				<s:select list="#list" label="金融机构类别" id="bpid" name="bid" listKey="id.bfirstid" listValue="firstCatname" onchange="getsort()">
 					<s:param name="labelcolspan" value="%{1}" />
 					<s:param name="inputcolspan" value="%{1}" />
 				</s:select>
@@ -185,7 +188,7 @@
 			rowList="10,15,20" rowNum="20" rownumbers="true" viewrecords="true"
 			multiselect="true" 
 			cssStyle="line-height:30px;" onSelectRowTopics="rowselect" 	height="200">
-			<sj:gridColumn name="ins_id" index="ins_id" title="制度表ID" sortable="true" hidden="true" width="70"/>
+			<sj:gridColumn name="fes_id" index="fes_id" title="报表管理ID" sortable="true" hidden="true" width="70"/>
 			<sj:gridColumn name="BOrgInformation.oid" index="BOrgInformation.oid" hidden="true" title="金融机构ID" sortable="false" width="70" />
 			<sj:gridColumn name="BOrgInformation.bname" index="BOrgInformation.bname" title="金融机构名称" sortable="false" width="270" />
 			<sj:gridColumn name="up_time" index="up_time" title="上传时间" sortable="false" width="110" />

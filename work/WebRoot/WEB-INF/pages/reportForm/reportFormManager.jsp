@@ -78,7 +78,7 @@
 	$.subscribe('downloadfile', function(event,data) {
      	var s = $("#gridtable").jqGrid('getGridParam','selarrrow');
      	var oid="";
-     	var ins_id="";
+     	var fes_id="";
      	if(s==''){
     	    alert("请选择要下载的资料！");
     	    return;
@@ -88,10 +88,10 @@
     			var id = s[i]; 
     			var row = $("#gridtable").jqGrid('getRowData', id); 
     			oid+=row['BOrgInformation.oid']+",";
-    			ins_id+=row.ins_id+",";
+    			fes_id+=row.fes_id+",";
     		}
     	}
-    	document.location.href="<%=request.getContextPath()%>/reportForm/reportForm_download.shtml?oids="+oid+"&ins_ids="+ins_id; 
+    	document.location.href="<%=request.getContextPath()%>/reportForm/reportForm_download.shtml?oids="+oid+"&fes_ids="+fes_id; 
     	}); 
     		
      $.subscribe('deletefile', function(event,data) {
@@ -100,20 +100,20 @@
     	    alert("请选择删除的资料！");
     	    return;
     	} 
-    	var ins_id="";
+    	var fes_id="";
     	if(s.length>0){
     		for (var i=0; i < s.length; i++) { 
     			var id = s[i]; 
     			var row = $("#gridtable").jqGrid('getRowData', id); 
-    			ins_id+=row.ins_id+",";
+    			fes_id+=row.fes_id+",";
     		}
     	}
 	    	if(window.confirm("确定要删除吗？")){
-	    <%-- 	document.location.href="<%=request.getContextPath()%>/reportForm/reportForm_delete.shtml?ins_ids="+ins_id; --%>
+	    <%-- 	document.location.href="<%=request.getContextPath()%>/reportForm/reportForm_delete.shtml?fes_ids="+fes_id; --%>
 		    	$.ajax({
 		            cache:false,   
 		            url:'<%=request.getContextPath()%>/reportForm/reportForm_delete.shtml',    
-                    data:{ins_ids:ins_id},
+                    data:{fes_ids:fes_id},
 		            type:'post',   
 		            dataType:'json',   
 		            success:function(data){
@@ -185,9 +185,9 @@
 			rowList="10,15,20" rowNum="20" rownumbers="true" viewrecords="true"
 			multiselect="true" 
 			cssStyle="line-height:30px;" onSelectRowTopics="rowselect" 	height="200">
-			<sj:gridColumn name="ins_id" index="ins_id" title="制度表ID" sortable="true" hidden="true" width="70"/>
-			<sj:gridColumn name="BOrgInformation.oid" index="BOrgInformation.oid" hidden="true" title="金融机构ID" sortable="false" width="70" />
-			<sj:gridColumn name="BOrgInformation.bname" index="BOrgInformation.bname" title="金融机构名称" sortable="false" width="270" />
+			<sj:gridColumn name="fes_id" index="fes_id" title="报表管理ID" sortable="true" hidden="true" width="70"/>
+			<sj:gridColumn name="BOrgArchives.oid" index="BOrgArchives.oid" hidden="true" title="金融机构ID" sortable="false" width="70" />
+			<sj:gridColumn name="BOrgArchives.bname" index="BOrgArchives.bname" title="金融机构名称" sortable="false" width="270" />
 			<sj:gridColumn name="up_time" index="up_time" title="上传时间" sortable="false" width="110" />
 			<sj:gridColumn name="file_url" index="file_url" title="文件路径"  hidden="true" sortable="false" width="90" />
 			<sj:gridColumn name="file_name" index="file_name" title="文件名称" sortable="false" width="350" />

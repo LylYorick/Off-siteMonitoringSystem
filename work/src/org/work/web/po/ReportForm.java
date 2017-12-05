@@ -9,6 +9,7 @@ public class ReportForm implements java.io.Serializable{
 	
 	private Integer ref_id;
 	private Information BOrgInformation;
+	private Archives BOrgArchives;
 	private String up_time;
 	private String file_url;//
 	private String file_name;
@@ -45,6 +46,12 @@ public class ReportForm implements java.io.Serializable{
 	}
 	public void setBOrgInformation(Information bOrgInformation) {
 		BOrgInformation = bOrgInformation;
+	}
+	public Archives getBOrgArchives() {
+		return BOrgArchives;
+	}
+	public void setBOrgArchives(Archives bOrgArchives) {
+		BOrgArchives = bOrgArchives;
 	}
 	public String getUp_time() {
 		return up_time;

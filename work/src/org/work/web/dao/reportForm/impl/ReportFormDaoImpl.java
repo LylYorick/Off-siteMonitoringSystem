@@ -17,8 +17,8 @@ public class ReportFormDaoImpl extends BaseDaoHibernateImpl implements IReportFo
 		queryHelper.append("from ReportForm" );
 		if (params != null) {
 			queryHelper.append("where 1 = 1");
-			queryHelper.append(" and BOrgInformation.oid = ?",params.get("oid"));
-			queryHelper.append(" and BOrgInformation.BOrgCatalog.bid = ?",params.get("bid"));
+			queryHelper.append(" and BOrgArchives.oid = ?",params.get("oid"));
+			queryHelper.append(" and BOrgArchives.catalogNew.id.bfirstid = ?",params.get("bfirstid"));
 			queryHelper.append(" and up_time>=?",params.get("starttime"));
 			queryHelper.append(" and up_time<=?",params.get("endtime"));	
 		}

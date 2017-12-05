@@ -19,10 +19,14 @@ import org.apache.tools.zip.ZipEntry;
 import org.apache.tools.zip.ZipOutputStream;
 import org.work.web.constants.Constants;
 import org.work.web.exception.ServiceException;
+import org.work.web.po.Archives;
 import org.work.web.po.BankUser;
 import org.work.web.po.Catalog;
+import org.work.web.po.CatalogNew;
+import org.work.web.po.CatalogNewId;
 import org.work.web.po.Information;
 import org.work.web.po.ReportForm;
+import org.work.web.service.archives.ArchivesService;
 import org.work.web.service.financial.IFinancialService;
 import org.work.web.service.reportForm.IReportFormService;
 import org.work.web.util.DateUtil;
@@ -40,6 +44,7 @@ public class ReportFormAction  extends JsonBaseAction {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = Logger.getLogger(ReportFormAction.class);
 	private Integer oid;//金融机构ID
+	private String bfirstid;//一级类别id
 	private Integer bid;//金融机构类别ID
 	private String starttime;//开始时间
 	private String endtime;//截止时间
@@ -49,9 +54,13 @@ public class ReportFormAction  extends JsonBaseAction {
 	
 	private IReportFormService reportFormService;
 	private IFinancialService financialService;
+	private ArchivesService archivesService;
 	private File[] reportFormFile;
 	private String[] reportFormFileFileName;
 	private String errorMsg;
+	public void setArchivesService(ArchivesService archivesService) {
+		this.archivesService = archivesService;
+	}
 	public String getErrorMsg() {
 		return errorMsg;
 	}
@@ -203,10 +212,17 @@ public class ReportFormAction  extends JsonBaseAction {
 		if(endtime!=null && !"".equals(endtime)){
 	        session.put("endtime", endtime);
 		}
+		if(getBfirstid()==null){
+			if(session.get("bfirstid")==null)
+			session.put("bfirstid",null);
+		}else{
+			session.put("bfirstid",bfirstid);
+		}
 		params.put("oid",  getSessionUserInformation()==null?session.get("oid"):getSessionUserInformation());
 		params.put("bid", session.get("bid"));	
 		params.put("starttime",session.get("starttime"));
-		params.put("endtime",session.get("endtime"));		
+		params.put("endtime",session.get("endtime"));	
+		params.put("bfirstid", session.get("bfirstid"));
 		PaginaterList list =  reportFormService.findReportFormMsg(params, this.getPage());
 		Long maxRecord = list.getPaginater().getMaxRowCount();
 		this.setGridModel(list.getList());
@@ -228,16 +244,20 @@ public class ReportFormAction  extends JsonBaseAction {
 		logger.info("金融机构制度管理（人行端）");
 		ActionContext actionContext = ActionContext.getContext();
         Map session = actionContext.getSession();
-        List<Catalog> list = new  ArrayList<Catalog>();
-        try{
-        	list = this.financialService.findByCatalog();
-        }catch(Exception e){
-        	e.printStackTrace();
-        }
+     
 		session.put("oid", null);
 		session.put("bid", null);
 		session.put("starttime",null);
 		session.put("endtime",null);	
+		//这里是用来查询的查询条件
+		List<CatalogNew> list = new ArrayList<CatalogNew>();
+		CatalogNew ct = new CatalogNew();
+		CatalogNewId catalogNewid = new CatalogNewId();
+		ct.setId(catalogNewid);
+		ct.setFirstCatname("所有");
+		list.add(ct);
+		list.addAll(this.archivesService.findAllFirstCatname());
+		this.put("list", list);
 		this.put("list", list);
 		return SUCCESS;
 	}
@@ -267,7 +287,7 @@ public class ReportFormAction  extends JsonBaseAction {
 	 *金融机构制度管理-上传制度
 	 */
 	public String reportFormAdd(){
-		logger.info("金融机构制度管理-上传制度");
+		logger.info("报表管理-上传制度");
 		return SUCCESS;
 	}
 	
@@ -277,12 +297,12 @@ public class ReportFormAction  extends JsonBaseAction {
 	 */
 	public String save() {
 		BankUser bankUser = getSessionUserCode();
-		Information infomation = bankUser.getInformation();
-		String oid = infomation.getOid().toString();
-		String path = ServletActionContext.getServletContext().getRealPath(Constants.DIR_INSTITUTION+"/"+ oid);
+		Archives archives = bankUser.getArchives();
+		String oid = archives.getOid()+"";
+		String path = ServletActionContext.getServletContext().getRealPath(Constants.DIR_REPORT_FORM+"/"+ oid);
 		path = StringUtil.replace(path, '\\', '/');			
 		System.out.println("----path: "+path);
-		reportFormService.uploadReportForm(infomation,reportFormFile,reportFormFileFileName,path,bankUser.getBuname());
+		reportFormService.uploadReportForm(archives,reportFormFile,reportFormFileFileName,path,bankUser.getBuname());
 		log("新增制度上报", Constants.LOG_TYPE_ADD);
 		this.addNaviButton("继续上报", "reportForm/reportForm_reportFormAdd.shtml");
 		this.addNaviButton("返回", "reportForm/reportForm_reportFormManager.shtml");
@@ -406,6 +426,12 @@ public class ReportFormAction  extends JsonBaseAction {
 	}
 	
 	
+	public String getBfirstid() {
+		return bfirstid;
+	}
+	public void setBfirstid(String bfirstid) {
+		this.bfirstid = bfirstid;
+	}
 	/**
 	 *金融机构制度管理-修改制度
 	 */

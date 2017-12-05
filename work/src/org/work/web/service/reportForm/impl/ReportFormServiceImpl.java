@@ -8,6 +8,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.work.web.dao.reportForm.IReportFormDao;
 import org.work.web.exception.ServiceException;
+import org.work.web.po.Archives;
 import org.work.web.po.Information;
 import org.work.web.po.ReportForm;
 import org.work.web.service.reportForm.IReportFormService;
@@ -36,7 +37,7 @@ public class ReportFormServiceImpl  implements IReportFormService {
 	}
 	
 	@Override
-	public void uploadReportForm(Information infomation, File[] ReportFormFile,String[] ReportFormFileFileName, String path, String buname) {
+	public void uploadReportForm(Archives archives, File[] ReportFormFile,String[] ReportFormFileFileName, String path, String buname) {
 		logger.info("金融机构用户保存制度资料信息");
 		ReportForm fileItem;
 		fileItem = new ReportForm();	
@@ -59,7 +60,7 @@ public class ReportFormServiceImpl  implements IReportFormService {
 		if(!"".equals(fileNames)){
 			fileNames =fileNames.substring(0, fileNames.length()-1);
 		}
-		fileItem.setBOrgInformation(infomation);
+		fileItem.setBOrgArchives(archives);
 		fileItem.setUp_time(DateUtil.formatDateTime());
 		fileItem.setFile_name(fileNames);
 		fileItem.setFile_url(path);
