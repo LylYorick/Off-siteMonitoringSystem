@@ -848,7 +848,36 @@
 			<result name="JSON" type="json"></result>
 		</action> 
 	</package>
-	
+	<!-- 金融机构报表管理 -->
+	<package name="reportForm" extends="json" namespace="/reportForm">
+		<action name="reportForm_save" class="reportFormAction" method="save">
+			<result name="input" type="chain">
+				<param name="actionName">reportForm_reportFormAdd</param>
+			</result>
+		</action>
+		<action name="reportForm_download" class="reportFormAction"
+			method="download">
+			<result name="success" type="stream">
+				<!-- 下载文件类型定义 -->
+				<param name="contentType">
+					application/zip;charset=ISO8859-1
+				</param>
+				<!-- 下载文件处理方法 -->
+				<param name="contentDisposition">
+					attachment;filename="${downloadFileName}"
+				</param>
+				<!-- 下载文件输出流定义 -->
+				<param name="inputName">downloadFile</param>
+			</result>
+			<interceptor-ref name="basicStack" />
+		</action>
+	 	<action name="*_*" class="{1}Action" method="{2}">
+			<interceptor-ref name="chainStack" />
+			<interceptor-ref name="modelDriven" />
+			<result>/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="JSON" type="json"></result>
+		</action> 
+	</package>
 
 </struts>
 
