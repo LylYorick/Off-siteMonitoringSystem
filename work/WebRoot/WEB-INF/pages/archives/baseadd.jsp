@@ -24,7 +24,14 @@
 		var bsecondid = $("#archives_catalogNew_id_bsecondid");
 		//清除子元素
 		bsecondid.empty();
-		catalogNewList.forEach(function(item){
+		var trBsecondid = $("#trBsecondid");
+		if(catalogNewList.length == 1){
+			debugger;
+			trBsecondid.hide();
+		}else{
+			trBsecondid.show();
+		}
+ 		catalogNewList.forEach(function(item){
 			bsecondid.append("<option value='" +item.id.bsecondid+ "'>" + item.secondCatname+"</option>")
 		});
 		getThirdCataName();
@@ -53,6 +60,13 @@
 		var thirdCataName = $("#archives_catalogNew_id_bthirdid");
 		//清除子元素
 		thirdCataName.empty();
+		//如果没有多个三级指标，选择则隐藏
+		var trBthirdid = $("#trBthirdid");
+		if(catalogNewList.length == 1){
+			trBthirdid.hide();
+		}else{
+			trBthirdid.show();
+		}
 		catalogNewList.forEach(function(item){
 			thirdCataName.append("<option value='" +item.id.bthirdid+ "'>" + item.thirdCatname+"</option>")
 		});
@@ -85,7 +99,7 @@
 		   		    </select>
 				</td>  
   			</tr>
-  			<tr class="">
+  			<tr id="trBsecondid">
   				 <td class="tdLabel" colspan="1">
 			   		<label for="archives_basesave_archives_BOrgCatalog_bid" class="label">金融机构二级类别:</label>
 			    </td> 
@@ -94,7 +108,7 @@
 		   		    </select>
 				</td>
   			</tr>
-  			<tr>
+  			<tr id="trBthirdid">
   				<td class="tdLabel" colspan="1">
 			   		 <label for="archives_basesave_archives_BOrgCatalog_bid" class="label">金融机构三级类别:</label>
 			    </td> 

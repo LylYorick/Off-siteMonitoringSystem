@@ -35,38 +35,41 @@
     });
 		
 	$(getsort);   
-    function getsort(){   
-        var cid=$("#bpid").val();   
-        var time=new Date();   
-        $.ajax({   
-            cache:false,   
-            url:'<%=request.getContextPath()%>/financial/financial_findInformation.shtml',    
-            type:'post',   
-            dataType:'json',   
-            data:{cid:cid,t:time},   
-            success:update_c   
-        });   
-    }
-    function update_c(json){
-       var sort=json.informationSet;   
-       var cbanner=json.bname;   
-       var s_root=document.getElementById('bannerid');   
-       s_root.options.length=0; 
-   
-       var option = document.createElement("option");    
-       option.text="---请选择---";   
-       option.value="9999";   
-       s_root.options[s_root.options.length] =option;  
-           
-       for(var i in sort){   
-           var option = document.createElement("option");   
-           var value=sort[i].oid;      
-           var text=sort[i].bname;   
-               option.text=text;   
-               option.value=value;   
-               s_root.options[s_root.options.length] =option;   
-       }   
-    }	
+  	function getsort(){   
+	   var bfirstid=$("#bpid").val();   
+	   var time=new Date();   
+	   $.ajax({   
+	       cache:false,   
+	       url:'<%=request.getContextPath()%>/archives/archives_findArchivesByBfirstid.shtml',    
+	        type:'post',   
+	        dataType:'json',   
+	        data:{bfirstid:bfirstid,t:time},   
+	        success:update_c   
+	    });   
+	}
+	function update_c(json){
+		
+	   var sort=json.archivesList;   
+	   console.table(sort);
+	   var cbanner=json.bname;   
+	   var s_root=document.getElementById('bannerid');   
+	   s_root.options.length=0; 
+	   
+	   var option = document.createElement("option");    
+	   option.text="---请选择---";   
+	   option.value="9999";   
+	   s_root.options[s_root.options.length] =option;  
+	           
+	   for(var i in sort){   
+	       var option = document.createElement("option");   
+	       var value=sort[i].oid;
+	       console.table(sort[i].catalogNew);      
+	       var text=sort[i].bname;   
+	          option.text=text;   
+	          option.value=value;   
+	          s_root.options[s_root.options.length] =option;   
+	   }   
+	}
 		
 		
 	$.subscribe('upload', function(event,data) {
@@ -151,7 +154,7 @@
 				<s:bean name="java.util.HashMap" id="qTableLayout">
 					<s:param name="tablecolspan" value="%{4}" />
 				</s:bean>
-				<s:select list="#list" label="金融机构类别" id="bpid" name="bid" listKey="bid" listValue="catname" onchange="getsort()">
+				<s:select list="#list" label="金融机构类别" id="bpid" name="bid" listKey="id.bfirstid" listValue="firstCatname" onchange="getsort()">
 					<s:param name="labelcolspan" value="%{1}" />
 					<s:param name="inputcolspan" value="%{1}" />
 				</s:select>

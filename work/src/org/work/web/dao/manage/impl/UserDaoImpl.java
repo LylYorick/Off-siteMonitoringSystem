@@ -51,12 +51,12 @@ public class UserDaoImpl extends BaseDaoHibernateImpl implements IUserDao {
 			helper.append(" and brname like ?",(String)params.get("brname"),MatchMode.ANYWHERE);
 			helper.append(" and buid=?",params.get("buid"));
 			helper.append(" and bumark like ?",(String)params.get("bumark"),MatchMode.ANYWHERE);
-			helper.append(" and information.oid=?",params.get("oid"));
-			System.out.println(params.get("bid"));
-			if(params.get("bid")!=null && params.get("bid").equals(0)){
-				helper.append(" and information is null");
+			helper.append(" and archives.oid=?",params.get("oid"));
+			System.out.println(params.get("bfirstid"));
+		if(params.get("bfirstid")!=null && params.get("bfirstid").equals(0)){
+			
 			}else{
-				helper.append(" and information.BOrgCatalog.bid=?",params.get("bid"));
+				helper.append(" and archives.id.bfirstid=?",params.get("bfirstid"));
 			}
 		}
 		

@@ -23,9 +23,12 @@ import org.work.web.constants.Constants;
 import org.work.web.exception.ServiceException;
 import org.work.web.po.BankUser;
 import org.work.web.po.Catalog;
+import org.work.web.po.CatalogNew;
+import org.work.web.po.CatalogNewId;
 import org.work.web.po.Information;
 import org.work.web.po.Institution;
 import org.work.web.po.Upload;
+import org.work.web.service.archives.ArchivesService;
 import org.work.web.service.financial.IFinancialService;
 import org.work.web.service.institution.IInstitutionService;
 import org.work.web.util.DateUtil;
@@ -52,9 +55,13 @@ public class InstitutionAction  extends JsonBaseAction {
 	
 	private IInstitutionService institutionService;
 	private IFinancialService financialService;
+	private ArchivesService archivesService;
 	private File[] institutionFile;
 	private String[] institutionFileFileName;
 	private String errorMsg;
+	public void setArchivesService(ArchivesService archivesService) {
+		this.archivesService = archivesService;
+	}
 	public String getErrorMsg() {
 		return errorMsg;
 	}
@@ -231,12 +238,14 @@ public class InstitutionAction  extends JsonBaseAction {
 		logger.info("金融机构制度管理（人行端）");
 		ActionContext actionContext = ActionContext.getContext();
         Map session = actionContext.getSession();
-        List<Catalog> list = new  ArrayList<Catalog>();
-        try{
-        	list = this.financialService.findByCatalog();
-        }catch(Exception e){
-        	e.printStackTrace();
-        }
+        //这里是用来查询的查询条件
+ 		List<CatalogNew> list = new ArrayList<CatalogNew>();
+ 		CatalogNew ct = new CatalogNew();
+ 		CatalogNewId catalogNewid = new CatalogNewId();
+ 		ct.setId(catalogNewid);
+ 		ct.setFirstCatname("所有");
+ 		list.add(ct);
+ 		list.addAll(archivesService.findAllFirstCatname());
 		session.put("oid", null);
 		session.put("bid", null);
 		session.put("starttime",null);
