@@ -113,10 +113,10 @@ public abstract class JsonBaseAction extends ActionSupport {
 	 */
 	protected Integer getSessionUserInformation() {
 		BankUser user =  getSessionUserCode();
-		if(user.getInformation()==null){
+		if(user.getArchives()==null){
 			return null;
 		}else {
-			return user.getInformation().getOid();
+			return user.getArchives().getOid();
 		}
 	}
 	/**

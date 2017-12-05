@@ -72,7 +72,8 @@
 	<bean name="paraDao" class="org.work.web.dao.para.impl.ParaDaoImpl" parent="baseDao"></bean>
 	<!-- 扩展模块 -->
 	<bean name="extendDao" class="org.work.web.dao.extend.impl.ExtendDaoImpl" parent="baseDao"></bean>
-	<!-- 制度模块模块 -->
+	<!-- 制度模块 -->
 	<bean name="institutionDao" class="org.work.web.dao.institution.impl.InstitutionDaoImpl" parent="baseDao"></bean>
-	
+	<!-- 报表模块 -->
+	<bean name="reportFormDao" class="org.work.web.dao.reportForm.impl.ReportFormDaoImpl" parent="baseDao"></bean>
 </beans>

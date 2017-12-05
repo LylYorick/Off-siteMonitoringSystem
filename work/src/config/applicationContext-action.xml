@@ -134,4 +134,11 @@
 		<property name="financialService" ref="financialService"></property>
 		<property name="archivesService" ref="archivesService"></property>
 	</bean>
+	
+		<!-- 报表模块-->
+	<bean id="reportFormAction" class="org.work.web.web.ReportFormAction" scope="prototype" parent="baseAction">
+		<property name="reportFormService" ref="reportFormService"></property>
+		<property name="financialService" ref="financialService"></property>
+		<property name="archivesService" ref="archivesService"></property>
+	</bean>
 </beans>

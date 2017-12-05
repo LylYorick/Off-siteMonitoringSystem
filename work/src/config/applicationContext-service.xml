@@ -113,9 +113,13 @@
 		<property name="manageService" ref="manageService"></property>
 	</bean>
 
-	
+	<!-- 制度模块 -->
 	<bean id="institutionService" class="org.work.web.service.institution.impl.InstitutionServiceImpl">
 		<property name="institutionDao" ref="institutionDao"></property>
+	</bean>
+	<!-- 报表模块 -->
+	<bean id="reportFormService" class="org.work.web.service.reportForm.impl.ReportFormServiceImpl">
+		<property name="reportFormDao" ref="reportFormDao"></property>
 	</bean>
 
 </beans>
