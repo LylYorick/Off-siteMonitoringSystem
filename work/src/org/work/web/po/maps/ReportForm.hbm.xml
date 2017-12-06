@@ -10,7 +10,10 @@
             <column name="REF_ID" />
             <generator class="increment"></generator>
         </id>
-        <many-to-one name="BOrgInformation" class="org.work.web.po.Information" fetch="select">
+      <!--   <many-to-one name="BOrgInformation" class="org.work.web.po.Information" fetch="select">
+            <column name="OID" />
+        </many-to-one> -->
+        <many-to-one name="BOrgArchives" class="org.work.web.po.Archives" fetch="select">
             <column name="OID" />
         </many-to-one>
         <property name="up_time" type="java.lang.String">

@@ -14,9 +14,11 @@ import org.work.web.po.CatalogNewId;
  * @版本 深圳V1.0
  */
 public class Constants {
-	public static final String DIR_REPORT_FORM = "/WEB-INF/reportForm";
+	public static final String DIR_REPORT_FORM = "/WEB-INF/DownloadFile/reportForm";
 
-	public static final String DIR_INSTITUTION = "/WEB-INF/institution";
+	public static final String DIR_INSTITUTION = "/WEB-INF/DownloadFile/institution";
+	
+	public static final String DIR_TEMP= "/WEB-INF/DownloadFile/temp";//临时文件夹
 	
 	public static final String DIR_DOCUMENT = "/WEB-INF/document";
 

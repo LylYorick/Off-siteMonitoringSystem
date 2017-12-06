@@ -8,6 +8,7 @@
 			initial();
 			controllInput_HallNum();
 		});
+		/*
 		function initial(){
 			var juridiction = $("input[name='haveJurisdiction']");
 			var  hallNum = $("#numberOfHall");
@@ -18,7 +19,7 @@
 				juridiction.attr('checked', true);
 			}
 		};
-		function controllInput_HallNum(){
+		 function controllInput_HallNum(){
          	var juridiction = $("input[name='haveJurisdiction']");
          	var  hallNum = $("#numberOfHall");
 			juridiction.click(function(){
@@ -29,7 +30,7 @@
 					hallNum.hide();
 				}
 			});
-		}
+		} */
 		$(document).ready(function() {
 		  	 	var dates = $("#archives_save_archives_establishTime").datepicker({
 	  	 		changeMonth: true,
@@ -94,7 +95,7 @@
 				</s:textfield>
 				<tr>
 					<td class="tdLabel" colspan="1">
-					  <label for="shareholdingStructure" class="label">金融机构类型:</span>:</label>
+					  <label for="shareholdingStructure" class="label">金融机构类型</span>:</label>
 					</td>
 					<td>
 						<s:property  value="#info.catalogNew.firstCatname"/>
@@ -199,12 +200,12 @@
 						value="%{#info.headquarter}">
 					</s:textfield>
 					<s:if test="#info.catalogNew.id.bthirdid.equals('01')">
-							<tr>
+						<%-- 	<tr>
 							<td  class="tdLabel"><lable>本分公司对营业厅是否有管辖权<span class="required">(*)</span></lable></td>
 							<td>
 								<input type="checkbox" name="haveJurisdiction" value="0" >是
 							</td>
-							</tr>
+							</tr> --%>
 						<s:textfield label="在深的营业部家数" id="numberOfHall" name="archives.numberOfHall" 
 							value="%{#info.numberOfHall}">
 						</s:textfield>

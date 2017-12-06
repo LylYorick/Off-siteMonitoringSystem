@@ -8,25 +8,14 @@ public class Institution implements java.io.Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Integer ins_id;
-	private Information BOrgInformation;
+	private Archives archives;
 	private String up_time;
 	private String file_url;//
 	private String file_name;
 	private String file_type;
 	private String up_user;
 	private int cnt;
-	/** full constructor */
-	public Institution(Information bOrgInformation, String up_time,
-			String file_url, String file_name, String file_type,
-			String up_user, int cnt) {
-		BOrgInformation = bOrgInformation;
-		this.up_time = up_time;
-		this.file_url = file_url;
-		this.file_name = file_name;
-		this.file_type = file_type;
-		this.up_user = up_user;
-		this.cnt = cnt;
-	}
+	
 	/** default constructor */
 	public Institution() {
 	}
@@ -40,11 +29,12 @@ public class Institution implements java.io.Serializable{
 	public void setIns_id(Integer ins_id) {
 		this.ins_id = ins_id;
 	}
-	public Information getBOrgInformation() {
-		return BOrgInformation;
+	
+	public Archives getArchives() {
+		return archives;
 	}
-	public void setBOrgInformation(Information bOrgInformation) {
-		BOrgInformation = bOrgInformation;
+	public void setArchives(Archives archives) {
+		this.archives = archives;
 	}
 	public String getUp_time() {
 		return up_time;

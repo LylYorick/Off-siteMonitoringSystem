@@ -78,7 +78,7 @@
 	$.subscribe('downloadfile', function(event,data) {
      	var s = $("#gridtable").jqGrid('getGridParam','selarrrow');
      	var oid="";
-     	var fes_id="";
+     	var ref_ids="";
      	if(s==''){
     	    alert("请选择要下载的资料！");
     	    return;
@@ -86,34 +86,35 @@
     	if(s.length>0){
     		for (var i=0; i < s.length; i++) { 
     			var id = s[i]; 
+    			debugger;
     			var row = $("#gridtable").jqGrid('getRowData', id); 
-    			oid+=row['BOrgInformation.oid']+",";
-    			fes_id+=row.fes_id+",";
+    			oid+=row['BOrgArchives.oid']+",";
+    			ref_ids+=row.ref_id+",";
     		}
     	}
-    	document.location.href="<%=request.getContextPath()%>/reportForm/reportForm_download.shtml?oids="+oid+"&fes_ids="+fes_id; 
+    	document.location.href="<%=request.getContextPath()%>/reportForm/reportForm_download.shtml?oids="+oid+"&ref_ids="+ref_ids; 
     	}); 
     		
-     $.subscribe('deletefile', function(event,data) {
+    $.subscribe('deletefile', function(event,data) {
      	var s = $("#gridtable").jqGrid('getGridParam','selarrrow');
      	if(s==''){
     	    alert("请选择删除的资料！");
     	    return;
     	} 
-    	var fes_id="";
+    	var ref_ids="";
+
     	if(s.length>0){
     		for (var i=0; i < s.length; i++) { 
     			var id = s[i]; 
     			var row = $("#gridtable").jqGrid('getRowData', id); 
-    			fes_id+=row.fes_id+",";
+    			ref_ids+=row.ref_id+",";
     		}
     	}
 	    	if(window.confirm("确定要删除吗？")){
-	    <%-- 	document.location.href="<%=request.getContextPath()%>/reportForm/reportForm_delete.shtml?fes_ids="+fes_id; --%>
 		    	$.ajax({
 		            cache:false,   
 		            url:'<%=request.getContextPath()%>/reportForm/reportForm_delete.shtml',    
-                    data:{fes_ids:fes_id},
+                    data:{'ref_ids':ref_ids},
 		            type:'post',   
 		            dataType:'json',   
 		            success:function(data){
@@ -125,7 +126,6 @@
 		        });  
 	    	}
     	});
-		
 		</script>
 
 <style type="text/css">
@@ -173,7 +173,7 @@
 			</div>
         
 		</fieldset><br/>
-		<sj:submit id="grid_upload_colsbutton" value="制度上报"
+		<sj:submit id="grid_upload_colsbutton" value="报表上报"
 			onClickTopics="upload" button="true"/>
 		<sj:submit id="grid_download_colsbutton" value="文件下载" timeout="2500"
 			onClickTopics="downloadfile" button="true" indicator="loading" loadingText="正在下载..."/>
@@ -185,7 +185,7 @@
 			rowList="10,15,20" rowNum="20" rownumbers="true" viewrecords="true"
 			multiselect="true" 
 			cssStyle="line-height:30px;" onSelectRowTopics="rowselect" 	height="200">
-			<sj:gridColumn name="fes_id" index="fes_id" title="报表管理ID" sortable="true" hidden="true" width="70"/>
+			<sj:gridColumn name="ref_id" index="ref_id" title="报表管理ID" sortable="true" hidden="true" width="70"/>
 			<sj:gridColumn name="BOrgArchives.oid" index="BOrgArchives.oid" hidden="true" title="金融机构ID" sortable="false" width="70" />
 			<sj:gridColumn name="BOrgArchives.bname" index="BOrgArchives.bname" title="金融机构名称" sortable="false" width="270" />
 			<sj:gridColumn name="up_time" index="up_time" title="上传时间" sortable="false" width="110" />

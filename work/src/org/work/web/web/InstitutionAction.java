@@ -21,6 +21,7 @@ import org.apache.tools.zip.ZipEntry;
 import org.apache.tools.zip.ZipOutputStream;
 import org.work.web.constants.Constants;
 import org.work.web.exception.ServiceException;
+import org.work.web.po.Archives;
 import org.work.web.po.BankUser;
 import org.work.web.po.Catalog;
 import org.work.web.po.CatalogNew;
@@ -289,12 +290,12 @@ public class InstitutionAction  extends JsonBaseAction {
 	 */
 	public String save() {
 		BankUser bankUser = getSessionUserCode();
-		Information infomation = bankUser.getInformation();
-		String oid = infomation.getOid().toString();
+		Archives archives = bankUser.getArchives();
+		String oid = archives.getOid()+"";
 		String path = ServletActionContext.getServletContext().getRealPath(Constants.DIR_INSTITUTION+"/"+ oid);
 		path = StringUtil.replace(path, '\\', '/');			
 		System.out.println("----path: "+path);
-		institutionService.uploadInstitution(infomation,institutionFile,institutionFileFileName,path,bankUser.getBuname());
+		institutionService.uploadInstitution(archives,institutionFile,institutionFileFileName,path,bankUser.getBuname());
 		log("新增制度上报", Constants.LOG_TYPE_ADD);
 		this.addNaviButton("继续上报", "institution/institution_institutionAdd.shtml");
 		this.addNaviButton("返回", "institution/institution_institutionManager.shtml");
@@ -339,13 +340,20 @@ public class InstitutionAction  extends JsonBaseAction {
 	public InputStream getDownloadFile() {
 		InputStream input=null;
 		info("开始下载");
+		String dirName = ServletActionContext.getServletContext().getRealPath(Constants.DIR_TEMP);
+		//刪除之前的文件緩存
+		try {
+			FileUtils.cleanDirectory(new File(dirName));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		try{
-			String tempString = Constants.DIR_INSTITUTION+"/"+System.currentTimeMillis()+".zip";
+			String tempString = Constants.DIR_TEMP+"/"+System.currentTimeMillis()+".zip";
 			FileOutputStream fos = new FileOutputStream(ServletActionContext.getServletContext().getRealPath(tempString));
 		    ZipOutputStream zos = new ZipOutputStream(fos);
 			for (Iterator iterator = institutions.iterator(); iterator.hasNext();) {
 				Institution institution = (Institution) iterator.next();
-				String downloadString = Constants.DIR_INSTITUTION+"/"+ institution.getBOrgInformation().getOid()+"/";
+				String downloadString = Constants.DIR_INSTITUTION+"/"+ institution.getArchives().getOid()+"/";
 				String[] fileNames = institution.getFile_name().split(";");
 				for(String fileName : fileNames){
 					String filepath = downloadString+fileName;
@@ -364,7 +372,6 @@ public class InstitutionAction  extends JsonBaseAction {
 			}
  		    zos.close();
 			input = ServletActionContext.getServletContext().getResourceAsStream(tempString);
-			(new File(ServletActionContext.getServletContext().getRealPath(tempString))).delete();//删除生成的临时zip包
 		}catch (Exception e) {
 			info("没有找到文件");
 		}
@@ -394,7 +401,7 @@ public class InstitutionAction  extends JsonBaseAction {
 				return JSON;
 			}
 			
-			String path = ServletActionContext.getServletContext().getRealPath(Constants.DIR_INSTITUTION+"/"+ institution.getBOrgInformation().getOid());
+			String path = ServletActionContext.getServletContext().getRealPath(Constants.DIR_INSTITUTION+"/"+ institution.getArchives().getOid());
 			path = StringUtil.replace(path, '\\', '/');	
 			String[] fileNames = institution.getFile_name().split(";");
  			for(String fileName : fileNames){

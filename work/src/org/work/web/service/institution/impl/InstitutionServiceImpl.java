@@ -8,6 +8,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.work.web.dao.institution.IInstitutionDao;
 import org.work.web.exception.ServiceException;
+import org.work.web.po.Archives;
 import org.work.web.po.Information;
 import org.work.web.po.Institution;
 import org.work.web.service.institution.IInstitutionService;
@@ -36,7 +37,7 @@ public class InstitutionServiceImpl  implements IInstitutionService {
 	}
 	
 	@Override
-	public void uploadInstitution(Information infomation, File[] InstitutionFile,String[] InstitutionFileFileName, String path, String buname) {
+	public void uploadInstitution(Archives archives , File[] InstitutionFile,String[] InstitutionFileFileName, String path, String buname) {
 		logger.info("金融机构用户保存制度资料信息");
 		Institution fileItem;
 		fileItem = new Institution();	
@@ -59,7 +60,7 @@ public class InstitutionServiceImpl  implements IInstitutionService {
 		if(!"".equals(fileNames)){
 			fileNames =fileNames.substring(0, fileNames.length()-1);
 		}
-		fileItem.setBOrgInformation(infomation);
+		fileItem.setArchives(archives);
 		fileItem.setUp_time(DateUtil.formatDateTime());
 		fileItem.setFile_name(fileNames);
 		fileItem.setFile_url(path);

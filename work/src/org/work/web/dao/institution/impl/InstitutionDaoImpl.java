@@ -17,8 +17,8 @@ public class InstitutionDaoImpl extends BaseDaoHibernateImpl implements IInstitu
 		queryHelper.append("from Institution" );
 		if (params != null) {
 			queryHelper.append("where 1 = 1");
-			queryHelper.append(" and BOrgInformation.oid = ?",params.get("oid"));
-			queryHelper.append(" and BOrgInformation.BOrgCatalog.bid = ?",params.get("bid"));
+			queryHelper.append(" and archives.oid = ?",params.get("oid"));
+			queryHelper.append(" and archives.catalogNew.id.bfirstid = ?",params.get("bid"));
 			queryHelper.append(" and up_time>=?",params.get("starttime"));
 			queryHelper.append(" and up_time<=?",params.get("endtime"));	
 		}

@@ -49,7 +49,7 @@ public class ReportFormAction  extends JsonBaseAction {
 	private String starttime;//开始时间
 	private String endtime;//截止时间
 	
-	private String fes_ids;//下载传过来的
+	private String ref_ids;//下载传过来的
 	private List<ReportForm> reportForms = new ArrayList<ReportForm>();
 	
 	private IReportFormService reportFormService;
@@ -136,12 +136,12 @@ public class ReportFormAction  extends JsonBaseAction {
 	}
 	
 	@JSON(serialize = false)
-	public String getFes_ids() {
-		return fes_ids;
-	}
 
-	public void setFes_ids(String fes_ids) {
-		this.fes_ids = fes_ids;
+	public String getRef_ids() {
+		return ref_ids;
+	}
+	public void setRef_ids(String ref_ids) {
+		this.ref_ids = ref_ids;
 	}
 
 	@JSON(serialize = false)
@@ -212,17 +212,10 @@ public class ReportFormAction  extends JsonBaseAction {
 		if(endtime!=null && !"".equals(endtime)){
 	        session.put("endtime", endtime);
 		}
-		if(getBfirstid()==null){
-			if(session.get("bfirstid")==null)
-			session.put("bfirstid",null);
-		}else{
-			session.put("bfirstid",bfirstid);
-		}
 		params.put("oid",  getSessionUserInformation()==null?session.get("oid"):getSessionUserInformation());
 		params.put("bid", session.get("bid"));	
 		params.put("starttime",session.get("starttime"));
 		params.put("endtime",session.get("endtime"));	
-		params.put("bfirstid", session.get("bfirstid"));
 		PaginaterList list =  reportFormService.findReportFormMsg(params, this.getPage());
 		Long maxRecord = list.getPaginater().getMaxRowCount();
 		this.setGridModel(list.getList());
@@ -310,7 +303,7 @@ public class ReportFormAction  extends JsonBaseAction {
 	}
 	
 	public String download(){
-		String[] fes_id = fes_ids.split(",");
+		String[] fes_id = ref_ids.split(",");
 		for(int i =0 ;i<fes_id.length;i++){
 			ReportForm reportForm = reportFormService.findById(Integer.valueOf(fes_id[i]));
 			if(reportForm == null)
@@ -330,7 +323,7 @@ public class ReportFormAction  extends JsonBaseAction {
 	 */
 	@JSON(serialize = false)
 	public String getDownloadFileName() {  
-		String downloadChineseFileName = "制度资料.zip";
+		String downloadChineseFileName = "报表.zip";
 		try {  
 			downloadChineseFileName = new String(downloadChineseFileName.getBytes(), "ISO8859-1");  
 		} catch (UnsupportedEncodingException e) {  
@@ -347,13 +340,20 @@ public class ReportFormAction  extends JsonBaseAction {
 	public InputStream getDownloadFile() {
 		InputStream input=null;
 		info("开始下载");
+		String dirName = ServletActionContext.getServletContext().getRealPath(Constants.DIR_TEMP);
+		try {
+			FileUtils.cleanDirectory(new File(dirName));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		//new File(fileName).delete();//删除生成的临时zip包
 		try{
-			String tempString = Constants.DIR_INSTITUTION+"/"+System.currentTimeMillis()+".zip";
+			String tempString = Constants.DIR_TEMP+"/"+System.currentTimeMillis()+".zip";
 			FileOutputStream fos = new FileOutputStream(ServletActionContext.getServletContext().getRealPath(tempString));
 		    ZipOutputStream zos = new ZipOutputStream(fos);
 			for (Iterator iterator = reportForms.iterator(); iterator.hasNext();) {
 				ReportForm reportForm = (ReportForm) iterator.next();
-				String downloadString = Constants.DIR_INSTITUTION+"/"+ reportForm.getBOrgInformation().getOid()+"/";
+				String downloadString = Constants.DIR_REPORT_FORM+"/"+ reportForm.getBOrgArchives().getOid()+"/";
 				String[] fileNames = reportForm.getFile_name().split(";");
 				for(String fileName : fileNames){
 					String filepath = downloadString+fileName;
@@ -371,8 +371,7 @@ public class ReportFormAction  extends JsonBaseAction {
 				
 			}
  		    zos.close();
-			input = ServletActionContext.getServletContext().getResourceAsStream(tempString);
-			(new File(ServletActionContext.getServletContext().getRealPath(tempString))).delete();//删除生成的临时zip包
+ 		    input = ServletActionContext.getServletContext().getResourceAsStream(tempString);
 		}catch (Exception e) {
 			info("没有找到文件");
 		}
@@ -386,11 +385,11 @@ public class ReportFormAction  extends JsonBaseAction {
 	 * @return
 	 */
 	public String delete(){
-		String[] fes_id = fes_ids.split(",");
-		for(int i =0 ;i<fes_id.length;i++){
-			ReportForm reportForm = reportFormService.findById(Integer.valueOf(fes_id[i]));
+		String[] ref_id = ref_ids.split(",");
+		for(int i =0 ;i<ref_id.length;i++){
+			ReportForm reportForm = reportFormService.findById(Integer.valueOf(ref_id[i]));
 			if(reportForm == null){
-				this.setErrorMsg("没有找到对应的制度资料");
+				this.setErrorMsg("没有找到对应的报表资料");
 				return JSON;
 			}
 			
@@ -402,13 +401,12 @@ public class ReportFormAction  extends JsonBaseAction {
 				return JSON;
 			}
 			
-			String path = ServletActionContext.getServletContext().getRealPath(Constants.DIR_INSTITUTION+"/"+ reportForm.getBOrgInformation().getOid());
+			String path = ServletActionContext.getServletContext().getRealPath(Constants.DIR_REPORT_FORM+"/"+ reportForm.getBOrgArchives().getOid());
 			path = StringUtil.replace(path, '\\', '/');	
 			String[] fileNames = reportForm.getFile_name().split(";");
  			for(String fileName : fileNames){
  				String newPath = path + "/" + fileName;
  				System.out.println(" 要删除的文件 ：： "+newPath);
- 				
  				File delFile = new File(newPath);
  				try {
  					FileUtils.forceDelete(delFile);

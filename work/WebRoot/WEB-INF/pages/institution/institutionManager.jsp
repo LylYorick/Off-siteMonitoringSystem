@@ -186,8 +186,8 @@
 			multiselect="true" 
 			cssStyle="line-height:30px;" onSelectRowTopics="rowselect" 	height="200">
 			<sj:gridColumn name="ins_id" index="ins_id" title="制度表ID" sortable="true" hidden="true" width="70"/>
-			<sj:gridColumn name="BOrgInformation.oid" index="BOrgInformation.oid" hidden="true" title="金融机构ID" sortable="false" width="70" />
-			<sj:gridColumn name="BOrgInformation.bname" index="BOrgInformation.bname" title="金融机构名称" sortable="false" width="270" />
+			<sj:gridColumn name="archives.oid" index="archives.oid" hidden="true" title="金融机构ID" sortable="false" width="70" />
+			<sj:gridColumn name="archives.bname" index="archives.bname" title="金融机构名称" sortable="false" width="270" />
 			<sj:gridColumn name="up_time" index="up_time" title="上传时间" sortable="false" width="110" />
 			<sj:gridColumn name="file_url" index="file_url" title="文件路径"  hidden="true" sortable="false" width="90" />
 			<sj:gridColumn name="file_name" index="file_name" title="文件名称" sortable="false" width="350" />

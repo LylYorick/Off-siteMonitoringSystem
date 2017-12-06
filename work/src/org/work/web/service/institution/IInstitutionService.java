@@ -3,9 +3,8 @@ package org.work.web.service.institution;
 import java.io.File;
 import java.util.Map;
 
-import org.work.web.po.Information;
+import org.work.web.po.Archives;
 import org.work.web.po.Institution;
-import org.work.web.po.Upload;
 import org.work.web.util.PaginaterList;
 
 /**
@@ -30,7 +29,7 @@ public interface IInstitutionService {
 	 * @param path	保存路径
 	 * @param buname 上传人
 	 */
-	public void uploadInstitution(Information infomation, File[] InstitutionFile,String[] InstitutionFileFileName, String path, String buname);
+	public void uploadInstitution(Archives archives, File[] InstitutionFile,String[] InstitutionFileFileName, String path, String buname);
 
 	/**
 	 * 根据ID查询制度管理表信息

@@ -44,7 +44,7 @@
 			<s:bean name="java.util.HashMap" id="qTableLayout">
 				<s:param name="tablecolspan" value="%{2}" />
 			</s:bean>
-			<s:label label="金融机构名称" required="true" name="#session.userinfo.information.bname" cssStyle="width:240px">
+			<s:label label="金融机构名称" required="true" name="#session.userinfo.archives.bname" cssStyle="width:240px">
 				<s:param name="labelcolspan" value="%{1}" />
 				<s:param name="inputcolspan" value="%{1}" />
 			</s:label>
