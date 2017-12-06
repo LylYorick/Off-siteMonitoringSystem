@@ -195,4 +195,11 @@ public class Constants {
 	public static final String LOG_TYPE_LOGIN = "登录";
 	
 
+	
+	/**
+	 * 金融机构类别id
+	 * 00 ---未分配
+	 */
+	public static final String UNCLASSIFIED = "00"; //未分配
+	
 }

@@ -1,0 +1,5 @@
+label { width: 250px; }
+label.error,input.submit { margin-left: 5px; }
+ label.error {
+	color: red;
+}

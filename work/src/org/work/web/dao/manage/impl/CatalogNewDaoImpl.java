@@ -27,11 +27,10 @@ public class CatalogNewDaoImpl extends BaseDaoHibernateImpl implements ICatalogN
 
 	@Override
 	public List<CatalogNew> findAllFirstCatname() {
-		// TODO 暂时先写死在程序中 
 		List<Object[]> list = new ArrayList<Object[]>();
 		List<CatalogNew> catalogNews= new ArrayList<CatalogNew>();
 		QueryHelper helper = new QueryHelper(getSession());
-		helper.append("select distinct id.bfirstid,firstCatname from CatalogNew ");
+		helper.append("select distinct id.bfirstid,firstCatname from CatalogNew  where id.bfirstid !='00'");
 		list =  getList(helper);
 		CatalogNew item ;
 		CatalogNewId id;

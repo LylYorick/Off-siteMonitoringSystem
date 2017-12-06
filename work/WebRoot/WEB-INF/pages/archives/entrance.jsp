@@ -102,7 +102,7 @@ function update_c(json){
 				<s:bean name="java.util.HashMap" id="qTableLayout">
 					<s:param name="tablecolspan" value="%{4}" />
 				</s:bean>
-				<s:select list="#list" label="金融机构类别" id="bpid" name="bid" listKey="id.bfirstid" listValue="firstCatname" onchange="getsort()">
+				<s:select list="#list" label="金融机构类别" id="bfirstid" name="bfirstid" listKey="id.bfirstid" listValue="firstCatname" onchange="getsort()">
 					<s:param name="labelcolspan" value="%{1}" />
 					<s:param name="inputcolspan" value="%{1}" />
 				</s:select>

@@ -118,6 +118,32 @@ public class ArchivesAction extends JsonBaseAction implements ModelDriven<Archiv
 		return JSON;
 	}
 	/**
+	 * 档案信息维护
+	 * @return
+	 */
+	public String increase() {
+		BankUser bankUser = getSessionUserCode();
+		archives = bankUser.getArchives();
+		//判断当前机构的机构类别是否为 “未分配”
+		String bfirstid = archives.getCatalogNew().getId().getBfirstid();
+		put("info", archives);
+		List<CatalogNew> list = archivesService.findAllFirstCatname();
+		this.put("list", list);
+		if(Constants.UNCLASSIFIED.equals(bfirstid)){
+			//如果是 则跳转到 分类界面
+			return "toClassify";
+		}
+		return SUCCESS;
+	}
+	public String doClassify(){
+		BankUser bankUser = getSessionUserCode();
+		Archives userArchives = bankUser.getArchives();
+		userArchives.setCatalogNew(archives.getCatalogNew());
+		archivesService.updateArchivesCatalog(userArchives);
+		this.addNaviButton("继续操作", "archives/archives_increase.shtml");
+		return OK;
+	}
+	/**
 	 * 保存金融机构的所有信息
 	 * @return
 	 */
@@ -217,18 +243,7 @@ public class ArchivesAction extends JsonBaseAction implements ModelDriven<Archiv
 		log("查看金融机构变更历史", Constants.LOG_TYPE_SELECT);
 		return JSON;
 	}
-	/**
-	 * 档案信息维护
-	 * @return
-	 */
-	public String increase() {
-		BankUser bankUser = getSessionUserCode();
-		archives = bankUser.getArchives();
-		//archives.setCatalogNew(archivesService.findCatalogNewById(archives.getCatalogNew()));
-		put("info", archives);
-		return SUCCESS;
-	}
-	
+
 	/**
 	 * 根据bfirstid获取机构信息
 	 * @return

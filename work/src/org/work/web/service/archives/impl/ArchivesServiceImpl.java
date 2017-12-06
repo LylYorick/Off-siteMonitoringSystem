@@ -114,7 +114,6 @@ public class ArchivesServiceImpl implements ArchivesService {
 			archivesHis.setBupdateuser(information2.getBupdateuser());
 			archivesHis.setArchives(information2);
 			//TODO 先只修改档案表
-			//archivesHis.setBOrgCatalog(information2.getBOrgCatalog());
 			iArchivesHisDao.save(archivesHis);
 		} catch (Exception e) {
 			logger.error(e);
@@ -122,6 +121,16 @@ public class ArchivesServiceImpl implements ArchivesService {
 			throw new ServiceException("保存异常");
 		}
 	}
+	
+	@Override
+	public void updateArchivesCatalog(Archives archives) {
+		//申明历史変更信息对象
+		ArchivesHis archivesHis= null;
+		//TODO 暂时不保存 金融机构的変更信息
+		//archivesHis = (ArchivesHis) BeanCompare.getArchives(information1, information2);
+		archivesDao.merge(archives);
+	}
+
 	public List findByBoid(String information) {
 		List list = archivesDao.findByBoid(information);
 		return list;

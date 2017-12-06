@@ -14,7 +14,7 @@ public interface ICatalogNewDao extends IBaseDao{
 	List<CatalogNew> findAllSort();
 	
 	/**
-	 * 查询全部的一级机构类别
+	 * 查询全部的一级机构类别,不包括 未分配 类型
 	 * @return
 	 */
 	List<CatalogNew> findAllFirstCatname();

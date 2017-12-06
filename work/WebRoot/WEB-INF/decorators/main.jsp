@@ -14,13 +14,16 @@
 		<meta http-equiv="description" content="AML,反洗钱,人行,深圳中心支行,fred">
 		
 		<sj:head useJqGridPlugin="true" jqueryui="true" jquerytheme="redmond"/>
-		<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/style/layout.css" />
+		<%--<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/style/layout-default-latest.css" /> --%>
+		 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/style/layout.css" />
+		<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.layout.js"></script>
 		<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/style/custom.css" />
 		<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/style/validate.css" />
 		
-		<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.layout.js"></script>
+			<%-- <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.layout-latest.js"></script> --%>
+	<%-- 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.2.6.js"></script> --%>
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/layout.js"></script>
-		<script type="text/javascript" src="<%=request.getContextPath()%>/js/custom.js"></script>
+	 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/custom.js"></script>
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/lunar.js"></script>
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.pngFix.pack.js"></script>
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/easy_validator.pack.js"></script>
@@ -28,7 +31,7 @@
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.maxlength-min.js"></script>
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.blockUI.js"></script>
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/paginater.js"></script>
-		<decorator:head />
+		 <decorator:head />
 	</head>
 	<body>
 	<!-- banner开始 -->

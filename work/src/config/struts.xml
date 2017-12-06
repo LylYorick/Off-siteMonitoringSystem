@@ -814,6 +814,7 @@
 			<interceptor-ref name="modelDriven" />
 			<result>/WEB-INF/pages/{1}/{2}.jsp</result>
 			<result name="input">/WEB-INF/pages/{1}/{2}.jsp</result>
+			<result name="toClassify">/WEB-INF/pages/{1}/toClassify.jsp</result>
 			<result name="JSON" type="json"></result>
 		</action>
 	</package>

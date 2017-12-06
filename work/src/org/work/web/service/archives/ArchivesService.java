@@ -10,7 +10,7 @@ import org.work.web.util.PaginaterList;
 
 public interface ArchivesService {
 	/**
-	 * 查询所有金融机构一级类别
+	 * 查询所有金融机构一级类别,不包括 未分配 类型
 	 * @return
 	 */
 	List<CatalogNew> findAllFirstCatname();
@@ -29,7 +29,9 @@ public interface ArchivesService {
 	List findArchivesByBfirstid(String bfirstid);
 	
 	Archives findByOid(Integer oid);
-	void updateInformation(Archives information, Archives information2);
+	void updateInformation(Archives old, Archives fresh);
+	void updateArchivesCatalog(Archives archives);
+	
 	List findByBoid(String information);
 	void addInformation(Archives information);
 	/**
