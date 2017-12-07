@@ -23,7 +23,6 @@
 	<script type="text/javascript">
 	$(function(){
 		getsort();
-	/* 	validateform(); */
 	});   
 	function getsort(){   
 	    var bfirstid=$("#archives_catalogNew_id_bfirstid").val();   
@@ -39,7 +38,6 @@
 	//更新第二级金融机构类别列表
 	function updateBsecondCataName(json){
 		var catalogNewList = json.catalogNewList
-		//console.table(catalogNewList);
 		var bsecondid = $("#archives_catalogNew_id_bsecondid");
 		//清除子元素
 		bsecondid.empty();
@@ -48,9 +46,15 @@
 			trBsecondid.hide();
 		}else{
 			trBsecondid.show();
+			var oldBsecondid=$("#bsecondid").val();
 			catalogNewList.forEach(function(item){
-				bsecondid.append("<option value='" +item.id.bsecondid+ "'>" + item.secondCatname+"</option>")
-			});
+				//将原二级指标id设为选中
+				if(oldBsecondid ==  item.id.bsecondid){
+					bsecondid.append("<option value='" +item.id.bsecondid+ "' selected>" + item.secondCatname+"</option>")
+				}else{
+					bsecondid.append("<option value='" +item.id.bsecondid+ "'>" + item.secondCatname+"</option>")
+				}
+			});;
 		}
 		getThirdCataName();
 	
@@ -82,58 +86,67 @@
 		var trBthirdid = $("#trBthirdid");
 		if(catalogNewList==null){
 			trBthirdid.hide();
+			return;
 		}else if(catalogNewList.length == 1) {
 			trBthirdid.hide();
-			catalogNewList.forEach(function(item){
-				thirdCataName.append("<option value='" +item.id.bthirdid+ "'>" + item.thirdCatname+"</option>")
-			});
+		
 		}else{
 			trBthirdid.show();
 		}
-		
-
-	}
-/* 	$.validator.setDefaults({
-		submitHandler: function() {
-		  alert("提交事件!");
-		}
-	});
-  function validateform(){
-    $("#testForm").validate({
-		rules:{
-			'archives.catalogNew.id.bfirstid':{
-				required:true,
+		var Bthirdid=$("#bthirdid").val();
+		catalogNewList.forEach(function(item){
+			if(Bthirdid ==  item.id.bthirdid){
+				thirdCataName.append("<option value='" +item.id.bthirdid + "' selected>" + item.thirdCatname + "</option>")
+			}else{
+				thirdCataName.append("<option value='" +item.id.bthirdid + "'>" + item.thirdCatname + "</option>")
 			}
-		}
-	});
-  }; */
-  function confirmTips(){
-  	var firstCatname = $("#archives_catalogNew_id_bfirstid option:selected").text();
-   	if(confirm("警告:是否确认当前机构的类别为："+firstCatname +",以后将无法进行修改。")){
-   		debugger;
-   		$("#testForm").submit();
-   	}
-  }
+		});
+	}
+	function confirmTips(){
+	  	var firstCatname = $("#archives_catalogNew_id_bfirstid option:selected").text();
+	  	var bthirdid = 	"<s:property value='#info.catalogNew.id.bfirstid'/>"
+	  	//如果是首次设金融机构类型，提示如下
+	  	if('00' == bthirdid){
+	  		if(confirm("警告:是否确认当前机构的类别为："+firstCatname +",以后将无法进行修改。")){
+	   		$("#testForm").submit();
+	   		}
+	  	}else{
+	  	//如果不是首次设金融机构类型，提示如下
+		   	if(confirm("警告:是否确认修改机构的类型?此操作将重置部分的机构信息！")){
+		   		$("#testForm").submit();
+		   	}
+	  	}
+	}
   </script>
   </head>
   <body>
-   <div align="center" style="width:400px;margin: 10px auto">
+   <div align="center" style="width:500px;margin: 10px auto">
    	<div id="effect" class="ui-widget-content ui-corner-all">
 		<h3 class="ui-widget-header ui-corner-all">操作提示</h3>
+			<s:hidden id="bsecondid" value="%{#info.catalogNew.id.bsecondid}"></s:hidden>
+			<s:hidden id="bthirdid" value="%{#info.catalogNew.id.bthirdid}"></s:hidden>
 			<s:form namespace="/archives" action="archives_doClassify" id="testForm" method="post" target="_self">
 				<s:bean name="java.util.HashMap" id="qTableLayout">
 					<s:param name="tablecolspan" value="%{3}" />
 				</s:bean>
 				<tr>  
-			    <td class="tdLabel" colspan="1">
+			    <td class="tdLabel" colspan="1" style="width:150px;">
 			   		 <label for="archives_basesave_archives_BOrgCatalog_bid" class="label">金融机构一级类别:</label>
 			    </td> 
 			    <td colspan="2">
-			     <select name="archives.catalogNew.id.bfirstid" id="archives_catalogNew_id_bfirstid" onchange="getsort()">
-	   		   		<s:iterator value="#list" id="item" >
-   		   				<option value='<s:property value="#item.id.bfirstid"/>' ><s:property value="#item.firstCatname"/> </option>
-	   		   		</s:iterator>
-		   		    </select>
+			    <s:if test="!#info.catalogNew.id.bfirstid.equals('00')">
+					<input type="hidden" name="archives.catalogNew.id.bfirstid"  id="archives_catalogNew_id_bfirstid" value="${info.catalogNew.id.bfirstid}" >			    
+			   		 <label id="firstCatname" class="label">
+			   		 	<s:property value="#info.catalogNew.firstCatname"></s:property>
+			   		 </label>
+			    </s:if>
+			    <s:else>
+			     	<select name="archives.catalogNew.id.bfirstid" id="archives_catalogNew_id_bfirstid" onchange="getsort()">
+		   		   		<s:iterator value="#list" id="item" >
+		  		   				<option value='<s:property value="#item.id.bfirstid"/>' ><s:property value="#item.firstCatname"/> </option>
+		   		   		</s:iterator>
+		   		   </select>
+			    </s:else>
 				</td>  
   			</tr>
   			<tr id="trBsecondid">
@@ -155,7 +168,7 @@
 				</td>
   			</tr>
  			<tr align="center">
-				<td colspan="3">
+				<td colspan="3" >
 					<input type="button" id="testForm_0" value="提    交" class="ui-button ui-state-default ui-corner-all" onclick="confirmTips()">
 				</td>
 			</tr>

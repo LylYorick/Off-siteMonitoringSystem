@@ -31,6 +31,8 @@
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.maxlength-min.js"></script>
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.blockUI.js"></script>
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/paginater.js"></script>
+		
+		<script type="text/javascript" src="<%=request.getContextPath()%>/js/personal/common-final.js"></script>
 		 <decorator:head />
 	</head>
 	<body>

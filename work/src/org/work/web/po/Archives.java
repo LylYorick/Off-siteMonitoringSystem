@@ -25,7 +25,7 @@ public class Archives implements Serializable {
 	private String registeredArea;//注册地
 	private String businessArea;//经营地
 	private Integer numberOfBranchOffice;//分支机构数
-	private String overseasBranchOffice;//海外机构信息
+	private String overseasBranchOffice;//境外分支机构信息
 	private String headquarter; //总部所在地
 	private Integer numberOfHall;//在深的营业部家数
 	private Integer bworknum;//员工人数

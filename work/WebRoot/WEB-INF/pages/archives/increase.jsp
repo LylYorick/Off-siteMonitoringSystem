@@ -4,10 +4,9 @@
 <head>
 	<title>金融机构管理>>金融机构信息录入</title>
 		<script type="text/javascript">
-		$(function(){
-			initial();
+		/* $(function(){
 			controllInput_HallNum();
-		});
+		}); */
 		/*
 		function initial(){
 			var juridiction = $("input[name='haveJurisdiction']");
@@ -43,74 +42,9 @@
 				}
 			});
 		});
-		
-		
-		 $(getsort);   
-	function getsort(){   
-	    var bfirstid=$("#archives_catalogNew_id_bfirstid").val();   
-	    var time=new Date();   
-	    $.ajax({   
-	        cache:false,   
-	        url:'<%=request.getContextPath()%>/archives/archives_findSecondCataName.shtml',    
-	        type:'post',   
-	        dataType:'json',   
-	        data:{'bfirstid':bfirstid,'t':time},   
-	        success:updateBsecondCataName
-	    });   
-	}
-	//更新第二级金融机构类别列表
-	function updateBsecondCataName(json){
-		var catalogNewList = json.catalogNewList
-		//console.table(catalogNewList);
-		var bsecondid = $("#archives_catalogNew_id_bsecondid");
-		//清除子元素
-		bsecondid.empty();
-		var trBsecondid = $("#trBsecondid");
-		if(catalogNewList.length == 1){
-			trBsecondid.hide();
-		}else{
-			trBsecondid.show();
-		}
- 		catalogNewList.forEach(function(item){
-			bsecondid.append("<option value='" +item.id.bsecondid+ "'>" + item.secondCatname+"</option>")
-		});
-		getThirdCataName();
-	}
-	//通过金融机构的一级类和二级类别查询三级机构类别
-	function getThirdCataName(){   
-	    var bfirstid=$("#archives_catalogNew_id_bfirstid").val();   
-	    var bsecondid=$("#archives_catalogNew_id_bsecondid").val();   
-	    var time=new Date();   
-	    $.ajax({   
-	        cache:false,   
-	        url:'<%=request.getContextPath()%>/archives/archives_findThirdCataName.shtml',    
-	        type:'post',   
-	        dataType:'json',   
-	        data:{
-	        'bfirstid':bfirstid,
-	        'bsecondid':bsecondid,
-	        't':time},   
-	        success:updateThirdCataName
-	    });   
-	}
-	//更新第三级金融机构类别列表
-	function updateThirdCataName(json){
-		var catalogNewList = json.catalogNewList
-		var thirdCataName = $("#archives_catalogNew_id_bthirdid");
-		//清除子元素
-		thirdCataName.empty();
-		//如果没有多个三级指标，选择则隐藏
-		var trBthirdid = $("#trBthirdid");
-		if(catalogNewList.length == 1){
-			trBthirdid.hide();
-		}else{
-			trBthirdid.show();
-		}
-		catalogNewList.forEach(function(item){
-			thirdCataName.append("<option value='" +item.id.bthirdid+ "'>" + item.thirdCatname+"</option>")
-		});
-	}
-		
+		function toClassify(){
+			window.location.href= "<%=request.getContextPath()%>/archives/archives_toClassify.shtml";
+		}	
 	</script>
 	<style type="text/css">
 	#shareholders td{
@@ -142,12 +76,6 @@
 			</legend>
 			<br>
 			<s:form namespace="/archives" action="archives_save" method="post" target="_self">
-				<!-- <tr>
-					<td class="slabel">
-						金融机构基本信息
-					</td>
-					<td class="sinput">
-						<table frame="void" class="inputform"> -->
 				<s:bean name="java.util.HashMap" id="qTableLayout">
 					<s:param name="tablecolspan" value="%{2}" />
 				</s:bean>
@@ -155,9 +83,11 @@
 				<s:hidden name="archives.corporationType" value="%{#info.corporationType}"></s:hidden>
 				<s:hidden name="archives.BOrgCatalog.bid" value="%{#info.BOrgCatalog.bid}"></s:hidden>
 				<s:hidden name="archives.rateType" value="%{#info.rateType}"></s:hidden>
-				<s:hidden name="archives.catalogNew.id.bfirstid" value="%{#info.catalogNew.id.bfirstid}"></s:hidden>
+				<s:hidden id="bfirstid"name="archives.catalogNew.id.bfirstid" value="%{#info.catalogNew.id.bfirstid}"></s:hidden>
+				<s:hidden id="bfirstid"name="archives.catalogNew.id.bsecondid" value="%{#info.catalogNew.id.bsecondid}"></s:hidden>
+				<s:hidden id="bfirstid"name="archives.catalogNew.id.bthirdid" value="%{#info.catalogNew.id.bthirdid}"></s:hidden>
 				<s:textfield label="金融机构名称" required="true" name="archives.bname"
-					value="%{#info.bname}" size="60" reg="^[\s|\S]{1,100}$" tip="不能为空">
+					value="%{#info.bname}" size="60" reg="^[\s|\S]{1,40}$" tip="不能为空,且最多为40个字符">
 				</s:textfield>
 				<tr>
 					<td class="tdLabel" colspan="1">
@@ -171,44 +101,90 @@
 						<s:if test="!#info.catalogNew.id.bthirdid.equals('00')">
 							<s:property  value="#info.catalogNew.thirdCatname"/>
 						</s:if>
+						<input type="button" value="修改机构行业" onclick="toClassify()" >
 					</td>
 				</tr>
-					<tr>  
-			    <td class="tdLabel" colspan="1">
-			   		 <label for="archives_basesave_archives_BOrgCatalog_bid" class="label">金融机构一级类别:</label>
-			    </td> 
-			    <td colspan="2">
-			     <select name="archives.catalogNew.id.bfirstid" id="archives_catalogNew_id_bfirstid" onchange="getsort()">
-	   		   			<s:iterator value="#list" id="item" >
-   		   				<option value='<s:property value="#item.id.bfirstid"/>' /><s:property value="#item.firstCatname"/> <s:property value="#item.partName"/></option>
-	   		   			</s:iterator>
-		   		    </select>
-				</td>  
-  			</tr>
-  			<tr id="trBsecondid">
-  				 <td class="tdLabel" colspan="1">
-			   		<label for="archives_basesave_archives_BOrgCatalog_bid" class="label">金融机构二级类别:</label>
-			    </td> 
-			    <td colspan="2">
-				    <select name="archives.catalogNew.id.bsecondid" id="archives_catalogNew_id_bsecondid" onchange="getThirdCataName()">
-		   		    </select>
-				</td>
-  			</tr>
-  			
-				<s:textfield label="金融机构代码" required="true" name="archives.boid" size="20">
+  				<s:if test="#info.corporationType.equals('00')">	
+					<s:textfield label="成立时间" required="true" name="archives.establishTime" 
+						value="%{#info.establishTime}" reg="^((?:19|20)\d\d)-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$" tip="日期格式不正确">
+					</s:textfield>
+					<s:textfield label="注册资本(万)" required="true" name="archives.registeredCapital"
+						value="%{#info.registeredCapital}" reg="^(\-|\+)?\d+(\.\d+)?$" tip="只能输入数值">
+					</s:textfield>
+					<s:textfield label="注册地" required="true" name="archives.registeredArea" 
+						value="%{#info.registeredArea}" reg="^[\s|\S]{1,150}$" tip="不能为空,且最多为150个字符">
+					</s:textfield>
+					<s:textfield label="经营地" required="true" name="archives.businessArea"
+						value="%{#info.businessArea}" reg="^[\s|\S]{1,150}$" tip="不能为空,且最多为150个字符">
+					</s:textfield>
+				
+					<tr>
+					    <td class="tdLabel" colspan="1">
+					    <label for="shareholdingStructure" class="label">公司股东结构（列明前5名股东及其占比）<span class="required">(*)</span>:</label>
+					    </td>
+					    <td colspan="1">
+					   		<table id="shareholders">
+					    	    <tr id="th">
+						    		<td>股东名称</td>
+						    	    <td>占比</td>
+					    	    </tr>
+						    	<tr>
+						    		<td><input name="archives.shareholder1" class="shareholderName" value="${info.shareholder1}" reg="^[\s|\S]{1,30}$" tip="不能为空，且最多为30个字符"></td>
+						    		<td><input  name="archives.rate1" class="rate" value="${info.rate1}"><label class="labelRate"> %</label></td>
+						    	</tr>
+						    	<tr>
+						    		<td><input name="archives.shareholder2"class="shareholderName" value="${info.shareholder2}" reg="^[\s|\S]{1,30}$" tip="不能为空，且最多为30个字符"></td>
+						    		<td><input name="archives.rate2" class="rate" value="${info.rate2}"><label class="labelRate"> %</label></td>
+						    	</tr>
+						    	<tr>
+						    		<td><input name="archives.shareholder3" class="shareholderName" value="${info.shareholder3}" reg="^[\s|\S]{1,30}$" tip="不能为空，且最多为30个字符"></td>
+						    		<td><input name="archives.rate3" class="rate" value="${info.rate3}"><label class="labelRate"> %</label></td>
+						    	</tr>
+						    	<tr>
+						    		<td><input name="archives.shareholder4" class="shareholderName" value="${info.shareholder4}" reg="^[\s|\S]{1,30}$" tip="不能为空，且最多为30个字符" ></td>
+						    		<td><input  name="archives.rate4" class="rate" value="${info.rate4}"><label class="labelRate"> %</label></td>
+						    	</tr>
+						    	<tr>
+						    		<td><input name="archives.shareholder5" class="shareholderName" value="${info.shareholder5}" reg="^[\s|\S]{1,30}$" tip="不能为空，且最多为30个字符"></td>
+						    		<td><input name="archives.rate5" class="rate" value="${info.rate5}"><label class="labelRate"> %</label></td>
+						    	</tr>
+							 	</table>
+						</td>
+					</tr>
+				</s:if>
+				<s:if test="#info.corporationType.equals('01')">	
+					<s:textfield label="总部所在地" required="true" name="archives.headquarter"
+						value="%{#info.headquarter}" reg="^[\s|\S]{1,320}$" tip="不能为空，且最多320个字符">
+					</s:textfield>
+				</s:if>
+				<s:textfield label="员工人数:" required="true" name="archives.bworknum" 
+					value="%{#info.bworknum}" reg="^\d{1,6}$" tip="只允许输入1-6位的数字">
 				</s:textfield>
-				<s:textfield label="金融机构拼音缩写" required="true" name="archives.bmininame" size="20">
-					<s:param name="remark" value="%{getText('financialField.mininame')}" />
+				<s:textfield label="上年末度总资产(万)" required="true" name="archives.blastamt"  
+					value="%{#info.blastamt}" reg="^(\-|\+)?\d+(\.\d+)?$" tip="只能输入数值">
+					<s:param name="remark" value="%{getText('documentField.number')}" />
 				</s:textfield>
-				<s:textfield label="联系地址" required="true" name="archives.address"
-					value="%{#info.address}" size="60" reg="^[\s|\S]{1,1000}$" tip="不能为空">
+				<s:textfield label="上年度税后净利润(万)" required="true" name="archives.blastnet"  
+					value="%{#info.blastnet}" reg="^(\-|\+)?\d+(\.\d+)?$" tip="只能输入数值">
+					<s:param name="remark" value="%{getText('documentField.number')}" />
 				</s:textfield>
+				<s:if test="#info.corporationType.equals('00')">
+					<s:textfield label="分支机构数量" required="true" name="archives.numberOfBranchOffice"
+						value="%{#info.numberOfBranchOffice}"  reg="^\d{1,6}$" tip="只允许输入1-6位的数字">
+					</s:textfield>
+					<s:textarea label="境外分支机构所在国家或地区"  name="archives.overseasBranchOffice"
+						value="%{#info.overseasBranchOffice}" cols="50" rows="3" reg="^[\s|\S]{1,320}$" tip="不能为空，且最多320个字符">
+					</s:textarea>
+				</s:if>
+				<s:if test="#info.catalogNew.id.bthirdid.equals('01')">
+					<s:textfield label="在深的营业部家数" id="numberOfHall" name="archives.numberOfHall" 
+						value="%{#info.numberOfHall}"  reg="^\d{1,6}$" tip="只允许输入1-6位的数字">
+					</s:textfield>
+				</s:if>
 				<s:textfield label="机构负责人" required="true" name="archives.responsiblePerson"
-					value="%{#info.responsiblePerson}" size="50" reg="^[\s|\S]{1,50}$" tip="不能为空">
+					value="%{#info.responsiblePerson}" size="20" reg="^[\s|\S]{1,13}$" tip="不能为空，且最多13个字符">
 				</s:textfield>
-				<s:textfield label="员工人数:" required="true" name="archives.bworknum" reg="^\d{1,6}$" tip="只允许输入1-6位的数字"
-					value="%{#info.bworknum}">
-				</s:textfield>
+			
 				<tr>
 					<td class="tdLabel">
 						评级类型:
@@ -222,84 +198,6 @@
 						</s:if>
 					</td>
 				</tr>
-				<s:textfield label="上年末度总资产(万)" required="true" name="archives.blastamt"  reg="^(\-|\+)?\d+(\.\d+)?$" tip="只能输入数值"
-					value="%{#info.blastamt}">
-					<s:param name="remark" value="%{getText('documentField.number')}" />
-				</s:textfield>
-				<s:textfield label="上年度税后净利润(万)" required="true" name="archives.blastnet"  reg="^(\-|\+)?\d+(\.\d+)?$" tip="只能输入数值"
-					value="%{#info.blastnet}">
-					<s:param name="remark" value="%{getText('documentField.number')}" />
-				</s:textfield>
-				<s:if test="#info.corporationType.equals('00')">	
-					<s:textfield label="成立时间" required="true" name="archives.establishTime"
-						value="%{#info.establishTime} ">
-					</s:textfield>
-					<s:textfield label="注册资本(万)" required="true" name="archives.registeredCapital"
-						value="%{#info.registeredCapital}">
-					</s:textfield>
-					<s:textfield label="注册地" required="true" name="archives.registeredArea" 
-						value="%{#info.registeredArea}">
-					</s:textfield>
-					<s:textfield label="经营地" required="true" name="archives.businessArea"
-						value="%{#info.businessArea}">
-					</s:textfield>
-					<s:textfield label="分支机构数量" required="true" name="archives.numberOfBranchOffice"
-						value="%{#info.numberOfBranchOffice}">
-					</s:textfield>
-					<s:textarea label="境外分支机构所在国家或地区"  name="archives.overseasBranchOffice"
-						value="%{#info.overseasBranchOffice}">
-					</s:textarea>
-					<tr>
-					    <td class="tdLabel" colspan="1">
-					    <label for="shareholdingStructure" class="label">公司股东结构（列明前5名股东及其占比）<span class="required">(*)</span>:</label>
-					    </td>
-					    <td colspan="1">
-					   		<table id="shareholders">
-					    	    <tr id="th">
-						    		<td>股东名称</td>
-						    	    <td>占比</td>
-					    	    </tr>
-						    	<tr>
-						    		<td><input name="archives.shareholder1" class="shareholderName" value="${info.shareholder1}"></td>
-						    		<td><input  name="archives.rate1" class="rate" value="${info.rate1}"><label class="labelRate"> %</label></td>
-						    	</tr>
-						    	<tr>
-						    		<td><input name="archives.shareholder2"class="shareholderName" value="${info.shareholder2}"></td>
-						    		<td><input name="archives.rate2" class="rate" value="${info.rate2}"><label class="labelRate"> %</label></td>
-						    	</tr>
-						    	<tr>
-						    		<td><input name="archives.shareholder3" class="shareholderName" value="${info.shareholder3}"></td>
-						    		<td><input name="archives.rate3" class="rate" value="${info.rate3}"><label class="labelRate"> %</label></td>
-						    	</tr>
-						    	<tr>
-						    		<td><input name="archives.shareholder4" class="shareholderName" value="${info.shareholder4}" ></td>
-						    		<td><input  name="archives.rate4" class="rate" value="${info.rate4}"><label class="labelRate"> %</label></td>
-						    	</tr>
-						    	<tr>
-						    		<td><input name="archives.shareholder5" class="shareholderName" value="${info.shareholder5}"></td>
-						    		<td><input name="archives.rate5" class="rate" value="${info.rate5}"><label class="labelRate"> %</label></td>
-						    	</tr>
-							 	</table>
-						</td>
-					</tr>
-				</s:if>
-				<s:if test="#info.corporationType.equals('01')">	
-					<s:textfield label="总部所在地" required="true" name="archives.headquarter"
-						value="%{#info.headquarter}">
-					</s:textfield>
-					<s:if test="#info.catalogNew.id.bthirdid.equals('01')">
-						<%-- 	<tr>
-							<td  class="tdLabel"><lable>本分公司对营业厅是否有管辖权<span class="required">(*)</span></lable></td>
-							<td>
-								<input type="checkbox" name="haveJurisdiction" value="0" >是
-							</td>
-							</tr> --%>
-						<s:textfield label="在深的营业部家数" id="numberOfHall" name="archives.numberOfHall" 
-							value="%{#info.numberOfHall}">
-						</s:textfield>
-					</s:if>
-				</s:if>
-											
 				<tr>
 					<td class="slabel">
 						分管领导
@@ -308,7 +206,7 @@
 						<table frame="void" class="inputform">
 							<tr>
 								<s:textfield label="反洗钱工作分管领导" required="true" name="archives.blead" 
-									value="%{#info.blead}">
+									value="%{#info.blead}" reg="^[\s|\S]{1,13}$" tip="不能为空，且最多13个字符" >
 								</s:textfield>
 							</tr>
 							<tr>
@@ -329,7 +227,7 @@
 								<s:param name="tablecolspan" value="%{2}" />
 							</s:bean>
 							<s:textfield label="反洗钱部门负责人" required="true" name="archives.bdeptlead"
-								value="%{#info.bdeptlead}">
+								value="%{#info.bdeptlead}" reg="^[\s|\S]{1,13}$" tip="不能为空，且最多13个字符">
 							</s:textfield>
 							<s:textfield label="办公电话" required="true" name="archives.bdeptleadtel" reg="^\d{3}-\d{8}$|^\d{4}-\d{8}$" tip="国内电话号码，格式: 0755-22590240 或 021-88888888"
 								value="%{#info.bdeptleadtel}">
@@ -346,7 +244,7 @@
 					</td>
 					<td class="sinput">
 						<table frame="void" class="inputform">
-							<s:textfield label="反洗钱岗位人员" required="true" name="archives.bwork" value="%{#info.bwork}" tip="反洗钱岗位人员" >
+							<s:textfield label="反洗钱岗位人员" required="true" name="archives.bwork" value="%{#info.bwork}" reg="^[\s|\S]{1,13}$" tip="不能为空，且最多13个字符">
 							</s:textfield>
 							<s:textfield label="岗位人员办公电话" required="true" name="archives.bworktel" reg="^\d{3}-\d{8}$|^\d{4}-\d{8}$" tip="国内电话号码，格式: 0755-22590240 或 021-88888888"
 								value="%{#info.bworktel}">
@@ -354,13 +252,16 @@
 							<s:textfield label="岗位人员手机号码" required="true" name="archives.bworkphe" reg="\d{11}$" tip="只允许输入11位数字"
 								value="%{#info.bworkphe}">
 							</s:textfield>
+							<s:textfield label="联系地址" required="true" name="archives.address"
+								 value="%{#info.address}" size="60" reg="^[\s|\S]{1,300}$" tip="不能为空">
+							</s:textfield>
 						</table>
 					</td>
 				</tr>
 				<tr align="center">
-				<td colspan="2">
-					<s:submit theme="simple" align="center" value="提    交" cssClass="ui-button ui-state-default ui-corner-all"></s:submit>
-				</td>
+					<td colspan="2">
+						<s:submit theme="simple" align="center" value="提    交" cssClass="ui-button ui-state-default ui-corner-all"></s:submit>
+					</td>
 				</tr>
 				</table>
 			</s:form>

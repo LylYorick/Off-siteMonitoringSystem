@@ -135,11 +135,26 @@ public class ArchivesAction extends JsonBaseAction implements ModelDriven<Archiv
 		}
 		return SUCCESS;
 	}
+	public String toClassify(){
+		BankUser bankUser = getSessionUserCode();
+		archives = bankUser.getArchives();
+		put("info", archives);
+		List<CatalogNew> list = archivesService.findAllFirstCatname();
+		this.put("list", list);
+		return SUCCESS;
+	}
+	
 	public String doClassify(){
 		BankUser bankUser = getSessionUserCode();
 		Archives userArchives = bankUser.getArchives();
+		//如果没更改机构类型
+		if(userArchives.getCatalogNew().equals(archives.getCatalogNew())){
+			this.addNaviButton("继续操作", "archives/archives_increase.shtml");
+			return OK;
+		}
 		userArchives.setCatalogNew(archives.getCatalogNew());
 		archivesService.updateArchivesCatalog(userArchives);
+		bankUser.setArchives(userArchives);
 		this.addNaviButton("继续操作", "archives/archives_increase.shtml");
 		return OK;
 	}
@@ -155,7 +170,7 @@ public class ArchivesAction extends JsonBaseAction implements ModelDriven<Archiv
 		archives.setBupdatetime(DateUtil.formatDateTime());
 		archives.setBupdateuser(bankUser.getBuname());
        archivesService.updateInformation(archives1,archives);
-       //金融机构不允许修改自己的行业 所以可以直接复制
+       //金融机构不允许在这个界面修改自己的行业 所以可以直接复制
        archives.setCatalogNew(archives1.getCatalogNew());
        bankUser.setArchives(archives);
 		log("金融机构用户保存金融机构信息",Constants.LOG_TYPE_UPDATE);

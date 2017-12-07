@@ -1,5 +1,6 @@
 package org.work.web.service.archives.impl;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,7 @@ import org.work.web.po.BankUser;
 import org.work.web.po.Catalog;
 import org.work.web.po.Archives;
 import org.work.web.po.CatalogNew;
+import org.work.web.po.CatalogNewId;
 import org.work.web.po.Information;
 import org.work.web.po.Informationhis;
 import org.work.web.po.Role;
@@ -97,23 +99,23 @@ public class ArchivesServiceImpl implements ArchivesService {
 		logger.info("查询金融机构开始");
 		return (Archives)archivesDao.findById(oid);
 	}
+	
 
-	@Override
-	public void updateInformation(Archives information1, Archives information2) {
+@Override
+	public void updateInformation(Archives old, Archives fresh) {
 		try {
 			//申明历史変更信息对象
 			ArchivesHis archivesHis= null;
 			//将原档案信息和新档案信息进行比较 获得穷档案信息的変更情况
-			archivesHis = (ArchivesHis) BeanCompare.compareArchives(information1, information2);
+			archivesHis = (ArchivesHis) BeanCompare.compareArchives(old, fresh);
 			if (archivesHis == null) {
 				return;
 			}
-			archivesDao.merge(information2);
+			archivesDao.merge(fresh);
 			logger.info("保存金融机构信息");
-			archivesHis.setBupdatetime(information2.getBupdatetime());
-			archivesHis.setBupdateuser(information2.getBupdateuser());
-			archivesHis.setArchives(information2);
-			//TODO 先只修改档案表
+			archivesHis.setBupdatetime(fresh.getBupdatetime());
+			archivesHis.setBupdateuser(fresh.getBupdateuser());
+			archivesHis.setArchives(fresh);
 			iArchivesHisDao.save(archivesHis);
 		} catch (Exception e) {
 			logger.error(e);
@@ -121,14 +123,48 @@ public class ArchivesServiceImpl implements ArchivesService {
 			throw new ServiceException("保存异常");
 		}
 	}
-	
+
 	@Override
 	public void updateArchivesCatalog(Archives archives) {
+		
+		
+		//重置  法人机构的特有信息
+		archives.setEstablishTime(null);//成立时间
+		archives.setRegisteredCapital(null);//注册资本（单位：万元，下同）
+		archives.setRegisteredArea("");//注册地
+		
+		archives.setBusinessArea("");//经营地
+		//公司股东结构（列明前5名股东及其占比）
+		archives.setShareholder1("");
+		archives.setShareholder2("");
+		archives.setShareholder3("");
+		archives.setShareholder4("");
+		archives.setShareholder5("");
+		archives.setRate1(new BigDecimal(0.00));
+		archives.setRate2(new BigDecimal(0.00));
+		archives.setRate3(new BigDecimal(0.00));
+		archives.setRate4(new BigDecimal(0.00));
+		archives.setRate5(new BigDecimal(0.00));
+		archives.setNumberOfBranchOffice(0);//分支机构数
+		archives.setOverseasBranchOffice("");//境外分支机构信息
+		//重置 分支机构 信息
+		archives.setHeadquarter(""); //总部所在地
+		//重置 证券公司和期货公司分公司 特有
+		archives.setNumberOfHall(null);//在深的营业部家数
+		//TODO 暂时不保存 金融机构的変更信息
 		//申明历史変更信息对象
 		ArchivesHis archivesHis= null;
-		//TODO 暂时不保存 金融机构的変更信息
 		//archivesHis = (ArchivesHis) BeanCompare.getArchives(information1, information2);
 		archivesDao.merge(archives);
+		CatalogNewId catalogNewId = archives.getCatalogNew().getId();
+		//根据机构id设置机构是法人机构还是分支机构
+		if(ConstantMethods.isCorporation(catalogNewId)){
+			archives.setCorporationType(Constants.IS_CORPORATION);
+		}else{
+			archives.setCorporationType(Constants.IS_BRANCH);
+		}
+		CatalogNew catalogNew =(CatalogNew) catalogNewDao.findById(catalogNewId);
+		archives.setCatalogNew(catalogNew);
 	}
 
 	public List findByBoid(String information) {
