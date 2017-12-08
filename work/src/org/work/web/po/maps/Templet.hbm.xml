@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.work.web.po" auto-import="true">
+	<class name="Templet" table="RT_TEMPLET">
+		<meta attribute="class-description">评级模板表</meta>
+		<meta attribute="class-gb2312-name">评级模板表</meta>
+			<id name="id" column="ID"   type="java.lang.Integer">
+				<generator class="increment"></generator>
+			</id>
+		<property name="year" column="YEAR"   type="java.lang.String"  length="4">
+		</property>
+		<property name="rateType" column="RATE_TYPE"   type="java.lang.String"  length="2">
+		</property>
+		<property name="parentId" column="PARENT_ID"   type="java.lang.Integer">
+		</property>
+		<property name="quotaName" column="QUOTA_NAME"   type="java.lang.String"  length="1000">
+		</property>
+		<property name="quotaDesc" column="QUOTA_DESC"   type="java.lang.String" length="1000">
+		</property>
+		<property name="standard" column="STANDARD"   type="java.lang.String" length="1000">
+		</property>
+		<property name="isSelfassessment" column="IS_SELFASSESSMENT"   type="java.lang.String" length="2">
+		</property>
+		<property name="saRequirement" column="SA_REQUIREMENT"   type="java.lang.String" length="1000">
+		</property>
+		<property name="score" column="SCORE"   type="java.lang.Integer">
+		</property>
+	</class>
+</hibernate-mapping>

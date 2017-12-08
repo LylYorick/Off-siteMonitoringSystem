@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="org.work.web.po.Opposition" table="ORG_OPPOSITION">
+		<meta attribute="class-description">异议表</meta>
+		<meta attribute="class-gb2312-name">异议表</meta>
+		<id name="id" column="ID"   type="java.lang.Integer">
+			<generator class="increment"></generator>
+		</id>
+		<property name="year" column="YEAR"   type="java.lang.String"  length="4" >
+		</property>
+		<property name="orgId" column="ORG_ID"   type="java.lang.Integer">
+		</property>
+		<property name="oppType" column="OPP_TYPE"   type="java.lang.String"  length="2" >
+		</property>
+		<property name="status" column="STATUS"   type="java.lang.Integer">
+		</property>
+		<property name="orgRateId" column="ORG_RATE_ID"   type="java.lang.Integer">
+		</property>
+		<property name="rateId" column="RATE_ID"   type="java.lang.Integer">
+		</property>
+		<property name="desiredValiue" column="DESIRED_VALIUE"   type="java.lang.String"  length="3" >
+		</property>
+		<property name="oppReason" column="OPP_REASON"   type="java.lang.String"  length="1000" >
+		</property>
+		<property name="attachment" column="ATTACHMENT"   type="java.lang.String"  length="500" >
+		</property>
+		<property name="dealResult" column="DEAL_RESULT"   type="java.lang.String"  length="3" >
+		</property>
+		<property name="dealReason" column="DEAL_REASON"   type="java.lang.String"  length="1000" >
+		</property>
+	</class>
+</hibernate-mapping>

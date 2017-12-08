@@ -1,118 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<hibernate-mapping >
-	<class name="org.work.web.po.ArchivesHis" table="B_ORG_INFORMATIONHIS_NEW">
-		<meta attribute="class-description">变更历史表-新</meta>
-		<meta attribute="class-gb2312-name">变更历史表-新</meta>
-		<id name="id" column="OOID"  type="java.lang.Integer">
-			<generator class="increment"></generator>
-		</id>
-        <many-to-one name="archives" class="org.work.web.po.Archives" fetch="select">
-            <column name="OID" />
-        </many-to-one>
-	    <many-to-one name="catalogNew" class="org.work.web.po.CatalogNew"  fetch="select" lazy="false" >
-           		<column name="BFIRSTID" ></column>
-          		<column name="BSECONDID"></column>
-           		<column name="BTHIRDID"></column>
-        </many-to-one>
-		<property name="corporationType" column="CORPORATION_TYPE"   type="java.lang.String">
-		</property>
-		<property name="boid" column="BOID"   type="java.lang.String">
-		</property>
-		<property name="bname" column="BNAME"   type="java.lang.String">
-			
-		</property>
-		<property name="blead" column="BLEAD"   type="java.lang.String">
-		
-		</property>
-		<property name="bworkphe" column="BWORKPHE"   type="java.lang.String">
-			
-		</property>
-		<property name="establishTime" column="ESTABLISH_TIME"   type="java.lang.String">
-			
-		</property>
-		<property name="bdeptlead" column="BDEPTLEAD"   type="java.lang.String">
-			
-		</property>
-		<property name="bdeptleadtel" column="BDEPTLEADTEL"   type="java.lang.String">
-			
-		</property>
-		<property name="blastnet" column="BLASTNET"   type="java.lang.String">
-			
-		</property>
-		<property name="bworktel" column="BWORKTEL"   type="java.lang.String">
-			
-		</property>
-		<property name="bdeptleadphe" column="BDEPTLEADPHE"   type="java.lang.String">
-			
-		</property>
-		<property name="bworknum" column="BWORKNUM"   type="java.lang.String">
-			
-		</property>
-		<property name="bleadtel" column="BLEADTEL"   type="java.lang.String">
-			
-		</property>
-		<property name="bwork" column="BWORK"   type="java.lang.String">
-			
-		</property>
-		<property name="businessArea" column="BUSINESS_AREA"   type="java.lang.String">
-		
-		</property>
-		<property name="registeredArea" column="REGISTERED_AREA"   type="java.lang.String">
-		
-		</property>
-		<property name="registeredCapital" column="REGISTERED_CAPITAL"   type="java.lang.String">
-			
-		</property>
-		<property name="headquarter" column="HEADQUARTER"   type="java.lang.String">
-		
-		</property>
-		<property name="overseasBranchOffice" column="OVERSEAS_BRANCH_OFFICE"   type="java.lang.String">
-		
-		</property>
-		<property name="numberOfBranchOffice" column="NUMBER_OF_BRANCH_OFFICE"   type="java.lang.String">
-		
-		</property>
-		<property name="numberOfHall" column="NUMBER_OF_HALL"   type="java.lang.String">
-		
-		</property>
-		<property name="blastamt" column="BLASTAMT"   type="java.lang.String">
-			
-		</property>
-		<property name="bupdateuser" column="BUPDATEUSER"   type="java.lang.String">
-		
-		</property>
-		<property name="bupdatetime" column="BUPDATETIME"   type="java.lang.String">
-			
-		</property>
-		<property name="bmininame" column="BMININAME"   type="java.lang.String">
-		</property>
-		<property name="rateType" column="RATE_TYPE"   type="java.lang.String">
-		</property>
-		<property name="shareholder1" column="SHAREHOLDER1"   type="java.lang.String">
-		</property>
-		<property name="rate1" column="RATE1"   type="java.lang.String">
-		</property>
-		<property name="shareholder2" column="SHAREHOLDER2"   type="java.lang.String">
-		</property>
-		<property name="rate2" column="RATE2"   type="java.lang.String">
-		</property>
-		<property name="shareholder3" column="SHAREHOLDER3"   type="java.lang.String">
-		</property>
-		<property name="rate3" column="RATE3"   type="java.lang.String">
-		</property>
-		<property name="shareholder4" column="SHAREHOLDER4"   type="java.lang.String">
-		</property>
-		<property name="rate4" column="RATE4"   type="java.lang.String">
-		</property>
-		<property name="shareholder5" column="SHAREHOLDER5"   type="java.lang.String">
-		</property>
-		<property name="rate5" column="RATE5"   type="java.lang.String">
-		</property>
-		<property name="address" column="ADDRESS"   type="java.lang.String">
-		</property>
-		<property name="responsiblePerson" column="RESPONSIBLE_PERSON"   type="java.lang.String">
-		</property>
-	</class>
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="org.work.web.po.ArchivesHis" table="B_ORG_INFORMATIONHIS_NEW">
+  <meta attribute="class-description">变更历史表-新</meta>
+  <meta attribute="class-gb2312-name">变更历史表-新</meta>
+  <id column="OOID" name="id" type="java.lang.Integer">
+   <generator class="increment"/>
+  </id>
+  <many-to-one class="org.work.web.po.Archives" fetch="select" name="archives">
+   <column name="OID"/>
+  </many-to-one>
+  <many-to-one class="org.work.web.po.CatalogNew" fetch="select"
+   lazy="false" name="catalogNew">
+   <column name="BFIRSTID"/>
+   <column name="BSECONDID"/>
+   <column name="BTHIRDID"/>
+  </many-to-one>
+  <property column="CORPORATION_TYPE" generated="never" lazy="false"
+   name="corporationType" type="java.lang.String"/>
+  <property column="BOID" generated="never" lazy="false" name="boid" type="java.lang.String"/>
+  <property column="BNAME" generated="never" lazy="false" name="bname" type="java.lang.String"/>
+  <property column="BLEAD" generated="never" lazy="false" name="blead" type="java.lang.String"/>
+  <property column="BWORKPHE" generated="never" lazy="false" length="50"
+   name="bworkphe" type="java.lang.String"/>
+  <property column="ESTABLISH_TIME" generated="never" lazy="false"
+   name="establishTime" type="java.lang.String"/>
+  <property column="BDEPTLEAD" generated="never" lazy="false"
+   name="bdeptlead" type="java.lang.String"/>
+  <property column="BDEPTLEADTEL" generated="never" lazy="false"
+   name="bdeptleadtel" type="java.lang.String"/>
+  <property column="BLASTNET" generated="never" lazy="false"
+   name="blastnet" type="java.lang.String"/>
+  <property column="BWORKTEL" generated="never" lazy="false"
+   name="bworktel" type="java.lang.String"/>
+  <property column="BDEPTLEADPHE" generated="never" lazy="false"
+   name="bdeptleadphe" type="java.lang.String"/>
+  <property column="BWORKNUM" generated="never" lazy="false"
+   name="bworknum" type="java.lang.String"/>
+  <property column="BLEADTEL" generated="never" lazy="false"
+   name="bleadtel" type="java.lang.String"/>
+  <property column="BWORK" generated="never" lazy="false" name="bwork" type="java.lang.String"/>
+  <property column="BUSINESS_AREA" generated="never" lazy="false"
+   name="businessArea" type="java.lang.String"/>
+  <property column="REGISTERED_AREA" generated="never" lazy="false"
+   name="registeredArea" type="java.lang.String"/>
+  <property column="REGISTERED_CAPITAL" generated="never" lazy="false"
+   name="registeredCapital" type="java.lang.String"/>
+  <property column="HEADQUARTER" generated="never" lazy="false"
+   name="headquarter" type="java.lang.String"/>
+  <property column="OVERSEAS_BRANCH_OFFICE" generated="never"
+   lazy="false" name="overseasBranchOffice" type="java.lang.String"/>
+  <property column="NUMBER_OF_BRANCH_OFFICE" generated="never"
+   lazy="false" name="numberOfBranchOffice" type="java.lang.String"/>
+  <property column="NUMBER_OF_HALL" generated="never" lazy="false"
+   name="numberOfHall" type="java.lang.String"/>
+  <property column="BLASTAMT" generated="never" lazy="false"
+   name="blastamt" type="java.lang.String"/>
+  <property column="BUPDATEUSER" generated="never" lazy="false"
+   name="bupdateuser" type="java.lang.String"/>
+  <property column="BUPDATETIME" generated="never" lazy="false"
+   name="bupdatetime" type="java.lang.String"/>
+  <property column="BMININAME" generated="never" lazy="false"
+   name="bmininame" type="java.lang.String"/>
+  <property column="RATE_TYPE" generated="never" lazy="false"
+   name="rateType" type="java.lang.String"/>
+  <property column="SHAREHOLDER1" generated="never" lazy="false"
+   name="shareholder1" type="java.lang.String"/>
+  <property column="RATE1" generated="never" lazy="false" name="rate1" type="java.lang.String"/>
+  <property column="SHAREHOLDER2" generated="never" lazy="false"
+   name="shareholder2" type="java.lang.String"/>
+  <property column="RATE2" generated="never" lazy="false" name="rate2" type="java.lang.String"/>
+  <property column="SHAREHOLDER3" generated="never" lazy="false"
+   name="shareholder3" type="java.lang.String"/>
+  <property column="RATE3" generated="never" lazy="false" name="rate3" type="java.lang.String"/>
+  <property column="SHAREHOLDER4" generated="never" lazy="false"
+   name="shareholder4" type="java.lang.String"/>
+  <property column="RATE4" generated="never" lazy="false" name="rate4" type="java.lang.String"/>
+  <property column="SHAREHOLDER5" generated="never" lazy="false"
+   name="shareholder5" type="java.lang.String"/>
+  <property column="RATE5" generated="never" lazy="false" name="rate5" type="java.lang.String"/>
+  <property column="ADDRESS" generated="never" lazy="false"
+   name="address" type="java.lang.String"/>
+  <property column="RESPONSIBLE_PERSON" generated="never" lazy="false"
+   name="responsiblePerson" type="java.lang.String"/>
+ </class>
 </hibernate-mapping>
