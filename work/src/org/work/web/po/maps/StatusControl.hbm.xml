@@ -8,11 +8,11 @@
 			<id name="id" column="ID"   type="java.lang.Integer">
 				<generator class="increment"></generator>
 			</id>
-		<property name="year" column="YEAR"   type="java.lang.String" length="4">
+		<property name="year" column="ANNUAL"   type="java.lang.String" length="4">
 		</property>
-		<property name="type" column="TYPE"   type="java.lang.String" length="2">
+		<property name="type" column="STATUS_TYPE"   type="java.lang.String" length="2">
 		</property>
-		<property name="name" column="NAME"   type="java.lang.String" length="50">
+		<property name="name" column="STATUS_NAME"   type="java.lang.String" length="50">
 		</property>
 		<property name="startTime" column="START_TIME"   type="java.lang.String" length="20">
 		</property>
