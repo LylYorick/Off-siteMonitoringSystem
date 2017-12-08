@@ -3,9 +3,12 @@
  */
 package org.work.web.constants;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import org.work.web.po.CatalogNew;
 import org.work.web.po.CatalogNewId;
 
 /**
@@ -130,16 +133,15 @@ public class Constants {
 	 * 法人机构
 	 */
 	public static final String IS_CORPORATION = "00";
+	public static final String IS_CORPORATION_NAME = "法人机构";
 	
 	/**
-	 * 是分支机构
+	 * 分支机构
 	 */
 	public static final String IS_BRANCH = "01";	
-	public static Map<String, String> CORPORATION_TYPE = new HashMap<String, String>();
-	static {
-		CORPORATION_TYPE.put(IS_CORPORATION, "是");
-		CORPORATION_TYPE.put(IS_BRANCH, "否");
-	}
+
+	public static final String IS_BRANCH_NAME = "分支机构";
+	
 	
 	//评级类型
 	/**
@@ -201,5 +203,7 @@ public class Constants {
 	 * 00 ---未分配
 	 */
 	public static final String UNCLASSIFIED = "00"; //未分配
+	
+	public static List<CatalogNew> catalogNewList = new ArrayList<CatalogNew>();
 	
 }

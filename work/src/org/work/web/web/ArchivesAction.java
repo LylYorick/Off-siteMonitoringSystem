@@ -191,10 +191,6 @@ public class ArchivesAction extends JsonBaseAction implements ModelDriven<Archiv
 	 * @return
 	 */
 	public String basesave(){
-		/*List iList = archivesService.findByBoid(archives.getBoid());
-		if(iList.size()>0){
-			throw new ServiceException("机构代码重复");
-		}*/
 		try {
 			this.archivesService.addInformation(archives);
 		} catch (Exception e) {

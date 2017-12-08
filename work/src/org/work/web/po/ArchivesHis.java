@@ -2,6 +2,8 @@ package org.work.web.po;
 
 import javax.persistence.Transient;
 
+import org.work.web.constants.Constants;
+
 public class ArchivesHis implements java.io.Serializable{
 	//序列号兼容性问题
 	private static final long serialVersionUID = 1L;
@@ -14,17 +16,15 @@ public class ArchivesHis implements java.io.Serializable{
 	public void setId(java.lang.Integer id){
 		this.id=id;
 	}
+	private String  mold;
 	
-	private CatalogNew catalogNew;
-	
-	
-	public CatalogNew getCatalogNew() {
-		return catalogNew;
+	public String getMold() {
+		return mold;
 	}
-	public void setCatalogNew(CatalogNew catalogNew) {
-		this.catalogNew = catalogNew;
+	public void setMold(String mold) {
+		this.mold = mold;
 	}
-
+	
 	private Archives archives;
 	
 	public Archives getArchives() {
@@ -34,6 +34,7 @@ public class ArchivesHis implements java.io.Serializable{
 	public void setArchives(Archives archives) {
 		this.archives = archives;
 	}
+	
 			
 	/**
 	*CORPORATION_TYPE
@@ -46,11 +47,11 @@ public class ArchivesHis implements java.io.Serializable{
 	
 	public void setCorporationType(java.lang.String corporationType){
 		this.corporationType=corporationType;
-		//TODO 这个常量最好放到Constant类中取
-		if(corporationType.equals("00")){
-			this.corporationTypeName = "法人机构";
-		}else if(corporationType.equals("01")){
-			this.corporationTypeName = "分支机构";
+		//这个常量最好放到Constant类中取
+		if(Constants.IS_CORPORATION.equals(corporationType)){
+			this.corporationTypeName = Constants.IS_CORPORATION_NAME;
+		}else if(Constants.IS_BRANCH.equals(corporationType)){
+			this.corporationTypeName = Constants.IS_BRANCH_NAME;
 		}
 	}
 	private java.lang.String corporationTypeName;
@@ -59,18 +60,6 @@ public class ArchivesHis implements java.io.Serializable{
 		return corporationTypeName;
 	}
 
-	/**
-	*BOID
-	**/
-	private java.lang.String boid;
-	
-	public java.lang.String getBoid(){
-		return boid;
-	}
-	
-	public void setBoid(java.lang.String boid){
-		this.boid=boid;
-	}
 			
 	/**
 	*BNAME
@@ -382,19 +371,6 @@ public class ArchivesHis implements java.io.Serializable{
 	
 	public void setIsneed(java.lang.String isneed){
 		this.isneed=isneed;
-	}
-			
-	/**
-	*BMININAME
-	**/
-	private java.lang.String bmininame;
-	
-	public java.lang.String getBmininame(){
-		return bmininame;
-	}
-	
-	public void setBmininame(java.lang.String bmininame){
-		this.bmininame=bmininame;
 	}
 			
 	/**

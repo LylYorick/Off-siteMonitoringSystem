@@ -26,13 +26,14 @@ public interface ArchivesService {
 	 * @return
 	 */
 	List<CatalogNew> findThirdCatname(String bfirstid,String bscondid);
+	List<CatalogNew> getAllCatalogNews();
+	
 	List findArchivesByBfirstid(String bfirstid);
 	
 	Archives findByOid(Integer oid);
 	void updateInformation(Archives old, Archives fresh);
 	void updateArchivesCatalog(Archives archives);
 	
-	List findByBoid(String information);
 	void addInformation(Archives information);
 	/**
 	 * 查看金融机构的变更历史
@@ -44,5 +45,6 @@ public interface ArchivesService {
 	
 	CatalogNew findCatalogNewById(CatalogNew catalogNew);
 	PaginaterList getArchivesinformation(Map<String, Object> params,Integer page);
+	
 
 }

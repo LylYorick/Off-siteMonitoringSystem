@@ -7,7 +7,6 @@ public class Archives implements Serializable {
 	private int oid;
 	//private Integer bid;
 	private CatalogNew catalogNew ;//机构种类对象 
-	private String boid;
 	private String corporationType;//是否是法人机构
 	private String bname;//机构名称
 	private String bwork;//反洗钱岗位人员
@@ -29,7 +28,6 @@ public class Archives implements Serializable {
 	private String headquarter; //总部所在地
 	private Integer numberOfHall;//在深的营业部家数
 	private Integer bworknum;//员工人数
-	private String bmininame;//金融机构拼音缩写
 	private String bupdatetime;
 	private String bupdateuser;
 	private String rateType;//评级类型 00-法人金融机构评级表 01-非法人金融机构评级表 ;
@@ -67,13 +65,6 @@ public class Archives implements Serializable {
 	public void setOid(int oid) {
 		this.oid = oid;
 	}
-	public String getBoid() {
-		return boid;
-	}
-	public void setBoid(String boid) {
-		this.boid = boid;
-	}
-	
 	public String getCorporationType() {
 		return corporationType;
 	}
@@ -215,12 +206,6 @@ public class Archives implements Serializable {
 	}
 	public void setBusinessArea(String businessArea) {
 		this.businessArea = businessArea;
-	}
-	public String getBmininame() {
-		return bmininame;
-	}
-	public void setBmininame(String bmininame) {
-		this.bmininame = bmininame;
 	}
 	
 	public CatalogNew getCatalogNew() {

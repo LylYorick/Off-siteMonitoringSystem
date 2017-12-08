@@ -8,7 +8,9 @@ import java.lang.reflect.InvocationTargetException;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
+import org.work.web.constants.ConstantMethods;
 import org.work.web.po.Archives;
+import org.work.web.po.CatalogNew;
 import org.work.web.po.Information;
 import org.work.web.po.ArchivesHis;
 
@@ -68,15 +70,47 @@ public class BeanCompare {
 	 * @throws InvocationTargetException
 	 * @throws NoSuchMethodException
 	 */
-	public static ArchivesHis compareArchives(Archives o1,Archives o2) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException{
-		Class class1 = Archives.class;
-		//增加一个boolean型的数据，如果为true，则该方法返回空,因为只有不相等的时候才往历史记录表中插记录，add by yanghc 
-		boolean isEquals = true;
+	public static ArchivesHis compareArchives(Archives old,Archives fresh) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException{
+		
 		//声明一个历史对象
 		ArchivesHis his = new ArchivesHis();
+		//增加一个boolean型的数据，如果为true，则该方法返回空,因为只有不相等的时候才往历史记录表中插记录，add by yanghc 
+		boolean isEquals = compareArchivesBase(his, old, fresh);
+		if(isEquals){
+			his = null;
+			return his;
+		}
+		//不相等，则插入数据
+		his.setMold(ConstantMethods.getCatalogName(old.getCatalogNew()));
+		return his;
+	}
+	
+	public static ArchivesHis compareCatalog(Archives old,Archives fresh) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException{
+		//声明一个历史对象
+		ArchivesHis his = new ArchivesHis();
+		//vs对象是 用于保存每个属性的修改值
+		String vs;
+		String o1Mod =  ConstantMethods.getCatalogName(old.getCatalogNew());
+		String o2Mod =  ConstantMethods.getCatalogName(fresh.getCatalogNew());
+		vs = "["+ o1Mod +"]修改为:["+ o2Mod +"]";
+		his.setMold(vs);
+		//将基本信息保存到历史信息中
+		compareArchivesBase(his, old, fresh);
+		return his;
+	}
+	
+	/**
+	 * @param his
+	 * @param old
+	 * @param fresh
+	 */
+	public static boolean compareArchivesBase(ArchivesHis his,Archives old,Archives fresh) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException{
+		Class class1 = Archives.class;
 		//通过反射获取Archives类的全部属性
 		Field[] fields = class1.getDeclaredFields();
-		//vs对象是干啥的？ 用于保存每个属性的修改值
+		//判断old 和fresh 对象的基本字符是否相等
+		boolean isEquals = true;
+		//vs对象是 用于保存每个属性的修改值
 		Object vs="";
 		for(int i=0; i<fields.length; i++){
 			Field field = fields[i];
@@ -87,17 +121,20 @@ public class BeanCompare {
 				||"bupdatetime".equals(field.getName()) //更新时间
 				||"bupdateuser".equals(field.getName())//更新人
 				||"rateType".equals(field.getName())//评级表类型
-				)
+				||"corporationType".equals(field.getName())//是否是法人机构
+				){
 				continue;
-			System.out.println("fieldName:" +field);
+			}
+			System.out.println("fieldName:" +field.getName());
 			if(!"java.lang.String".equals(c.getName()) 
 					&& !"java.lang.Integer".equals(c.getName())
 					&& !"java.lang.Double".equals(c.getName())
 					&& !"java.math.BigDecimal".equals(c.getName())
-					)
+					){
 				continue;
-			Object v = PropertyUtils.getProperty(o1,field.getName())==null?"":PropertyUtils.getProperty(o1,field.getName());
-			Object v1 = PropertyUtils.getProperty(o2,field.getName())==null?"":PropertyUtils.getProperty(o2,field.getName());
+			}
+			Object v = PropertyUtils.getProperty(old,field.getName())==null?"":PropertyUtils.getProperty(old,field.getName());
+			Object v1 = PropertyUtils.getProperty(fresh,field.getName())==null?"":PropertyUtils.getProperty(fresh,field.getName());
 			if(v.equals(v1)){
 				vs = v;
 			}else{
@@ -105,11 +142,9 @@ public class BeanCompare {
 				isEquals = false;
 			}
 			PropertyUtils.setProperty(his, field.getName(), vs.toString());
+			
 		}
-		if(isEquals){
-			his = null;
-		}
-		return his;
+		return isEquals;
 	}
 	
 	public static void main(String[] args) throws IllegalAccessException, InvocationTargetException {

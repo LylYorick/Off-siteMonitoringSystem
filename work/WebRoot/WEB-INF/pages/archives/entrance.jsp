@@ -136,7 +136,6 @@ function update_c(json){
 			multiselect="true" 
 			cssStyle="line-height:30px;" onSelectRowTopics="rowselect">
 			<sj:gridColumn name="oid" index="oid" title="机构ID" sortable="false" hidden="true" width="70"/>
-			<sj:gridColumn name="boid" index="boid" title="机构代码" sortable="false" width="100" />
 			<sj:gridColumn name="bname" index="bname" title="机构名称" sortable="false" width="170" />
 			<sj:gridColumn name="address" index="address" title="办公地址" sortable="false" width="240" />
 			<sj:gridColumn name="blead" index="blead" title="分管领导" sortable="false" width="150" />

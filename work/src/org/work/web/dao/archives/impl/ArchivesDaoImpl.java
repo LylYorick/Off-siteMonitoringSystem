@@ -56,11 +56,6 @@ public class ArchivesDaoImpl extends BaseDaoHibernateImpl implements ArchivesDao
 		
 	}
 
-	public List findByBoid(String Archives) {
-		QueryHelper queryHelper = new QueryHelper(getSession());
-		queryHelper.append("from Archives where boid=?",Archives );
-		return getList(queryHelper);
-	}
 
 	@Override
 	public PaginaterList getArchivesinformation(Map<String, Object> params,

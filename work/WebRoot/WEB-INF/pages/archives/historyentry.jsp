@@ -13,11 +13,10 @@
 			cssStyle="line-height:30px;" onSelectRowTopics="rowselect"
 			height="400">			
 			<sj:gridColumn name="bname" index="bname" title="机构名称" sortable="false" width="100" />
-			<sj:gridColumn name="bmininame" index="bmininame" title="金融机构拼音缩写" sortable="false" width="100" />
+			<sj:gridColumn name="mold" index="mold" title="机构类型" sortable="false" width="100" />
 			<sj:gridColumn name="address" index="address" title="联系地址" sortable="false" width="100" />
 			<sj:gridColumn name="responsiblePerson" index="responsiblePerson" title="机构负责人" sortable="false" width="100" />
 			<sj:gridColumn name="address" index="baddr" title="办公地址" sortable="false" width="200" />
-			<sj:gridColumn name="corporationTypeName" index="corporationTypeName" title="是否是法人机构" sortable="false" width="100" />
 			<sj:gridColumn name="bworknum" index="bworknum" title="员工人数" sortable="false" width="100" />
 			<sj:gridColumn name="blastamt" index="blastamt" title="上年度末度总资产" sortable="false" width="100" />
 			<sj:gridColumn name="blastnet" index="blastnet" title="上年度税后净利润" sortable="false" width="100" />

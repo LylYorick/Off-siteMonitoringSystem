@@ -4,32 +4,6 @@
 <head>
 	<title>金融机构管理>>金融机构信息录入</title>
 		<script type="text/javascript">
-		/* $(function(){
-			controllInput_HallNum();
-		}); */
-		/*
-		function initial(){
-			var juridiction = $("input[name='haveJurisdiction']");
-			var  hallNum = $("#numberOfHall");
-			if(hallNum.val() == 0 || $.trim(hallNum.val())==''){
-				juridiction.attr('checked', false);
-				hallNum.hide();
-			}else{
-				juridiction.attr('checked', true);
-			}
-		};
-		 function controllInput_HallNum(){
-         	var juridiction = $("input[name='haveJurisdiction']");
-         	var  hallNum = $("#numberOfHall");
-			juridiction.click(function(){
-				if(juridiction.is(":checked")){
-						hallNum.show();
-				}else{
-					hallNum.val("");
-					hallNum.hide();
-				}
-			});
-		} */
 		$(document).ready(function() {
 		  	 	var dates = $("#archives_save_archives_establishTime").datepicker({
 	  	 		changeMonth: true,
